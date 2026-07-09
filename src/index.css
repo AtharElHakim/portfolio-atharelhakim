@@ -1,0 +1,71 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Sora", system-ui, sans-serif;
+  --font-syne: "Sora", system-ui, sans-serif;
+}
+
+:root {
+  --nav-edge-w: 6rem;
+}
+
+body {
+  font-family: var(--font-sans);
+}
+
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fade-in-up 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes float-blob {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1) rotate(0deg);
+    border-radius: 58% 42% 65% 35% / 45% 60% 40% 55%;
+  }
+  33% {
+    transform: translate(3%, -4%) scale(1.08) rotate(8deg);
+    border-radius: 45% 55% 40% 60% / 60% 45% 55% 40%;
+  }
+  66% {
+    transform: translate(-3%, 3%) scale(0.95) rotate(-6deg);
+    border-radius: 65% 35% 55% 45% / 40% 55% 45% 60%;
+  }
+}
+
+.animate-float-blob {
+  animation: float-blob 14s ease-in-out infinite;
+}
+
+/* Liquid-glass surface: translucent, blurred, faint border */
+.glass {
+  background: rgba(253, 251, 246, 0.6);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(7, 7, 7, 0.08);
+}
+
+.glass-dark {
+  background: rgba(8, 8, 12, 0.92);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(253, 251, 246, 0.1);
+}
+
+/* Subtle purple glow used as an accent halo behind cards / on hover */
+.purple-glow {
+  box-shadow:
+    0 0 0 1px rgba(139, 92, 246, 0.15),
+    0 8px 30px rgba(139, 92, 246, 0.18);
+}
