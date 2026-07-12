@@ -16,6 +16,7 @@ import monday from '../assets/tools/monday.jpg'
 import googleWorkspace from '../assets/tools/google-workspace.svg'
 import claudeCode from '../assets/tools/claude-code.png'
 import github from '../assets/tools/github.png'
+import { H2, Micro1 } from './Typography'
 
 const tools = [
   { name: 'Figma', icon: figma },
@@ -40,12 +41,10 @@ const tools = [
 
 export default function Tools() {
   return (
-    <section className="relative flex flex-col items-center p-8 md:py-16 md:px-[var(--nav-edge-w)]">
+    <section className="relative flex flex-col items-center gap-10 p-8 md:py-16 md:px-[var(--nav-edge-w)]">
       <div className="relative flex w-full max-w-[1440px] flex-col items-center gap-8">
-        <h2 className="font-syne text-2xl leading-9 text-[#fdfbf6] md:text-[30px]">
-          Mes Outils
-        </h2>
-        <div className="flex max-w-[996px] flex-wrap items-start justify-center gap-x-3 gap-y-6 px-4 md:px-8">
+        <H2>Mes Outils</H2>
+        <div className="flex max-w-[996px] flex-wrap items-start justify-center gap-x-4 gap-y-6 px-4 md:px-8">
           {tools.map((tool) => (
             <div
               key={tool.name}
@@ -66,9 +65,7 @@ export default function Tools() {
                   }`}
                 />
               </div>
-              <p className="text-center text-sm leading-5 text-[rgba(253,251,246,0.8)]">
-                {tool.name}
-              </p>
+              <Micro1 className="text-center">{tool.name}</Micro1>
             </div>
           ))}
         </div>

@@ -58,9 +58,8 @@ export default function CaseStudyNav({
       <div className="sticky top-20 z-10 flex items-center px-4 py-2 md:px-12">
         <Link
           to="/projects"
-          className="flex shrink-0 items-center gap-1.5 rounded-full border border-white/15 px-4 py-2 text-sm text-[rgba(253,251,246,0.8)] transition-colors duration-300 hover:text-[#fdfbf6]"
+          className="flex shrink-0 items-center gap-2 rounded-full border border-white/15 bg-white/6 px-4 py-2 text-sm text-white/80 transition-colors duration-300 hover:text-white"
           style={{
-            background: 'rgba(253,251,246,0.06)',
             backdropFilter: 'blur(20px)',
             WebkitBackdropFilter: 'blur(20px)',
           }}
@@ -71,23 +70,21 @@ export default function CaseStudyNav({
       </div>
 
       <div className="pointer-events-none fixed right-6 top-1/2 z-10 hidden -translate-y-1/2 lg:block xl:right-10">
-        <nav className="pointer-events-auto flex flex-col items-end gap-2.5 border-r border-white/15 pr-4">
+        <nav className="pointer-events-auto flex flex-col items-end gap-2 border-r border-white/15 pr-4">
           {sections.map((section, i) => {
             const isActive = section.id === activeId
             const showGroup = section.group && section.group !== sections[i - 1]?.group
             return (
               <div key={section.id} className="flex flex-col items-end">
                 {showGroup && (
-                  <p className="mb-1 mt-2 whitespace-nowrap text-[11px] font-semibold uppercase tracking-widest text-violet-300/70 first:mt-0">
+                  <p className="mb-2 mt-2 whitespace-nowrap text-[11px] font-semibold uppercase tracking-widest text-purple-pale/70 first:mt-0">
                     {section.group}
                   </p>
                 )}
                 <a
                   href={`#${section.id}`}
-                  className={`whitespace-nowrap text-sm transition-colors duration-300 hover:text-[#fdfbf6] ${
-                    isActive
-                      ? 'font-medium text-[#fdfbf6]'
-                      : 'text-[rgba(253,251,246,0.5)]'
+                  className={`whitespace-nowrap text-sm transition-colors duration-300 hover:text-white ${
+                    isActive ? 'font-medium text-white' : 'text-white/50'
                   }`}
                 >
                   {section.label}

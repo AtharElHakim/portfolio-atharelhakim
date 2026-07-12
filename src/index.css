@@ -1,8 +1,37 @@
 @import "tailwindcss";
 
 @theme {
-  --font-sans: "Epilogue", system-ui, sans-serif;
-  --font-syne: "Epilogue", system-ui, sans-serif;
+  --font-sans: "Roboto", system-ui, sans-serif;
+  --font-syne: "Roboto", system-ui, sans-serif;
+
+  /* White — the site's off-white/cream text color */
+  --color-white: #fdfbf6;
+
+  /* Black — dark backgrounds. "black" = main page bg, "black-soft" = cards/
+     mockup chrome (a touch lighter), "black-ink" = text-on-light-pages black */
+  --color-black: #08080c;
+  --color-black-soft: #0c0c10;
+  --color-black-ink: #070707;
+
+  /* Purple — the brand accent. NOT named "violet-*" on purpose: Tailwind
+     ships its own violet-* scale already used across the site (e.g.
+     border-violet-300/60 on glass buttons). Reusing that name here would
+     silently override those. */
+  --color-purple-highlight: #d8b4fe;
+  --color-purple-pale: #c4b4ff;
+  --color-purple-light: #a855f7;
+  --color-purple-mid: #8b5cf6;
+  --color-purple: #7c3aed;
+  --color-purple-deep: #6d28d9;
+  --color-purple-dark: #4c1d95;
+
+  /* Grey — neutral, for muted/secondary UI (scrollbars, tags) */
+  --color-grey: #9ca3af;
+
+  /* Semantic */
+  --color-success: #4a7c59;
+  --color-danger: #7c4a4a;
+  --color-link: #568cc2;
 }
 
 :root {
@@ -89,6 +118,16 @@ body {
 .modern-scrollbar::-webkit-scrollbar-thumb {
   background: #9ca3af;
   border-radius: 999px;
+}
+
+/* Fully hides the native scrollbar so a custom one can be rendered separately */
+.hide-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
 }
 
 .modern-scrollbar::-webkit-scrollbar-thumb:hover {

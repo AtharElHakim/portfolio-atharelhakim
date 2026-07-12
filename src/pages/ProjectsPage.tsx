@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import Contact from '../components/Contact'
+import { H1, Body1 } from '../components/Typography'
 import fineLineImg from '../assets/listing-fine-line.png'
 import yslImg from '../assets/listing-ysl.png'
 import angryBirdsImg from '../assets/listing-angry-birds.jpg'
@@ -36,12 +37,10 @@ export default function ProjectsPage() {
     <div className="bg-[#fdfbf6]">
       <div className="flex flex-col items-center gap-6 p-8 text-center md:py-16 md:px-[var(--nav-edge-w)]">
         <div className="flex w-full max-w-[720px] flex-col items-center gap-4 border border-[#070707] bg-[#fdfbf6] px-8 py-10 shadow-[8px_8px_0px_#242424] md:px-14 md:py-14">
-          <h1 className="w-full font-syne text-5xl leading-tight text-[#070707] md:text-[72px] md:leading-[72px]">
-            Projets
-          </h1>
-          <p className="w-full font-syne text-2xl leading-tight text-[rgba(7,7,7,0.88)] md:text-[30px] md:leading-9">
+          <H1 className="text-[#070707]">Projets</H1>
+          <Body1 className="text-[rgba(7,7,7,0.88)]">
             Voici une sélection de mes projets UX/UI. Bonne exploration !
-          </p>
+          </Body1>
         </div>
       </div>
 
@@ -90,9 +89,9 @@ export default function ProjectsPage() {
                 </div>
                 <Link
                   to={`/projects/${project.slug}`}
-                  className="flex cursor-pointer items-center justify-center border border-[#070707] bg-[#fdfbf6] px-4 py-2"
+                  className="flex cursor-pointer items-center justify-center rounded-full border border-[#070707]/15 bg-[rgba(7,7,7,0.04)] px-4 py-2 text-sm text-[rgba(7,7,7,0.8)] backdrop-blur-[20px] transition-colors duration-300 hover:text-[#070707]"
                 >
-                  <span className="whitespace-nowrap text-center text-xl font-medium leading-7 text-[#070707]">
+                  <span className="whitespace-nowrap text-center">
                     En savoir plus
                   </span>
                 </Link>

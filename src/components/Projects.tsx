@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
+import { H2, H3, Body1, Body2 } from './Typography'
 import fineLineImg from '../assets/fineline/ancien-site.png'
 import yslImg from '../assets/project-ysl.png'
 import researchOpsImg from '../assets/project-research-ops.png'
@@ -36,7 +37,7 @@ function ChevronIcon({ direction }: { direction: 'left' | 'right' }) {
       xmlns="http://www.w3.org/2000/svg"
     >
       <path
-        d="M5 12H19M19 12L13 6M19 12L13 18"
+        d="M9 6L15 12L9 18"
         stroke="currentColor"
         strokeWidth="2"
         strokeLinecap="round"
@@ -57,12 +58,10 @@ export default function Projects() {
     >
       <div className="relative flex w-full max-w-[1440px] flex-col items-center gap-6">
         <div className="animate-fade-in-up flex flex-col items-center gap-4 text-center">
-          <h2 className="font-syne text-4xl leading-tight text-[#fdfbf6] md:text-5xl md:leading-[48px]">
-            Projets
-          </h2>
-          <p className="font-light text-lg leading-7 text-[rgba(253,251,246,0.7)] md:text-xl">
+          <H2>Projets</H2>
+          <Body1 className="font-light">
             Découvrez mes projets UX/UI les plus récents
-          </p>
+          </Body1>
         </div>
       </div>
 
@@ -97,30 +96,28 @@ export default function Projects() {
                 />
                 <div className="absolute inset-0 bg-gradient-to-b from-white/10 via-transparent to-black/20" />
               </div>
-              <div className="flex flex-col items-start gap-1.5 px-1 pb-1">
-                <h3 className="w-full font-syne text-xl leading-7 text-[#fdfbf6]">
-                  {project.title}
-                </h3>
-                <p
-                  className={`w-full text-sm leading-5 text-[rgba(253,251,246,0.85)] transition-opacity duration-300 ${
+              <div className="flex flex-col items-start gap-2 px-2 pb-2">
+                <H3 className="w-full text-xl !leading-7">{project.title}</H3>
+                <Body2
+                  className={`w-full transition-opacity duration-300 ${
                     isActive ? 'opacity-100' : 'opacity-0'
                   }`}
                 >
                   {project.description}
-                </p>
+                </Body2>
               </div>
             </div>
           )
 
           const cardClass =
-            'absolute h-[400px] w-[340px] overflow-hidden rounded-3xl border-[1.5px] border-violet-300/60 bg-[rgba(76,29,149,0.35)] backdrop-blur-[20px] transition-[transform,opacity] duration-[900ms] ease-[cubic-bezier(0.16,1,0.3,1)] will-change-transform'
+            'absolute h-[400px] w-[340px] overflow-hidden rounded-3xl border-[1.5px] border-purple-pale/60 bg-purple-dark/35 backdrop-blur-[20px] transition-[transform,opacity] duration-[900ms] ease-[cubic-bezier(0.16,1,0.3,1)] will-change-transform'
 
           const style = {
             transform: `translateX(${translateX}px) scale(${scale}) rotateY(${rotateY}deg)`,
             zIndex: 10 - abs,
             opacity,
             boxShadow:
-              'inset 0 1px 1px rgba(216,180,254,0.45), inset 0 -1px 12px rgba(139,92,246,0.15), 0 0 0 1px rgba(139,92,246,0.2), 0 8px 30px rgba(139,92,246,0.35), 0 20px 40px rgba(0,0,0,0.4)',
+              'inset 0 1px 1px color-mix(in oklab, var(--color-purple-highlight) 45%, transparent), inset 0 -1px 12px color-mix(in oklab, var(--color-purple-mid) 15%, transparent), 0 0 0 1px color-mix(in oklab, var(--color-purple-mid) 20%, transparent), 0 8px 30px color-mix(in oklab, var(--color-purple-mid) 35%, transparent), 0 20px 40px rgba(0,0,0,0.4)',
           }
 
           if (isActive) {
@@ -158,20 +155,18 @@ export default function Projects() {
             setActiveIndex((prev) => (prev - 1 + projects.length) % projects.length)
           }
           aria-label="Projet précédent"
-          className="glass-dark flex size-11 cursor-pointer items-center justify-center rounded-full text-[#fdfbf6] transition-all duration-300 hover:shadow-[0_4px_16px_rgba(139,92,246,0.4)]"
+          className="glass-dark flex size-11 cursor-pointer items-center justify-center rounded-full border-[1.5px] border-purple-pale/60 text-white shadow-[0_0_10px_color-mix(in_oklab,var(--color-purple-light)_60%,transparent)] transition-all duration-300 hover:shadow-[0_0_16px_color-mix(in_oklab,var(--color-purple-light)_90%,transparent)]"
         >
           <ChevronIcon direction="left" />
         </button>
-        <p className="min-w-[180px] text-center font-syne text-lg leading-7 text-[#fdfbf6]">
-          {active.title}
-        </p>
+        <H3 className="min-w-[180px] text-center text-lg !leading-7">{active.title}</H3>
         <button
           type="button"
           onClick={() =>
             setActiveIndex((prev) => (prev + 1) % projects.length)
           }
           aria-label="Projet suivant"
-          className="glass-dark flex size-11 cursor-pointer items-center justify-center rounded-full text-[#fdfbf6] transition-all duration-300 hover:shadow-[0_4px_16px_rgba(139,92,246,0.4)]"
+          className="glass-dark flex size-11 cursor-pointer items-center justify-center rounded-full border-[1.5px] border-purple-pale/60 text-white shadow-[0_0_10px_color-mix(in_oklab,var(--color-purple-light)_60%,transparent)] transition-all duration-300 hover:shadow-[0_0_16px_color-mix(in_oklab,var(--color-purple-light)_90%,transparent)]"
         >
           <ChevronIcon direction="right" />
         </button>
