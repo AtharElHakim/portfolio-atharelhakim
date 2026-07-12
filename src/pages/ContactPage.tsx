@@ -30,10 +30,10 @@ export default function ContactPage() {
   return (
     <section className="flex flex-col items-center gap-12 bg-[#fdfbf6] px-6 py-16 md:px-[var(--nav-edge-w)]">
       <div className="flex flex-col items-center gap-4 text-center">
-        <h1 className="font-syne text-5xl leading-tight tracking-[-0.7px] text-[#070707] md:text-[72px] md:leading-[72px]">
+        <h1 className="font-syne text-5xl leading-tight text-[#070707] md:text-[72px] md:leading-[72px]">
           Prenons Contact !
         </h1>
-        <p className="max-w-[633px] text-xl leading-8 tracking-[-0.5px] text-[rgba(7,7,7,0.88)] md:text-2xl">
+        <p className="max-w-[633px] text-xl leading-8 text-[rgba(7,7,7,0.88)] md:text-2xl">
           Je suis toujours ravie d'échanger, que ce soit pour une nouvelle
           opportunité, une collaboration ou simplement discuter design autour
           d'un café !
@@ -46,7 +46,7 @@ export default function ContactPage() {
               <div className="flex size-14 shrink-0 items-center justify-center rounded-full bg-[rgba(7,7,7,0.88)] p-3">
                 <img src={item.icon} alt="" className={item.iconSize} />
               </div>
-              <div className="flex flex-col items-start gap-1 tracking-[-0.5px]">
+              <div className="flex flex-col items-start gap-1">
                 <p className="text-sm font-bold leading-5 text-[rgba(0,0,0,0.7)]">
                   {item.label}
                 </p>

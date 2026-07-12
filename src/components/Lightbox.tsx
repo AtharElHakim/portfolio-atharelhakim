@@ -121,7 +121,7 @@ export default function Lightbox({
       )}
 
       {images.length > 1 && (
-        <p className="absolute bottom-6 left-1/2 -translate-x-1/2 text-sm tracking-[-0.5px] text-[#fdfbf6]">
+        <p className="absolute bottom-6 left-1/2 -translate-x-1/2 text-sm text-[#fdfbf6]">
           {index + 1} / {images.length}
         </p>
       )}

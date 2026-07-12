@@ -102,7 +102,7 @@ function SlideGallery({
   return (
     <div id={id} className="relative flex flex-col items-start gap-6 p-8 md:py-16 md:px-[var(--nav-edge-w)]">
       <SectionTitle>{title}</SectionTitle>
-      <ul className="flex list-disc flex-col gap-1 pl-5 text-lg leading-7 tracking-[-0.5px] text-[rgba(253,251,246,0.75)] md:text-xl">
+      <ul className="flex list-disc flex-col gap-1 pl-5 text-lg leading-7 text-[rgba(253,251,246,0.75)] md:text-xl">
         {bullets.map((bullet) => (
           <li key={bullet}>{bullet}</li>
         ))}
@@ -144,7 +144,6 @@ export default function AngryBirdsPage() {
           { id: 'brief', label: 'Le Brief' },
           { id: 'dossier', label: 'Le Dossier' },
           { id: 'conclusion', label: 'Conclusion' },
-          { id: 'contact', label: 'Contact' },
         ]}
       />
 
@@ -153,14 +152,14 @@ export default function AngryBirdsPage() {
         <div className="flex w-full max-w-[739px] flex-col items-start gap-8">
           <div className="flex flex-col items-start gap-6">
             <img src={logoLabel} alt="Angry Birds" className="h-7" />
-            <h1 className="font-syne text-5xl leading-tight tracking-[-0.7px] text-[#fdfbf6] md:text-[72px] md:leading-[72px]">
+            <h1 className="font-syne text-5xl leading-tight text-[#fdfbf6] md:text-[72px] md:leading-[72px]">
               Research Ops
               <br />
               Angry Birds
             </h1>
           </div>
           <div className="flex flex-col gap-10">
-            <p className="border-b border-white/10 pb-8 text-lg leading-7 tracking-[-0.5px] text-[rgba(253,251,246,0.85)]">
+            <p className="border-b border-white/10 pb-8 text-lg leading-7 text-[rgba(253,251,246,0.85)]">
               Ce projet, réalisé en binôme sur 4 jours dans le cadre d'un
               exercice de Research Ops à Sup de Pub, consistait à inventer
               une étude qualitative de A à Z et à la vendre à un client. Le
@@ -172,7 +171,7 @@ export default function AngryBirdsPage() {
               clés d'engagement.
             </p>
             <div className="flex flex-wrap items-start gap-16">
-              <div className="flex flex-col gap-1 tracking-[-0.5px]">
+              <div className="flex flex-col gap-1">
                 <p className="text-xl font-semibold leading-7 text-[#fdfbf6]">
                   Mon Rôle
                 </p>
@@ -186,7 +185,7 @@ export default function AngryBirdsPage() {
                   <p>Rédaction de l'argumentation client</p>
                 </div>
               </div>
-              <div className="flex flex-col gap-1 tracking-[-0.5px]">
+              <div className="flex flex-col gap-1">
                 <p className="text-xl font-semibold leading-7 text-[#fdfbf6]">
                   Outils
                 </p>
@@ -194,7 +193,7 @@ export default function AngryBirdsPage() {
                   Figma
                 </p>
               </div>
-              <div className="flex flex-col items-center gap-1 tracking-[-0.5px]">
+              <div className="flex flex-col items-center gap-1">
                 <p className="text-xl font-semibold leading-7 text-[#fdfbf6]">
                   Année
                 </p>
@@ -228,7 +227,7 @@ export default function AngryBirdsPage() {
       >
         <div className="flex flex-1 min-w-[280px] flex-col items-start gap-8">
           <SectionTitle>Le Brief</SectionTitle>
-          <p className="text-lg leading-7 tracking-[-0.5px] text-[rgba(253,251,246,0.75)]">
+          <p className="text-lg leading-7 text-[rgba(253,251,246,0.75)]">
             L'exercice consistait à concevoir et vendre une étude qualitative
             de A à Z à un client, en jouant le rôle d'une agence de
             recherche.
@@ -253,7 +252,7 @@ export default function AngryBirdsPage() {
         <p className="font-syne text-4xl leading-tight text-[#fdfbf6] md:text-5xl md:leading-[48px]">
           Le Dossier
         </p>
-        <p className="pt-4 text-lg leading-7 tracking-[-0.5px] text-[rgba(253,251,246,0.75)]">
+        <p className="pt-4 text-lg leading-7 text-[rgba(253,251,246,0.75)]">
           Voici le dossier complet tel qu'il aurait été présenté à un client
           — cliquez sur une vignette pour le parcourir diapositive par
           diapositive. Chaque section ci-dessous en résume aussi

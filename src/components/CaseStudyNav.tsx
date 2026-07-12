@@ -23,6 +23,7 @@ function ArrowLeftIcon() {
 export interface CaseStudySection {
   id: string
   label: string
+  group?: string
 }
 
 export default function CaseStudyNav({
@@ -71,20 +72,27 @@ export default function CaseStudyNav({
 
       <div className="pointer-events-none fixed right-6 top-1/2 z-10 hidden -translate-y-1/2 lg:block xl:right-10">
         <nav className="pointer-events-auto flex flex-col items-end gap-2.5 border-r border-white/15 pr-4">
-          {sections.map((section) => {
+          {sections.map((section, i) => {
             const isActive = section.id === activeId
+            const showGroup = section.group && section.group !== sections[i - 1]?.group
             return (
-              <a
-                key={section.id}
-                href={`#${section.id}`}
-                className={`whitespace-nowrap text-sm transition-colors duration-300 hover:text-[#fdfbf6] ${
-                  isActive
-                    ? 'font-medium text-[#fdfbf6]'
-                    : 'text-[rgba(253,251,246,0.5)]'
-                }`}
-              >
-                {section.label}
-              </a>
+              <div key={section.id} className="flex flex-col items-end">
+                {showGroup && (
+                  <p className="mb-1 mt-2 whitespace-nowrap text-[11px] font-semibold uppercase tracking-widest text-violet-300/70 first:mt-0">
+                    {section.group}
+                  </p>
+                )}
+                <a
+                  href={`#${section.id}`}
+                  className={`whitespace-nowrap text-sm transition-colors duration-300 hover:text-[#fdfbf6] ${
+                    isActive
+                      ? 'font-medium text-[#fdfbf6]'
+                      : 'text-[rgba(253,251,246,0.5)]'
+                  }`}
+                >
+                  {section.label}
+                </a>
+              </div>
             )
           })}
         </nav>

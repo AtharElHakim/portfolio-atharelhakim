@@ -36,17 +36,17 @@ export default function ProjectsPage() {
     <div className="bg-[#fdfbf6]">
       <div className="flex flex-col items-center gap-6 p-8 text-center md:py-16 md:px-[var(--nav-edge-w)]">
         <div className="flex w-full max-w-[720px] flex-col items-center gap-4 border border-[#070707] bg-[#fdfbf6] px-8 py-10 shadow-[8px_8px_0px_#242424] md:px-14 md:py-14">
-          <h1 className="w-full font-syne text-5xl leading-tight tracking-[-0.7px] text-[#070707] md:text-[72px] md:leading-[72px]">
+          <h1 className="w-full font-syne text-5xl leading-tight text-[#070707] md:text-[72px] md:leading-[72px]">
             Projets
           </h1>
-          <p className="w-full font-syne text-2xl leading-tight tracking-[-0.5px] text-[rgba(7,7,7,0.88)] md:text-[30px] md:leading-9">
+          <p className="w-full font-syne text-2xl leading-tight text-[rgba(7,7,7,0.88)] md:text-[30px] md:leading-9">
             Voici une sélection de mes projets UX/UI. Bonne exploration !
           </p>
         </div>
       </div>
 
       <section className="flex flex-col items-start gap-12 border-b border-[#070707] p-8 md:py-16 md:px-[var(--nav-edge-w)]">
-        <div className="flex flex-col items-start gap-4 tracking-[-0.5px] md:w-[513px]">
+        <div className="flex flex-col items-start gap-4 md:w-[513px]">
           <h2 className="font-syne text-4xl leading-tight text-[#070707] md:text-5xl md:leading-[48px]">
             UX/UI Design
           </h2>
@@ -69,7 +69,7 @@ export default function ProjectsPage() {
               </div>
               <div className="flex w-full flex-col items-start gap-6 p-4">
                 <div className="flex w-full flex-col items-start gap-2">
-                  <div className="flex w-full flex-col items-start gap-4 text-left tracking-[-0.5px]">
+                  <div className="flex w-full flex-col items-start gap-4 text-left">
                     <h3 className="w-full font-syne text-2xl leading-8 text-[#070707]">
                       {project.title}
                     </h3>
@@ -81,7 +81,7 @@ export default function ProjectsPage() {
                     {project.tags.map((tag) => (
                       <p
                         key={tag}
-                        className="whitespace-nowrap text-base leading-5 tracking-[-0.5px] text-[#a3a3a3]"
+                        className="whitespace-nowrap text-base leading-5 text-[#a3a3a3]"
                       >
                         {tag}
                       </p>
@@ -92,7 +92,7 @@ export default function ProjectsPage() {
                   to={`/projects/${project.slug}`}
                   className="flex cursor-pointer items-center justify-center border border-[#070707] bg-[#fdfbf6] px-4 py-2"
                 >
-                  <span className="whitespace-nowrap text-center text-xl font-medium leading-7 tracking-[-0.5px] text-[#070707]">
+                  <span className="whitespace-nowrap text-center text-xl font-medium leading-7 text-[#070707]">
                     En savoir plus
                   </span>
                 </Link>

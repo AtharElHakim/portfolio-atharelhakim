@@ -42,7 +42,7 @@ export default function Tools() {
   return (
     <section className="relative flex flex-col items-center p-8 md:py-16 md:px-[var(--nav-edge-w)]">
       <div className="relative flex w-full max-w-[1440px] flex-col items-center gap-8">
-        <h2 className="font-syne text-2xl leading-9 tracking-[-0.5px] text-[#fdfbf6] md:text-[30px]">
+        <h2 className="font-syne text-2xl leading-9 text-[#fdfbf6] md:text-[30px]">
           Mes Outils
         </h2>
         <div className="flex max-w-[996px] flex-wrap items-start justify-center gap-x-3 gap-y-6 px-4 md:px-8">
@@ -66,7 +66,7 @@ export default function Tools() {
                   }`}
                 />
               </div>
-              <p className="text-center text-sm leading-5 tracking-[-0.5px] text-[rgba(253,251,246,0.8)]">
+              <p className="text-center text-sm leading-5 text-[rgba(253,251,246,0.8)]">
                 {tool.name}
               </p>
             </div>

@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
-import fineLineImg from '../assets/project-fine-line.png'
+import fineLineImg from '../assets/fineline/ancien-site.png'
 import yslImg from '../assets/project-ysl.png'
 import researchOpsImg from '../assets/project-research-ops.png'
 
@@ -56,11 +56,11 @@ export default function Projects() {
       className="relative flex flex-col items-center gap-10 overflow-hidden p-8 md:py-16 md:px-[var(--nav-edge-w)]"
     >
       <div className="relative flex w-full max-w-[1440px] flex-col items-center gap-6">
-        <div className="animate-fade-in-up flex flex-col items-center gap-4 text-center tracking-[-0.5px]">
+        <div className="animate-fade-in-up flex flex-col items-center gap-4 text-center">
           <h2 className="font-syne text-4xl leading-tight text-[#fdfbf6] md:text-5xl md:leading-[48px]">
             Projets
           </h2>
-          <p className="text-lg leading-7 text-[rgba(253,251,246,0.7)] md:text-xl">
+          <p className="font-light text-lg leading-7 text-[rgba(253,251,246,0.7)] md:text-xl">
             Découvrez mes projets UX/UI les plus récents
           </p>
         </div>
@@ -98,11 +98,11 @@ export default function Projects() {
                 <div className="absolute inset-0 bg-gradient-to-b from-white/10 via-transparent to-black/20" />
               </div>
               <div className="flex flex-col items-start gap-1.5 px-1 pb-1">
-                <h3 className="w-full font-syne text-xl leading-7 tracking-[-0.5px] text-[#fdfbf6]">
+                <h3 className="w-full font-syne text-xl leading-7 text-[#fdfbf6]">
                   {project.title}
                 </h3>
                 <p
-                  className={`w-full text-sm leading-5 tracking-[-0.5px] text-[rgba(253,251,246,0.85)] transition-opacity duration-300 ${
+                  className={`w-full text-sm leading-5 text-[rgba(253,251,246,0.85)] transition-opacity duration-300 ${
                     isActive ? 'opacity-100' : 'opacity-0'
                   }`}
                 >
@@ -162,7 +162,7 @@ export default function Projects() {
         >
           <ChevronIcon direction="left" />
         </button>
-        <p className="min-w-[180px] text-center font-syne text-lg leading-7 tracking-[-0.5px] text-[#fdfbf6]">
+        <p className="min-w-[180px] text-center font-syne text-lg leading-7 text-[#fdfbf6]">
           {active.title}
         </p>
         <button

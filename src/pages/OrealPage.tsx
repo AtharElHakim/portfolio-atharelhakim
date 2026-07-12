@@ -23,7 +23,7 @@ function SectionTitle({ children }: { children: React.ReactNode }) {
 function BulletPoint({ title, body }: { title: string; body: string }) {
   return (
     <div className="flex w-full items-start gap-4 border-l-2 border-[rgba(253,251,246,0.15)] pl-4">
-      <p className="flex-1 tracking-[-0.5px]">
+      <p className="flex-1">
         <span className="block text-xl leading-7 text-[rgba(253,251,246,0.85)]">
           {title}
         </span>
@@ -38,7 +38,7 @@ function BulletPoint({ title, body }: { title: string; body: string }) {
 function SlideImage({ label, src }: { label: string; src: string }) {
   return (
     <div className="flex w-full flex-col items-center gap-10 pb-8">
-      <p className="text-center font-syne text-4xl leading-tight tracking-[-0.5px] text-[#fdfbf6] md:text-5xl md:leading-[48px]">
+      <p className="text-center font-syne text-4xl leading-tight text-[#fdfbf6] md:text-5xl md:leading-[48px]">
         {label}
       </p>
       <img src={src} alt={label} className="w-full rounded" />
@@ -55,7 +55,6 @@ export default function OrealPage() {
           { id: 'processus', label: 'Processus' },
           { id: 'concept', label: 'Concept' },
           { id: 'apporte', label: 'Ce Qu\'On Apporte' },
-          { id: 'contact', label: 'Contact' },
         ]}
       />
 
@@ -64,12 +63,12 @@ export default function OrealPage() {
         <div className="flex w-full max-w-[640px] flex-col items-start gap-8">
           <div className="flex flex-col items-start gap-6">
             <img src={logo} alt="L'Oréal Groupe" className="h-9" />
-            <h1 className="font-syne text-5xl leading-tight tracking-[-0.7px] text-[#fdfbf6] md:text-[72px] md:leading-[72px]">
+            <h1 className="font-syne text-5xl leading-tight text-[#fdfbf6] md:text-[72px] md:leading-[72px]">
               YSL Sélection Privée
             </h1>
           </div>
           <div className="flex flex-col gap-10">
-            <p className="border-b border-white/10 pb-8 text-lg leading-7 tracking-[-0.5px] text-[#fdfbf6]">
+            <p className="border-b border-white/10 pb-8 text-lg leading-7 text-[#fdfbf6]">
               Projet réalisé dans le cadre du concours L'Oréal Brandstorm
               2026, en équipe de 3 designers UX/UI sur 4 jours intensifs. De
               la recherche utilisateur à la conception du concept, nous avons
@@ -78,7 +77,7 @@ export default function OrealPage() {
               L'Oréal Groupe.
             </p>
             <div className="flex flex-wrap items-start justify-between gap-8">
-              <div className="flex flex-col gap-1 tracking-[-0.5px]">
+              <div className="flex flex-col gap-1">
                 <p className="text-xl font-semibold leading-7 text-[#fdfbf6]">
                   Mon Rôle
                 </p>
@@ -91,7 +90,7 @@ export default function OrealPage() {
                   <p>Pitch oral</p>
                 </div>
               </div>
-              <div className="flex flex-col gap-1 tracking-[-0.5px]">
+              <div className="flex flex-col gap-1">
                 <p className="text-xl font-semibold leading-7 text-[#fdfbf6]">
                   Outils
                 </p>
@@ -101,7 +100,7 @@ export default function OrealPage() {
                   <p>Nano Banana</p>
                 </div>
               </div>
-              <div className="flex flex-col items-center gap-1 tracking-[-0.5px]">
+              <div className="flex flex-col items-center gap-1">
                 <p className="text-xl font-semibold leading-7 text-[#fdfbf6]">
                   Année
                 </p>
@@ -132,7 +131,7 @@ export default function OrealPage() {
               alt="L'Oréal Brandstorm 2026"
               className="w-[149px] rounded"
             />
-            <p className="text-lg leading-7 tracking-[-0.5px] text-[rgba(253,251,246,0.85)]">
+            <p className="text-lg leading-7 text-[rgba(253,251,246,0.85)]">
               L'Oréal Brandstorm est la plus grande compétition d'innovation
               mondiale, ouverte à toute personne de 18 à 30 ans, tous
               domaines et niveaux d'études confondus. Le brief 2026 : Craft
@@ -161,7 +160,7 @@ export default function OrealPage() {
       {/* Processus */}
       <div id="processus" className="flex flex-col gap-14 p-8 md:py-16 md:px-[var(--nav-edge-w)]">
         <div className="flex flex-wrap items-center gap-12">
-          <div className="flex flex-1 min-w-[280px] flex-col gap-8 tracking-[-0.5px]">
+          <div className="flex flex-1 min-w-[280px] flex-col gap-8">
             <SectionTitle>Processus</SectionTitle>
             <div className="flex flex-col gap-1 text-lg leading-7 text-[rgba(253,251,246,0.85)]">
               <p>
@@ -210,7 +209,7 @@ export default function OrealPage() {
               WebkitBackdropFilter: 'blur(20px)',
             }}
           >
-            <p className="font-syne text-2xl leading-8 tracking-[-0.5px] text-[#fdfbf6]">
+            <p className="font-syne text-2xl leading-8 text-[#fdfbf6]">
               Crazy 8
             </p>
             <img src={crazy8} alt="Crazy 8" className="w-full rounded" />
@@ -224,7 +223,7 @@ export default function OrealPage() {
         <div className="flex flex-col gap-8">
           <SectionTitle>Concept</SectionTitle>
           <div className="flex flex-wrap items-start gap-20">
-            <div className="flex flex-1 min-w-[280px] flex-col gap-4 tracking-[-0.5px]">
+            <div className="flex flex-1 min-w-[280px] flex-col gap-4">
               <p className="text-lg leading-7 text-[rgba(253,251,246,0.85)]">
                 Partant du constat que le parfum reste l'un des derniers
                 produits résistants au digital, nous avons conçu YSL
@@ -238,7 +237,7 @@ export default function OrealPage() {
               </p>
             </div>
             <div className="flex flex-1 min-w-[280px] flex-col gap-2">
-              <p className="font-syne text-2xl leading-8 tracking-[-0.5px] text-[#fdfbf6]">
+              <p className="font-syne text-2xl leading-8 text-[#fdfbf6]">
                 Tester. Porter. Choisir.
               </p>
               <BulletPoint

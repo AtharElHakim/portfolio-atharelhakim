@@ -17,7 +17,7 @@ function TimelineItem({
 }) {
   return (
     <div className="flex w-full items-start justify-center gap-4 border-l-2 border-[rgba(0,0,0,0.15)] pl-4">
-      <div className="flex-1 tracking-[-0.5px] text-[rgba(7,7,7,0.88)]">
+      <div className="flex-1 text-[rgba(7,7,7,0.88)]">
         <p className="text-xl leading-7 text-[#070707]">{title}</p>
         {paragraphs.map((paragraph) => (
           <p key={paragraph} className="text-lg leading-7 text-[rgba(0,0,0,0.7)]">
@@ -48,17 +48,17 @@ export default function AboutPage() {
               alt=""
               className="absolute inset-0 h-full w-full"
             />
-            <p className="absolute left-6 top-[25px] whitespace-nowrap font-syne text-[30px] leading-9 tracking-[-0.5px] text-[rgba(7,7,7,0.88)]">
+            <p className="absolute left-6 top-[25px] whitespace-nowrap font-syne text-[30px] leading-9 text-[rgba(7,7,7,0.88)]">
               Qui suis-je ?
             </p>
           </div>
         </div>
         <div className="flex max-w-[510px] flex-col items-start gap-4 self-start">
-          <div className="font-syne text-5xl leading-tight tracking-[-0.7px] md:text-[72px] md:leading-[72px]">
+          <div className="font-syne text-5xl leading-tight md:text-[72px] md:leading-[72px]">
             <p className="text-[#070707]">Je m'appelle</p>
             <p className="text-[#d97736]">Athar El Hakim !</p>
           </div>
-          <div className="flex flex-col items-start gap-1 tracking-[-0.5px]">
+          <div className="flex flex-col items-start gap-1">
             <p className="font-syne text-2xl leading-8 text-[#070707]">
               UX/UI designer et Réalisatrice
             </p>
@@ -78,7 +78,7 @@ export default function AboutPage() {
           className="pointer-events-none absolute -left-24 top-0 w-[550px] rotate-12 opacity-40"
         />
         <div className="relative z-10 shrink-0">
-          <h2 className="font-syne text-4xl leading-tight tracking-[-0.5px] text-[#070707] md:text-5xl md:leading-[48px]">
+          <h2 className="font-syne text-4xl leading-tight text-[#070707] md:text-5xl md:leading-[48px]">
             Là où tout
             <br />a commencé
           </h2>
@@ -106,10 +106,10 @@ export default function AboutPage() {
       </section>
 
       <section className="flex flex-col items-center gap-6 bg-[rgba(7,7,7,0.88)] p-8 text-center md:py-16 md:px-[var(--nav-edge-w)]">
-        <h2 className="font-syne text-4xl leading-tight tracking-[-0.5px] text-[#fdfbf6] md:text-5xl md:leading-[48px]">
+        <h2 className="font-syne text-4xl leading-tight text-[#fdfbf6] md:text-5xl md:leading-[48px]">
           Un Tournant Décisif
         </h2>
-        <div className="flex max-w-[1066px] flex-col items-center gap-4 tracking-[-0.5px] text-[#fdfbf6]">
+        <div className="flex max-w-[1066px] flex-col items-center gap-4 text-[#fdfbf6]">
           <p className="text-lg leading-7 md:text-xl">
             Mais avec l'instabilité économique et sociale croissante au Liban,
             j'ai commencé à repenser mon avenir. Je voulais évoluer, explorer
@@ -135,7 +135,7 @@ export default function AboutPage() {
 
       <section className="flex flex-col items-start justify-center gap-20 border-b border-[#070707] p-8 md:flex-row md:py-16 md:px-[var(--nav-edge-w)]">
         <div className="flex flex-col items-center gap-12">
-          <h2 className="w-full font-syne text-4xl leading-tight tracking-[-0.5px] text-[#070707] md:w-[300px] md:text-5xl md:leading-[48px]">
+          <h2 className="w-full font-syne text-4xl leading-tight text-[#070707] md:w-[300px] md:text-5xl md:leading-[48px]">
             Un nouveau
             <br />
             chapitre
@@ -181,7 +181,7 @@ export default function AboutPage() {
         </div>
         <div className="flex max-w-[740px] flex-col gap-6">
           <div className="flex flex-col gap-4">
-            <p className="font-syne text-2xl leading-8 tracking-[-0.5px] text-[#d97736]">
+            <p className="font-syne text-2xl leading-8 text-[#d97736]">
               Première Année en France
             </p>
             <div className="flex flex-col gap-2">
@@ -202,7 +202,7 @@ export default function AboutPage() {
             </div>
           </div>
           <div className="flex flex-col gap-4">
-            <p className="font-syne text-2xl leading-8 tracking-[-0.5px] text-[#d97736]">
+            <p className="font-syne text-2xl leading-8 text-[#d97736]">
               Deuxième Année en France
             </p>
             <div className="flex flex-col gap-2">
@@ -225,7 +225,7 @@ export default function AboutPage() {
       </section>
 
       <section className="flex flex-col items-center justify-center p-8 md:py-16 md:px-[var(--nav-edge-w)]">
-        <p className="max-w-[952px] text-center font-syne text-2xl leading-tight tracking-[-0.5px] text-[rgba(7,7,7,0.88)] md:text-4xl md:leading-10">
+        <p className="max-w-[952px] text-center font-syne text-2xl leading-tight text-[rgba(7,7,7,0.88)] md:text-4xl md:leading-10">
           Aujourd'hui, je suis à la recherche de ma prochaine étape, celle qui
           me permettra d'explorer davantage le monde de l'UX/UI. Je suis
           impatiente de voir où ce chemin me mènera !

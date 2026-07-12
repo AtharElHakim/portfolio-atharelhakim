@@ -39,7 +39,7 @@ function ArrowUpRightIcon({ className }: { className?: string }) {
 }
 
 function navItemClass({ isActive }: { isActive: boolean }) {
-  return `relative cursor-pointer rounded-full px-4 py-2 text-base leading-6 tracking-[-0.3px] transition-all duration-300 ${
+  return `relative cursor-pointer rounded-full px-4 py-2 text-base leading-6 transition-all duration-300 ${
     isActive
       ? 'bg-[rgba(139,92,246,0.45)] text-[#fdfbf6]'
       : 'text-[rgba(253,251,246,0.65)] hover:text-[#fdfbf6]'
@@ -94,7 +94,7 @@ function ProjectsDropdown() {
               key={item.to}
               to={item.to}
               onClick={() => setOpen(false)}
-              className="cursor-pointer px-4 py-2.5 text-base leading-6 tracking-[-0.3px] text-[#fdfbf6] transition-colors duration-200 hover:bg-[#8b5cf6]/20"
+              className="cursor-pointer px-4 py-2.5 text-base leading-6 text-[#fdfbf6] transition-colors duration-200 hover:bg-[#8b5cf6]/20"
             >
               {item.label}
             </Link>
@@ -125,10 +125,10 @@ export default function NavBar() {
     <header className="sticky top-4 z-20 px-4 md:px-12">
       <div className="relative mx-auto flex w-full max-w-[1440px] items-center justify-between gap-4">
         <Link to="/" className="flex shrink-0 flex-col items-start gap-0.5">
-          <span className="font-syne text-lg leading-6 tracking-[-0.5px] text-[#fdfbf6]">
+          <span className="font-syne text-lg leading-6 text-[#fdfbf6]">
             Athar El Hakim
           </span>
-          <span className="text-sm leading-4 tracking-[-0.3px] text-[rgba(253,251,246,0.5)]">
+          <span className="text-sm leading-4 text-[rgba(253,251,246,0.5)]">
             UX/UI Designer
           </span>
         </Link>
@@ -153,7 +153,7 @@ export default function NavBar() {
         <div ref={edgeRef} className="flex shrink-0 items-center justify-end gap-5">
           <NavLink
             to="/contactez-moi"
-            className="group flex cursor-pointer items-center gap-1 text-base leading-6 tracking-[-0.3px] text-[rgba(253,251,246,0.8)] transition-colors duration-300 hover:text-[#fdfbf6]"
+            className="group flex cursor-pointer items-center gap-1 text-base leading-6 text-[rgba(253,251,246,0.8)] transition-colors duration-300 hover:text-[#fdfbf6]"
           >
             Contactez-Moi
             <ArrowUpRightIcon className="size-3.5 shrink-0 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
@@ -162,7 +162,7 @@ export default function NavBar() {
             href="https://drive.google.com/file/d/1ixItPzB_x42w22SA-K9QslNWl_UHh2OB/view?usp=sharing"
             target="_blank"
             rel="noreferrer"
-            className="group flex cursor-pointer items-center gap-1 text-base leading-6 tracking-[-0.3px] text-[rgba(253,251,246,0.8)] transition-colors duration-300 hover:text-[#fdfbf6]"
+            className="group flex cursor-pointer items-center gap-1 text-base leading-6 text-[rgba(253,251,246,0.8)] transition-colors duration-300 hover:text-[#fdfbf6]"
           >
             Mon CV
             <ArrowUpRightIcon className="size-3.5 shrink-0 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />

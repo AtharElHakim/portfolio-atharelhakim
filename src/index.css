@@ -1,8 +1,8 @@
 @import "tailwindcss";
 
 @theme {
-  --font-sans: "Sora", system-ui, sans-serif;
-  --font-syne: "Sora", system-ui, sans-serif;
+  --font-sans: "Epilogue", system-ui, sans-serif;
+  --font-syne: "Epilogue", system-ui, sans-serif;
 }
 
 :root {
@@ -68,4 +68,29 @@ body {
   box-shadow:
     0 0 0 1px rgba(139, 92, 246, 0.15),
     0 8px 30px rgba(139, 92, 246, 0.18);
+}
+
+/* Modern thin scrollbar for horizontal-scroll containers */
+.modern-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: #9ca3af rgba(253, 251, 246, 0.1);
+}
+
+.modern-scrollbar::-webkit-scrollbar {
+  height: 8px;
+  width: 8px;
+}
+
+.modern-scrollbar::-webkit-scrollbar-track {
+  background: rgba(253, 251, 246, 0.1);
+  border-radius: 999px;
+}
+
+.modern-scrollbar::-webkit-scrollbar-thumb {
+  background: #9ca3af;
+  border-radius: 999px;
+}
+
+.modern-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #6b7280;
 }
