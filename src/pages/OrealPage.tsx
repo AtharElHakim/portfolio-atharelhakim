@@ -11,23 +11,16 @@ import slide2 from '../assets/loreal/slide2.jpg'
 import slide3 from '../assets/loreal/slide3.jpg'
 import lorealBrands from '../assets/loreal/loreal-brands.png'
 import playIcon from '../assets/loreal/play-icon.svg'
-
-function SectionTitle({ children }: { children: React.ReactNode }) {
-  return (
-    <p className="font-syne text-4xl leading-tight text-[#fdfbf6] md:text-5xl md:leading-[48px]">
-      {children}
-    </p>
-  )
-}
+import { H1, H2 as SectionTitle, H3, H5, Body1, Body2 } from '../components/Typography'
 
 function BulletPoint({ title, body }: { title: string; body: string }) {
   return (
-    <div className="flex w-full items-start gap-4 border-l-2 border-[rgba(253,251,246,0.15)] pl-4">
+    <div className="flex w-full items-start gap-4 border-l-2 border-white/15 pl-4">
       <p className="flex-1">
-        <span className="block text-xl leading-7 text-[rgba(253,251,246,0.85)]">
+        <span className="block text-xl leading-7 text-white/85">
           {title}
         </span>
-        <span className="block text-lg leading-7 text-[rgba(253,251,246,0.7)]">
+        <span className="block text-lg leading-7 text-white/70">
           {body}
         </span>
       </p>
@@ -38,9 +31,7 @@ function BulletPoint({ title, body }: { title: string; body: string }) {
 function SlideImage({ label, src }: { label: string; src: string }) {
   return (
     <div className="flex w-full flex-col items-center gap-10 pb-8">
-      <p className="text-center font-syne text-4xl leading-tight text-[#fdfbf6] md:text-5xl md:leading-[48px]">
-        {label}
-      </p>
+      <SectionTitle>{label}</SectionTitle>
       <img src={src} alt={label} className="w-full rounded" />
     </div>
   )
@@ -48,9 +39,31 @@ function SlideImage({ label, src }: { label: string; src: string }) {
 
 export default function OrealPage() {
   return (
-    <>
+    <div className="relative isolate">
+      <div
+        className="pointer-events-none absolute left-1/2 top-0 -z-10 h-[340px] w-[1100px] max-w-[140vw] -translate-x-1/2 -translate-y-1/3 opacity-60 blur-3xl"
+        style={{
+          background:
+            'radial-gradient(ellipse at center, var(--color-purple-light) 0%, var(--color-purple) 45%, transparent 75%)',
+        }}
+      />
+      <div
+        className="pointer-events-none absolute left-[-10%] top-0 -z-10 h-[340px] w-[700px] max-w-[70vw] -translate-y-1/3 opacity-60 blur-3xl"
+        style={{
+          background:
+            'radial-gradient(ellipse at center, var(--color-purple-light) 0%, var(--color-purple) 45%, transparent 75%)',
+        }}
+      />
+      <div
+        className="pointer-events-none absolute right-[-10%] top-0 -z-10 h-[340px] w-[700px] max-w-[70vw] -translate-y-1/3 opacity-60 blur-3xl"
+        style={{
+          background:
+            'radial-gradient(ellipse at center, var(--color-purple-light) 0%, var(--color-purple) 45%, transparent 75%)',
+        }}
+      />
       <CaseStudyNav
         sections={[
+          { id: 'overview', label: 'Overview' },
           { id: 'contexte', label: 'Contexte' },
           { id: 'processus', label: 'Processus' },
           { id: 'concept', label: 'Concept' },
@@ -59,65 +72,58 @@ export default function OrealPage() {
       />
 
       {/* Header */}
-      <div className="flex flex-col items-center gap-8 p-8 md:flex-row md:py-16 md:px-[var(--nav-edge-w)]">
-        <div className="flex w-full max-w-[640px] flex-col items-start gap-8">
-          <div className="flex flex-col items-start gap-6">
-            <img src={logo} alt="L'Oréal Groupe" className="h-9" />
-            <h1 className="font-syne text-5xl leading-tight text-[#fdfbf6] md:text-[72px] md:leading-[72px]">
-              YSL Sélection Privée
-            </h1>
+      <div id="overview" className="flex flex-col items-center gap-6 p-8 md:py-16 md:px-[var(--nav-edge-w)]">
+        <div className="flex flex-col items-center gap-4 text-center">
+          <img src={logo} alt="L'Oréal Groupe" className="h-9 aspect-[131.469/30]" />
+          <H1 className="md:!text-5xl md:!leading-[56px]">YSL Sélection Privée</H1>
+
+          <div className="relative w-full max-w-[820px] overflow-hidden rounded-2xl border border-white/15">
+            <img src={heroSilkBg} alt="" className="w-full opacity-60" />
+            <img
+              src={heroProduct}
+              alt="Coffret YSL Sélection Privée"
+              className="absolute inset-0 h-full w-full object-contain"
+            />
           </div>
-          <div className="flex flex-col gap-10">
-            <p className="border-b border-white/10 pb-8 text-lg leading-7 text-[#fdfbf6]">
-              Projet réalisé dans le cadre du concours L'Oréal Brandstorm
-              2026, en équipe de 3 designers UX/UI sur 4 jours intensifs. De
-              la recherche utilisateur à la conception du concept, nous avons
-              imaginé une expérience phygitale pour réinventer la découverte
-              du parfum de luxe en ligne, présentée oralement devant le jury
-              L'Oréal Groupe.
-            </p>
-            <div className="flex flex-wrap items-start justify-between gap-8">
-              <div className="flex flex-col gap-1">
-                <p className="text-xl font-semibold leading-7 text-[#fdfbf6]">
-                  Mon Rôle
-                </p>
-                <div className="text-lg leading-7 text-[rgba(253,251,246,0.85)]">
-                  <p>Recherche &amp; insights</p>
-                  <p>Idéation (Crazy 8)</p>
-                  <p>Concept &amp; parcours utilisateur</p>
-                  <p>Design des visuels produit</p>
-                  <p>Présentation &amp; storytelling</p>
-                  <p>Pitch oral</p>
-                </div>
+
+          <div className="flex w-full flex-wrap items-start justify-center gap-10 border-t border-white/10 pt-8 text-left">
+            <div className="flex max-w-[320px] flex-col gap-2">
+              <H5>Overview</H5>
+              <Body2 className="!text-white font-light">
+                Projet réalisé dans le cadre du concours L'Oréal Brandstorm
+                2026, en équipe de 3 designers UX/UI sur 4 jours intensifs.
+                De la recherche utilisateur à la conception du concept, nous
+                avons imaginé une expérience phygitale pour réinventer la
+                découverte du parfum de luxe en ligne, présentée oralement
+                devant le jury L'Oréal Groupe.
+              </Body2>
+            </div>
+            <div className="flex flex-col gap-2">
+              <H5>Mon Rôle</H5>
+              <ul className="list-none font-light text-lg leading-6 text-white">
+                <li>Recherche &amp; insights</li>
+                <li>Idéation (Crazy 8)</li>
+                <li>Concept &amp; parcours utilisateur</li>
+                <li>Design des visuels produit</li>
+                <li>Présentation &amp; storytelling</li>
+                <li>Pitch oral</li>
+              </ul>
+            </div>
+            <div className="flex flex-col gap-6">
+              <div className="flex flex-col gap-2">
+                <H5>Outils</H5>
+                <ul className="list-none font-light text-lg leading-6 text-white">
+                  <li>Figma</li>
+                  <li>Photoshop</li>
+                  <li>Nano Banana</li>
+                </ul>
               </div>
-              <div className="flex flex-col gap-1">
-                <p className="text-xl font-semibold leading-7 text-[#fdfbf6]">
-                  Outils
-                </p>
-                <div className="text-lg leading-7 text-[rgba(253,251,246,0.85)]">
-                  <p>Figma</p>
-                  <p>Photoshop</p>
-                  <p>Nano Banana</p>
-                </div>
-              </div>
-              <div className="flex flex-col items-center gap-1">
-                <p className="text-xl font-semibold leading-7 text-[#fdfbf6]">
-                  Année
-                </p>
-                <p className="text-lg leading-7 text-[rgba(253,251,246,0.85)]">
-                  2026
-                </p>
+              <div className="flex flex-col gap-2">
+                <H5>Année</H5>
+                <Body2 className="!text-white font-light">2026</Body2>
               </div>
             </div>
           </div>
-        </div>
-        <div className="relative w-full flex-1 overflow-hidden rounded">
-          <img src={heroSilkBg} alt="" className="w-full opacity-60" />
-          <img
-            src={heroProduct}
-            alt="Coffret YSL Sélection Privée"
-            className="absolute inset-0 h-full w-full object-contain"
-          />
         </div>
       </div>
 
@@ -131,7 +137,7 @@ export default function OrealPage() {
               alt="L'Oréal Brandstorm 2026"
               className="w-[149px] rounded"
             />
-            <p className="text-lg leading-7 text-[rgba(253,251,246,0.85)]">
+            <Body1 className="font-light">
               L'Oréal Brandstorm est la plus grande compétition d'innovation
               mondiale, ouverte à toute personne de 18 à 30 ans, tous
               domaines et niveaux d'études confondus. Le brief 2026 : Craft
@@ -147,7 +153,7 @@ export default function OrealPage() {
               notre concept oralement au siège de L'Oréal Groupe, devant 2
               membres du jury et une représentante RH. Notre projet a été
               sélectionné Top 1 parmi l'ensemble des projets présentés.
-            </p>
+            </Body1>
           </div>
           <img
             src={pitchPhoto}
@@ -162,56 +168,47 @@ export default function OrealPage() {
         <div className="flex flex-wrap items-center gap-12">
           <div className="flex flex-1 min-w-[280px] flex-col gap-8">
             <SectionTitle>Processus</SectionTitle>
-            <div className="flex flex-col gap-1 text-lg leading-7 text-[rgba(253,251,246,0.85)]">
-              <p>
+            <div className="flex flex-col gap-4">
+              <Body1 className="font-light">
                 Face à un brief ambitieux et seulement 4 jours devant nous,
                 nous avons adopté une méthode rapide et structurée.
-              </p>
-              <p className="pt-4 font-syne text-2xl text-[#fdfbf6]">
-                Recherche individuelle
-              </p>
-              <p>
-                Chacun a exploré le sujet de son côté : données marché,
-                comportements d'achat, tendances du luxe, social listening.
-                Plutôt que de chercher la même chose, chacun a identifié ses
-                propres patterns et insights pour maximiser la couverture en
-                peu de temps.
-              </p>
-              <p className="pt-4 font-syne text-2xl text-[#fdfbf6]">
-                Crazy 8
-              </p>
-              <p>
-                Nous avons mis en commun nos recherches et généré un maximum
-                d'idées via la méthode Crazy 8 sur Figma. Trois directions
-                fortes ont émergé, que nous avons progressivement convergées
-                en un seul concept cohérent.
-              </p>
-              <p className="pt-4 font-syne text-2xl text-[#fdfbf6]">
-                L'insight clé
-              </p>
-              <p>
-                Un fil rouge est apparu dans toutes nos recherches :
-                "Aujourd'hui, tout s'achète en ligne. Mais le parfum échappe
-                encore au digital. On ne peut pas le sentir."
-              </p>
-              <p className="pt-4">
+              </Body1>
+              <div className="flex flex-col gap-2">
+                <H3>Recherche individuelle</H3>
+                <Body1 className="font-light">
+                  Chacun a exploré le sujet de son côté : données marché,
+                  comportements d'achat, tendances du luxe, social listening.
+                  Plutôt que de chercher la même chose, chacun a identifié ses
+                  propres patterns et insights pour maximiser la couverture en
+                  peu de temps.
+                </Body1>
+              </div>
+              <div className="flex flex-col gap-2">
+                <H3>Crazy 8</H3>
+                <Body1 className="font-light">
+                  Nous avons mis en commun nos recherches et généré un maximum
+                  d'idées via la méthode Crazy 8 sur Figma. Trois directions
+                  fortes ont émergé, que nous avons progressivement convergées
+                  en un seul concept cohérent.
+                </Body1>
+              </div>
+              <div className="flex flex-col gap-2">
+                <H3>L'insight clé</H3>
+                <Body1 className="font-light">
+                  Un fil rouge est apparu dans toutes nos recherches :
+                  "Aujourd'hui, tout s'achète en ligne. Mais le parfum échappe
+                  encore au digital. On ne peut pas le sentir."
+                </Body1>
+              </div>
+              <Body1 className="font-light">
                 De là est née l'idée centrale : construire un pont entre le
                 digital et le physique, transformer l'essai en expérience, et
                 la découverte en décision.
-              </p>
+              </Body1>
             </div>
           </div>
-          <div
-            className="flex w-full max-w-[632px] flex-col items-center gap-4 rounded-2xl border border-violet-300/40 p-4"
-            style={{
-              background: 'rgba(76,29,149,0.35)',
-              backdropFilter: 'blur(20px)',
-              WebkitBackdropFilter: 'blur(20px)',
-            }}
-          >
-            <p className="font-syne text-2xl leading-8 text-[#fdfbf6]">
-              Crazy 8
-            </p>
+          <div className="flex w-full max-w-[632px] flex-col items-center gap-4 rounded-2xl border border-purple-pale/60 bg-purple-dark/35 p-4 backdrop-blur-[20px]">
+            <H3>Crazy 8</H3>
             <img src={crazy8} alt="Crazy 8" className="w-full rounded" />
           </div>
         </div>
@@ -224,22 +221,20 @@ export default function OrealPage() {
           <SectionTitle>Concept</SectionTitle>
           <div className="flex flex-wrap items-start gap-20">
             <div className="flex flex-1 min-w-[280px] flex-col gap-4">
-              <p className="text-lg leading-7 text-[rgba(253,251,246,0.85)]">
+              <Body1 className="font-light">
                 Partant du constat que le parfum reste l'un des derniers
                 produits résistants au digital, nous avons conçu YSL
                 Sélection Privée "From Trial to Desire" : une expérience
                 phygitale qui transforme l'essai en rituel et le sampling en
                 levier de conversion.
-              </p>
-              <p className="font-syne text-2xl leading-9 text-[#fdfbf6]">
+              </Body1>
+              <H3 className="leading-9">
                 "Un parfum se révèle sur la peau. En ligne, cette révélation
                 est absente."
-              </p>
+              </H3>
             </div>
             <div className="flex flex-1 min-w-[280px] flex-col gap-2">
-              <p className="font-syne text-2xl leading-8 text-[#fdfbf6]">
-                Tester. Porter. Choisir.
-              </p>
+              <H3>Tester. Porter. Choisir.</H3>
               <BulletPoint
                 title="01 Sélectionner"
                 body="Le client compose son propre catalogue sur Sephora.com en choisissant 3 fragrances YSL au format roll-on 5 mL."
@@ -262,14 +257,14 @@ export default function OrealPage() {
       <div id="apporte" className="flex flex-col gap-8 p-8 md:py-16 md:px-[var(--nav-edge-w)]">
         <div className="flex flex-col gap-4">
           <SectionTitle>Ce Qu'On Apporte À L'Oréal</SectionTitle>
-          <p className="text-lg leading-7 text-[rgba(253,251,246,0.7)]">
+          <Body1 className="font-light">
             YSL Sélection Privée n'est pas qu'une solution locale. C'est un
             modèle scalable, durable et mesurable, adaptable à l'ensemble des
             marques du Groupe L'Oréal et déployable à l'international.
-          </p>
+          </Body1>
         </div>
         <div className="flex flex-wrap items-center gap-10">
-          <div className="flex flex-1 min-w-[280px] flex-col gap-3">
+          <div className="flex flex-1 min-w-[280px] flex-col gap-4">
             <BulletPoint
               title="Savoir-faire"
               body="Expertise sensorielle appliquée au format roll-on, maîtrise de l'évolution du parfum sur peau."
@@ -304,14 +299,14 @@ export default function OrealPage() {
       <div className="flex flex-col gap-8 p-8 md:py-16 md:px-[var(--nav-edge-w)]">
         <div className="flex flex-col gap-4">
           <SectionTitle>Vidéo Équipe</SectionTitle>
-          <p className="text-lg leading-7 text-[rgba(253,251,246,0.7)]">
+          <Body1 className="font-light">
             Au-delà du concept, L'Oréal Brandstorm demandait à chaque équipe
             de se révéler en tant que personnes. La vidéo devait répondre à 5
             valeurs fondamentales définies par L'Oréal :
-          </p>
+          </Body1>
         </div>
         <div className="flex flex-wrap items-center gap-10">
-          <div className="flex flex-1 min-w-[280px] flex-col gap-3">
+          <div className="flex flex-1 min-w-[280px] flex-col gap-4">
             <BulletPoint
               title="Jugement"
               body="Qu'est-ce qui a guidé notre prise de décision dans des situations complexes ?"
@@ -333,20 +328,13 @@ export default function OrealPage() {
               body="Comment avons-nous géré les sujets nouveaux et inconnus ?"
             />
           </div>
-          <div
-            className="relative flex h-[350px] flex-1 min-w-[280px] items-center justify-center rounded-2xl border border-violet-300/40"
-            style={{
-              background: 'rgba(76,29,149,0.35)',
-              backdropFilter: 'blur(20px)',
-              WebkitBackdropFilter: 'blur(20px)',
-            }}
-          >
+          <div className="relative flex h-[350px] flex-1 min-w-[280px] items-center justify-center rounded-2xl border border-purple-pale/60 bg-purple-dark/35 backdrop-blur-[20px]">
             <img src={playIcon} alt="Lire la vidéo" className="h-20 w-20 cursor-pointer" />
           </div>
         </div>
       </div>
 
       <Contact transparent />
-    </>
+    </div>
   )
 }

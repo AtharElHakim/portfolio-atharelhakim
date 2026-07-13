@@ -60,36 +60,27 @@ function AttitudeScale({
 }) {
   return (
     <div className="flex items-center gap-4">
-      <span className="w-24 shrink-0 text-right text-lg text-white/70">
+      <span className="w-24 shrink-0 text-right text-base leading-6 font-light text-white">
         {left}
       </span>
-      <div className="flex flex-1 min-w-[100px] items-center">
-        <svg className="size-3 shrink-0" viewBox="0 0 24 24" fill="none">
+      <div className="relative flex h-2.5 flex-1 min-w-[100px] items-center">
+        <svg
+          className="absolute inset-0 h-full w-full"
+          viewBox="0 0 241 15"
+          preserveAspectRatio="none"
+          fill="none"
+        >
           <path
-            d="M12 5L5 12L12 19"
-            stroke="color-mix(in oklab, var(--color-white) 40%, transparent)"
-            strokeWidth="1.5"
-            strokeLinecap="round"
-            strokeLinejoin="round"
+            d="M0.292893 6.65617C-0.0976311 7.0467 -0.0976311 7.67986 0.292893 8.07039L6.65685 14.4343C7.04738 14.8249 7.68054 14.8249 8.07107 14.4343C8.46159 14.0438 8.46159 13.4107 8.07107 13.0201L2.41421 7.36328L8.07107 1.70643C8.46159 1.3159 8.46159 0.682738 8.07107 0.292213C7.68054 -0.0983109 7.04738 -0.0983109 6.65685 0.292213L0.292893 6.65617ZM240.707 8.07039C241.098 7.67986 241.098 7.0467 240.707 6.65617L234.343 0.292213C233.953 -0.0983109 233.319 -0.0983109 232.929 0.292213C232.538 0.682738 232.538 1.3159 232.929 1.70643L238.586 7.36328L232.929 13.0201C232.538 13.4107 232.538 14.0438 232.929 14.4343C233.319 14.8249 233.953 14.8249 234.343 14.4343L240.707 8.07039ZM1 7.36328V8.36328H240V7.36328V6.36328H1V7.36328Z"
+            fill="var(--color-grey)"
           />
         </svg>
-        <div className="relative h-[1.5px] flex-1 bg-white/40">
-          <span
-            className="absolute top-1/2 size-2.5 -translate-x-1/2 -translate-y-1/2 rounded-full bg-white/85"
-            style={{ left: `${position}%` }}
-          />
-        </div>
-        <svg className="size-3 shrink-0" viewBox="0 0 24 24" fill="none">
-          <path
-            d="M12 5L19 12L12 19"
-            stroke="color-mix(in oklab, var(--color-white) 40%, transparent)"
-            strokeWidth="1.5"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-        </svg>
+        <span
+          className="absolute top-1/2 size-2.5 -translate-x-1/2 -translate-y-1/2 rounded-full bg-white/85"
+          style={{ left: `${position}%` }}
+        />
       </div>
-      <span className="w-24 shrink-0 text-left text-lg text-white/70">
+      <span className="w-24 shrink-0 text-left text-base leading-6 font-light text-white">
         {right}
       </span>
     </div>
@@ -124,9 +115,9 @@ function BulletPoint({
 }
 
 const wireframes = [
-  { img: wireframeWork, label: '"WORK" Page' },
-  { img: wireframeAbout, label: '"ABOUT" Page' },
-  { img: wireframeContact, label: '"CONTACT" Page' },
+  { img: wireframeWork, label: 'Page "WORK"' },
+  { img: wireframeAbout, label: 'Page "ABOUT"' },
+  { img: wireframeContact, label: 'Page "CONTACT"' },
 ]
 
 const auditStrengths = [auditStrength1, auditStrength2, auditStrength3]
@@ -319,7 +310,7 @@ export default function FinelinePage() {
       >
         <div className="flex w-full flex-col items-center gap-8">
           <SectionTitle>Contexte</SectionTitle>
-          <Body1 className="w-full text-center">
+          <Body1 className="w-full text-center font-light">
             Fine Line Production est une société de production créative basée
             au Liban depuis 2017. Elle collabore avec des ONG et des marques
             de grande consommation pour concevoir des récits visuels
@@ -346,7 +337,7 @@ export default function FinelinePage() {
       <div id="probleme" className="flex flex-col items-center gap-8 p-8 md:py-16 md:px-[var(--nav-edge-w)]">
         <div className="flex w-full flex-col items-start gap-8">
           <SectionTitle>Problème</SectionTitle>
-          <Body1 className="w-full text-center">
+          <Body1 className="w-full text-center font-light">
             Fine Line Production disposait d'un site WordPress qui ne
             reflétait plus l'identité de l'agence : visuellement daté,
             difficile à mettre à jour, en décalage avec ses projets récents.
@@ -424,7 +415,7 @@ export default function FinelinePage() {
         <div className="flex w-full flex-col items-center gap-8">
           <H4>Recherche Secondaire</H4>
           <SectionTitle>Audit</SectionTitle>
-          <Body1 className="w-full text-center">
+          <Body1 className="w-full text-center font-light">
             Pour analyser l'ancien site de Fine Line, j'ai réalisé un audit UX
             basé sur les critères ergonomiques de{' '}
             <span className="font-semibold">Bastien &amp; Scapin</span>.
@@ -621,7 +612,7 @@ export default function FinelinePage() {
         <div className="flex w-full flex-col gap-6">
           <div className="flex flex-col items-center text-center">
             <H3>Concurrents</H3>
-            <Body1>
+            <Body1 className="font-light">
               Pour situer Fine Line dans son environnement, j'ai choisi deux
               concurrents directs.
             </Body1>
@@ -642,7 +633,7 @@ export default function FinelinePage() {
                 >
                   Né à Beyrouth Films
                 </a>
-                <Body1 className="!text-white/70">
+                <Body1 className="!text-white/70 font-light">
                   Né à Beyrouth est une société de production
                   cinématographique libanaise spécialisée dans la fiction, le
                   documentaire et le court-métrage, engagée à valoriser les
@@ -665,7 +656,7 @@ export default function FinelinePage() {
                 >
                   Forward Film Production
                 </a>
-                <Body1 className="!text-white/70">
+                <Body1 className="!text-white/70 font-light">
                   Forward Film Production est une agence libanaise de
                   production spécialisée dans les documentaires et campagnes
                   ONG, engagée pour les droits humains.
@@ -676,7 +667,7 @@ export default function FinelinePage() {
         </div>
         <div className="flex w-full flex-col items-center text-center">
           <H3>Méthode</H3>
-          <Body1>
+          <Body1 className="font-light">
             J'ai ensuite réalisé un benchmark à l'aide de la méthode de
             l'Océan Bleu, afin d'analyser plusieurs critères clés liés à
             l'expérience utilisateur et à la visibilité en ligne, et de
@@ -735,38 +726,42 @@ export default function FinelinePage() {
       <div id="hypotheses" className="flex flex-col items-start gap-4 p-8 md:py-16 md:px-[var(--nav-edge-w)]">
         <div className="flex flex-col items-start gap-4">
           <SectionTitle>Hypothèses</SectionTitle>
-          <Body1 className="w-full text-center">
+          <Body1 className="w-full text-center font-light">
             Suite à cette analyse, et à partir de la recherche secondaire,
             j'ai formulé les hypothèses suivantes.
           </Body1>
         </div>
-        <ol className="w-full list-decimal space-y-2 pl-6">
-          <li>
+        <div className="flex w-full flex-col gap-4">
+          <div className="flex w-full items-baseline gap-4">
+            <span className="font-syne text-2xl text-purple-mid">01</span>
             <Body2>
               L'utilisateur doit comprendre l'activité de l'entreprise dès les
               premières secondes pour rester engagé sur le site.
             </Body2>
-          </li>
-          <li>
+          </div>
+          <div className="flex w-full items-baseline gap-4">
+            <span className="font-syne text-2xl text-purple-mid">02</span>
             <Body2>
               Un site moderne et régulièrement mis à jour renforce la
               crédibilité et le sérieux perçus de l'entreprise.
             </Body2>
-          </li>
-          <li>
+          </div>
+          <div className="flex w-full items-baseline gap-4">
+            <span className="font-syne text-2xl text-purple-mid">03</span>
             <Body2>
               Proposer un formulaire de contact simple et accessible peut
               faciliter la prise de contact pour les utilisateurs.
             </Body2>
-          </li>
-          <li>
+          </div>
+          <div className="flex w-full items-baseline gap-4">
+            <span className="font-syne text-2xl text-purple-mid">04</span>
             <Body2>
               Une structure claire des projets favorise l'exploration du site,
               l'intérêt pour les services, et la compréhension globale de
               l'offre.
             </Body2>
-          </li>
-        </ol>
+          </div>
+        </div>
       </div>
 
       {/* Méthodologie de Recherche */}
@@ -775,7 +770,7 @@ export default function FinelinePage() {
           <H4>Recherche Primaire</H4>
           <SectionTitle>Méthodologie de Recherche</SectionTitle>
           <div className="flex w-full flex-wrap items-center justify-center gap-16">
-            <Body1 className="w-full max-w-[720px] text-center">
+            <Body1 className="w-full max-w-[720px] text-center font-light">
               Dans le cadre de la refonte du site de Fine Line Production, il
               me semblait essentiel de comprendre les attentes des
               utilisateurs, leurs comportements face aux sites de sociétés de
@@ -803,13 +798,16 @@ export default function FinelinePage() {
                 <img src={surveyIcons} alt="" className="relative h-16 w-auto" />
               </div>
             </div>
-            <Body2 className="w-full text-center">
+            <Body2 className="w-full flex-1 text-center">
               Le sondage a été créé avec Google Forms et diffusé via WhatsApp,
               afin de recueillir rapidement des retours auprès d'un panel
               varié. Cette approche a permis d'obtenir une vision d'ensemble
               des usages et préférences des utilisateurs.
             </Body2>
-            <PillButton href="https://drive.google.com/file/d/1Dcz9YvuJ6D4sM-q5-dw0wePRM2TpTPAz/view?usp=sharing">
+            <PillButton
+              className="mt-auto"
+              href="https://drive.google.com/file/d/1Dcz9YvuJ6D4sM-q5-dw0wePRM2TpTPAz/view?usp=sharing"
+            >
               Consulter les résultats (PDF)
             </PillButton>
           </div>
@@ -830,13 +828,16 @@ export default function FinelinePage() {
                 <img src={interviewIcons} alt="" className="relative h-16 w-auto" />
               </div>
             </div>
-            <Body2 className="w-full text-center">
+            <Body2 className="w-full flex-1 text-center">
               Les entretiens ont été menés en visioconférence via WhatsApp,
               afin de comprendre plus en profondeur les ressentis, les
               attentes et les points de blocage des utilisateurs face aux
               sites de production audiovisuelle.
             </Body2>
-            <PillButton href="https://drive.google.com/file/d/1Tjnpj-1FCYM2leUcvz4Cjz4xHyJ4Acht/view?usp=sharing">
+            <PillButton
+              className="mt-auto"
+              href="https://drive.google.com/file/d/1Tjnpj-1FCYM2leUcvz4Cjz4xHyJ4Acht/view?usp=sharing"
+            >
               Consulter la restitution (PDF)
             </PillButton>
           </div>
@@ -847,7 +848,7 @@ export default function FinelinePage() {
       <div id="empathy-map" className="flex flex-col items-center gap-8 p-8 md:py-16 md:px-[var(--nav-edge-w)]">
         <div className="flex w-full flex-col items-start gap-4">
           <SectionTitle>Empathy Map</SectionTitle>
-          <Body1 className="w-full text-center">
+          <Body1 className="w-full text-center font-light">
             Afin de transformer les résultats du sondage et des entretiens en
             une vision claire et exploitable, j'ai construit une Empathy Map.
             Cet outil permet de représenter de façon visuelle ce que les
@@ -910,7 +911,7 @@ export default function FinelinePage() {
       <div id="cible" className="flex flex-col items-center gap-8 p-8 md:py-16 md:px-[var(--nav-edge-w)]">
         <div className="flex w-full flex-col items-start gap-4">
           <SectionTitle>Cible</SectionTitle>
-          <Body1 className="w-full text-center">
+          <Body1 className="w-full text-center font-light">
             Les recherches menées m'ont permis de définir la cible du projet,
             puis de la concrétiser à travers un persona primaire
           </Body1>
@@ -921,7 +922,7 @@ export default function FinelinePage() {
             <H4 className="w-auto text-left">
               Entreprises de biens de grande consommation (FMCG)
             </H4>
-            <Body1 className="!text-white/70">
+            <Body1 className="!text-white/70 font-light">
               Fine Line cible les marques de grande distribution nationale
               (Liban) telles que Cosmaline, Master Chips, Ghandour, etc.
             </Body1>
@@ -931,7 +932,7 @@ export default function FinelinePage() {
             <H4 className="w-auto text-left">
               ONG et organisations internationales (NGOs / INGOs)
             </H4>
-            <Body1 className="!text-white/70">
+            <Body1 className="!text-white/70 font-light">
               Fine Line s'adresse à des ONG locales et internationales qui
               souhaitent produire des contenus audiovisuels à fort impact
               social : campagnes de sensibilisation, documentaires, portraits
@@ -950,31 +951,31 @@ export default function FinelinePage() {
             />
             <div className="flex flex-1 min-w-[280px] flex-col gap-6">
               <div className="flex flex-wrap gap-8">
-                <div>
-                  <H4 className="w-auto text-left">Prénom</H4>
-                  <Body2>Tania</Body2>
+                <div className="flex flex-col gap-2">
+                  <H5>Prénom</H5>
+                  <Body2 className="!text-white font-light">Tania</Body2>
                 </div>
-                <div>
-                  <H4 className="w-auto text-left">Âge</H4>
-                  <Body2>36 ans</Body2>
+                <div className="flex flex-col gap-2">
+                  <H5>Âge</H5>
+                  <Body2 className="!text-white font-light">36 ans</Body2>
                 </div>
               </div>
-              <div>
-                <H4 className="w-auto text-left">Poste</H4>
-                <Body2>
+              <div className="flex flex-col gap-2">
+                <H5>Poste</H5>
+                <Body2 className="!text-white font-light">
                   Responsable marketing chez Gandour (entreprise libanaise de
                   produits alimentaires)
                 </Body2>
               </div>
-              <div>
-                <H4 className="w-auto text-left">Motivation</H4>
-                <ul className="list-disc pl-6 text-lg text-white/70">
+              <div className="flex flex-col gap-2">
+                <H5>Motivation</H5>
+                <ul className="list-disc pl-6 text-base leading-6 text-white font-light">
                   <li>Rapidité et efficacité</li>
                   <li>Collaboration fluide avec les équipes</li>
                 </ul>
               </div>
-              <div>
-                <H4 className="w-auto text-left">Comportements/Attitude</H4>
+              <div className="flex flex-col gap-2">
+                <H5>Comportements/Attitude</H5>
                 <div className="flex flex-col gap-2">
                   <AttitudeScale left="Stressée" right="Détendue" position={40} />
                   <AttitudeScale left="Pessimiste" right="Optimiste" position={80} />
@@ -986,9 +987,9 @@ export default function FinelinePage() {
 
           <div className="grid w-full grid-cols-1 gap-10 border-t border-white/10 pt-8 md:grid-cols-2">
             <div className="flex flex-col gap-6">
-              <div>
-                <H4 className="w-auto text-left">Frustrations</H4>
-                <ul className="list-disc pl-6 text-lg text-white/70">
+              <div className="flex flex-col gap-2">
+                <H5>Frustrations</H5>
+                <ul className="list-disc pl-6 text-base leading-6 text-white font-light">
                   <li>
                     Devoir relancer plusieurs fois pour les mêmes informations
                   </li>
@@ -999,9 +1000,9 @@ export default function FinelinePage() {
                   </li>
                 </ul>
               </div>
-              <div>
-                <H4 className="w-auto text-left">Besoins / Objectifs</H4>
-                <ul className="list-disc pl-6 text-lg text-white/70">
+              <div className="flex flex-col gap-2">
+                <H5>Besoins / Objectifs</H5>
+                <ul className="list-disc pl-6 text-base leading-6 text-white font-light">
                   <li>
                     Collaborer avec des équipes qui comprennent les
                     contraintes business
@@ -1029,7 +1030,7 @@ export default function FinelinePage() {
       <div id="plateforme" className="flex flex-col items-center gap-8 p-8 md:py-16 md:px-[var(--nav-edge-w)]">
         <div className="flex w-full flex-col items-start gap-4">
           <SectionTitle>Plateforme de Marque</SectionTitle>
-          <Body1 className="w-full text-center">
+          <Body1 className="w-full text-center font-light">
             Pour passer de la phase de recherche à la phase de conception,
             j'ai commencé par définir la plateforme de marque afin de
             clarifier l'identité et le positionnement de Fine Line.
@@ -1042,7 +1043,7 @@ export default function FinelinePage() {
       <div id="direction-artistique" className="flex flex-col items-center gap-8 p-8 md:py-16 md:px-[var(--nav-edge-w)]">
         <div className="flex w-full flex-col items-start gap-4">
           <SectionTitle>Direction Artistique</SectionTitle>
-          <Body1 className="w-full text-center">
+          <Body1 className="w-full text-center font-light">
             Pour répondre aux objectifs clés, j'ai choisi de conserver les
             couleurs historiques de Fine Line tout en leur donnant une
             nouvelle énergie à travers un design plus moderne et évolutif.
@@ -1115,7 +1116,7 @@ export default function FinelinePage() {
       <div id="prototype" className="flex flex-col items-center gap-12 p-8 md:py-16 md:px-[var(--nav-edge-w)]">
         <div className="flex flex-col items-center gap-6">
           <SectionTitle>Prototype</SectionTitle>
-          <Body1 className="w-full text-center">
+          <Body1 className="w-full text-center font-light">
             Au cours de mon stage alterné, j'ai eu le temps de concevoir
             uniquement deux pages complètes du site : la page d'accueil et la
             page blog. Le déroulement n'a cependant pas suivi exactement le
@@ -1157,9 +1158,9 @@ export default function FinelinePage() {
                   />
                   <div className="absolute inset-0 bg-gradient-to-b from-white/10 via-transparent to-black/20" />
                 </div>
-                <H3 className="w-full px-2 pb-2 text-center text-xl !leading-7">
+                <H4 className="w-full px-2 pb-2 !text-white">
                   {w.label}
-                </H3>
+                </H4>
               </button>
             ))}
           </div>
@@ -1284,7 +1285,7 @@ export default function FinelinePage() {
       <div id="budget" className="flex flex-col items-start gap-8 p-8 md:py-16 md:px-[var(--nav-edge-w)]">
         <div className="flex flex-col items-start gap-4">
           <SectionTitle>Budget</SectionTitle>
-          <Body1 className="w-full text-center">
+          <Body1 className="w-full text-center font-light">
             J'ai établi une estimation budgétaire correspondant aux étapes
             que j'ai menées, jusqu'à la conception et au prototypage. Elle
             reflète les ressources et outils nécessaires pour couvrir
@@ -1295,7 +1296,7 @@ export default function FinelinePage() {
           <div className="grid w-full grid-cols-1 gap-4 md:grid-cols-3">
             <div className="flex flex-col gap-4 rounded-2xl border border-white/10 bg-white/[0.03] p-6 backdrop-blur-sm">
               <div className="flex items-center gap-2">
-                <span className="size-2 rounded-full bg-purple-mid" />
+                <span className="size-2 rounded-full bg-purple-pale/70" />
                 <H4 className="w-auto text-left">01 Recherche</H4>
               </div>
               <ul className="list-disc space-y-2 pl-6 text-sm text-white/65">
@@ -1321,7 +1322,7 @@ export default function FinelinePage() {
 
             <div className="flex flex-col gap-4 rounded-2xl border border-white/10 bg-white/[0.03] p-6 backdrop-blur-sm">
               <div className="flex items-center gap-2">
-                <span className="size-2 rounded-full bg-purple-mid" />
+                <span className="size-2 rounded-full bg-purple-pale/70" />
                 <H4 className="w-auto text-left">02 Création Visuelle</H4>
               </div>
               <ul className="list-disc space-y-2 pl-6 text-sm text-white/65">
@@ -1343,7 +1344,7 @@ export default function FinelinePage() {
 
             <div className="flex flex-col gap-4 rounded-2xl border border-white/10 bg-white/[0.03] p-6 backdrop-blur-sm">
               <div className="flex items-center gap-2">
-                <span className="size-2 rounded-full bg-purple-mid" />
+                <span className="size-2 rounded-full bg-purple-pale/70" />
                 <H4 className="w-auto text-left">03 Webflow</H4>
               </div>
               <Micro1 className="!text-white/65">
@@ -1366,7 +1367,7 @@ export default function FinelinePage() {
       <div id="roadmap" className="flex flex-col items-start gap-8 p-8 md:py-16 md:px-[var(--nav-edge-w)]">
         <div className="flex flex-col items-start gap-4">
           <SectionTitle>Roadmap</SectionTitle>
-          <Body1 className="w-full text-center">
+          <Body1 className="w-full text-center font-light">
             J'ai construit une roadmap retraçant les étapes clés du projet,
             de l'analyse du contexte au prototypage. Elle m'a permis
             d'avancer avec des livrables clairs et d'assurer une transition
@@ -1406,7 +1407,7 @@ export default function FinelinePage() {
       {/* Conclusion */}
       <div id="conclusion" className="flex flex-col items-start gap-8 p-8 md:py-16 md:px-[var(--nav-edge-w)]">
         <SectionTitle>Conclusion</SectionTitle>
-        <Body1 className="w-full text-center">
+        <Body1 className="w-full text-center font-light">
           Ce projet de refonte du site de Fine Line m'a permis d'appliquer
           concrètement mes compétences en UX/UI design, depuis la recherche
           et l'analyse jusqu'à la conception d'un prototype fonctionnel.

@@ -2,9 +2,10 @@ import { useState } from 'react'
 import Contact from '../components/Contact'
 import Lightbox from '../components/Lightbox'
 import CaseStudyNav from '../components/CaseStudyNav'
-import logoLabel from '../assets/angrybirds/logo-full.png'
+import logoLabel from '../assets/angrybirds/logo-full.svg'
 import heroIllustration from '../assets/angrybirds/hero-illustration.gif'
 import briefIllustration from '../assets/angrybirds/brief-illustration.png'
+import { H1, H2 as SectionTitle, H5, Body1, Body2 } from '../components/Typography'
 
 function loadGallery(globResult: Record<string, string>) {
   return Object.entries(globResult)
@@ -78,14 +79,6 @@ const conclusionImages = loadGallery(
   }) as Record<string, string>,
 )
 
-function SectionTitle({ children }: { children: React.ReactNode }) {
-  return (
-    <p className="font-syne text-4xl leading-tight text-[#fdfbf6] md:text-5xl md:leading-[48px]">
-      {children}
-    </p>
-  )
-}
-
 function SlideGallery({
   id,
   title,
@@ -102,7 +95,7 @@ function SlideGallery({
   return (
     <div id={id} className="relative flex flex-col items-start gap-6 p-8 md:py-16 md:px-[var(--nav-edge-w)]">
       <SectionTitle>{title}</SectionTitle>
-      <ul className="flex list-disc flex-col gap-1 pl-5 text-lg leading-7 text-[rgba(253,251,246,0.75)] md:text-xl">
+      <ul className="flex list-disc flex-col gap-2 pl-5 text-lg leading-7 text-white/75 md:text-xl">
         {bullets.map((bullet) => (
           <li key={bullet}>{bullet}</li>
         ))}
@@ -113,7 +106,7 @@ function SlideGallery({
             key={src}
             type="button"
             onClick={() => onOpen(images, i)}
-            className="h-[86px] w-[153px] shrink-0 cursor-pointer overflow-hidden rounded-lg border border-violet-300/40 opacity-90 shadow-[0_4px_14px_rgba(139,92,246,0.2)] transition-all duration-300 hover:-translate-y-0.5 hover:opacity-100 hover:shadow-[0_8px_20px_rgba(139,92,246,0.35)]"
+            className="h-[86px] w-[153px] shrink-0 cursor-pointer overflow-hidden rounded-lg border border-purple-pale/40 opacity-90 shadow-[0_4px_14px_color-mix(in_oklab,var(--color-purple-mid)_20%,transparent)] transition-all duration-300 hover:-translate-y-0.5 hover:opacity-100 hover:shadow-[0_8px_20px_color-mix(in_oklab,var(--color-purple-mid)_35%,transparent)]"
           >
             <img
               src={src}
@@ -138,9 +131,31 @@ export default function AngryBirdsPage() {
   }
 
   return (
-    <>
+    <div className="relative isolate">
+      <div
+        className="pointer-events-none absolute left-1/2 top-0 -z-10 h-[340px] w-[1100px] max-w-[140vw] -translate-x-1/2 -translate-y-1/3 opacity-60 blur-3xl"
+        style={{
+          background:
+            'radial-gradient(ellipse at center, var(--color-purple-light) 0%, var(--color-purple) 45%, transparent 75%)',
+        }}
+      />
+      <div
+        className="pointer-events-none absolute left-[-10%] top-0 -z-10 h-[340px] w-[700px] max-w-[70vw] -translate-y-1/3 opacity-60 blur-3xl"
+        style={{
+          background:
+            'radial-gradient(ellipse at center, var(--color-purple-light) 0%, var(--color-purple) 45%, transparent 75%)',
+        }}
+      />
+      <div
+        className="pointer-events-none absolute right-[-10%] top-0 -z-10 h-[340px] w-[700px] max-w-[70vw] -translate-y-1/3 opacity-60 blur-3xl"
+        style={{
+          background:
+            'radial-gradient(ellipse at center, var(--color-purple-light) 0%, var(--color-purple) 45%, transparent 75%)',
+        }}
+      />
       <CaseStudyNav
         sections={[
+          { id: 'overview', label: 'Overview' },
           { id: 'brief', label: 'Le Brief' },
           { id: 'dossier', label: 'Le Dossier' },
           { id: 'conclusion', label: 'Conclusion' },
@@ -148,75 +163,63 @@ export default function AngryBirdsPage() {
       />
 
       {/* Header */}
-      <div className="relative flex flex-col items-center gap-8 p-8 md:flex-row md:py-16 md:px-[var(--nav-edge-w)]">
-        <div className="flex w-full max-w-[739px] flex-col items-start gap-8">
-          <div className="flex flex-col items-start gap-6">
-            <img src={logoLabel} alt="Angry Birds" className="h-7" />
-            <h1 className="font-syne text-5xl leading-tight text-[#fdfbf6] md:text-[72px] md:leading-[72px]">
-              Research Ops
-              <br />
-              Angry Birds
-            </h1>
+      <div id="overview" className="relative flex flex-col items-center gap-6 p-8 md:py-16 md:px-[var(--nav-edge-w)]">
+        <div className="flex flex-col items-center gap-4 text-center">
+          <img src={logoLabel} alt="Angry Birds" className="h-7" />
+          <H1 className="md:!text-5xl md:!leading-[56px]">
+            Research Ops
+            <br />
+            Angry Birds
+          </H1>
+
+          <div className="w-full max-w-[820px] overflow-hidden rounded-2xl border border-purple-pale/60 bg-purple-dark/35 p-4 backdrop-blur-[20px]">
+            <img
+              src={heroIllustration}
+              alt="Illustration Angry Birds"
+              className="w-full rounded-xl"
+            />
           </div>
-          <div className="flex flex-col gap-10">
-            <p className="border-b border-white/10 pb-8 text-lg leading-7 text-[rgba(253,251,246,0.85)]">
-              Ce projet, réalisé en binôme sur 4 jours dans le cadre d'un
-              exercice de Research Ops à Sup de Pub, consistait à inventer
-              une étude qualitative de A à Z et à la vendre à un client. Le
-              brief qui nous a été donné : comprendre les usages du
-              téléphone chez les garçons de 8 à 12 ans pour Angry Birds. Nous
-              avons conçu une méthodologie combinant mobile tracking et
-              ateliers participatifs avec entretiens parent-enfant, pour
-              croiser usages réels et ressentis et identifier les moments
-              clés d'engagement.
-            </p>
-            <div className="flex flex-wrap items-start gap-16">
-              <div className="flex flex-col gap-1">
-                <p className="text-xl font-semibold leading-7 text-[#fdfbf6]">
-                  Mon Rôle
-                </p>
-                <div className="text-lg leading-7 text-[rgba(253,251,246,0.75)]">
-                  <p>Conception du protocole de recherche</p>
-                  <p>Définition des objectifs</p>
-                  <p>Définition des hypothèses</p>
-                  <p>Création de la méthodologie de recherche</p>
-                  <p>Design du dossier</p>
-                  <p>Conception de la roadmap et des KPIs</p>
-                  <p>Rédaction de l'argumentation client</p>
-                </div>
+
+          <div className="flex w-full flex-wrap items-start justify-center gap-10 border-t border-white/10 pt-8 text-left">
+            <div className="flex max-w-[320px] flex-col gap-2">
+              <H5>Overview</H5>
+              <Body2 className="!text-white font-light">
+                Ce projet, réalisé en binôme sur 4 jours dans le cadre d'un
+                exercice de Research Ops à Sup de Pub, consistait à inventer
+                une étude qualitative de A à Z et à la vendre à un client. Le
+                brief qui nous a été donné : comprendre les usages du
+                téléphone chez les garçons de 8 à 12 ans pour Angry Birds.
+                Nous avons conçu une méthodologie combinant mobile tracking
+                et ateliers participatifs avec entretiens parent-enfant,
+                pour croiser usages réels et ressentis et identifier les
+                moments clés d'engagement.
+              </Body2>
+            </div>
+            <div className="flex flex-col gap-2">
+              <H5>Mon Rôle</H5>
+              <ul className="list-none font-light text-lg leading-6 text-white">
+                <li>Conception du protocole de recherche</li>
+                <li>Définition des objectifs</li>
+                <li>Définition des hypothèses</li>
+                <li>Création de la méthodologie de recherche</li>
+                <li>Design du dossier</li>
+                <li>Conception de la roadmap et des KPIs</li>
+                <li>Rédaction de l'argumentation client</li>
+              </ul>
+            </div>
+            <div className="flex flex-col gap-6">
+              <div className="flex flex-col gap-2">
+                <H5>Outils</H5>
+                <ul className="list-none font-light text-lg leading-6 text-white">
+                  <li>Figma</li>
+                </ul>
               </div>
-              <div className="flex flex-col gap-1">
-                <p className="text-xl font-semibold leading-7 text-[#fdfbf6]">
-                  Outils
-                </p>
-                <p className="text-lg leading-7 text-[rgba(253,251,246,0.75)]">
-                  Figma
-                </p>
-              </div>
-              <div className="flex flex-col items-center gap-1">
-                <p className="text-xl font-semibold leading-7 text-[#fdfbf6]">
-                  Année
-                </p>
-                <p className="text-lg leading-7 text-[rgba(253,251,246,0.75)]">
-                  2026
-                </p>
+              <div className="flex flex-col gap-2">
+                <H5>Année</H5>
+                <Body2 className="!text-white font-light">2026</Body2>
               </div>
             </div>
           </div>
-        </div>
-        <div
-          className="w-full flex-1 overflow-hidden rounded-2xl border border-violet-300/40 p-4"
-          style={{
-            background: 'rgba(76,29,149,0.35)',
-            backdropFilter: 'blur(20px)',
-            WebkitBackdropFilter: 'blur(20px)',
-          }}
-        >
-          <img
-            src={heroIllustration}
-            alt="Illustration Angry Birds"
-            className="w-full rounded-xl"
-          />
         </div>
       </div>
 
@@ -227,7 +230,7 @@ export default function AngryBirdsPage() {
       >
         <div className="flex flex-1 min-w-[280px] flex-col items-start gap-8">
           <SectionTitle>Le Brief</SectionTitle>
-          <p className="text-lg leading-7 text-[rgba(253,251,246,0.75)]">
+          <Body1 className="font-light">
             L'exercice consistait à concevoir et vendre une étude qualitative
             de A à Z à un client, en jouant le rôle d'une agence de
             recherche.
@@ -238,7 +241,7 @@ export default function AngryBirdsPage() {
             quotidiens du téléphone chez les garçons de 8 à 12 ans, afin
             d'identifier les moments de jeu, les motivations et les
             frustrations pour mieux adapter l'expérience utilisateur du jeu.
-          </p>
+          </Body1>
         </div>
         <img
           src={briefIllustration}
@@ -249,15 +252,13 @@ export default function AngryBirdsPage() {
 
       {/* Le Dossier */}
       <div id="dossier" className="relative p-8 md:py-16 md:px-[var(--nav-edge-w)]">
-        <p className="font-syne text-4xl leading-tight text-[#fdfbf6] md:text-5xl md:leading-[48px]">
-          Le Dossier
-        </p>
-        <p className="pt-4 text-lg leading-7 text-[rgba(253,251,246,0.75)]">
+        <SectionTitle>Le Dossier</SectionTitle>
+        <Body1 className="pt-4 font-light">
           Voici le dossier complet tel qu'il aurait été présenté à un client
           — cliquez sur une vignette pour le parcourir diapositive par
           diapositive. Chaque section ci-dessous en résume aussi
           l'enchaînement en quelques lignes.
-        </p>
+        </Body1>
       </div>
 
       <SlideGallery
@@ -376,6 +377,6 @@ export default function AngryBirdsPage() {
           }
         />
       )}
-    </>
+    </div>
   )
 }
