@@ -1,4 +1,5 @@
 import { useRef, useState } from 'react'
+import { createPortal } from 'react-dom'
 import Contact from '../components/Contact'
 import Lightbox from '../components/Lightbox'
 import CaseStudyNav from '../components/CaseStudyNav'
@@ -1221,7 +1222,8 @@ export default function FinelinePage() {
         />
       )}
 
-      {videoOpen && (
+      {videoOpen &&
+        createPortal(
         <div
           className="fixed inset-0 z-50 flex items-center justify-center bg-black/85 p-6"
           onClick={() => setVideoOpen(false)}
@@ -1278,8 +1280,9 @@ export default function FinelinePage() {
               ))}
             </div>
           </div>
-        </div>
-      )}
+        </div>,
+        document.body,
+        )}
 
       {/* Budget */}
       <div id="budget" className="flex flex-col items-start gap-8 p-8 md:py-16 md:px-[var(--nav-edge-w)]">

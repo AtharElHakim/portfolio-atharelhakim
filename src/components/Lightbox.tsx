@@ -1,4 +1,5 @@
 import { useEffect } from 'react'
+import { createPortal } from 'react-dom'
 
 interface LightboxImage {
   src: string
@@ -71,7 +72,7 @@ export default function Lightbox({
 
   const current = images[index]
 
-  return (
+  return createPortal(
     <div
       className="fixed inset-0 z-50 flex items-center justify-center bg-black/85 p-6"
       onClick={onClose}
@@ -125,6 +126,7 @@ export default function Lightbox({
           {index + 1} / {images.length}
         </p>
       )}
-    </div>
+    </div>,
+    document.body,
   )
 }
