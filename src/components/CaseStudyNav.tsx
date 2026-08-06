@@ -58,7 +58,7 @@ export default function CaseStudyNav({
       <div className="sticky top-20 z-10 flex items-center px-4 py-2 md:px-12">
         <Link
           to="/projects"
-          className="flex shrink-0 items-center gap-2 rounded-full border border-white/15 bg-white/6 px-4 py-2 text-sm text-white/80 transition-colors duration-300 hover:text-white"
+          className="flex shrink-0 items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-2 text-sm text-white/85 transition-colors duration-300 hover:text-white"
           style={{
             backdropFilter: 'blur(20px)',
             WebkitBackdropFilter: 'blur(20px)',
@@ -77,7 +77,7 @@ export default function CaseStudyNav({
             return (
               <div key={section.id} className="flex flex-col items-end">
                 {showGroup && (
-                  <p className="mb-2 mt-2 whitespace-nowrap text-[11px] font-semibold uppercase tracking-widest text-purple-pale/70 first:mt-0">
+                  <p className="mb-2 mt-2 whitespace-nowrap text-xs font-semibold uppercase tracking-widest text-purple-pale/70 first:mt-0">
                     {section.group}
                   </p>
                 )}

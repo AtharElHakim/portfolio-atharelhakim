@@ -9,7 +9,7 @@ interface TextProps {
 export function Display({ children, className = '' }: TextProps) {
   return (
     <h1
-      className={`font-syne text-5xl leading-tight text-white md:text-[72px] md:leading-[72px] ${className}`}
+      className={`font-syne text-5xl leading-tight text-white md:text-7xl md:leading-[72px] ${className}`}
     >
       {children}
     </h1>

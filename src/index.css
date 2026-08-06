@@ -8,15 +8,17 @@
   --color-white: #fdfbf6;
 
   /* Black — dark backgrounds. "black" = main page bg, "black-soft" = cards/
-     mockup chrome (a touch lighter), "black-ink" = text-on-light-pages black */
+     mockup chrome (a touch lighter), "black-elevated" = lighter still (button
+     surfaces), "black-ink" = text-on-light-pages black */
   --color-black: #08080c;
   --color-black-soft: #0c0c10;
+  --color-black-elevated: #2a2a30;
   --color-black-ink: #070707;
 
   /* Purple — the brand accent. NOT named "violet-*" on purpose: Tailwind
      ships its own violet-* scale already used across the site (e.g.
      border-violet-300/60 on glass buttons). Reusing that name here would
-     silently override those. */
+     silently override those. "purple-void" is the darkest ambient-glow stop. */
   --color-purple-highlight: #d8b4fe;
   --color-purple-pale: #c4b4ff;
   --color-purple-light: #a855f7;
@@ -24,13 +26,18 @@
   --color-purple: #7c3aed;
   --color-purple-deep: #6d28d9;
   --color-purple-dark: #4c1d95;
+  --color-purple-void: #241457;
 
-  /* Grey — neutral, for muted/secondary UI (scrollbars, tags) */
+  /* Grey — neutral, for muted/secondary UI (scrollbars, tags). "grey-dark" is
+     its hover/active state. */
   --color-grey: #9ca3af;
+  --color-grey-dark: #6b7280;
 
   /* Semantic */
   --color-success: #4a7c59;
+  --color-success-bg: #a7f3d0;
   --color-danger: #7c4a4a;
+  --color-danger-bg: #fecaca;
   --color-link: #568cc2;
 }
 
@@ -79,30 +86,30 @@ body {
 
 /* Liquid-glass surface: translucent, blurred, faint border */
 .glass {
-  background: rgba(253, 251, 246, 0.6);
+  background: color-mix(in srgb, var(--color-white) 50%, transparent);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(7, 7, 7, 0.08);
+  border: 1px solid color-mix(in srgb, var(--color-black-ink) 10%, transparent);
 }
 
 .glass-dark {
-  background: rgba(8, 8, 12, 0.92);
+  background: color-mix(in srgb, var(--color-black) 85%, transparent);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(253, 251, 246, 0.1);
+  border: 1px solid color-mix(in srgb, var(--color-white) 10%, transparent);
 }
 
 /* Subtle purple glow used as an accent halo behind cards / on hover */
 .purple-glow {
   box-shadow:
-    0 0 0 1px rgba(139, 92, 246, 0.15),
-    0 8px 30px rgba(139, 92, 246, 0.18);
+    0 0 0 1px color-mix(in srgb, var(--color-purple-mid) 15%, transparent),
+    0 8px 30px color-mix(in srgb, var(--color-purple-mid) 15%, transparent);
 }
 
 /* Modern thin scrollbar for horizontal-scroll containers */
 .modern-scrollbar {
   scrollbar-width: thin;
-  scrollbar-color: #9ca3af rgba(253, 251, 246, 0.1);
+  scrollbar-color: var(--color-grey) color-mix(in srgb, var(--color-white) 10%, transparent);
 }
 
 .modern-scrollbar::-webkit-scrollbar {
@@ -111,12 +118,12 @@ body {
 }
 
 .modern-scrollbar::-webkit-scrollbar-track {
-  background: rgba(253, 251, 246, 0.1);
+  background: color-mix(in srgb, var(--color-white) 10%, transparent);
   border-radius: 999px;
 }
 
 .modern-scrollbar::-webkit-scrollbar-thumb {
-  background: #9ca3af;
+  background: var(--color-grey);
   border-radius: 999px;
 }
 
@@ -131,5 +138,5 @@ body {
 }
 
 .modern-scrollbar::-webkit-scrollbar-thumb:hover {
-  background: #6b7280;
+  background: var(--color-grey-dark);
 }

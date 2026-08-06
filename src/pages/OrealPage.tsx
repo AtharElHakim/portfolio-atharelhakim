@@ -207,7 +207,7 @@ export default function OrealPage() {
               </Body1>
             </div>
           </div>
-          <div className="flex w-full max-w-[632px] flex-col items-center gap-4 rounded-2xl border border-purple-pale/60 bg-purple-dark/35 p-4 backdrop-blur-[20px]">
+          <div className="flex w-full max-w-[632px] flex-col items-center gap-4 rounded-2xl border border-purple-pale/50 bg-purple-dark/35 p-4 backdrop-blur-[20px]">
             <H3>Crazy 8</H3>
             <img src={crazy8} alt="Crazy 8" className="w-full rounded" />
           </div>
@@ -328,7 +328,7 @@ export default function OrealPage() {
               body="Comment avons-nous géré les sujets nouveaux et inconnus ?"
             />
           </div>
-          <div className="relative flex h-[350px] flex-1 min-w-[280px] items-center justify-center rounded-2xl border border-purple-pale/60 bg-purple-dark/35 backdrop-blur-[20px]">
+          <div className="relative flex h-[350px] flex-1 min-w-[280px] items-center justify-center rounded-2xl border border-purple-pale/50 bg-purple-dark/35 backdrop-blur-[20px]">
             <img src={playIcon} alt="Lire la vidéo" className="h-20 w-20 cursor-pointer" />
           </div>
         </div>

@@ -44,7 +44,6 @@ import {
   H3,
   H4,
   H5,
-  H6,
   Body1,
   Body2,
   Micro1,
@@ -243,7 +242,7 @@ export default function FinelinePage() {
           <img src={logoMark} alt="Fine Line" className="h-8" />
           <H1 className="md:!text-5xl md:!leading-[56px]">Fine Line Production</H1>
 
-          <div className="group/hero relative w-full max-w-[820px] overflow-hidden rounded-2xl border border-white/15 bg-black-soft shadow-[0_20px_60px_rgba(0,0,0,0.5)]">
+          <div className="group/hero relative w-full max-w-[820px] overflow-hidden rounded-2xl border border-white/15 bg-black-soft shadow-[0_20px_60px_color-mix(in srgb, var(--color-black-ink) 50%, transparent)]">
             <div className="flex items-center gap-2 border-b border-white/10 bg-white/5 px-4 py-4">
               <span className="size-2.5 rounded-full bg-[#ff5f57]" />
               <span className="size-2.5 rounded-full bg-[#febc2e]" />
@@ -323,7 +322,7 @@ export default function FinelinePage() {
           className="flex w-full max-w-[500px] items-center justify-center rounded-2xl p-10"
           style={{
             background:
-              'radial-gradient(circle at 50% 40%, var(--color-purple) 0%, var(--color-purple-dark) 55%, #241457 100%)',
+              'radial-gradient(circle at 50% 40%, var(--color-purple) 0%, var(--color-purple-dark) 55%, var(--color-purple-void) 100%)',
           }}
         >
           <img
@@ -365,7 +364,7 @@ export default function FinelinePage() {
                 alt="Site web actuel"
                 className="aspect-[576/367] w-full rounded-xl object-cover transition-transform duration-300 group-hover/img:scale-105"
               />
-              <div className="absolute inset-0 flex items-center justify-center bg-black/0 opacity-0 transition-all duration-300 group-hover/img:bg-black/30 group-hover/img:opacity-100">
+              <div className="absolute inset-0 flex items-center justify-center bg-black/0 opacity-0 transition-all duration-300 group-hover/img:bg-black/35 group-hover/img:opacity-100">
                 <svg
                   className="size-8 text-white"
                   viewBox="0 0 24 24"
@@ -397,7 +396,7 @@ export default function FinelinePage() {
                 alt=""
                 className="absolute inset-0 size-full object-cover transition-transform duration-300 group-hover/video:scale-105"
               />
-              <div className="absolute inset-0 bg-black/30 transition-all duration-300 group-hover/video:bg-black/45" />
+              <div className="absolute inset-0 bg-black/35 transition-all duration-300 group-hover/video:bg-black/40" />
               <img
                 src={playIcon}
                 alt=""
@@ -427,11 +426,11 @@ export default function FinelinePage() {
         </div>
         <div className="grid w-full grid-cols-1 items-start gap-8 md:grid-cols-2">
           <div
-            className="flex w-full flex-col items-start gap-6 rounded-3xl border-[1.5px] border-success/60 p-6 backdrop-blur-[20px] transition-all duration-300"
+            className="flex w-full flex-col items-start gap-6 rounded-3xl border-[1.5px] border-success/50 p-6 backdrop-blur-[20px] transition-all duration-300"
             style={{
               background: 'color-mix(in oklab, var(--color-success) 35%, transparent)',
               boxShadow:
-                'inset 0 1px 1px rgba(167,243,208,0.45), inset 0 -1px 12px color-mix(in oklab, var(--color-success) 15%, transparent), 0 0 0 1px color-mix(in oklab, var(--color-success) 20%, transparent), 0 8px 30px color-mix(in oklab, var(--color-success) 35%, transparent)',
+                'inset 0 1px 1px color-mix(in srgb, var(--color-success-bg) 40%, transparent), inset 0 -1px 12px color-mix(in oklab, var(--color-success) 15%, transparent), 0 0 0 1px color-mix(in oklab, var(--color-success) 20%, transparent), 0 8px 30px color-mix(in oklab, var(--color-success) 35%, transparent)',
             }}
           >
             <H4 className="flex items-center justify-center gap-2">
@@ -458,7 +457,7 @@ export default function FinelinePage() {
                     alt=""
                     className="h-full w-full rounded-xl object-cover transition-transform duration-300 group-hover/img:scale-110"
                   />
-                  <div className="absolute inset-0 flex items-center justify-center bg-black/0 opacity-0 transition-all duration-300 group-hover/img:bg-black/30 group-hover/img:opacity-100">
+                  <div className="absolute inset-0 flex items-center justify-center bg-black/0 opacity-0 transition-all duration-300 group-hover/img:bg-black/35 group-hover/img:opacity-100">
                     <svg
                       className="size-6 text-white"
                       viewBox="0 0 24 24"
@@ -496,11 +495,11 @@ export default function FinelinePage() {
             </div>
           </div>
           <div
-            className="flex w-full flex-col items-start gap-6 rounded-3xl border-[1.5px] border-danger/60 p-6 backdrop-blur-[20px] transition-all duration-300"
+            className="flex w-full flex-col items-start gap-6 rounded-3xl border-[1.5px] border-danger/50 p-6 backdrop-blur-[20px] transition-all duration-300"
             style={{
               background: 'color-mix(in oklab, var(--color-danger) 35%, transparent)',
               boxShadow:
-                'inset 0 1px 1px rgba(254,202,202,0.45), inset 0 -1px 12px color-mix(in oklab, var(--color-danger) 15%, transparent), 0 0 0 1px color-mix(in oklab, var(--color-danger) 20%, transparent), 0 8px 30px color-mix(in oklab, var(--color-danger) 35%, transparent)',
+                'inset 0 1px 1px color-mix(in srgb, var(--color-danger-bg) 40%, transparent), inset 0 -1px 12px color-mix(in oklab, var(--color-danger) 15%, transparent), 0 0 0 1px color-mix(in oklab, var(--color-danger) 20%, transparent), 0 8px 30px color-mix(in oklab, var(--color-danger) 35%, transparent)',
             }}
           >
             <H4 className="flex items-center justify-center gap-2">
@@ -528,7 +527,7 @@ export default function FinelinePage() {
                       alt=""
                       className="h-full w-full rounded-xl object-cover transition-transform duration-300 group-hover/img:scale-110"
                     />
-                    <div className="absolute inset-0 flex items-center justify-center bg-black/0 opacity-0 transition-all duration-300 group-hover/img:bg-black/30 group-hover/img:opacity-100">
+                    <div className="absolute inset-0 flex items-center justify-center bg-black/0 opacity-0 transition-all duration-300 group-hover/img:bg-black/35 group-hover/img:opacity-100">
                       <svg
                         className="size-6 text-white"
                         viewBox="0 0 24 24"
@@ -560,7 +559,7 @@ export default function FinelinePage() {
                       alt=""
                       className="w-full rounded-xl transition-transform duration-300 group-hover/img:scale-105"
                     />
-                    <div className="absolute inset-0 flex items-center justify-center bg-black/0 opacity-0 transition-all duration-300 group-hover/img:bg-black/30 group-hover/img:opacity-100">
+                    <div className="absolute inset-0 flex items-center justify-center bg-black/0 opacity-0 transition-all duration-300 group-hover/img:bg-black/35 group-hover/img:opacity-100">
                       <svg
                         className="size-6 text-white"
                         viewBox="0 0 24 24"
@@ -619,7 +618,7 @@ export default function FinelinePage() {
             </Body1>
           </div>
           <div className="grid w-full grid-cols-1 gap-6 md:grid-cols-2">
-            <div className="flex flex-col gap-4 rounded-2xl border border-white/15 bg-white/[0.03] p-4 backdrop-blur-sm">
+            <div className="flex flex-col gap-4 rounded-2xl border border-white/15 bg-white/5 p-4 backdrop-blur-sm">
               <img
                 src={competitorNab}
                 alt="Né à Beyrouth Films"
@@ -642,7 +641,7 @@ export default function FinelinePage() {
                 </Body1>
               </div>
             </div>
-            <div className="flex flex-col gap-4 rounded-2xl border border-white/15 bg-white/[0.03] p-4 backdrop-blur-sm">
+            <div className="flex flex-col gap-4 rounded-2xl border border-white/15 bg-white/5 p-4 backdrop-blur-sm">
               <img
                 src={competitorForward}
                 alt="Forward Film Production"
@@ -692,7 +691,7 @@ export default function FinelinePage() {
               alt="Benchmark des concurrents"
               className="w-full rounded-xl transition-transform duration-300 group-hover/img:scale-105"
             />
-            <div className="absolute inset-0 flex items-center justify-center bg-black/0 opacity-0 transition-all duration-300 group-hover/img:bg-black/30 group-hover/img:opacity-100">
+            <div className="absolute inset-0 flex items-center justify-center bg-black/0 opacity-0 transition-all duration-300 group-hover/img:bg-black/35 group-hover/img:opacity-100">
               <svg
                 className="size-8 text-white"
                 viewBox="0 0 24 24"
@@ -782,10 +781,10 @@ export default function FinelinePage() {
           </div>
         </div>
         <div className="grid w-full grid-cols-1 gap-8 md:grid-cols-2">
-          <div className="flex w-full flex-col items-center gap-8 rounded-2xl border border-white/15 bg-white/[0.03] p-6 text-center backdrop-blur-sm">
+          <div className="flex w-full flex-col items-center gap-8 rounded-2xl border border-white/15 bg-white/5 p-6 text-center backdrop-blur-sm">
             <H4>Sondage</H4>
             <div className="flex flex-col items-center gap-2">
-              <Body2 className="!text-white/60 text-center font-syne">
+              <Body2 className="!text-white/50 text-center font-syne">
                 (Quantitatif)
               </Body2>
               <div className="relative flex h-28 w-28 items-center justify-center">
@@ -812,10 +811,10 @@ export default function FinelinePage() {
               Consulter les résultats (PDF)
             </PillButton>
           </div>
-          <div className="flex w-full flex-col items-center gap-8 rounded-2xl border border-white/15 bg-white/[0.03] p-6 text-center backdrop-blur-sm">
+          <div className="flex w-full flex-col items-center gap-8 rounded-2xl border border-white/15 bg-white/5 p-6 text-center backdrop-blur-sm">
             <H4>Interviews</H4>
             <div className="flex flex-col items-center gap-2">
-              <Body2 className="!text-white/60 text-center font-syne">
+              <Body2 className="!text-white/50 text-center font-syne">
                 (Qualitatif)
               </Body2>
               <div className="relative flex h-28 w-40 items-center justify-center">
@@ -866,7 +865,7 @@ export default function FinelinePage() {
             alt="Empathy Map"
             className="w-full rounded-xl transition-transform duration-300 group-hover/img:scale-105"
           />
-          <div className="absolute inset-0 flex items-center justify-center bg-black/0 opacity-0 transition-all duration-300 group-hover/img:bg-black/30 group-hover/img:opacity-100">
+          <div className="absolute inset-0 flex items-center justify-center bg-black/0 opacity-0 transition-all duration-300 group-hover/img:bg-black/35 group-hover/img:opacity-100">
             <svg
               className="size-8 text-white"
               viewBox="0 0 24 24"
@@ -918,7 +917,7 @@ export default function FinelinePage() {
           </Body1>
         </div>
         <div className="grid w-full grid-cols-1 gap-6 md:grid-cols-2">
-          <div className="flex flex-col gap-2 rounded-2xl border border-white/15 bg-white/[0.03] p-6 backdrop-blur-sm">
+          <div className="flex flex-col gap-2 rounded-2xl border border-white/15 bg-white/5 p-6 backdrop-blur-sm">
             <H5 className="text-purple-pale/70">Cible Primaire</H5>
             <H4 className="w-auto text-left">
               Entreprises de biens de grande consommation (FMCG)
@@ -928,7 +927,7 @@ export default function FinelinePage() {
               (Liban) telles que Cosmaline, Master Chips, Ghandour, etc.
             </Body1>
           </div>
-          <div className="flex flex-col gap-2 rounded-2xl border border-white/15 bg-white/[0.03] p-6 backdrop-blur-sm">
+          <div className="flex flex-col gap-2 rounded-2xl border border-white/15 bg-white/5 p-6 backdrop-blur-sm">
             <H5 className="text-purple-pale/70">Cible Secondaire</H5>
             <H4 className="w-auto text-left">
               ONG et organisations internationales (NGOs / INGOs)
@@ -943,7 +942,7 @@ export default function FinelinePage() {
         </div>
 
         <H3 className="w-full text-center">Personas Primaire</H3>
-        <div className="flex w-full max-w-[1000px] flex-col gap-8 rounded-2xl border border-white/15 bg-white/[0.03] p-8 backdrop-blur-sm">
+        <div className="flex w-full max-w-[1000px] flex-col gap-8 rounded-2xl border border-white/15 bg-white/5 p-8 backdrop-blur-sm">
           <div className="flex w-full flex-wrap gap-10">
             <img
               src={personaTania}
@@ -1066,7 +1065,7 @@ export default function FinelinePage() {
               alt="Direction artistique 1"
               className="w-full rounded-xl transition-transform duration-300 group-hover/img:scale-105"
             />
-            <div className="absolute inset-0 flex items-center justify-center bg-black/0 opacity-0 transition-all duration-300 group-hover/img:bg-black/30 group-hover/img:opacity-100">
+            <div className="absolute inset-0 flex items-center justify-center bg-black/0 opacity-0 transition-all duration-300 group-hover/img:bg-black/35 group-hover/img:opacity-100">
               <svg
                 className="size-8 text-white"
                 viewBox="0 0 24 24"
@@ -1093,7 +1092,7 @@ export default function FinelinePage() {
               alt="Direction artistique 2"
               className="w-full rounded-xl transition-transform duration-300 group-hover/img:scale-105"
             />
-            <div className="absolute inset-0 flex items-center justify-center bg-black/0 opacity-0 transition-all duration-300 group-hover/img:bg-black/30 group-hover/img:opacity-100">
+            <div className="absolute inset-0 flex items-center justify-center bg-black/0 opacity-0 transition-all duration-300 group-hover/img:bg-black/35 group-hover/img:opacity-100">
               <svg
                 className="size-8 text-white"
                 viewBox="0 0 24 24"
@@ -1143,13 +1142,13 @@ export default function FinelinePage() {
                 key={w.label}
                 type="button"
                 onClick={() => setLightboxIndex(i)}
-                className="flex w-[340px] max-w-full cursor-pointer flex-col gap-4 overflow-hidden rounded-3xl border-[1.5px] border-purple-pale/60 bg-purple-dark/35 p-4 text-left backdrop-blur-[20px] shadow-[inset_0_1px_1px_color-mix(in_oklab,var(--color-purple-highlight)_45%,transparent),inset_0_-1px_12px_color-mix(in_oklab,var(--color-purple-mid)_15%,transparent),0_0_0_1px_color-mix(in_oklab,var(--color-purple-mid)_20%,transparent),0_8px_30px_color-mix(in_oklab,var(--color-purple-mid)_35%,transparent)] transition-all duration-300 hover:-translate-y-1"
+                className="flex w-[340px] max-w-full cursor-pointer flex-col gap-4 overflow-hidden rounded-3xl border-[1.5px] border-purple-pale/50 bg-purple-dark/35 p-4 text-left backdrop-blur-[20px] shadow-[inset_0_1px_1px_color-mix(in_oklab,var(--color-purple-highlight)_45%,transparent),inset_0_-1px_12px_color-mix(in_oklab,var(--color-purple-mid)_15%,transparent),0_0_0_1px_color-mix(in_oklab,var(--color-purple-mid)_20%,transparent),0_8px_30px_color-mix(in_oklab,var(--color-purple-mid)_35%,transparent)] transition-all duration-300 hover:-translate-y-1"
               >
                 <div
                   className="relative h-[220px] w-full overflow-hidden rounded-2xl border border-white/10"
                   style={{
                     boxShadow:
-                      '0 6px 18px rgba(0,0,0,0.45), inset 0 1px 0 rgba(255,255,255,0.15)',
+                      '0 6px 18px color-mix(in srgb, var(--color-black-ink) 40%, transparent), inset 0 1px 0 color-mix(in srgb, var(--color-white) 15%, transparent)',
                   }}
                 >
                   <img
@@ -1157,7 +1156,7 @@ export default function FinelinePage() {
                     alt={w.label}
                     className="absolute inset-0 size-full scale-110 object-cover object-top"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-b from-white/10 via-transparent to-black/20" />
+                  <div className="absolute inset-0 bg-gradient-to-b from-white/10 via-transparent to-black/15" />
                 </div>
                 <H4 className="w-full px-2 pb-2 !text-white">
                   {w.label}
@@ -1271,8 +1270,8 @@ export default function FinelinePage() {
                   }}
                   className={`cursor-pointer rounded-full border px-4 py-2 text-sm transition-all duration-200 ${
                     playbackRate === rate
-                      ? 'border-purple-pale/70 bg-purple/55 text-white'
-                      : 'border-white/15 text-white/60 hover:text-white'
+                      ? 'border-purple-pale/70 bg-purple/50 text-white'
+                      : 'border-white/15 text-white/50 hover:text-white'
                   }`}
                 >
                   {rate}x
@@ -1297,12 +1296,12 @@ export default function FinelinePage() {
         </div>
         <div className="flex w-full flex-col items-center gap-6">
           <div className="grid w-full grid-cols-1 gap-4 md:grid-cols-3">
-            <div className="flex flex-col gap-4 rounded-2xl border border-white/10 bg-white/[0.03] p-6 backdrop-blur-sm">
+            <div className="flex flex-col gap-4 rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-sm">
               <div className="flex items-center gap-2">
                 <span className="size-2 rounded-full bg-purple-pale/70" />
                 <H4 className="w-auto text-left">01 Recherche</H4>
               </div>
-              <ul className="list-disc space-y-2 pl-6 text-sm text-white/65">
+              <ul className="list-disc space-y-2 pl-6 text-sm text-white/70">
                 <li>Audit UX du site existant (1 jour)</li>
                 <li>Benchmark des concurrents (1 jour)</li>
                 <li>
@@ -1317,18 +1316,18 @@ export default function FinelinePage() {
                   jours)
                 </li>
               </ul>
-              <Micro1 className="!text-white/65 mt-auto border-t border-white/10 pt-4">
+              <Micro1 className="!text-white/70 mt-auto border-t border-white/10 pt-4">
                 10,5 jours × 30,45 € ={' '}
                 <span className="font-semibold text-white">319,73 €</span>
               </Micro1>
             </div>
 
-            <div className="flex flex-col gap-4 rounded-2xl border border-white/10 bg-white/[0.03] p-6 backdrop-blur-sm">
+            <div className="flex flex-col gap-4 rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-sm">
               <div className="flex items-center gap-2">
                 <span className="size-2 rounded-full bg-purple-pale/70" />
                 <H4 className="w-auto text-left">02 Création Visuelle</H4>
               </div>
-              <ul className="list-disc space-y-2 pl-6 text-sm text-white/65">
+              <ul className="list-disc space-y-2 pl-6 text-sm text-white/70">
                 <li>Conception de la plateforme de marque (1,5 jours)</li>
                 <li>
                   Création de l'arborescence et architecture du site (1 jour)
@@ -1339,22 +1338,22 @@ export default function FinelinePage() {
                 </li>
                 <li>Début de la maquette sur Webflow (3 jours)</li>
               </ul>
-              <Micro1 className="!text-white/65 mt-auto border-t border-white/10 pt-4">
+              <Micro1 className="!text-white/70 mt-auto border-t border-white/10 pt-4">
                 9 jours × 30,45 € ={' '}
                 <span className="font-semibold text-white">274,05 €</span>
               </Micro1>
             </div>
 
-            <div className="flex flex-col gap-4 rounded-2xl border border-white/10 bg-white/[0.03] p-6 backdrop-blur-sm">
+            <div className="flex flex-col gap-4 rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-sm">
               <div className="flex items-center gap-2">
                 <span className="size-2 rounded-full bg-purple-pale/70" />
                 <H4 className="w-auto text-left">03 Webflow</H4>
               </div>
-              <Micro1 className="!text-white/65">
+              <Micro1 className="!text-white/70">
                 Hébergement CMS pour une année complète (du 8 août 2024 au 7
                 août 2025)
               </Micro1>
-              <Micro1 className="!text-white/65 mt-auto border-t border-white/10 pt-4">
+              <Micro1 className="!text-white/70 mt-auto border-t border-white/10 pt-4">
                 <span className="font-semibold text-white">254,00 €</span>
               </Micro1>
             </div>

@@ -86,7 +86,7 @@ export default function Projects() {
                 className="relative min-h-0 flex-1 overflow-hidden rounded-2xl border border-white/10"
                 style={{
                   boxShadow:
-                    '0 6px 18px rgba(0,0,0,0.45), inset 0 1px 0 rgba(255,255,255,0.15)',
+                    '0 6px 18px color-mix(in srgb, var(--color-black-ink) 40%, transparent), inset 0 1px 0 color-mix(in srgb, var(--color-white) 15%, transparent)',
                 }}
               >
                 <img
@@ -94,7 +94,7 @@ export default function Projects() {
                   alt={project.title}
                   className="absolute inset-0 size-full object-cover"
                 />
-                <div className="absolute inset-0 bg-gradient-to-b from-white/10 via-transparent to-black/20" />
+                <div className="absolute inset-0 bg-gradient-to-b from-white/10 via-transparent to-black/15" />
               </div>
               <div className="flex flex-col items-start gap-2 px-2 pb-2">
                 <H3 className="w-full text-xl !leading-7">{project.title}</H3>
@@ -110,7 +110,7 @@ export default function Projects() {
           )
 
           const cardClass =
-            'absolute h-[400px] w-[340px] overflow-hidden rounded-3xl border-[1.5px] border-purple-pale/60 bg-purple-dark/35 backdrop-blur-[20px] transition-[transform,opacity] duration-[900ms] ease-[cubic-bezier(0.16,1,0.3,1)] will-change-transform'
+            'absolute h-[400px] w-[340px] overflow-hidden rounded-3xl border-[1.5px] border-purple-pale/50 bg-purple-dark/35 backdrop-blur-[20px] transition-[transform,opacity] duration-[900ms] ease-[cubic-bezier(0.16,1,0.3,1)] will-change-transform'
 
           const style = {
             transform: `translateX(${translateX}px) scale(${scale}) rotateY(${rotateY}deg)`,
@@ -155,7 +155,7 @@ export default function Projects() {
             setActiveIndex((prev) => (prev - 1 + projects.length) % projects.length)
           }
           aria-label="Projet précédent"
-          className="glass-dark flex size-11 cursor-pointer items-center justify-center rounded-full border-[1.5px] border-purple-pale/60 text-white shadow-[0_0_10px_color-mix(in_oklab,var(--color-purple-light)_60%,transparent)] transition-all duration-300 hover:shadow-[0_0_16px_color-mix(in_oklab,var(--color-purple-light)_90%,transparent)]"
+          className="glass-dark flex size-11 cursor-pointer items-center justify-center rounded-full border-[1.5px] border-purple-pale/50 text-white shadow-[0_0_10px_color-mix(in_oklab,var(--color-purple-light)_60%,transparent)] transition-all duration-300 hover:shadow-[0_0_16px_color-mix(in_oklab,var(--color-purple-light)_90%,transparent)]"
         >
           <ChevronIcon direction="left" />
         </button>
@@ -166,7 +166,7 @@ export default function Projects() {
             setActiveIndex((prev) => (prev + 1) % projects.length)
           }
           aria-label="Projet suivant"
-          className="glass-dark flex size-11 cursor-pointer items-center justify-center rounded-full border-[1.5px] border-purple-pale/60 text-white shadow-[0_0_10px_color-mix(in_oklab,var(--color-purple-light)_60%,transparent)] transition-all duration-300 hover:shadow-[0_0_16px_color-mix(in_oklab,var(--color-purple-light)_90%,transparent)]"
+          className="glass-dark flex size-11 cursor-pointer items-center justify-center rounded-full border-[1.5px] border-purple-pale/50 text-white shadow-[0_0_10px_color-mix(in_oklab,var(--color-purple-light)_60%,transparent)] transition-all duration-300 hover:shadow-[0_0_16px_color-mix(in_oklab,var(--color-purple-light)_90%,transparent)]"
         >
           <ChevronIcon direction="right" />
         </button>

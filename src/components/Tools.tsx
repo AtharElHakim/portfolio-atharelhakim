@@ -53,7 +53,7 @@ export default function Tools() {
               <div
                 className={`flex h-[57px] w-[58px] items-center justify-center shadow-sm ${
                   tool.circle ? 'rounded-full' : 'rounded-xl'
-                } ${tool.padded ? 'border-[0.2px] border-[rgba(0,0,0,0.15)] bg-white p-2' : ''}`}
+                } ${tool.padded ? 'border-[0.2px] border-black-ink/15 bg-white p-2' : ''}`}
               >
                 <img
                   src={tool.icon}

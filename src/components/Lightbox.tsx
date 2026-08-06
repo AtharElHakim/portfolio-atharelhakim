@@ -23,7 +23,7 @@ function ArrowIcon({ direction }: { direction: 'left' | 'right' }) {
     >
       <path
         d="M5 12H19M19 12L13 6M19 12L13 18"
-        stroke="#fdfbf6"
+        stroke="var(--color-white)"
         strokeWidth="2"
         strokeLinecap="round"
         strokeLinejoin="round"
@@ -42,7 +42,7 @@ function CloseIcon() {
     >
       <path
         d="M6 6L18 18M18 6L6 18"
-        stroke="#fdfbf6"
+        stroke="var(--color-white)"
         strokeWidth="2"
         strokeLinecap="round"
         strokeLinejoin="round"
@@ -122,7 +122,7 @@ export default function Lightbox({
       )}
 
       {images.length > 1 && (
-        <p className="absolute bottom-6 left-1/2 -translate-x-1/2 text-sm text-[#fdfbf6]">
+        <p className="absolute bottom-6 left-1/2 -translate-x-1/2 text-sm text-white">
           {index + 1} / {images.length}
         </p>
       )}

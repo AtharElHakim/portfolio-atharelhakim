@@ -4,10 +4,10 @@ import mailIcon from '../assets/mail-icon.svg'
 
 export default function Footer() {
   return (
-    <footer className="relative flex flex-col items-center justify-end">
+    <footer className="relative flex flex-col items-center justify-end bg-black">
       <div className="mx-auto flex w-full max-w-[1440px] flex-col items-center justify-between gap-8 px-8 py-12 md:flex-row md:px-[var(--nav-edge-w)] md:py-20">
         <div className="flex flex-col items-center gap-8 md:flex-row md:gap-12">
-          <p className="font-syne text-2xl leading-9 text-white/70 md:text-[30px]">
+          <p className="font-syne text-2xl leading-9 text-white/70 md:text-3xl">
             Athar El Hakim
           </p>
           <nav className="flex flex-wrap items-center justify-center gap-4">

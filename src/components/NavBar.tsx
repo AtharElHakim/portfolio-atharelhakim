@@ -95,7 +95,7 @@ function ProjectsDropdown() {
               key={item.to}
               to={item.to}
               onClick={() => setOpen(false)}
-              className="cursor-pointer px-4 py-2 text-base leading-6 text-white/70 transition-colors duration-200 hover:bg-purple-mid/20 hover:text-white"
+              className="cursor-pointer px-4 py-2 text-base leading-6 text-white/70 transition-colors duration-200 hover:bg-purple-mid/15 hover:text-white"
             >
               {item.label}
             </Link>
@@ -133,7 +133,7 @@ export default function NavBar() {
         </Link>
 
         <nav
-          className="flex flex-wrap items-center justify-center gap-2 rounded-full border border-white/15 bg-white/6 p-2 md:absolute md:left-1/2 md:-translate-x-1/2"
+          className="flex flex-wrap items-center justify-center gap-2 rounded-full border border-white/15 bg-white/5 p-2 md:absolute md:left-1/2 md:-translate-x-1/2"
           style={{
             backdropFilter: 'blur(20px)',
             WebkitBackdropFilter: 'blur(20px)',

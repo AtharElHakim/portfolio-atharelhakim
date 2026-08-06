@@ -95,7 +95,7 @@ function SlideGallery({
   return (
     <div id={id} className="relative flex flex-col items-start gap-6 p-8 md:py-16 md:px-[var(--nav-edge-w)]">
       <SectionTitle>{title}</SectionTitle>
-      <ul className="flex list-disc flex-col gap-2 pl-5 text-lg leading-7 text-white/75 md:text-xl">
+      <ul className="flex list-disc flex-col gap-2 pl-5 text-lg leading-7 text-white/70 md:text-xl">
         {bullets.map((bullet) => (
           <li key={bullet}>{bullet}</li>
         ))}
@@ -172,7 +172,7 @@ export default function AngryBirdsPage() {
             Angry Birds
           </H1>
 
-          <div className="w-full max-w-[820px] overflow-hidden rounded-2xl border border-purple-pale/60 bg-purple-dark/35 p-4 backdrop-blur-[20px]">
+          <div className="w-full max-w-[820px] overflow-hidden rounded-2xl border border-purple-pale/50 bg-purple-dark/35 p-4 backdrop-blur-[20px]">
             <img
               src={heroIllustration}
               alt="Illustration Angry Birds"
