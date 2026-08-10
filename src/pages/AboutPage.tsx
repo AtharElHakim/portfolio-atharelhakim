@@ -1,6 +1,6 @@
 import Contact from '../components/Contact'
-import portraitImg from '../assets/about-portrait.png'
-import speechBubbleImg from '../assets/about-speech-bubble.svg'
+import { Body1 } from '../components/Typography'
+import portraitImg from '../assets/about-portrait-bust.png'
 import canoeSketchImg from '../assets/about-canoe-sketch.png'
 import clapperboardImg from '../assets/about-clapperboard.png'
 import wireframeSketchImg from '../assets/about-wireframe-sketch.png'
@@ -16,11 +16,11 @@ function TimelineItem({
   paragraphs: string[]
 }) {
   return (
-    <div className="flex w-full items-start justify-center gap-4 border-l-2 border-[rgba(0,0,0,0.15)] pl-4">
-      <div className="flex-1 text-[rgba(7,7,7,0.88)]">
-        <p className="text-xl leading-7 text-[#070707]">{title}</p>
+    <div className="flex w-full items-start justify-center gap-4 border-l-2 border-white/15 pl-4">
+      <div className="flex-1 text-white/85">
+        <p className="text-xl leading-7 text-white">{title}</p>
         {paragraphs.map((paragraph) => (
-          <p key={paragraph} className="text-lg leading-7 text-[rgba(0,0,0,0.7)]">
+          <p key={paragraph} className="text-lg leading-7 text-white/70">
             {paragraph}
           </p>
         ))}
@@ -31,38 +31,25 @@ function TimelineItem({
 
 export default function AboutPage() {
   return (
-    <div className="bg-[#fdfbf6]">
-      <div className="flex items-center justify-center gap-12 border-b border-[#070707] px-8 pb-[88px] pt-[138px] md:gap-24 md:px-[var(--nav-edge-w)]">
-        <div className="hidden items-center md:flex">
-          <div className="h-[484px] w-[173px] shrink-0 overflow-hidden rounded-[3px]">
-            <img
-              src={portraitImg}
-              alt="Portrait illustré d'Athar"
-              className="h-full w-full -scale-x-100 object-cover"
-              style={{ objectPosition: '44% center' }}
-            />
-          </div>
-          <div className="relative -ml-[13px] -mt-[50px] h-[106px] w-[202px] shrink-0 self-start">
-            <img
-              src={speechBubbleImg}
-              alt=""
-              className="absolute inset-0 h-full w-full"
-            />
-            <p className="absolute left-6 top-[25px] whitespace-nowrap font-syne text-[30px] leading-9 text-[rgba(7,7,7,0.88)]">
-              Qui suis-je ?
-            </p>
-          </div>
+    <div className="relative isolate">
+      <div className="flex items-end justify-center gap-12 border-b border-white/10 px-8 pb-[88px] pt-[138px] md:gap-24 md:px-[var(--nav-edge-w)]">
+        <div className="-mb-[88px] hidden shrink-0 items-end md:flex">
+          <img
+            src={portraitImg}
+            alt="Portrait illustré d'Athar"
+            className="size-[380px] object-contain"
+          />
         </div>
         <div className="flex max-w-[510px] flex-col items-start gap-4 self-start">
           <div className="font-syne text-5xl leading-tight md:text-[72px] md:leading-[72px]">
-            <p className="text-[#070707]">Je m'appelle</p>
-            <p className="text-[#d97736]">Athar El Hakim !</p>
+            <p className="text-white">Je m'appelle</p>
+            <p className="whitespace-nowrap text-purple-pale">Athar El Hakim !</p>
           </div>
           <div className="flex flex-col items-start gap-1">
-            <p className="font-syne text-2xl leading-8 text-[#070707]">
+            <p className="font-syne text-2xl leading-8 text-white">
               UX/UI designer et Réalisatrice
             </p>
-            <p className="text-lg leading-7 text-[rgba(7,7,7,0.88)] md:text-xl">
+            <p className="text-lg leading-7 text-white/85 md:text-xl">
               Je suis une personne polyvalente, en quête de ma prochaine
               aventure ! La créativité, c'est mon point de départ, peu importe
               où elle m'emmène.
@@ -71,14 +58,14 @@ export default function AboutPage() {
         </div>
       </div>
 
-      <section className="relative flex items-start justify-center gap-16 overflow-hidden border-b border-[#070707] p-8 md:py-16 md:px-[var(--nav-edge-w)]">
+      <section className="relative flex items-start justify-center gap-16 overflow-hidden border-b border-white/10 p-8 md:py-16 md:px-[var(--nav-edge-w)]">
         <img
           src={canoeSketchImg}
           alt=""
-          className="pointer-events-none absolute -left-24 top-0 w-[550px] rotate-12 opacity-40"
+          className="pointer-events-none absolute -left-24 top-0 w-[550px] rotate-12 opacity-25 invert"
         />
         <div className="relative z-10 shrink-0">
-          <h2 className="font-syne text-4xl leading-tight text-[#070707] md:text-5xl md:leading-[48px]">
+          <h2 className="font-syne text-4xl leading-tight text-white md:text-5xl md:leading-[48px]">
             Là où tout
             <br />a commencé
           </h2>
@@ -105,22 +92,22 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="flex flex-col items-center gap-6 bg-[rgba(7,7,7,0.88)] p-8 text-center md:py-16 md:px-[var(--nav-edge-w)]">
-        <h2 className="font-syne text-4xl leading-tight text-[#fdfbf6] md:text-5xl md:leading-[48px]">
+      <section className="flex flex-col items-center gap-6 border-y border-white/10 bg-black-soft p-8 text-center md:py-16 md:px-[var(--nav-edge-w)]">
+        <h2 className="font-syne text-4xl leading-tight text-white md:text-5xl md:leading-[48px]">
           Un Tournant Décisif
         </h2>
-        <div className="flex max-w-[1066px] flex-col items-center gap-4 text-[#fdfbf6]">
-          <p className="text-lg leading-7 md:text-xl">
+        <div className="flex max-w-[1066px] flex-col items-center gap-4">
+          <Body1 className="font-light">
             Mais avec l'instabilité économique et sociale croissante au Liban,
             j'ai commencé à repenser mon avenir. Je voulais évoluer, explorer
             de nouvelles manières de raconter des histoires et construire une
             carrière dans un environnement plus stable.
-          </p>
-          <p className="text-lg leading-7 md:text-xl">
+          </Body1>
+          <Body1 className="font-light">
             C'est ainsi qu'en août 2024, je suis arrivée à Paris pour suivre
             un Master en UX/UI Lead Design à Sup de Pub.
-          </p>
-          <div className="flex items-center gap-6 text-base">
+          </Body1>
+          <div className="flex items-center gap-6 text-base text-white/85">
             <span className="flex items-center gap-2">
               <img src={libanIcon} alt="" className="h-[15px] w-5" />
               Liban
@@ -133,9 +120,9 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="flex flex-col items-start justify-center gap-20 border-b border-[#070707] p-8 md:flex-row md:py-16 md:px-[var(--nav-edge-w)]">
+      <section className="flex flex-col items-start justify-center gap-20 border-b border-white/10 p-8 md:flex-row md:py-16 md:px-[var(--nav-edge-w)]">
         <div className="flex flex-col items-center gap-12">
-          <h2 className="w-full font-syne text-4xl leading-tight text-[#070707] md:w-[300px] md:text-5xl md:leading-[48px]">
+          <h2 className="w-full font-syne text-4xl leading-tight text-white md:w-[300px] md:text-5xl md:leading-[48px]">
             Un nouveau
             <br />
             chapitre
@@ -145,7 +132,7 @@ export default function AboutPage() {
               <img
                 src={clapperboardImg}
                 alt=""
-                className="absolute max-w-none"
+                className="absolute max-w-none invert"
                 style={{
                   height: '193.53%',
                   width: '158.71%',
@@ -167,7 +154,7 @@ export default function AboutPage() {
               <img
                 src={wireframeSketchImg}
                 alt=""
-                className="absolute max-w-none"
+                className="absolute max-w-none invert"
                 style={{
                   height: '180.11%',
                   width: '100%',
@@ -181,7 +168,7 @@ export default function AboutPage() {
         </div>
         <div className="flex max-w-[740px] flex-col gap-6">
           <div className="flex flex-col gap-4">
-            <p className="font-syne text-2xl leading-8 text-[#d97736]">
+            <p className="font-syne text-2xl leading-8 text-purple-pale">
               Première Année en France
             </p>
             <div className="flex flex-col gap-2">
@@ -202,7 +189,7 @@ export default function AboutPage() {
             </div>
           </div>
           <div className="flex flex-col gap-4">
-            <p className="font-syne text-2xl leading-8 text-[#d97736]">
+            <p className="font-syne text-2xl leading-8 text-purple-pale">
               Deuxième Année en France
             </p>
             <div className="flex flex-col gap-2">
@@ -225,7 +212,7 @@ export default function AboutPage() {
       </section>
 
       <section className="flex flex-col items-center justify-center p-8 md:py-16 md:px-[var(--nav-edge-w)]">
-        <p className="max-w-[952px] text-center font-syne text-2xl leading-tight text-[rgba(7,7,7,0.88)] md:text-4xl md:leading-10">
+        <p className="max-w-[952px] text-center font-syne text-2xl leading-tight text-white/85 md:text-4xl md:leading-10">
           Aujourd'hui, je suis à la recherche de ma prochaine étape, celle qui
           me permettra d'explorer davantage le monde de l'UX/UI. Je suis
           impatiente de voir où ce chemin me mènera !
