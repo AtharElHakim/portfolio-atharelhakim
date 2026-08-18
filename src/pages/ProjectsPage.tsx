@@ -82,33 +82,14 @@ function ProjectCategorySection({
 export default function ProjectsPage() {
   return (
     <div className="relative isolate">
-      <div
-        className="pointer-events-none absolute left-1/2 top-0 -z-10 h-[340px] w-[1100px] max-w-[140vw] -translate-x-1/2 -translate-y-1/3 opacity-60 blur-3xl"
-        style={{
-          background:
-            'radial-gradient(ellipse at center, var(--color-purple-light) 0%, var(--color-purple) 45%, transparent 75%)',
-        }}
-      />
-      <div
-        className="pointer-events-none absolute left-[-10%] top-0 -z-10 h-[340px] w-[700px] max-w-[70vw] -translate-y-1/3 opacity-60 blur-3xl"
-        style={{
-          background:
-            'radial-gradient(ellipse at center, var(--color-purple-light) 0%, var(--color-purple) 45%, transparent 75%)',
-        }}
-      />
-      <div
-        className="pointer-events-none absolute right-[-10%] top-0 -z-10 h-[340px] w-[700px] max-w-[70vw] -translate-y-1/3 opacity-60 blur-3xl"
-        style={{
-          background:
-            'radial-gradient(ellipse at center, var(--color-purple-light) 0%, var(--color-purple) 45%, transparent 75%)',
-        }}
-      />
 
       <div className="flex flex-col items-center gap-6 p-8 text-center md:py-16 md:px-[var(--nav-edge-w)]">
         <div className="flex max-w-[720px] flex-col items-center gap-4">
           <H1>Projets</H1>
-          <Body1 className="font-light">
-            Voici une sélection de mes projets UX/UI. Bonne exploration !
+          <Body1 className="font-light !text-xl md:!text-2xl">
+            Voici une sélection de mes projets UX/UI.
+            <br />
+            Bonne exploration !
           </Body1>
         </div>
       </div>

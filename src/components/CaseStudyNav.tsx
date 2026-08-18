@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { createPortal } from 'react-dom'
 import { Link } from 'react-router-dom'
 
 function ArrowLeftIcon() {
@@ -69,31 +70,34 @@ export default function CaseStudyNav({
         </Link>
       </div>
 
-      <div className="pointer-events-none fixed right-6 top-1/2 z-10 hidden -translate-y-1/2 lg:block xl:right-10">
-        <nav className="pointer-events-auto flex flex-col items-end gap-2 border-r border-white/15 pr-4">
-          {sections.map((section, i) => {
-            const isActive = section.id === activeId
-            const showGroup = section.group && section.group !== sections[i - 1]?.group
-            return (
-              <div key={section.id} className="flex flex-col items-end">
-                {showGroup && (
-                  <p className="mb-2 mt-2 whitespace-nowrap text-xs font-semibold uppercase tracking-widest text-purple-pale/70 first:mt-0">
-                    {section.group}
-                  </p>
-                )}
-                <a
-                  href={`#${section.id}`}
-                  className={`whitespace-nowrap text-sm transition-colors duration-300 hover:text-white ${
-                    isActive ? 'font-medium text-white' : 'text-white/50'
-                  }`}
-                >
-                  {section.label}
-                </a>
-              </div>
-            )
-          })}
-        </nav>
-      </div>
+      {createPortal(
+        <div className="pointer-events-none fixed right-6 top-1/2 z-50 hidden -translate-y-1/2 lg:block xl:right-10">
+          <nav className="pointer-events-auto flex flex-col items-end gap-2 border-r border-white/15 pr-4">
+            {sections.map((section, i) => {
+              const isActive = section.id === activeId
+              const showGroup = section.group && section.group !== sections[i - 1]?.group
+              return (
+                <div key={section.id} className="flex flex-col items-end">
+                  {showGroup && (
+                    <p className="mb-2 mt-2 whitespace-nowrap text-xs font-semibold uppercase tracking-widest text-purple-pale/70 first:mt-0">
+                      {section.group}
+                    </p>
+                  )}
+                  <a
+                    href={`#${section.id}`}
+                    className={`whitespace-nowrap text-sm transition-colors duration-300 hover:text-white ${
+                      isActive ? 'font-medium text-white' : 'text-white/50'
+                    }`}
+                  >
+                    {section.label}
+                  </a>
+                </div>
+              )
+            })}
+          </nav>
+        </div>,
+        document.body,
+      )}
     </>
   )
 }

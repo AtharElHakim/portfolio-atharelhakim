@@ -1,8 +1,67 @@
 @import "tailwindcss";
 
+/* Neue Montreal — the display face used everywhere `font-syne` is applied
+   (H1–H3, section numbers, pull quotes). Files live in src/assets/fonts/. */
+@font-face {
+  font-family: "Neue Montreal";
+  src: url("./assets/fonts/NeueMontreal-Light.otf") format("opentype");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Neue Montreal";
+  src: url("./assets/fonts/NeueMontreal-LightItalic.otf") format("opentype");
+  font-weight: 300;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Neue Montreal";
+  src: url("./assets/fonts/NeueMontreal-Regular.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Neue Montreal";
+  src: url("./assets/fonts/NeueMontreal-Italic.otf") format("opentype");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Neue Montreal";
+  src: url("./assets/fonts/NeueMontreal-Medium.otf") format("opentype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Neue Montreal";
+  src: url("./assets/fonts/NeueMontreal-MediumItalic.otf") format("opentype");
+  font-weight: 500;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Neue Montreal";
+  src: url("./assets/fonts/NeueMontreal-Bold.otf") format("opentype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Neue Montreal";
+  src: url("./assets/fonts/NeueMontreal-BoldItalic.otf") format("opentype");
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+
 @theme {
   --font-sans: "Roboto", system-ui, sans-serif;
-  --font-syne: "Roboto", system-ui, sans-serif;
+  --font-syne: "Neue Montreal", "Roboto", system-ui, sans-serif;
 
   /* White — the site's off-white/cream text color */
   --color-white: #fdfbf6;
@@ -33,7 +92,11 @@
   --color-grey: #9ca3af;
   --color-grey-dark: #6b7280;
 
-  /* Semantic */
+  /* Semantic. "success"/"danger" are the saturated tone — borders, dots,
+     icon fills on top of the tinted glass background. "success-bg"/
+     "danger-bg" are the pale tint — reserved for TEXT on top of that same
+     tinted background, since the saturated tone fails WCAG contrast there
+     (e.g. "Point Forts" / "Point Faible" card headings). */
   --color-success: #4a7c59;
   --color-success-bg: #a7f3d0;
   --color-danger: #7c4a4a;
@@ -43,6 +106,10 @@
 
 :root {
   --nav-edge-w: 6rem;
+}
+
+html {
+  scroll-padding-top: 64px;
 }
 
 body {

@@ -194,27 +194,6 @@ export default function FinelinePage() {
 
   return (
     <div className="relative isolate">
-      <div
-        className="pointer-events-none absolute left-1/2 top-0 -z-10 h-[340px] w-[1100px] max-w-[140vw] -translate-x-1/2 -translate-y-1/3 opacity-60 blur-3xl"
-        style={{
-          background:
-            'radial-gradient(ellipse at center, var(--color-purple-light) 0%, var(--color-purple) 45%, transparent 75%)',
-        }}
-      />
-      <div
-        className="pointer-events-none absolute left-[-10%] top-0 -z-10 h-[340px] w-[700px] max-w-[70vw] -translate-y-1/3 opacity-60 blur-3xl"
-        style={{
-          background:
-            'radial-gradient(ellipse at center, var(--color-purple-light) 0%, var(--color-purple) 45%, transparent 75%)',
-        }}
-      />
-      <div
-        className="pointer-events-none absolute right-[-10%] top-0 -z-10 h-[340px] w-[700px] max-w-[70vw] -translate-y-1/3 opacity-60 blur-3xl"
-        style={{
-          background:
-            'radial-gradient(ellipse at center, var(--color-purple-light) 0%, var(--color-purple) 45%, transparent 75%)',
-        }}
-      />
       <CaseStudyNav
         sections={[
           { id: 'overview', label: 'Overview' },
@@ -237,9 +216,9 @@ export default function FinelinePage() {
       />
 
       {/* Header */}
-      <div id="overview" className="flex flex-col items-center gap-6 p-8 md:py-16 md:px-[var(--nav-edge-w)]">
-        <div className="flex flex-col items-center gap-4 text-center">
-          <img src={logoMark} alt="Fine Line" className="h-8" />
+      <div id="overview" className="flex flex-col items-center gap-6 px-8 pb-8 pt-4 md:pb-16 md:pt-10 md:px-[var(--nav-edge-w)]">
+        <div className="flex w-full flex-col items-center gap-4 text-center">
+          <img src={logoMark} alt="Fine Line" className="h-9" />
           <H1 className="md:!text-5xl md:!leading-[56px]">Fine Line Production</H1>
 
           <div className="group/hero relative w-full max-w-[820px] overflow-hidden rounded-2xl border border-white/15 bg-black-soft shadow-[0_20px_60px_color-mix(in srgb, var(--color-black-ink) 50%, transparent)]">
@@ -259,44 +238,44 @@ export default function FinelinePage() {
             </div>
           </div>
 
-          <div className="flex w-full flex-wrap items-start justify-center gap-10 border-t border-white/10 pt-8 text-left">
-            <div className="flex max-w-[320px] flex-col gap-2">
-              <H5>Overview</H5>
-              <Body2 className="!text-white font-light">
+          <div className="flex w-full flex-col items-center gap-8 border-t border-white/10 pt-8 text-center">
+            <div className="flex w-full flex-col items-center gap-2">
+              <H5 className="!text-lg">Overview</H5>
+              <Body1 className="!text-white font-light">
                 Refonte complète du site web de Fine Line Production, une
                 société de production créative libanaise dont l'ancien site
                 avait été désactivé. De la recherche UX au design final, j'ai
                 mené le projet en autonomie pour concevoir un site moderne et
                 fidèle à l'identité de l'agence.
-              </Body2>
+              </Body1>
             </div>
-            <div className="flex flex-col gap-2">
-              <H5>Mon Rôle</H5>
-              <ul className="list-none font-light text-lg leading-6 text-white">
-                <li>Audit du site existant</li>
-                <li>Benchmark concurrentiel</li>
-                <li>Recherches quantitatives et qualitatives</li>
-                <li>Analyse des données</li>
-                <li>Conception de la direction artistique</li>
-                <li>Prototypage sur Webflow</li>
-                <li>Roadmap</li>
-              </ul>
-            </div>
-            <div className="flex flex-col gap-6">
-              <div className="flex flex-col gap-2">
-                <H5>Outils</H5>
-                <ul className="list-none font-light text-lg leading-6 text-white">
+            <div className="grid w-full grid-cols-1 gap-6 text-left sm:grid-cols-3">
+              <div className="flex flex-col items-center gap-2">
+                <H5 className="!text-lg !text-purple-pale/70">Mon Rôle</H5>
+                <ul className="mx-auto list-outside list-disc space-y-1.5 pl-5 text-left font-light text-lg leading-7 text-white marker:text-xs marker:text-white [&>li]:pl-2 md:text-xl">
+                  <li>Audit du site existant</li>
+                  <li>Benchmark concurrentiel</li>
+                  <li>Recherche UX quantitatives et{' '}qualitatives</li>
+                  <li>Analyse des données</li>
+                  <li>Conception de la direction artistique</li>
+                  <li>Prototypage sur Webflow</li>
+                  <li>Roadmap</li>
+                </ul>
+              </div>
+              <div className="flex flex-col items-center gap-2">
+                <H5 className="!text-lg !text-purple-pale/70">Outils</H5>
+                <ul className="list-none text-center font-light text-lg leading-7 text-white md:text-xl">
                   <li>Webflow</li>
                   <li>Google Drive</li>
                   <li>Teams</li>
                   <li>Trello</li>
                 </ul>
               </div>
-              <div className="flex flex-col gap-2">
-                <H5>Année</H5>
-                <Body2 className="!text-white font-light">
+              <div className="flex flex-col items-center gap-2">
+                <H5 className="!text-lg !text-purple-pale/70">Année</H5>
+                <Body1 className="!text-white font-light">
                   2025
-                </Body2>
+                </Body1>
               </div>
             </div>
           </div>
@@ -322,7 +301,7 @@ export default function FinelinePage() {
           className="flex w-full max-w-[500px] items-center justify-center rounded-2xl p-10"
           style={{
             background:
-              'radial-gradient(circle at 50% 40%, var(--color-purple) 0%, var(--color-purple-dark) 55%, var(--color-purple-void) 100%)',
+              'radial-gradient(circle at 50% 40%, #fcb02c 0%, #b07003 55%, #3c2701 100%)',
           }}
         >
           <img
@@ -351,12 +330,13 @@ export default function FinelinePage() {
           </Body1>
         </div>
         <div className="flex w-full flex-wrap items-stretch justify-center gap-4 py-4">
-          <div className="flex min-w-[320px] max-w-[600px] flex-1 flex-col items-center gap-4 rounded-2xl border border-white/15 p-4 backdrop-blur-sm">
+          <div className="flex min-w-[320px] max-w-[600px] flex-1 flex-col items-center gap-4 rounded-2xl border border-white/15 bg-white/5 p-4 backdrop-blur-sm">
             <button
               type="button"
               onClick={() =>
                 setSingleImage({ src: currentWebsite, alt: 'Site web actuel' })
               }
+              aria-label="Agrandir : Site web actuel"
               className="group/img relative w-full cursor-pointer overflow-hidden rounded-xl"
             >
               <img
@@ -385,11 +365,12 @@ export default function FinelinePage() {
               Site Web Actuel
             </p>
           </div>
-          <div className="flex min-w-[320px] max-w-[600px] flex-1 flex-col items-center gap-4 rounded-2xl border border-white/15 p-4 backdrop-blur-sm">
+          <div className="flex min-w-[320px] max-w-[600px] flex-1 flex-col items-center gap-4 rounded-2xl border border-white/15 bg-white/5 p-4 backdrop-blur-sm">
             <button
               type="button"
               onClick={() => setVideoOpen(true)}
-              className="group/video relative flex aspect-[576/367] w-full cursor-pointer items-center justify-center overflow-hidden rounded-lg border border-purple-pale/40 transition-all duration-300 hover:border-purple-pale/70"
+              aria-label="Lire la vidéo : Ancien site web"
+              className="group/video relative flex aspect-[576/367] w-full cursor-pointer items-center justify-center overflow-hidden rounded-xl"
             >
               <img
                 src={oldWebsiteThumb}
@@ -433,7 +414,7 @@ export default function FinelinePage() {
                 'inset 0 1px 1px color-mix(in srgb, var(--color-success-bg) 40%, transparent), inset 0 -1px 12px color-mix(in oklab, var(--color-success) 15%, transparent), 0 0 0 1px color-mix(in oklab, var(--color-success) 20%, transparent), 0 8px 30px color-mix(in oklab, var(--color-success) 35%, transparent)',
             }}
           >
-            <H4 className="flex items-center justify-center gap-2">
+            <H4 className="flex items-center justify-center gap-2 !text-success-bg">
               <img src={checkIcon} alt="" className="h-5 w-4" />
               Point Forts
             </H4>
@@ -450,6 +431,7 @@ export default function FinelinePage() {
                   key={img}
                   type="button"
                   onClick={() => setStrengthIndex(i)}
+                  aria-label={`Agrandir : Point fort ${i + 1}`}
                   className="group/img relative h-32 w-48 shrink-0 cursor-pointer overflow-hidden rounded-xl"
                 >
                   <img
@@ -502,7 +484,7 @@ export default function FinelinePage() {
                 'inset 0 1px 1px color-mix(in srgb, var(--color-danger-bg) 40%, transparent), inset 0 -1px 12px color-mix(in oklab, var(--color-danger) 15%, transparent), 0 0 0 1px color-mix(in oklab, var(--color-danger) 20%, transparent), 0 8px 30px color-mix(in oklab, var(--color-danger) 35%, transparent)',
             }}
           >
-            <H4 className="flex items-center justify-center gap-2">
+            <H4 className="flex items-center justify-center gap-2 !text-danger-bg">
               <img src={xIcon} alt="" className="h-5 w-4" />
               Point Faible
             </H4>
@@ -520,6 +502,7 @@ export default function FinelinePage() {
                     key={auditWeaknesses[i]}
                     type="button"
                     onClick={() => setWeaknessIndex(i)}
+                    aria-label={`Agrandir : Point faible ${i + 1}`}
                     className="group/img relative h-28 w-40 shrink-0 cursor-pointer overflow-hidden rounded-xl"
                   >
                     <img
@@ -552,6 +535,7 @@ export default function FinelinePage() {
                     key={auditWeaknesses[i]}
                     type="button"
                     onClick={() => setWeaknessIndex(i)}
+                    aria-label={`Agrandir : Point faible ${i + 1}`}
                     className="group/img relative w-full cursor-pointer overflow-hidden rounded-xl"
                   >
                     <img
@@ -684,6 +668,7 @@ export default function FinelinePage() {
                 alt: 'Benchmark des concurrents',
               })
             }
+            aria-label="Agrandir : Benchmark des concurrents"
             className="group/img relative flex-1 min-w-[280px] cursor-pointer overflow-hidden rounded-xl"
           >
             <img
@@ -709,7 +694,7 @@ export default function FinelinePage() {
             </div>
           </button>
           <div className="flex flex-1 min-w-[280px] flex-col gap-4 text-left">
-            <H4 className="w-auto text-left">Insights Benchmark</H4>
+            <H4 className="w-auto text-left !text-white">Insights Benchmark</H4>
             <BulletPoint
               title="Compréhension immédiate de l'activité"
               body="Lorsque l'on entre sur les sites de Né à Beyrouth et Forward Film Production, on comprend en quelques secondes ce qu'ils font."
@@ -724,37 +709,37 @@ export default function FinelinePage() {
 
       {/* Hypothèses */}
       <div id="hypotheses" className="flex flex-col items-start gap-4 p-8 md:py-16 md:px-[var(--nav-edge-w)]">
-        <div className="flex flex-col items-start gap-4">
+        <div className="flex w-full flex-col items-center gap-4">
           <SectionTitle>Hypothèses</SectionTitle>
-          <Body1 className="w-full text-center font-light">
+          <Body1 className="mx-auto w-fit max-w-full text-center font-light">
             Suite à cette analyse, et à partir de la recherche secondaire,
             j'ai formulé les hypothèses suivantes.
           </Body1>
         </div>
-        <div className="flex w-full flex-col gap-4">
-          <div className="flex w-full items-baseline gap-4">
-            <span className="font-syne text-2xl text-purple-mid">01</span>
+        <div className="grid w-full grid-cols-1 gap-4 md:grid-cols-2">
+          <div className="flex w-full items-baseline gap-4 rounded-2xl border border-white/15 bg-white/5 p-4 backdrop-blur-sm">
+            <span className="font-syne text-2xl text-purple-pale/70">01</span>
             <Body2>
               L'utilisateur doit comprendre l'activité de l'entreprise dès les
               premières secondes pour rester engagé sur le site.
             </Body2>
           </div>
-          <div className="flex w-full items-baseline gap-4">
-            <span className="font-syne text-2xl text-purple-mid">02</span>
+          <div className="flex w-full items-baseline gap-4 rounded-2xl border border-white/15 bg-white/5 p-4 backdrop-blur-sm">
+            <span className="font-syne text-2xl text-purple-pale/70">02</span>
             <Body2>
               Un site moderne et régulièrement mis à jour renforce la
               crédibilité et le sérieux perçus de l'entreprise.
             </Body2>
           </div>
-          <div className="flex w-full items-baseline gap-4">
-            <span className="font-syne text-2xl text-purple-mid">03</span>
+          <div className="flex w-full items-baseline gap-4 rounded-2xl border border-white/15 bg-white/5 p-4 backdrop-blur-sm">
+            <span className="font-syne text-2xl text-purple-pale/70">03</span>
             <Body2>
               Proposer un formulaire de contact simple et accessible peut
               faciliter la prise de contact pour les utilisateurs.
             </Body2>
           </div>
-          <div className="flex w-full items-baseline gap-4">
-            <span className="font-syne text-2xl text-purple-mid">04</span>
+          <div className="flex w-full items-baseline gap-4 rounded-2xl border border-white/15 bg-white/5 p-4 backdrop-blur-sm">
+            <span className="font-syne text-2xl text-purple-pale/70">04</span>
             <Body2>
               Une structure claire des projets favorise l'exploration du site,
               l'intérêt pour les services, et la compréhension globale de
@@ -765,7 +750,7 @@ export default function FinelinePage() {
       </div>
 
       {/* Méthodologie de Recherche */}
-      <div id="recherche" className="flex flex-col items-center gap-12 p-8 md:py-16 md:px-[var(--nav-edge-w)]">
+      <div id="recherche" className="flex flex-col items-center gap-16 p-8 md:py-16 md:px-[var(--nav-edge-w)]">
         <div className="flex w-full flex-col items-center gap-6">
           <H4>Recherche Primaire</H4>
           <SectionTitle>Méthodologie de Recherche</SectionTitle>
@@ -782,7 +767,7 @@ export default function FinelinePage() {
         </div>
         <div className="grid w-full grid-cols-1 gap-8 md:grid-cols-2">
           <div className="flex w-full flex-col items-center gap-8 rounded-2xl border border-white/15 bg-white/5 p-6 text-center backdrop-blur-sm">
-            <H4>Sondage</H4>
+            <H4 className="!text-white">Sondage</H4>
             <div className="flex flex-col items-center gap-2">
               <Body2 className="!text-white/50 text-center font-syne">
                 (Quantitatif)
@@ -812,7 +797,7 @@ export default function FinelinePage() {
             </PillButton>
           </div>
           <div className="flex w-full flex-col items-center gap-8 rounded-2xl border border-white/15 bg-white/5 p-6 text-center backdrop-blur-sm">
-            <H4>Interviews</H4>
+            <H4 className="!text-white">Interviews</H4>
             <div className="flex flex-col items-center gap-2">
               <Body2 className="!text-white/50 text-center font-syne">
                 (Qualitatif)
@@ -858,6 +843,7 @@ export default function FinelinePage() {
         <button
           type="button"
           onClick={() => setSingleImage({ src: empathyMap, alt: 'Empathy Map' })}
+          aria-label="Agrandir : Empathy Map"
           className="group/img relative w-full cursor-pointer overflow-hidden rounded-xl"
         >
           <img
@@ -919,7 +905,7 @@ export default function FinelinePage() {
         <div className="grid w-full grid-cols-1 gap-6 md:grid-cols-2">
           <div className="flex flex-col gap-2 rounded-2xl border border-white/15 bg-white/5 p-6 backdrop-blur-sm">
             <H5 className="text-purple-pale/70">Cible Primaire</H5>
-            <H4 className="w-auto text-left">
+            <H4 className="w-auto text-left !text-white">
               Entreprises de biens de grande consommation (FMCG)
             </H4>
             <Body1 className="!text-white/70 font-light">
@@ -929,7 +915,7 @@ export default function FinelinePage() {
           </div>
           <div className="flex flex-col gap-2 rounded-2xl border border-white/15 bg-white/5 p-6 backdrop-blur-sm">
             <H5 className="text-purple-pale/70">Cible Secondaire</H5>
-            <H4 className="w-auto text-left">
+            <H4 className="w-auto text-left !text-white">
               ONG et organisations internationales (NGOs / INGOs)
             </H4>
             <Body1 className="!text-white/70 font-light">
@@ -941,8 +927,8 @@ export default function FinelinePage() {
           </div>
         </div>
 
-        <H3 className="w-full text-center">Personas Primaire</H3>
         <div className="flex w-full max-w-[1000px] flex-col gap-8 rounded-2xl border border-white/15 bg-white/5 p-8 backdrop-blur-sm">
+          <H3 className="w-full text-center">Personas Primaire</H3>
           <div className="flex w-full flex-wrap gap-10">
             <img
               src={personaTania}
@@ -1058,6 +1044,7 @@ export default function FinelinePage() {
           <button
             type="button"
             onClick={() => setDaIndex(0)}
+            aria-label="Agrandir : Direction artistique 1"
             className="group/img relative min-w-[280px] flex-1 cursor-pointer overflow-hidden rounded-xl"
           >
             <img
@@ -1085,6 +1072,7 @@ export default function FinelinePage() {
           <button
             type="button"
             onClick={() => setDaIndex(1)}
+            aria-label="Agrandir : Direction artistique 2"
             className="group/img relative min-w-[280px] flex-1 cursor-pointer overflow-hidden rounded-xl"
           >
             <img
@@ -1130,11 +1118,13 @@ export default function FinelinePage() {
             l'intention créative sans la direction artistique actuelle que
             j'aurais souhaité déployer sur l'ensemble du site.
           </Body1>
-          <PillButton href="https://preview.webflow.com/preview/finelinelb-f6eecdd75ed16d10638c2e844afe?utm_medium=preview_link&utm_source=designer&utm_content=finelinelb-f6eecdd75ed16d10638c2e844afe&preview=b67d353f0c30868940d4ff182615a6a4&locale=en&workflow=preview">
+          <PillButton
+            href="https://preview.webflow.com/preview/finelinelb-f6eecdd75ed16d10638c2e844afe?utm_medium=preview_link&utm_source=designer&utm_content=finelinelb-f6eecdd75ed16d10638c2e844afe&preview=b67d353f0c30868940d4ff182615a6a4&locale=en&workflow=preview"
+          >
             Prototype
           </PillButton>
         </div>
-        <div className="flex w-full flex-col gap-6">
+        <div className="flex w-full flex-col gap-6 rounded-2xl border border-white/15 bg-white/5 p-8 backdrop-blur-sm">
           <H3 className="w-full text-center">Wireframes</H3>
           <div className="grid grid-cols-1 items-start justify-items-center gap-6 sm:grid-cols-3">
             {wireframes.map((w, i) => (
@@ -1296,12 +1286,12 @@ export default function FinelinePage() {
         </div>
         <div className="flex w-full flex-col items-center gap-6">
           <div className="grid w-full grid-cols-1 gap-4 md:grid-cols-3">
-            <div className="flex flex-col gap-4 rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-sm">
+            <div className="flex flex-col gap-4 rounded-2xl border border-white/15 bg-white/5 p-6 backdrop-blur-sm">
               <div className="flex items-center gap-2">
                 <span className="size-2 rounded-full bg-purple-pale/70" />
-                <H4 className="w-auto text-left">01 Recherche</H4>
+                <H4 className="w-auto text-left !text-white">01 Recherche</H4>
               </div>
-              <ul className="list-disc space-y-2 pl-6 text-sm text-white/70">
+              <ul className="list-disc space-y-2 pl-6 text-base text-white/70">
                 <li>Audit UX du site existant (1 jour)</li>
                 <li>Benchmark des concurrents (1 jour)</li>
                 <li>
@@ -1322,12 +1312,12 @@ export default function FinelinePage() {
               </Micro1>
             </div>
 
-            <div className="flex flex-col gap-4 rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-sm">
+            <div className="flex flex-col gap-4 rounded-2xl border border-white/15 bg-white/5 p-6 backdrop-blur-sm">
               <div className="flex items-center gap-2">
                 <span className="size-2 rounded-full bg-purple-pale/70" />
-                <H4 className="w-auto text-left">02 Création Visuelle</H4>
+                <H4 className="w-auto text-left !text-white">02 Création Visuelle</H4>
               </div>
-              <ul className="list-disc space-y-2 pl-6 text-sm text-white/70">
+              <ul className="list-disc space-y-2 pl-6 text-base text-white/70">
                 <li>Conception de la plateforme de marque (1,5 jours)</li>
                 <li>
                   Création de l'arborescence et architecture du site (1 jour)
@@ -1344,10 +1334,10 @@ export default function FinelinePage() {
               </Micro1>
             </div>
 
-            <div className="flex flex-col gap-4 rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-sm">
+            <div className="flex flex-col gap-4 rounded-2xl border border-white/15 bg-white/5 p-6 backdrop-blur-sm">
               <div className="flex items-center gap-2">
                 <span className="size-2 rounded-full bg-purple-pale/70" />
-                <H4 className="w-auto text-left">03 Webflow</H4>
+                <H4 className="w-auto text-left !text-white">03 Webflow</H4>
               </div>
               <Micro1 className="!text-white/70">
                 Hébergement CMS pour une année complète (du 8 août 2024 au 7
@@ -1382,13 +1372,13 @@ export default function FinelinePage() {
           <div
             ref={roadmapScrollRef}
             onScroll={updateRoadmapScrollState}
-            className="hide-scrollbar w-full overflow-x-auto rounded-xl"
+            className="hide-scrollbar h-[445px] w-full overflow-x-auto overflow-y-hidden rounded-xl"
           >
             <img
               src={roadmapTimeline}
               alt="Roadmap"
               onLoad={updateRoadmapScrollState}
-              className="h-[500px] w-auto max-w-none rounded-xl"
+              className="h-[620px] w-auto max-w-none -translate-y-[115px] rounded-xl"
             />
           </div>
           <div
@@ -1407,7 +1397,7 @@ export default function FinelinePage() {
       </div>
 
       {/* Conclusion */}
-      <div id="conclusion" className="flex flex-col items-start gap-8 p-8 md:py-16 md:px-[var(--nav-edge-w)]">
+      <div id="conclusion" className="flex flex-col items-start gap-8 p-8 md:py-16 md:pb-32 md:px-[var(--nav-edge-w)]">
         <SectionTitle>Conclusion</SectionTitle>
         <Body1 className="w-full text-center font-light">
           Ce projet de refonte du site de Fine Line m'a permis d'appliquer
