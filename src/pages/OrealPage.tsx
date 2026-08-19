@@ -1,4 +1,5 @@
-import { useState } from 'react'
+import { useLayoutEffect, useRef, useState } from 'react'
+import type { RefObject } from 'react'
 import Contact from '../components/Contact'
 import Lightbox from '../components/Lightbox'
 import CaseStudyNav from '../components/CaseStudyNav'
@@ -11,10 +12,38 @@ import crazy8 from '../assets/loreal/crazy8.png'
 import slide1 from '../assets/loreal/slide1.jpg'
 import slide2 from '../assets/loreal/slide2.jpg'
 import slide3 from '../assets/loreal/slide3.jpg'
-import lorealBrands from '../assets/loreal/loreal-brands.png'
 import playIcon from '../assets/loreal/play-icon.svg'
 import videoEquipe from '../assets/loreal/video-equipe.mp4'
+import videoThumbnail from '../assets/loreal/video-thumbnail.png'
 import { H1, H2 as SectionTitle, H3, H4, H5, Body1, Body2 } from '../components/Typography'
+
+function TimelineNode({
+  number,
+  circleRef,
+}: {
+  number: string
+  circleRef?: RefObject<HTMLDivElement | null>
+}) {
+  return (
+    <div
+      className="relative z-10 flex w-10 flex-none items-center justify-center md:w-12"
+      aria-hidden="true"
+    >
+      <div
+        ref={circleRef}
+        className="flex size-10 items-center justify-center rounded-full border border-purple-pale/50 bg-purple-dark/70 md:size-12"
+        style={{
+          boxShadow:
+            '0 0 20px color-mix(in oklab, var(--color-purple-light) 45%, transparent)',
+        }}
+      >
+        <span className="text-sm font-semibold text-purple-pale md:text-base">
+          {number}
+        </span>
+      </div>
+    </div>
+  )
+}
 
 function BulletPoint({ title, body }: { title: string; body: string }) {
   return (
@@ -27,6 +56,15 @@ function BulletPoint({ title, body }: { title: string; body: string }) {
           {body}
         </span>
       </p>
+    </div>
+  )
+}
+
+function ValueCard({ title, body }: { title: string; body: string }) {
+  return (
+    <div className="flex flex-col items-center justify-center gap-1 rounded-2xl border border-white/15 bg-white/5 p-4 text-center backdrop-blur-sm">
+      <p className="text-sm font-medium text-white">{title}</p>
+      <p className="text-xs text-white/70">{body}</p>
     </div>
   )
 }
@@ -54,20 +92,68 @@ const videoValues = [
   },
 ]
 
-function SlideImage({ label, src }: { label: string; src: string }) {
+function SlideImage({
+  label,
+  description,
+  descriptionClassName = 'font-light',
+  src,
+  onZoom,
+}: {
+  label: string
+  description: string
+  descriptionClassName?: string
+  src: string
+  onZoom: () => void
+}) {
   return (
-    <div className="flex w-full flex-col items-center gap-10 pb-8">
-      <SectionTitle>{label}</SectionTitle>
-      <div
-        className="relative w-full rounded-2xl border p-3 md:p-4"
-        style={{
-          borderColor: 'color-mix(in oklab, var(--color-purple-pale) 45%, transparent)',
-          background: 'color-mix(in oklab, var(--color-purple-void) 35%, black)',
-          boxShadow:
-            '0 0 50px color-mix(in oklab, var(--color-purple-light) 35%, transparent), inset 0 0 40px color-mix(in oklab, var(--color-purple) 20%, transparent)',
-        }}
-      >
-        <img src={src} alt={label} className="w-full rounded-xl" />
+    <div className="mx-auto flex w-full max-w-[900px] flex-col gap-6 rounded-2xl border border-white/15 bg-white/5 p-6 backdrop-blur-sm md:p-8">
+      <div className="flex flex-col items-center gap-4 text-center">
+        <H3>{label}</H3>
+        <Body1 className={descriptionClassName}>{description}</Body1>
+      </div>
+      <div className="relative w-full">
+        <div
+          className="pointer-events-none absolute inset-x-0 -bottom-8 mx-auto h-16 w-2/3 rounded-full opacity-50 blur-2xl"
+          style={{
+            background:
+              'radial-gradient(ellipse at center, color-mix(in oklab, var(--color-purple-light) 60%, transparent) 0%, transparent 70%)',
+          }}
+          aria-hidden="true"
+        />
+        <div
+          className="relative w-full rounded-2xl border p-3 md:p-4"
+          style={{
+            borderColor: 'color-mix(in oklab, var(--color-purple-pale) 45%, transparent)',
+            background: 'color-mix(in oklab, var(--color-purple-void) 35%, black)',
+            boxShadow:
+              '0 0 50px color-mix(in oklab, var(--color-purple-light) 35%, transparent), inset 0 0 40px color-mix(in oklab, var(--color-purple) 20%, transparent)',
+          }}
+        >
+          <button
+            type="button"
+            onClick={onZoom}
+            aria-label={`Agrandir : ${label}`}
+            className="group/img relative block w-full cursor-pointer overflow-hidden rounded-xl"
+          >
+            <img src={src} alt={label} className="w-full rounded-xl" />
+            <div className="absolute inset-0 flex items-center justify-center bg-black/0 opacity-0 transition-all duration-300 group-hover/img:bg-black/35 group-hover/img:opacity-100">
+              <svg
+                className="size-8 text-white"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+            </div>
+          </button>
+        </div>
       </div>
     </div>
   )
@@ -80,6 +166,33 @@ export default function OrealPage() {
   } | null>(null)
   const [videoOpen, setVideoOpen] = useState(false)
 
+  const processTimelineRef = useRef<HTMLDivElement>(null)
+  const processNode1Ref = useRef<HTMLDivElement>(null)
+  const processNode2Ref = useRef<HTMLDivElement>(null)
+  const processNode3Ref = useRef<HTMLDivElement>(null)
+  const [processLines, setProcessLines] = useState<{ top: number; height: number }[]>([])
+
+  const measureProcessLines = () => {
+    const wrap = processTimelineRef.current
+    const nodes = [processNode1Ref.current, processNode2Ref.current, processNode3Ref.current]
+    if (!wrap || nodes.some((n) => !n)) return
+    const wrapTop = wrap.getBoundingClientRect().top
+    const rects = nodes.map((n) => n!.getBoundingClientRect())
+    const segments = []
+    for (let i = 0; i < rects.length - 1; i++) {
+      const top = rects[i].bottom - wrapTop
+      const bottom = rects[i + 1].top - wrapTop
+      segments.push({ top, height: bottom - top })
+    }
+    setProcessLines(segments)
+  }
+
+  useLayoutEffect(() => {
+    measureProcessLines()
+    window.addEventListener('resize', measureProcessLines)
+    return () => window.removeEventListener('resize', measureProcessLines)
+  }, [])
+
   return (
     <div className="relative isolate">
       <CaseStudyNav
@@ -89,6 +202,7 @@ export default function OrealPage() {
           { id: 'processus', label: 'Processus' },
           { id: 'concept', label: 'Concept' },
           { id: 'apporte', label: 'Ce Qu\'On Apporte' },
+          { id: 'video', label: 'Vidéo Équipe' },
         ]}
       />
 
@@ -159,9 +273,9 @@ export default function OrealPage() {
                 alt="L'Oréal Brandstorm 2026"
                 className="w-[120px] rounded-lg"
               />
-              <p className="font-syne text-3xl leading-tight text-white md:text-4xl">
+              <H3 className="!text-3xl md:!text-4xl">
                 Craft the Future of Luxury Fragrance
-              </p>
+              </H3>
               <Body1 className="font-light">
                 L'Oréal Brandstorm est la plus grande compétition
                 d'innovation mondiale, ouverte à toute personne de 18 à 30
@@ -196,7 +310,7 @@ export default function OrealPage() {
       </div>
 
       {/* Processus */}
-      <div id="processus" className="flex flex-col items-center gap-14 p-8 md:py-16 md:px-[var(--nav-edge-w)]">
+      <div id="processus" className="flex flex-col items-center gap-8 p-8 md:py-16 md:px-[var(--nav-edge-w)]">
         <SectionTitle>Processus</SectionTitle>
         <div className="mx-auto flex w-full max-w-[900px] flex-col gap-6">
           <Body1 className="w-full text-center font-light">
@@ -204,64 +318,91 @@ export default function OrealPage() {
             avons adopté une méthode rapide et structurée.
           </Body1>
 
-          <div className="flex flex-col gap-2 rounded-2xl border border-white/15 bg-white/5 p-6 backdrop-blur-sm md:p-8">
-            <H4 className="w-auto text-left !text-white">01 Recherche individuelle</H4>
-            <Body1 className="font-light">
-              Chacun a exploré le sujet de son côté : données marché,
-              comportements d'achat, tendances du luxe, social listening.
-              Plutôt que de chercher la même chose, chacun a identifié ses
-              propres patterns et insights pour maximiser la couverture en
-              peu de temps.
-            </Body1>
-          </div>
-
-          <div className="flex flex-col gap-6 rounded-2xl border border-white/15 bg-white/5 p-6 backdrop-blur-sm md:flex-row md:items-center md:p-8">
-            <div className="flex flex-1 flex-col gap-2">
-              <H4 className="w-auto text-left !text-white">02 Crazy 8</H4>
-              <Body1 className="font-light">
-                Nous avons mis en commun nos recherches et généré un maximum
-                d'idées via la méthode Crazy 8 sur Figma. Trois directions
-                fortes ont émergé, puis progressivement convergé vers un
-                seul concept cohérent.
-              </Body1>
-            </div>
-            <button
-              type="button"
-              onClick={() => setSingleImage({ src: crazy8, alt: 'Crazy 8' })}
-              aria-label="Agrandir : Crazy 8"
-              className="group/img relative min-w-[200px] flex-1 cursor-pointer overflow-hidden rounded-xl"
-            >
-              <img
-                src={crazy8}
-                alt="Crazy 8"
-                className="w-full rounded-xl transition-transform duration-300 group-hover/img:scale-105"
+          <div ref={processTimelineRef} className="relative flex flex-col">
+            {processLines.map((seg, i) => (
+              <div
+                key={i}
+                className="absolute left-5 w-[1.8px] -translate-x-1/2 md:left-6"
+                style={{
+                  top: seg.top,
+                  height: seg.height,
+                  background:
+                    'linear-gradient(to bottom, var(--color-purple-light), var(--color-purple-pale))',
+                  boxShadow:
+                    '0 0 6px color-mix(in oklab, var(--color-purple-light) 70%, transparent)',
+                }}
+                aria-hidden="true"
               />
-              <div className="absolute inset-0 flex items-center justify-center bg-black/0 opacity-0 transition-all duration-300 group-hover/img:bg-black/35 group-hover/img:opacity-100">
-                <svg
-                  className="size-8 text-white"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
+            ))}
+            <div className="relative mb-6 flex gap-6">
+              <TimelineNode number="01" circleRef={processNode1Ref} />
+              <div className="flex flex-1 flex-col gap-2 rounded-2xl border border-white/15 bg-white/5 p-6 backdrop-blur-sm md:p-8">
+                <H4 className="w-auto text-left !text-white">Recherche individuelle</H4>
+                <Body1 className="font-light">
+                  Chacun a exploré le sujet de son côté : données marché,
+                  comportements d'achat, tendances du luxe, social listening.
+                  Plutôt que de chercher la même chose, chacun a identifié ses
+                  propres patterns et insights pour maximiser la couverture en
+                  peu de temps.
+                </Body1>
               </div>
-            </button>
-          </div>
+            </div>
 
-          <div className="flex flex-col gap-2 rounded-2xl border border-purple-pale/40 bg-purple-dark/25 p-6 backdrop-blur-sm md:p-8">
-            <H4 className="w-auto text-left !text-white">03 L'insight clé</H4>
-            <Body1 className="font-light">
-              Un fil rouge est apparu dans toutes nos recherches :
-              "Aujourd'hui, tout s'achète en ligne. Mais le parfum échappe
-              encore au digital. On ne peut pas le sentir."
-            </Body1>
+            <div className="relative mb-6 flex gap-6">
+              <TimelineNode number="02" circleRef={processNode2Ref} />
+              <div className="flex flex-1 flex-col gap-6 rounded-2xl border border-white/15 bg-white/5 p-6 backdrop-blur-sm md:flex-row md:items-center md:p-8">
+                <div className="flex flex-1 flex-col gap-2">
+                  <H4 className="w-auto text-left !text-white">Crazy 8</H4>
+                  <Body1 className="font-light">
+                    Nous avons mis en commun nos recherches et généré un maximum
+                    d'idées via la méthode Crazy 8 sur Figma. Trois directions
+                    fortes ont émergé, puis progressivement convergé vers un
+                    seul concept cohérent.
+                  </Body1>
+                </div>
+                <button
+                  type="button"
+                  onClick={() => setSingleImage({ src: crazy8, alt: 'Crazy 8' })}
+                  aria-label="Agrandir : Crazy 8"
+                  className="group/img relative min-w-[200px] flex-1 cursor-pointer overflow-hidden rounded-xl"
+                >
+                  <img
+                    src={crazy8}
+                    alt="Crazy 8"
+                    onLoad={measureProcessLines}
+                    className="w-full rounded-xl transition-transform duration-300 group-hover/img:scale-105"
+                  />
+                  <div className="absolute inset-0 flex items-center justify-center bg-black/0 opacity-0 transition-all duration-300 group-hover/img:bg-black/35 group-hover/img:opacity-100">
+                    <svg
+                      className="size-8 text-white"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
+                  </div>
+                </button>
+              </div>
+            </div>
+
+            <div className="relative flex gap-6">
+              <TimelineNode number="03" circleRef={processNode3Ref} />
+              <div className="flex flex-1 flex-col gap-2 rounded-2xl border border-purple-pale/40 bg-purple-dark/25 p-6 backdrop-blur-sm md:p-8">
+                <H4 className="w-auto text-left !text-white">L'insight clé</H4>
+                <Body1 className="font-light">
+                  Un fil rouge est apparu dans toutes nos recherches :
+                  "Aujourd'hui, tout s'achète en ligne. Mais le parfum échappe
+                  encore au digital. On ne peut pas le sentir."
+                </Body1>
+              </div>
+            </div>
           </div>
 
           <Body1 className="w-full text-center font-light">
@@ -270,11 +411,16 @@ export default function OrealPage() {
             la découverte en décision.
           </Body1>
         </div>
-        <SlideImage label="Slide 1" src={slide1} />
+        <SlideImage
+          label="Slide 1"
+          description="Voici la première slide de notre présentation orale devant le jury L'Oréal, elle pose le diagnostic et l'insight qui a guidé la suite du projet."
+          src={slide1}
+          onZoom={() => setSingleImage({ src: slide1, alt: 'Slide 1' })}
+        />
       </div>
 
       {/* Concept */}
-      <div id="concept" className="flex flex-col items-center gap-14 p-8 md:py-16 md:px-[var(--nav-edge-w)]">
+      <div id="concept" className="flex flex-col items-center gap-8 p-8 md:py-16 md:px-[var(--nav-edge-w)]">
         <SectionTitle>Concept</SectionTitle>
         <div className="mx-auto flex w-full max-w-[1100px] flex-wrap items-stretch justify-center gap-8">
           <div className="flex min-w-[280px] flex-1 flex-col justify-center gap-6 rounded-2xl border border-white/15 bg-white/5 p-6 backdrop-blur-sm md:p-8">
@@ -306,12 +452,17 @@ export default function OrealPage() {
             />
           </div>
         </div>
-        <SlideImage label="Slide 2" src={slide2} />
+        <SlideImage
+          label="Slide 2"
+          description="Voici la deuxième slide de notre présentation orale devant le jury L'Oréal, elle explique le concept que nous avons imaginé."
+          src={slide2}
+          onZoom={() => setSingleImage({ src: slide2, alt: 'Slide 2' })}
+        />
       </div>
 
       {/* Ce qu'on apporte */}
       <div id="apporte" className="flex flex-col items-center gap-8 p-8 md:py-16 md:px-[var(--nav-edge-w)]">
-        <div className="flex w-full max-w-[720px] flex-col items-center gap-4 text-center">
+        <div className="flex w-full max-w-[720px] flex-col items-center gap-8 text-center">
           <SectionTitle>Ce Qu'On Apporte À L'Oréal</SectionTitle>
           <Body1 className="font-light">
             YSL Sélection Privée n'est pas qu'une solution locale. C'est un
@@ -342,18 +493,18 @@ export default function OrealPage() {
               body="Adaptable à toutes les marques du Groupe. Et dans un contexte où des marchés comme la Chine interdisent désormais le sampling gratuit, ce modèle offre une alternative premium et rentable."
             />
           </div>
-          <img
-            src={lorealBrands}
-            alt="Marques du Groupe L'Oréal Luxe"
-            className="min-w-[280px] flex-1 rounded-2xl object-cover"
-          />
         </div>
-        <SlideImage label="Slide 3" src={slide3} />
+        <SlideImage
+          label="Slide 3"
+          description="Voici la troisième slide de notre présentation orale devant le jury L'Oréal, elle explique ce que notre idée apporte au Groupe."
+          src={slide3}
+          onZoom={() => setSingleImage({ src: slide3, alt: 'Slide 3' })}
+        />
       </div>
 
       {/* Vidéo Équipe */}
-      <div className="flex flex-col items-center gap-10 p-8 md:py-16 md:px-[var(--nav-edge-w)]">
-        <div className="flex w-full max-w-[720px] flex-col items-center gap-4 text-center">
+      <div id="video" className="flex flex-col items-center gap-8 p-8 md:py-16 md:px-[var(--nav-edge-w)]">
+        <div className="flex w-full max-w-[720px] flex-col items-center gap-8 text-center">
           <SectionTitle>Vidéo Équipe</SectionTitle>
           <Body1 className="font-light">
             Au-delà du concept, L'Oréal Brandstorm demandait à chaque équipe
@@ -362,37 +513,83 @@ export default function OrealPage() {
           </Body1>
         </div>
 
-        {/* Circular layout (desktop) */}
-        <div className="relative mx-auto hidden aspect-square w-full max-w-[780px] md:block">
-          <div className="pointer-events-none absolute inset-[140px] rounded-full border border-dashed border-white/10" />
+        {/* Hub layout (desktop) */}
+        <div className="relative mx-auto hidden aspect-[686/435] w-full max-w-[820px] -mt-[38px] md:block">
+          <svg
+            viewBox="0 0 686 435"
+            className="pointer-events-none absolute inset-0 h-full w-full"
+            aria-hidden="true"
+          >
+            <defs>
+              <filter id="videoConnectorGlow" x="-80%" y="-80%" width="260%" height="260%">
+                <feGaussianBlur stdDeviation="3" result="blur" />
+                <feMerge>
+                  <feMergeNode in="blur" />
+                  <feMergeNode in="SourceGraphic" />
+                </feMerge>
+              </filter>
+              <linearGradient id="videoConnectorGradient" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stopColor="var(--color-purple-light)" />
+                <stop offset="100%" stopColor="var(--color-purple-pale)" />
+              </linearGradient>
+            </defs>
+            <g
+              stroke="url(#videoConnectorGradient)"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              fill="none"
+              filter="url(#videoConnectorGlow)"
+            >
+              <path d="M160,207 L196,207 Q206,207 206,197 L206,190" />
+              <path d="M508,207 L490,207 Q480,207 480,197 L480,190" />
+              <path d="M162,345 L162,265 Q162,255 172,255 L206,255" />
+              <path d="M502,345 L502,265 Q502,255 492,255 L480,255" />
+            </g>
+          </svg>
+
           <button
             type="button"
             onClick={() => setVideoOpen(true)}
             aria-label="Lire la vidéo d'équipe"
-            className="group/video absolute left-1/2 top-1/2 z-10 flex aspect-video w-[300px] -translate-x-1/2 -translate-y-1/2 cursor-pointer items-center justify-center rounded-2xl border border-purple-pale/50 bg-purple-dark/35 backdrop-blur-[20px] transition-all duration-300 hover:border-purple-pale/80"
+            className="group/video absolute left-1/2 top-1/2 z-10 flex aspect-video w-[40%] -translate-x-1/2 -translate-y-1/2 cursor-pointer items-center justify-center overflow-hidden rounded-2xl border border-purple-pale/50 transition-all duration-300 hover:border-purple-pale/80"
+            style={{
+              boxShadow:
+                '0 0 40px color-mix(in oklab, var(--color-purple-light) 40%, transparent)',
+            }}
           >
+            <img
+              src={videoThumbnail}
+              alt=""
+              className="absolute inset-0 h-full w-full object-cover"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-purple-void/80 via-purple-void/30 to-purple-dark/20 transition-colors duration-300 group-hover/video:from-purple-void/70" />
             <img
               src={playIcon}
               alt=""
-              className="h-14 w-14 transition-transform duration-300 group-hover/video:scale-110"
+              className="relative h-14 w-14 transition-transform duration-300 group-hover/video:scale-110"
             />
           </button>
-          {videoValues.map((v, i) => {
-            const angle = ((-90 + i * 72) * Math.PI) / 180
-            const r = 250
-            const x = 390 + r * Math.cos(angle)
-            const y = 390 + r * Math.sin(angle)
-            return (
-              <div
-                key={v.title}
-                style={{ left: `${x}px`, top: `${y}px` }}
-                className="absolute w-[180px] -translate-x-1/2 -translate-y-1/2 rounded-2xl border border-white/15 bg-white/5 p-3 text-center backdrop-blur-sm"
-              >
-                <p className="text-sm font-medium text-white">{v.title}</p>
-                <p className="mt-1 text-xs text-white/70">{v.body}</p>
-              </div>
-            )
-          })}
+
+          <div className="absolute left-1/2 top-[32.25%] z-10 flex w-[30%] -translate-x-1/2 -translate-y-full flex-col items-center">
+            <ValueCard title={videoValues[0].title} body={videoValues[0].body} />
+            <div
+              className="h-6 w-[1.8px] bg-gradient-to-b from-purple-pale/10 to-purple-pale/40"
+              aria-hidden="true"
+            />
+          </div>
+          <div className="absolute left-[13%] top-[48%] w-[20%] -translate-x-1/2 -translate-y-1/2">
+            <ValueCard title={videoValues[1].title} body={videoValues[1].body} />
+          </div>
+          <div className="absolute left-[83%] top-[48%] w-[20%] -translate-x-1/2 -translate-y-1/2">
+            <ValueCard title={videoValues[2].title} body={videoValues[2].body} />
+          </div>
+          <div className="absolute left-[24%] top-[85%] w-[30%] -translate-x-1/2 -translate-y-1/2">
+            <ValueCard title={videoValues[3].title} body={videoValues[3].body} />
+          </div>
+          <div className="absolute left-[73%] top-[85%] w-[30%] -translate-x-1/2 -translate-y-1/2">
+            <ValueCard title={videoValues[4].title} body={videoValues[4].body} />
+          </div>
         </div>
 
         {/* Stacked fallback (mobile) */}
@@ -401,12 +598,18 @@ export default function OrealPage() {
             type="button"
             onClick={() => setVideoOpen(true)}
             aria-label="Lire la vidéo d'équipe"
-            className="group/video relative flex h-[220px] w-full items-center justify-center rounded-2xl border border-purple-pale/50 bg-purple-dark/35 backdrop-blur-[20px]"
+            className="group/video relative flex h-[220px] w-full items-center justify-center overflow-hidden rounded-2xl border border-purple-pale/50"
           >
+            <img
+              src={videoThumbnail}
+              alt=""
+              className="absolute inset-0 h-full w-full object-cover"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-purple-void/80 via-purple-void/30 to-purple-dark/20" />
             <img
               src={playIcon}
               alt=""
-              className="h-16 w-16 transition-transform duration-300 group-hover/video:scale-110"
+              className="relative h-16 w-16 transition-transform duration-300 group-hover/video:scale-110"
             />
           </button>
           <div className="flex flex-col gap-4 rounded-2xl border border-white/15 bg-white/5 p-6 backdrop-blur-sm">
