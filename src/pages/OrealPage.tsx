@@ -63,8 +63,8 @@ function BulletPoint({ title, body }: { title: string; body: string }) {
 function ValueCard({ title, body }: { title: string; body: string }) {
   return (
     <div className="flex flex-col items-center justify-center gap-1 rounded-2xl border border-white/15 bg-white/5 p-4 text-center backdrop-blur-sm">
-      <p className="text-sm font-medium text-white">{title}</p>
-      <p className="text-xs text-white/70">{body}</p>
+      <p className="text-base font-medium text-white">{title}</p>
+      <p className="text-sm text-white/70">{body}</p>
     </div>
   )
 }
@@ -221,7 +221,7 @@ export default function OrealPage() {
             />
           </div>
 
-          <div className="flex w-full max-w-[820px] flex-col items-center gap-8 border-t border-white/10 pt-8 text-center">
+          <div className="flex w-full flex-col items-center gap-8 border-t border-white/10 pt-8 text-center">
             <div className="flex w-full flex-col items-center gap-2">
               <H5 className="!text-lg">Overview</H5>
               <Body1 className="!text-white font-light">
@@ -315,7 +315,7 @@ export default function OrealPage() {
         <div className="mx-auto flex w-full max-w-[900px] flex-col gap-6">
           <Body1 className="w-full text-center font-light">
             Face à un brief ambitieux et seulement 4 jours devant nous, nous
-            avons adopté une méthode rapide et structurée.
+            avons adopté une méthode rapide et{' '}structurée.
           </Body1>
 
           <div ref={processTimelineRef} className="relative flex flex-col">
@@ -422,7 +422,7 @@ export default function OrealPage() {
       {/* Concept */}
       <div id="concept" className="flex flex-col items-center gap-8 p-8 md:py-16 md:px-[var(--nav-edge-w)]">
         <SectionTitle>Concept</SectionTitle>
-        <div className="mx-auto flex w-full max-w-[1100px] flex-wrap items-stretch justify-center gap-8">
+        <div className="mx-auto flex w-full flex-wrap items-stretch justify-center gap-8">
           <div className="flex min-w-[280px] flex-1 flex-col justify-center gap-6 rounded-2xl border border-white/15 bg-white/5 p-6 backdrop-blur-sm md:p-8">
             <Body1 className="font-light">
               Partant du constat que le parfum reste l'un des derniers
@@ -462,9 +462,9 @@ export default function OrealPage() {
 
       {/* Ce qu'on apporte */}
       <div id="apporte" className="flex flex-col items-center gap-8 p-8 md:py-16 md:px-[var(--nav-edge-w)]">
-        <div className="flex w-full max-w-[720px] flex-col items-center gap-8 text-center">
+        <div className="flex w-full flex-col items-center gap-8 text-center">
           <SectionTitle>Ce Qu'On Apporte À L'Oréal</SectionTitle>
-          <Body1 className="font-light">
+          <Body1 className="w-full font-light">
             YSL Sélection Privée n'est pas qu'une solution locale. C'est un
             modèle scalable, durable et mesurable, adaptable à l'ensemble des
             marques du Groupe L'Oréal et déployable à l'international.
@@ -503,10 +503,10 @@ export default function OrealPage() {
       </div>
 
       {/* Vidéo Équipe */}
-      <div id="video" className="flex flex-col items-center gap-8 p-8 md:py-16 md:px-[var(--nav-edge-w)]">
-        <div className="flex w-full max-w-[720px] flex-col items-center gap-8 text-center">
+      <div id="video" className="flex flex-col items-center gap-8 p-8 md:py-16 md:pb-32 md:px-[var(--nav-edge-w)]">
+        <div className="flex w-full flex-col items-center gap-8 text-center">
           <SectionTitle>Vidéo Équipe</SectionTitle>
-          <Body1 className="font-light">
+          <Body1 className="w-full font-light">
             Au-delà du concept, L'Oréal Brandstorm demandait à chaque équipe
             de se révéler en tant que personnes. La vidéo devait répondre à 5
             valeurs fondamentales définies par L'Oréal :
@@ -541,8 +541,8 @@ export default function OrealPage() {
               fill="none"
               filter="url(#videoConnectorGlow)"
             >
-              <path d="M160,207 L196,207 Q206,207 206,197 L206,190" />
-              <path d="M508,207 L490,207 Q480,207 480,197 L480,190" />
+              <path d="M110,207 L196,207 Q206,207 206,197 L206,190" />
+              <path d="M576,207 L490,207 Q480,207 480,197 L480,190" />
               <path d="M162,345 L162,265 Q162,255 172,255 L206,255" />
               <path d="M502,345 L502,265 Q502,255 492,255 L480,255" />
             </g>
@@ -578,13 +578,13 @@ export default function OrealPage() {
               aria-hidden="true"
             />
           </div>
-          <div className="absolute left-[13%] top-[48%] w-[20%] -translate-x-1/2 -translate-y-1/2">
+          <div className="absolute left-[3%] top-[48%] w-[26%] -translate-x-1/2 -translate-y-1/2">
             <ValueCard title={videoValues[1].title} body={videoValues[1].body} />
           </div>
-          <div className="absolute left-[83%] top-[48%] w-[20%] -translate-x-1/2 -translate-y-1/2">
+          <div className="absolute left-[96%] top-[48%] w-[24%] -translate-x-1/2 -translate-y-1/2">
             <ValueCard title={videoValues[2].title} body={videoValues[2].body} />
           </div>
-          <div className="absolute left-[24%] top-[85%] w-[30%] -translate-x-1/2 -translate-y-1/2">
+          <div className="absolute left-[24%] top-[85%] w-[34%] -translate-x-1/2 -translate-y-1/2">
             <ValueCard title={videoValues[3].title} body={videoValues[3].body} />
           </div>
           <div className="absolute left-[73%] top-[85%] w-[30%] -translate-x-1/2 -translate-y-1/2">

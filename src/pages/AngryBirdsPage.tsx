@@ -162,12 +162,12 @@ export default function AngryBirdsPage() {
             <div className="flex w-full flex-col items-center gap-2">
               <H5 className="!text-lg">Overview</H5>
               <Body1 className="!text-white font-light">
-                Ce projet, réalisé en binôme sur 4 jours dans le cadre d'un
+                Ce projet, réalisé seul sur 4 jours dans le cadre d'un
                 exercice de Research Ops à Sup de Pub, consistait à inventer
                 une étude qualitative de A à Z et à la vendre à un client. Le
-                brief qui nous a été donné : comprendre les usages du
+                brief qui m'a été donné : comprendre les usages du
                 téléphone chez les garçons de 8 à 12 ans pour Angry Birds.
-                Nous avons conçu une méthodologie combinant mobile tracking
+                J'ai conçu une méthodologie combinant mobile tracking
                 et ateliers participatifs avec entretiens parent-enfant,
                 pour croiser usages réels et ressentis et identifier les
                 moments clés d'engagement.
@@ -207,26 +207,24 @@ export default function AngryBirdsPage() {
         className="relative flex flex-col items-center gap-8 p-8 md:py-16 md:px-[var(--nav-edge-w)]"
       >
         <SectionTitle>Le Brief</SectionTitle>
-        <div className="mx-auto flex w-full max-w-[1000px] flex-wrap items-center justify-center gap-8">
-          <div className="flex min-w-[280px] flex-1 flex-col items-start gap-4 rounded-2xl border border-white/15 bg-white/5 p-6 backdrop-blur-sm md:p-8">
-            <Body1 className="font-light">
-              L'exercice consistait à concevoir et vendre une étude qualitative
-              de A à Z à un client, en jouant le rôle d'une agence de
-              recherche.
-              <br />
-              <br />
-              Le client et la cible ont été tirés au sort parmi 4 options. Nous
-              avons hérité du cas Angry Birds : comprendre les usages
-              quotidiens du téléphone chez les garçons de 8 à 12 ans, afin
-              d'identifier les moments de jeu, les motivations et les
-              frustrations pour mieux adapter l'expérience utilisateur du jeu.
-            </Body1>
-          </div>
+        <div className="mx-auto flex w-full max-w-[900px] flex-col items-center gap-8 rounded-2xl border border-white/15 bg-white/5 p-6 backdrop-blur-sm md:flex-row md:p-8">
           <img
             src={briefIllustration}
             alt=""
-            className="w-full max-w-[320px] flex-1 opacity-80"
+            className="w-full max-w-[280px] shrink-0 opacity-70 invert md:max-w-[320px]"
           />
+          <Body1 className="font-light">
+            L'exercice consistait à concevoir et vendre une étude qualitative
+            de A à Z à un client, en jouant le rôle d'une agence de
+            recherche.
+            <br />
+            <br />
+            Le client et la cible ont été tirés au sort parmi 4 options. J'ai
+            hérité du cas Angry Birds : comprendre les usages
+            quotidiens du téléphone chez les garçons de 8 à 12 ans, afin
+            d'identifier les moments de jeu, les motivations et les
+            frustrations pour mieux adapter l'expérience utilisateur du jeu.
+          </Body1>
         </div>
       </div>
 
@@ -235,7 +233,8 @@ export default function AngryBirdsPage() {
         <SectionTitle>Le Dossier</SectionTitle>
         <Body1 className="w-full max-w-[720px] font-light">
           Voici le dossier complet tel qu'il aurait été présenté à un client
-          — cliquez sur une vignette pour le parcourir diapositive par
+          réel, qui ne maîtrise pas nécessairement le vocabulaire UX/UI.
+          Cliquez sur une vignette pour le parcourir diapositive par
           diapositive. Chaque section ci-dessous en résume aussi
           l'enchaînement en quelques lignes.
         </Body1>
@@ -244,9 +243,9 @@ export default function AngryBirdsPage() {
       <SlideGallery
         title="Introduction"
         bullets={[
-          "Accroche avec une question incongrue pour capter l'attention du client dès la première slide",
-          "Présentation du titre de l'étude et du sujet",
-          'Transition vers le protocole de recherche',
+          "J'ai ouvert sur une énigme : « Comment voir les poissons dans la mer ? » Réponse : on plonge",
+          "Et c'est exactement ce que j'ai fait, plonger dans l'univers numérique des enfants pour vraiment comprendre leurs usages",
+          "De là, j'ai enchaîné sur le sujet et le protocole que j'ai suivi pour y arriver",
         ]}
         images={introImages}
         onOpen={openGallery}
@@ -255,9 +254,9 @@ export default function AngryBirdsPage() {
       <SlideGallery
         title="Protocole de Recherche"
         bullets={[
-          "Définition de ce qu'est un protocole de recherche (pourquoi, comment, avec qui, avec quels outils)",
-          'Présentation du contexte du projet',
-          'Détail des objectifs et des premières hypothèses',
+          "J'ai posé le cadre : un protocole en 6 étapes, du contexte à la restitution finale",
+          "Angry Birds, c'est un jeu créé par Rovio en 2009 pour les enfants. J'ai resserré ma cible sur les garçons de 8 à 12 ans, et je l'ai coupée en deux (8 à 9 ans et 10 à 12 ans) pour mieux comparer",
+          "Je me suis fixé 4 objectifs (temps d'écran, motivations, moments de plaisir et de frustration, ce qui engage) et j'ai posé mes premières hypothèses",
         ]}
         images={protocoleImages}
         onOpen={openGallery}
@@ -266,9 +265,9 @@ export default function AngryBirdsPage() {
       <SlideGallery
         title="Études (Méthode 1)"
         bullets={[
-          'Présentation de la première méthode de recherche retenue',
-          'Déroulé étape par étape de la collecte sur le terrain',
-          'Premiers enseignements récoltés',
+          "Première méthode, le phone tracking : j'ai suivi 10 garçons 2 jours chacun (un jour d'école, un jour de week-end) via l'application Qustudio, sans jamais toucher à leurs données privées",
+          "J'ai récolté le temps d'écran total, la durée et le nombre de sessions, les applications les plus utilisées",
+          "Résultat : une cartographie du parcours type par tranche d'âge, et un tableau qui compare les deux groupes",
         ]}
         images={etudesM1Images}
         onOpen={openGallery}
@@ -277,10 +276,9 @@ export default function AngryBirdsPage() {
       <SlideGallery
         title="Études (Méthode 2)"
         bullets={[
-          "Présentation du format (focus group + entretiens) : type, temps, lieu, nombre de participants et d'animateurs",
-          "Cadre légal détaillé : contrat parental couvrant consentement, RGPD, autorisation d'enregistrement et droit de retrait",
-          "Déroulé de l'atelier : les enfants expriment leurs souhaits et obstacles liés à l'usage du téléphone",
-          'Phase de vote collectif pour prioriser les sujets, puis entretiens individuels parent-enfant',
+          "Deuxième méthode, un atelier de 2h avec les mêmes 10 garçons. J'ai démarré par un icebreaker, la création d'un avatar : « il n'y a pas de bonne ou mauvaise réponse »",
+          "Sur des post-its verts et rouges, chacun a noté ses souhaits et ce qui le bloquait avec son téléphone, puis j'ai tout collé sur une carte représentant une journée type",
+          "Et j'ai encadré tout ça légalement : consentement parental, RGPD, autorisation d'enregistrement, droit de retrait",
         ]}
         images={etudesM2P1Images}
         onOpen={openGallery}
@@ -289,9 +287,9 @@ export default function AngryBirdsPage() {
       <SlideGallery
         title="Études (Méthode 2 Phase 2)"
         bullets={[
-          'Vote collectif : les enfants priorisent leurs souhaits et obstacles à partir des post-its récoltés',
-          'Les animateurs comptabilisent les votes et retiennent les sujets les plus cités',
-          'Préparation et conduite des entretiens individuels qui en découlent',
+          "Les enfants ont voté pour leurs 4 souhaits et 4 obstacles préférés, puis les ont transformés eux-mêmes en questions pour leurs parents",
+          "Et là, je leur ai réservé une surprise : « c'est vous qui allez poser ces questions directement à vos parents », en entretien individuel de 15 minutes",
+          "J'en suis ressorti avec 4 cartographies d'usage, un tableau comparatif, et une analyse qui révèle les écarts entre ce que vivent les enfants et ce qu'en perçoivent leurs parents",
         ]}
         images={etudesM2P2Images}
         onOpen={openGallery}
@@ -300,9 +298,9 @@ export default function AngryBirdsPage() {
       <SlideGallery
         title="Budget"
         bullets={[
-          'Plusieurs options tarifaires proposées selon le périmètre de la mission',
-          'Détail des postes de coûts : logistique, animateurs, outils de tracking',
-          'Justification du choix recommandé pour le client',
+          "J'ai proposé trois formules, du plus simple au plus complet : phone tracking seul (26 500€), tracking plus atelier (42 800€, mon choix conseillé), ou le pack complet avec implémentation et tests utilisateurs (60 200€)",
+          "Chaque euro était justifié, poste par poste : logistique, recrutement des familles, temps des UX researchers",
+          "Et j'ai chiffré l'impact attendu : la durée moyenne de session pourrait grimper à 10 à 14 minutes, la rétention à 7 jours passer de 15% à 20 ou 22%",
         ]}
         images={budgetImages}
         onOpen={openGallery}
@@ -311,9 +309,9 @@ export default function AngryBirdsPage() {
       <SlideGallery
         title="Roadmap"
         bullets={[
-          'Planning découpé en grandes phases (préparation, terrain, analyse, restitution)',
-          "Détail des livrables attendus à chaque étape (panel, kit d'onboarding...)",
-          'Vision claire du calendrier semaine par semaine pour rassurer le client',
+          "9 phases, 6 mois : je suis parti du recrutement des 10 familles pour arriver aux tests utilisateurs finaux sur Angry Birds",
+          "J'ai enchaîné les deux méthodes, tracking mobile puis atelier et entretiens, avant de croiser les deux regards dans une phase d'analyse",
+          "Et à chaque étape, j'ai livré quelque chose de concret (cartographies, rapport, présentation client) pour suivre l'avancement semaine par semaine",
         ]}
         images={roadmapImages}
         onOpen={openGallery}
@@ -322,9 +320,9 @@ export default function AngryBirdsPage() {
       <SlideGallery
         title="KPIs"
         bullets={[
-          "Liste des indicateurs suivis : temps d'écran, durée et nombre de sessions, usages par application",
-          "Indicateurs de fidélité et de comportement : taux de retour, switching entre applis, facilité d'accès",
-          "Lien direct entre ces KPIs et les objectifs business d'Angry Birds",
+          "Je suis allé plus loin que le simple « combien de temps » : temps d'écran, nombre et durée des sessions, applications préférées, pics d'usage en semaine ou le week-end",
+          "J'ai aussi regardé la fidélité, ce qui fait revenir un enfant sur une appli, et à quelle vitesse",
+          "Et j'ai gardé des indicateurs plus humains, ceux de l'atelier : quels obstacles reviennent le plus souvent, et où enfants et parents ne voient pas les choses pareil",
         ]}
         images={kpisImages}
         onOpen={openGallery}
@@ -334,9 +332,9 @@ export default function AngryBirdsPage() {
         id="conclusion"
         title="Conclusion"
         bullets={[
-          'Synthèse de la valeur apportée : comprendre non seulement le temps de jeu, mais aussi les motivations et frustrations',
-          'Bénéfices mis en avant à court terme (engagement) et à long terme (fidélisation)',
-          "Message de clôture pensé pour convaincre le client de valider l'étude",
+          "Avec cette étude, Angry Birds ne se contente plus de savoir combien de temps un enfant joue, mais comprend ce qui le fait rester, et ce qui le frustre",
+          "À court terme, ça optimise l'engagement. À long terme, ça construit une relation durable avec les jeunes joueurs et leurs parents",
+          "Et j'ai refermé sur une note pensée pour convaincre le client de dire oui",
         ]}
         images={conclusionImages}
         onOpen={openGallery}
