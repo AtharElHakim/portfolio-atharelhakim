@@ -4,8 +4,7 @@ import portraitImg from '../assets/about-portrait-bust.png'
 import canoeSketchImg from '../assets/about-canoe-sketch.png'
 import clapperboardImg from '../assets/about-clapperboard.png'
 import wireframeSketchImg from '../assets/about-wireframe-sketch.png'
-import libanIcon from '../assets/icon-liban.svg'
-import parisPinIcon from '../assets/icon-paris-pin.svg'
+import libanParisMapImg from '../assets/about-liban-paris-map.png'
 import arrowDownIcon from '../assets/about-arrow.svg'
 
 function TimelineItem({
@@ -66,8 +65,9 @@ export default function AboutPage() {
         />
         <div className="relative z-10 shrink-0">
           <h2 className="font-syne text-4xl leading-tight text-white md:text-5xl md:leading-[48px]">
-            Là où tout
-            <br />a commencé
+            Là où tout a
+            <br />
+            commencé
           </h2>
         </div>
         <div className="relative z-10 flex max-w-[740px] flex-col gap-4">
@@ -92,11 +92,30 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="flex flex-col items-center gap-6 border-y border-white/10 bg-black-soft p-8 text-center md:py-16 md:px-[var(--nav-edge-w)]">
-        <h2 className="font-syne text-4xl leading-tight text-white md:text-5xl md:leading-[48px]">
+      <section className="relative flex flex-col items-center gap-6 overflow-hidden border-y border-white/10 p-8 text-center md:py-16 md:px-[var(--nav-edge-w)]">
+        <div
+          className="pointer-events-none absolute right-6 top-1/2 hidden -translate-y-1/2 overflow-hidden md:block"
+          style={{ width: 160, height: 200 }}
+        >
+          <img
+            src={libanParisMapImg}
+            alt=""
+            className="max-w-none opacity-25 invert"
+            style={{ width: 976, height: 650, marginLeft: -737, marginTop: -402 }}
+          />
+        </div>
+        <div className="hidden overflow-hidden md:block" style={{ width: 280, height: 270 }}>
+          <img
+            src={libanParisMapImg}
+            alt=""
+            className="max-w-none opacity-25 invert"
+            style={{ width: 788, height: 525, marginLeft: -37, marginTop: -23 }}
+          />
+        </div>
+        <h2 className="relative z-10 font-syne text-4xl leading-tight text-white md:text-5xl md:leading-[48px]">
           Un Tournant Décisif
         </h2>
-        <div className="flex max-w-[1066px] flex-col items-center gap-4">
+        <div className="relative z-10 flex max-w-[720px] flex-col items-center gap-4">
           <Body1 className="font-light">
             Mais avec l'instabilité économique et sociale croissante au Liban,
             j'ai commencé à repenser mon avenir. Je voulais évoluer, explorer
@@ -107,16 +126,6 @@ export default function AboutPage() {
             C'est ainsi qu'en août 2024, je suis arrivée à Paris pour suivre
             un Master en UX/UI Lead Design à Sup de Pub.
           </Body1>
-          <div className="flex items-center gap-6 text-base text-white/85">
-            <span className="flex items-center gap-2">
-              <img src={libanIcon} alt="" className="h-[15px] w-5" />
-              Liban
-            </span>
-            <span className="flex items-center gap-2">
-              <img src={parisPinIcon} alt="" className="h-4 w-3" />
-              Paris
-            </span>
-          </div>
         </div>
       </section>
 
@@ -132,13 +141,12 @@ export default function AboutPage() {
               <img
                 src={clapperboardImg}
                 alt=""
-                className="absolute max-w-none invert"
+                className="absolute max-w-none opacity-25 invert"
                 style={{
                   height: '193.53%',
                   width: '158.71%',
                   left: '-36.51%',
                   top: '-51.35%',
-                  filter: 'grayscale(1) contrast(1.4) brightness(1.05)',
                 }}
               />
             </div>
@@ -154,13 +162,12 @@ export default function AboutPage() {
               <img
                 src={wireframeSketchImg}
                 alt=""
-                className="absolute max-w-none invert"
+                className="absolute max-w-none opacity-25 invert"
                 style={{
                   height: '180.11%',
                   width: '100%',
                   left: '0',
                   top: '-22.82%',
-                  filter: 'grayscale(1) contrast(1.4) brightness(1.05)',
                 }}
               />
             </div>
@@ -196,14 +203,8 @@ export default function AboutPage() {
               <TimelineItem
                 title="Alternance HEIP"
                 paragraphs={[
-                  "Aujourd'hui, je travaille en alternance dans une université de sciences politiques à Paris.",
-                  "Je suis en charge de la création de contenus pour les réseaux sociaux : concepts, tournage, montage et veille des tendances. Créer du contenu pour une école de sciences politiques, c'est un univers très différent de ce que j'avais connu et justement ce qui le rend intéressant.",
-                ]}
-              />
-              <TimelineItem
-                title="Projet en cours"
-                paragraphs={[
-                  "En parallèle, je développe un site en no-code sur Framer pour la société de production libanaise Midday. C'est mon premier client officiel en UX/UI, un projet qui me permet d'explorer de nouveaux outils, de consolider mes acquis et de les mettre en pratique.",
+                  "Aujourd'hui, je suis en alternance à HEIP, une université de sciences politiques à Paris, un univers que je ne connaissais pas du tout avant d'y mettre les pieds.",
+                  "Je m'occupe de tout ce qui touche aux réseaux sociaux : trouver les concepts, tourner, monter, suivre les tendances. Ce n'était pas mon terrain de jeu naturel, mais je n'ai jamais eu peur de me lancer dans ce que je ne connais pas, et c'est souvent là que j'apprends le plus.",
                 ]}
               />
             </div>
@@ -213,9 +214,8 @@ export default function AboutPage() {
 
       <section className="flex flex-col items-center justify-center p-8 md:py-16 md:px-[var(--nav-edge-w)]">
         <p className="max-w-[952px] text-center font-syne text-2xl leading-tight text-white/85 md:text-4xl md:leading-10">
-          Aujourd'hui, je suis à la recherche de ma prochaine étape, celle qui
-          me permettra d'explorer davantage le monde de l'UX/UI. Je suis
-          impatiente de voir où ce chemin me mènera !
+          Aujourd'hui, je suis prête pour ma prochaine aventure, quelle
+          qu'elle soit. J'ai hâte de voir où elle va m'emmener !
         </p>
       </section>
 

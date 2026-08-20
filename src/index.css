@@ -116,6 +116,10 @@ body {
   font-family: var(--font-sans);
 }
 
+p, h1, h2, h3 {
+  text-wrap: pretty;
+}
+
 @keyframes fade-in-up {
   from {
     opacity: 0;
