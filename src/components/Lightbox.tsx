@@ -1,5 +1,8 @@
 import { useEffect } from 'react'
 import { createPortal } from 'react-dom'
+import { focusRing } from './Button'
+import { useSwipe } from '../hooks/useSwipe'
+import { useModalFocus } from '../hooks/useModalFocus'
 
 interface LightboxImage {
   src: string
@@ -59,10 +62,11 @@ export default function Lightbox({
 }: LightboxProps) {
   const goPrev = () => onNavigate((index - 1 + images.length) % images.length)
   const goNext = () => onNavigate((index + 1) % images.length)
+  const swipeHandlers = useSwipe(goNext, goPrev)
+  const containerRef = useModalFocus<HTMLDivElement>(onClose)
 
   useEffect(() => {
     function handleKeyDown(event: KeyboardEvent) {
-      if (event.key === 'Escape') onClose()
       if (event.key === 'ArrowLeft') goPrev()
       if (event.key === 'ArrowRight') goNext()
     }
@@ -70,18 +74,29 @@ export default function Lightbox({
     return () => document.removeEventListener('keydown', handleKeyDown)
   })
 
+  useEffect(() => {
+    const previousOverflow = document.body.style.overflow
+    document.body.style.overflow = 'hidden'
+    return () => {
+      document.body.style.overflow = previousOverflow
+    }
+  }, [])
+
   const current = images[index]
 
   return createPortal(
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center bg-black/85 p-6"
+      ref={containerRef}
+      className="fixed inset-0 z-50 flex touch-pan-y items-center justify-center bg-black/85 p-6"
       onClick={onClose}
+      onTouchStart={swipeHandlers.onTouchStart}
+      onTouchEnd={swipeHandlers.onTouchEnd}
     >
       <button
         type="button"
         onClick={onClose}
         aria-label="Fermer"
-        className="absolute right-6 top-6 flex size-14 cursor-pointer items-center justify-center opacity-80 hover:opacity-100"
+        className={`absolute right-6 top-6 flex size-14 cursor-pointer items-center justify-center rounded-full opacity-80 hover:opacity-100 ${focusRing}`}
       >
         <CloseIcon />
       </button>
@@ -94,7 +109,7 @@ export default function Lightbox({
             goPrev()
           }}
           aria-label="Image précédente"
-          className="absolute left-4 top-1/2 flex size-8 -translate-y-1/2 cursor-pointer items-center justify-center opacity-80 hover:opacity-100 md:left-8"
+          className={`absolute left-4 top-1/2 flex size-14 -translate-y-1/2 cursor-pointer items-center justify-center rounded-full opacity-80 hover:opacity-100 md:left-8 ${focusRing}`}
         >
           <ArrowIcon direction="left" />
         </button>
@@ -115,7 +130,7 @@ export default function Lightbox({
             goNext()
           }}
           aria-label="Image suivante"
-          className="absolute right-4 top-1/2 flex size-8 -translate-y-1/2 cursor-pointer items-center justify-center opacity-80 hover:opacity-100 md:right-8"
+          className={`absolute right-4 top-1/2 flex size-14 -translate-y-1/2 cursor-pointer items-center justify-center rounded-full opacity-80 hover:opacity-100 md:right-8 ${focusRing}`}
         >
           <ArrowIcon direction="right" />
         </button>

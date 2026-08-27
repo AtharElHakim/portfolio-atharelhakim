@@ -1,6 +1,8 @@
-import { useState } from 'react'
+import { useState, type CSSProperties } from 'react'
 import { Link } from 'react-router-dom'
 import { H2, H3, Body1, Body2 } from './Typography'
+import { focusRing } from './Button'
+import { useSwipe } from '../hooks/useSwipe'
 import fineLineImg from '../assets/fineline/ancien-site.png'
 import yslImg from '../assets/project-ysl.png'
 import researchOpsImg from '../assets/project-research-ops.png'
@@ -28,6 +30,14 @@ const projects = [
   },
 ]
 
+const arrowGlowStyle = {
+  '--glow-color': 'var(--color-purple-light)',
+  '--glow-blur': '10px',
+  '--glow-opacity': '60%',
+  '--glow-blur-hover': '16px',
+  '--glow-opacity-hover': '90%',
+} as CSSProperties
+
 function ChevronIcon({ direction }: { direction: 'left' | 'right' }) {
   return (
     <svg
@@ -51,6 +61,12 @@ export default function Projects() {
   const [activeIndex, setActiveIndex] = useState(1)
   const active = projects[activeIndex]
 
+  const goPrev = () =>
+    setActiveIndex((prev) => (prev - 1 + projects.length) % projects.length)
+  const goNext = () =>
+    setActiveIndex((prev) => (prev + 1) % projects.length)
+  const swipeHandlers = useSwipe(goNext, goPrev)
+
   return (
     <section
       id="projects"
@@ -66,8 +82,10 @@ export default function Projects() {
       </div>
 
       <div
-        className="relative flex h-[440px] w-full max-w-[1440px] items-center justify-center"
+        className="relative flex h-[440px] w-full max-w-[1440px] items-center justify-center touch-pan-y"
         style={{ perspective: '1600px' }}
+        onTouchStart={swipeHandlers.onTouchStart}
+        onTouchEnd={swipeHandlers.onTouchEnd}
       >
         {projects.map((project, i) => {
           const count = projects.length
@@ -83,11 +101,8 @@ export default function Projects() {
           const cardInner = (
             <div className="flex size-full flex-col gap-4 p-4">
               <div
-                className="relative min-h-0 flex-1 overflow-hidden rounded-2xl border border-white/10"
-                style={{
-                  boxShadow:
-                    '0 6px 18px color-mix(in srgb, var(--color-black-ink) 40%, transparent), inset 0 1px 0 color-mix(in srgb, var(--color-white) 15%, transparent)',
-                }}
+                className="relative min-h-0 flex-1 overflow-hidden rounded-2xl border border-white/10 shadow-lift shadow-frame"
+                style={{ '--lift-y': '6px', '--lift-blur': '18px', '--lift-opacity': '40%' } as CSSProperties}
               >
                 <img
                   src={project.image}
@@ -97,7 +112,7 @@ export default function Projects() {
                 <div className="absolute inset-0 bg-gradient-to-b from-white/10 via-transparent to-black/15" />
               </div>
               <div className="flex flex-col items-start gap-2 px-2 pb-2">
-                <H3 className="w-full text-xl !leading-7">{project.title}</H3>
+                <H3 className="w-full !text-xl !leading-normal">{project.title}</H3>
                 <Body2
                   className={`w-full transition-opacity duration-300 ${
                     isActive ? 'opacity-100' : 'opacity-0'
@@ -110,15 +125,15 @@ export default function Projects() {
           )
 
           const cardClass =
-            'absolute h-[400px] w-[340px] overflow-hidden rounded-3xl border-[1.5px] border-purple-pale/50 bg-purple-dark/35 backdrop-blur-[20px] transition-[transform,opacity] duration-[900ms] ease-[cubic-bezier(0.16,1,0.3,1)] will-change-transform'
+            'absolute h-[400px] w-[340px] overflow-hidden rounded-3xl border-[1.5px] border-purple-pale/50 bg-purple-dark/35 backdrop-blur-[20px] shadow-glass-card shadow-lift transition-[transform,opacity] duration-[900ms] ease-[cubic-bezier(0.16,1,0.3,1)] will-change-transform'
 
           const style = {
             transform: `translateX(${translateX}px) scale(${scale}) rotateY(${rotateY}deg)`,
             zIndex: 10 - abs,
             opacity,
-            boxShadow:
-              'inset 0 1px 1px color-mix(in oklab, var(--color-purple-highlight) 45%, transparent), inset 0 -1px 12px color-mix(in oklab, var(--color-purple-mid) 15%, transparent), 0 0 0 1px color-mix(in oklab, var(--color-purple-mid) 20%, transparent), 0 8px 30px color-mix(in oklab, var(--color-purple-mid) 35%, transparent), 0 20px 40px rgba(0,0,0,0.4)',
-          }
+            '--lift-blur': '40px',
+            '--lift-opacity': '40%',
+          } as CSSProperties
 
           if (isActive) {
             return (
@@ -151,22 +166,20 @@ export default function Projects() {
       <div className="flex items-center gap-6">
         <button
           type="button"
-          onClick={() =>
-            setActiveIndex((prev) => (prev - 1 + projects.length) % projects.length)
-          }
+          onClick={goPrev}
           aria-label="Projet précédent"
-          className="glass-dark flex size-11 cursor-pointer items-center justify-center rounded-full border-[1.5px] border-purple-pale/50 text-white shadow-[0_0_10px_color-mix(in_oklab,var(--color-purple-light)_60%,transparent)] transition-all duration-300 hover:shadow-[0_0_16px_color-mix(in_oklab,var(--color-purple-light)_90%,transparent)]"
+          className={`glass-dark flex size-11 cursor-pointer items-center justify-center rounded-full border-[1.5px] border-purple-pale/50 text-white shadow-glow transition-all duration-300 ${focusRing}`}
+          style={arrowGlowStyle}
         >
           <ChevronIcon direction="left" />
         </button>
-        <H3 className="min-w-[180px] text-center text-lg !leading-7">{active.title}</H3>
+        <H3 className="min-w-[180px] text-center !text-lg !leading-normal">{active.title}</H3>
         <button
           type="button"
-          onClick={() =>
-            setActiveIndex((prev) => (prev + 1) % projects.length)
-          }
+          onClick={goNext}
           aria-label="Projet suivant"
-          className="glass-dark flex size-11 cursor-pointer items-center justify-center rounded-full border-[1.5px] border-purple-pale/50 text-white shadow-[0_0_10px_color-mix(in_oklab,var(--color-purple-light)_60%,transparent)] transition-all duration-300 hover:shadow-[0_0_16px_color-mix(in_oklab,var(--color-purple-light)_90%,transparent)]"
+          className={`glass-dark flex size-11 cursor-pointer items-center justify-center rounded-full border-[1.5px] border-purple-pale/50 text-white shadow-glow transition-all duration-300 ${focusRing}`}
+          style={arrowGlowStyle}
         >
           <ChevronIcon direction="right" />
         </button>

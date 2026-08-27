@@ -2,6 +2,7 @@ import emailIcon from '../assets/icon-email.svg'
 import phoneIcon from '../assets/icon-phone.svg'
 import linkedinIcon from '../assets/icon-linkedin-white.svg'
 import { H1, Body1, Micro1 } from '../components/Typography'
+import { focusRing } from '../components/Button'
 
 const contactItems = [
   {
@@ -29,7 +30,7 @@ const contactItems = [
 
 export default function ContactPage() {
   return (
-    <section className="flex flex-col items-center gap-12 px-6 py-16 md:px-[var(--nav-edge-w)] md:py-24">
+    <section className="flex flex-col items-center gap-12 p-8 md:py-16 md:px-[var(--nav-edge-w)]">
       <div className="flex flex-col items-center gap-4 text-center">
         <H1>Prenons Contact !</H1>
         <Body1 className="max-w-[633px] font-light">
@@ -41,11 +42,11 @@ export default function ContactPage() {
       <div className="flex w-full max-w-[730px] items-center justify-center px-4">
         <div className="flex w-full flex-col items-start justify-center gap-6 rounded-3xl border border-white/10 bg-white/5 px-8 py-16 md:px-16 md:py-24">
           {contactItems.map((item) => (
-            <div key={item.label} className="flex items-center gap-6">
+            <div key={item.label} className="flex w-full items-center gap-6">
               <div className="flex size-14 shrink-0 items-center justify-center rounded-full bg-black-elevated p-3">
                 <img src={item.icon} alt="" className={item.iconSize} />
               </div>
-              <div className="flex flex-col items-start gap-1">
+              <div className="flex min-w-0 flex-1 flex-col items-start gap-1">
                 <Micro1 className="!text-white/50 font-bold uppercase tracking-wide">
                   {item.label}
                 </Micro1>
@@ -53,9 +54,11 @@ export default function ContactPage() {
                   href={item.href}
                   target="_blank"
                   rel="noreferrer"
-                  className="cursor-pointer text-xl leading-8 text-white/85 underline decoration-white/30 underline-offset-4 transition-colors hover:text-white md:text-2xl"
+                  className={`flex min-h-11 w-full cursor-pointer items-center rounded-lg ${focusRing}`}
                 >
-                  {item.value}
+                  <span className="min-w-0 break-words text-xl leading-8 text-white/85 underline decoration-white/30 underline-offset-4 transition-colors hover:text-white md:text-2xl">
+                    {item.value}
+                  </span>
                 </a>
               </div>
             </div>

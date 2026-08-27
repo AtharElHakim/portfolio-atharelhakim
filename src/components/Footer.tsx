@@ -1,6 +1,6 @@
-import { Link } from 'react-router-dom'
 import linkedinIcon from '../assets/linkedin-icon.svg'
 import mailIcon from '../assets/mail-icon.svg'
+import Button, { focusRing } from './Button'
 
 export default function Footer() {
   return (
@@ -11,30 +11,18 @@ export default function Footer() {
             Athar El Hakim
           </p>
           <nav className="flex flex-wrap items-center justify-center gap-4">
-            <Link
-              to="/"
-              className="flex items-center justify-center rounded-full px-4 py-2 text-base leading-6 text-white transition-colors duration-300 hover:bg-white/10"
-            >
+            <Button to="/" variant="ghost">
               Home
-            </Link>
-            <Link
-              to="/projects"
-              className="flex items-center justify-center rounded-full px-4 py-2 text-base leading-6 text-white transition-colors duration-300 hover:bg-white/10"
-            >
+            </Button>
+            <Button to="/projects" variant="ghost">
               Projets
-            </Link>
-            <Link
-              to="/a-propos-de-moi"
-              className="flex items-center justify-center rounded-full px-4 py-2 text-base leading-6 text-white transition-colors duration-300 hover:bg-white/10"
-            >
+            </Button>
+            <Button to="/a-propos-de-moi" variant="ghost">
               À Propos De Moi
-            </Link>
-            <Link
-              to="/contactez-moi"
-              className="flex items-center justify-center rounded-full px-4 py-2 text-base leading-6 text-white transition-colors duration-300 hover:bg-white/10"
-            >
+            </Button>
+            <Button to="/contactez-moi" variant="ghost">
               Contactez-Moi
-            </Link>
+            </Button>
           </nav>
         </div>
         <div className="flex items-center gap-4">
@@ -43,14 +31,14 @@ export default function Footer() {
             target="_blank"
             rel="noreferrer"
             aria-label="LinkedIn"
-            className="opacity-80 transition-all duration-300 hover:scale-110 hover:opacity-100"
+            className={`flex size-11 items-center justify-center rounded-full opacity-80 transition-all duration-300 hover:scale-110 hover:opacity-100 ${focusRing}`}
           >
             <img src={linkedinIcon} alt="" className="size-8" />
           </a>
           <a
             href="mailto:athar.elhakim@supdepub.com"
             aria-label="Email"
-            className="opacity-80 transition-all duration-300 hover:scale-110 hover:opacity-100"
+            className={`flex size-11 items-center justify-center rounded-full opacity-80 transition-all duration-300 hover:scale-110 hover:opacity-100 ${focusRing}`}
           >
             <img src={mailIcon} alt="" className="size-8 p-1" />
           </a>

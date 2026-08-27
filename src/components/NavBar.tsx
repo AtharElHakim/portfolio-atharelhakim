@@ -1,6 +1,10 @@
 import { useEffect, useRef, useState } from 'react'
-import { NavLink, Link, useLocation } from 'react-router-dom'
+import { createPortal } from 'react-dom'
+import { Link, useLocation } from 'react-router-dom'
 import { Micro1 } from './Typography'
+import Button, { focusRing } from './Button'
+
+const CV_HREF = 'https://drive.google.com/file/d/1ixItPzB_x42w22SA-K9QslNWl_UHh2OB/view?usp=sharing'
 
 function CaretDownIcon({ className }: { className?: string }) {
   return (
@@ -39,12 +43,33 @@ function ArrowUpRightIcon({ className }: { className?: string }) {
   )
 }
 
-function navItemClass({ isActive }: { isActive: boolean }) {
-  return `relative cursor-pointer rounded-full px-4 py-2 text-base leading-6 transition-all duration-300 ${
-    isActive
-      ? 'bg-purple-mid/45 text-white'
-      : 'text-white/70 hover:text-white'
-  }`
+/** Animates between a hamburger (three lines) and a close (X) glyph. */
+function MenuIcon({ open }: { open: boolean }) {
+  return (
+    <svg className="size-6" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path
+        d="M5 7H19"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        className={`origin-center transition-transform duration-300 ${open ? 'translate-y-[5px] rotate-45' : ''}`}
+      />
+      <path
+        d="M5 12H19"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        className={`origin-center transition-opacity duration-200 ${open ? 'opacity-0' : 'opacity-100'}`}
+      />
+      <path
+        d="M5 17H19"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        className={`origin-center transition-transform duration-300 ${open ? '-translate-y-[5px] -rotate-45' : ''}`}
+      />
+    </svg>
+  )
 }
 
 const projectLinks = [
@@ -75,11 +100,12 @@ function ProjectsDropdown() {
 
   return (
     <div ref={containerRef} className="relative">
-      <button
-        type="button"
+      <Button
+        variant="ghost"
+        active={isActive}
         onClick={() => setOpen((prev) => !prev)}
         aria-expanded={open}
-        className={`flex items-center gap-2 ${navItemClass({ isActive })}`}
+        className="gap-2"
       >
         Projets
         <CaretDownIcon
@@ -87,7 +113,7 @@ function ProjectsDropdown() {
             open ? 'rotate-180' : ''
           }`}
         />
-      </button>
+      </Button>
       {open && (
         <div className="glass-dark animate-fade-in-up purple-glow absolute left-0 top-full z-10 mt-2 flex w-[240px] flex-col overflow-hidden rounded-xl">
           {projectLinks.map((item) => (
@@ -95,7 +121,7 @@ function ProjectsDropdown() {
               key={item.to}
               to={item.to}
               onClick={() => setOpen(false)}
-              className="cursor-pointer px-4 py-2 text-base leading-6 text-white/70 transition-colors duration-200 hover:bg-purple-mid/15 hover:text-white"
+              className={`cursor-pointer px-4 py-2 text-base leading-6 text-white/70 transition-colors duration-200 hover:bg-purple-mid/15 hover:text-white ${focusRing}`}
             >
               {item.label}
             </Link>
@@ -106,8 +132,99 @@ function ProjectsDropdown() {
   )
 }
 
+function mobileItemClass(active: boolean) {
+  return `w-full rounded-2xl px-4 py-4 text-center font-syne text-2xl transition-colors duration-200 ${
+    active ? 'bg-purple-mid/45 text-white' : 'text-white/85 hover:bg-white/5 hover:text-white'
+  } ${focusRing}`
+}
+
+function MobileMenu({
+  onClose,
+  isHomeActive,
+  isAboutActive,
+  isProjectsActive,
+}: {
+  onClose: () => void
+  isHomeActive: boolean
+  isAboutActive: boolean
+  isProjectsActive: boolean
+}) {
+  const [projectsOpen, setProjectsOpen] = useState(false)
+
+  return createPortal(
+    <div className="fixed inset-0 z-30 flex flex-col overflow-y-auto bg-black px-6 pb-10 pt-28 md:hidden">
+      <nav className="mx-auto flex w-full max-w-sm flex-1 flex-col items-stretch gap-2">
+        <Link to="/" onClick={onClose} className={mobileItemClass(isHomeActive)}>
+          Home
+        </Link>
+
+        <div className="flex flex-col items-stretch">
+          <button
+            type="button"
+            onClick={() => setProjectsOpen((prev) => !prev)}
+            aria-expanded={projectsOpen}
+            className={`flex items-center justify-center gap-2 ${mobileItemClass(isProjectsActive)}`}
+          >
+            Projets
+            <CaretDownIcon
+              className={`size-6 shrink-0 transition-transform duration-300 ${
+                projectsOpen ? 'rotate-180' : ''
+              }`}
+            />
+          </button>
+          {projectsOpen && (
+            <div className="flex flex-col items-stretch gap-1 py-2">
+              {projectLinks.map((item) => (
+                <Link
+                  key={item.to}
+                  to={item.to}
+                  onClick={onClose}
+                  className={`w-full rounded-xl px-4 py-3 text-center text-lg text-white/70 transition-colors duration-200 hover:bg-white/5 hover:text-white ${focusRing}`}
+                >
+                  {item.label}
+                </Link>
+              ))}
+            </div>
+          )}
+        </div>
+
+        <Link to="/a-propos-de-moi" onClick={onClose} className={mobileItemClass(isAboutActive)}>
+          À Propos De Moi
+        </Link>
+
+        <div className="my-4 border-t border-white/10" aria-hidden="true" />
+
+        <Link
+          to="/contactez-moi"
+          onClick={onClose}
+          className={`flex items-center justify-center gap-2 ${mobileItemClass(false)}`}
+        >
+          Contactez-Moi
+          <ArrowUpRightIcon className="size-5 shrink-0" />
+        </Link>
+        <a
+          href={CV_HREF}
+          target="_blank"
+          rel="noreferrer"
+          onClick={onClose}
+          className={`flex items-center justify-center gap-2 ${mobileItemClass(false)}`}
+        >
+          Mon CV
+          <ArrowUpRightIcon className="size-5 shrink-0" />
+        </a>
+      </nav>
+    </div>,
+    document.body,
+  )
+}
+
 export default function NavBar() {
   const edgeRef = useRef<HTMLDivElement>(null)
+  const location = useLocation()
+  const isHomeActive = location.pathname === '/'
+  const isAboutActive = location.pathname === '/a-propos-de-moi'
+  const isProjectsActive = location.pathname.startsWith('/projects')
+  const [mobileOpen, setMobileOpen] = useState(false)
 
   useEffect(() => {
     const el = edgeRef.current
@@ -122,6 +239,31 @@ export default function NavBar() {
     return () => observer.disconnect()
   }, [])
 
+  // Auto-close the mobile menu on route change (covers link taps and back/forward navigation).
+  useEffect(() => {
+    setMobileOpen(false)
+  }, [location.pathname])
+
+  // Lock background scroll while the full-screen mobile menu is open.
+  useEffect(() => {
+    if (!mobileOpen) return
+    const previousOverflow = document.body.style.overflow
+    document.body.style.overflow = 'hidden'
+    return () => {
+      document.body.style.overflow = previousOverflow
+    }
+  }, [mobileOpen])
+
+  // Close on Escape.
+  useEffect(() => {
+    if (!mobileOpen) return
+    function handleKeyDown(event: KeyboardEvent) {
+      if (event.key === 'Escape') setMobileOpen(false)
+    }
+    document.addEventListener('keydown', handleKeyDown)
+    return () => document.removeEventListener('keydown', handleKeyDown)
+  }, [mobileOpen])
+
   return (
     <header className="sticky top-4 z-20 px-4 md:px-12">
       <div className="relative mx-auto flex w-full max-w-[1440px] items-center justify-between gap-4">
@@ -133,40 +275,55 @@ export default function NavBar() {
         </Link>
 
         <nav
-          className="flex flex-wrap items-center justify-center gap-2 rounded-full border border-white/15 bg-white/5 p-2 md:absolute md:left-1/2 md:-translate-x-1/2"
-          style={{
-            backdropFilter: 'blur(20px)',
-            WebkitBackdropFilter: 'blur(20px)',
-          }}
+          className="glass-dark hidden flex-wrap items-center justify-center gap-2 rounded-full p-2 md:flex md:absolute md:left-1/2 md:-translate-x-1/2"
         >
-          <NavLink to="/" end className={navItemClass}>
+          <Button to="/" variant="ghost" active={isHomeActive}>
             Home
-          </NavLink>
+          </Button>
           <ProjectsDropdown />
-          <NavLink to="/a-propos-de-moi" className={navItemClass}>
+          <Button to="/a-propos-de-moi" variant="ghost" active={isAboutActive}>
             À Propos De Moi
-          </NavLink>
+          </Button>
         </nav>
 
-        <div ref={edgeRef} className="flex shrink-0 items-center justify-end gap-6">
-          <NavLink
+        <div ref={edgeRef} className="hidden shrink-0 items-center justify-end gap-6 md:flex">
+          <Link
             to="/contactez-moi"
-            className="group flex cursor-pointer items-center gap-2 text-base leading-6 text-white/70 transition-colors duration-300 hover:text-white"
+            className={`group flex min-h-11 cursor-pointer items-center gap-2 rounded-full text-base leading-6 text-white/70 transition-colors duration-300 hover:text-white ${focusRing}`}
           >
             Contactez-Moi
             <ArrowUpRightIcon className="size-3.5 shrink-0 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-          </NavLink>
+          </Link>
           <a
-            href="https://drive.google.com/file/d/1ixItPzB_x42w22SA-K9QslNWl_UHh2OB/view?usp=sharing"
+            href={CV_HREF}
             target="_blank"
             rel="noreferrer"
-            className="group flex cursor-pointer items-center gap-2 text-base leading-6 text-white/70 transition-colors duration-300 hover:text-white"
+            className={`group flex min-h-11 cursor-pointer items-center gap-2 rounded-full text-base leading-6 text-white/70 transition-colors duration-300 hover:text-white ${focusRing}`}
           >
             Mon CV
             <ArrowUpRightIcon className="size-3.5 shrink-0 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
           </a>
         </div>
+
+        <button
+          type="button"
+          onClick={() => setMobileOpen((prev) => !prev)}
+          aria-expanded={mobileOpen}
+          aria-label={mobileOpen ? 'Fermer le menu' : 'Ouvrir le menu'}
+          className={`flex size-11 shrink-0 cursor-pointer items-center justify-center rounded-full border border-white/15 bg-white/5 text-white md:hidden ${focusRing}`}
+        >
+          <MenuIcon open={mobileOpen} />
+        </button>
       </div>
+
+      {mobileOpen && (
+        <MobileMenu
+          onClose={() => setMobileOpen(false)}
+          isHomeActive={isHomeActive}
+          isAboutActive={isAboutActive}
+          isProjectsActive={isProjectsActive}
+        />
+      )}
     </header>
   )
 }

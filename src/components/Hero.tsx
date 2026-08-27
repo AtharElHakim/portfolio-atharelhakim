@@ -1,6 +1,6 @@
-import { Link } from 'react-router-dom'
 import portraitImg from '../assets/portrait-dark-2-transparent.png'
 import { Display, H2, Body1 } from './Typography'
+import Button from './Button'
 
 export default function Hero() {
   return (
@@ -24,18 +24,7 @@ export default function Hero() {
           style={{ animationDelay: '120ms' }}
         >
           <H2 className="!w-auto whitespace-nowrap text-left">Prêt à explorer ?</H2>
-          <Link
-            to="/projects"
-            className="flex cursor-pointer items-center justify-center rounded-full px-6 py-2 text-white transition-all duration-300 hover:-translate-y-0.5"
-            style={{
-              background: 'linear-gradient(135deg, var(--color-purple-light) 0%, var(--color-purple-deep) 100%)',
-              boxShadow: '0 0 20px color-mix(in oklab, var(--color-purple-mid) 35%, transparent)',
-            }}
-          >
-            <Body1 className="!text-white whitespace-nowrap text-center">
-              Voir mes projets
-            </Body1>
-          </Link>
+          <Button to="/projects">Voir mes projets</Button>
         </div>
       </div>
       <div

@@ -120,6 +120,19 @@ p, h1, h2, h3 {
   text-wrap: pretty;
 }
 
+/* Case-study section prose: cap the measure and left-align. Replaces the
+   old `w-full text-center` treatment on section-intro paragraphs, which
+   ran 84–109 characters per line at ~984px wide (see DESIGN_SYSTEM.md
+   "Body copy"). The block still centres under its (centred) section
+   heading via `margin-inline: auto`; only the text goes left.
+   60ch lands at ~72–74 real chars/line for Roboto at 20px (the `ch`
+   unit overshoots for a proportional face — 68ch measured ~82). */
+.case-prose {
+  max-width: 60ch;
+  margin-inline: auto;
+  text-align: left;
+}
+
 @keyframes fade-in-up {
   from {
     opacity: 0;
@@ -175,6 +188,62 @@ p, h1, h2, h3 {
   box-shadow:
     0 0 0 1px color-mix(in srgb, var(--color-purple-mid) 15%, transparent),
     0 8px 30px color-mix(in srgb, var(--color-purple-mid) 15%, transparent);
+}
+
+/* Shadow tokens (see DESIGN_SYSTEM.md "Shadows"). Each is a formula, not a
+   fixed value — override the custom properties per instance via inline
+   `style` (not a Tailwind arbitrary-property class: Tailwind's generated
+   utilities live in `@layer utilities`, and this file's plain, unlayered
+   CSS always wins over any layered rule regardless of source order, so a
+   `[--glow-blur:10px]` class can never actually beat the default set here). */
+
+/* Ambient purple light — buttons, nodes, hover glows. Set --glow-*-hover
+   alongside the base --glow-* values to animate the glow on :hover. */
+.shadow-glow {
+  --glow-color: var(--color-purple-mid);
+  --glow-y: 0px;
+  --glow-blur: 20px;
+  --glow-opacity: 35%;
+  box-shadow: 0 var(--glow-y) var(--glow-blur) color-mix(in oklab, var(--glow-color) var(--glow-opacity), transparent);
+}
+
+.shadow-glow:hover {
+  --glow-y: var(--glow-y-hover, var(--glow-y));
+  --glow-blur: var(--glow-blur-hover, var(--glow-blur));
+  --glow-opacity: var(--glow-opacity-hover, var(--glow-opacity));
+}
+
+/* Dark elevation/drop shadow — no purple tint. */
+.shadow-lift {
+  --lift-y: 20px;
+  --lift-blur: 60px;
+  --lift-opacity: 50%;
+  --shadow-lift-layer: 0 var(--lift-y) var(--lift-blur) color-mix(in srgb, var(--color-black-ink) var(--lift-opacity), transparent);
+  box-shadow: var(--shadow-lift-layer);
+}
+
+/* Composes with .shadow-lift: adds the inset top highlight used on photo-frame containers. */
+.shadow-lift.shadow-frame {
+  box-shadow: var(--shadow-lift-layer), inset 0 1px 0 color-mix(in srgb, var(--color-white) 15%, transparent);
+}
+
+/* 4-layer inset+ring+glow "glass card" recipe — success/danger callouts, purple wireframe/carousel cards. */
+.shadow-glass-card {
+  --glass-tint: var(--color-purple-mid);
+  --glass-edge: var(--color-purple-highlight);
+  --glass-edge-opacity: 45%;
+  --glass-edge-space: oklab;
+  --shadow-glass-card-layers:
+    inset 0 1px 1px color-mix(in var(--glass-edge-space), var(--glass-edge) var(--glass-edge-opacity), transparent),
+    inset 0 -1px 12px color-mix(in oklab, var(--glass-tint) 15%, transparent),
+    0 0 0 1px color-mix(in oklab, var(--glass-tint) 20%, transparent),
+    0 8px 30px color-mix(in oklab, var(--glass-tint) 35%, transparent);
+  box-shadow: var(--shadow-glass-card-layers);
+}
+
+/* Composes with .shadow-lift: stacks the glass-card layers on top of a lift shadow (Projects.tsx active carousel card). */
+.shadow-glass-card.shadow-lift {
+  box-shadow: var(--shadow-glass-card-layers), var(--shadow-lift-layer);
 }
 
 /* Modern thin scrollbar for horizontal-scroll containers */

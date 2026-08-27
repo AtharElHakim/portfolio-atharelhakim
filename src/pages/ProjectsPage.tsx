@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import Contact from '../components/Contact'
-import { H1, H3, Body1, Body2 } from '../components/Typography'
+import { H1, H2, H3, Body1, Body2 } from '../components/Typography'
 import fineLineImg from '../assets/listing-fine-line.png'
 import yslImg from '../assets/listing-ysl.png'
 import angryBirdsImg from '../assets/listing-angry-birds.jpg'
@@ -41,18 +41,21 @@ function ProjectCategorySection({
   description,
   projects,
 }: {
-  title: string
-  description: string
+  /* Category header is optional: while there's only one category it's just
+     redundant scaffolding under the page's own H1, so ProjectsPage omits
+     it. Pass both again once a second category ships. */
+  title?: string
+  description?: string
   projects: Project[]
 }) {
   return (
     <section className="flex w-full flex-col items-center gap-10 p-8 md:py-16 md:px-[var(--nav-edge-w)]">
-      <div className="flex max-w-[600px] flex-col items-center gap-4 text-center">
-        <h2 className="font-syne text-4xl leading-tight text-white md:text-5xl md:leading-[1.1]">
-          {title}
-        </h2>
-        <Body1 className="font-light">{description}</Body1>
-      </div>
+      {title && (
+        <div className="flex max-w-[600px] flex-col items-center gap-4 text-center">
+          <H2>{title}</H2>
+          {description && <Body1 className="font-light">{description}</Body1>}
+        </div>
+      )}
 
       <div className="grid w-full grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
         {projects.map((project) => (
@@ -83,22 +86,16 @@ export default function ProjectsPage() {
   return (
     <div className="relative isolate">
 
-      <div className="flex flex-col items-center gap-6 p-8 text-center md:py-16 md:px-[var(--nav-edge-w)]">
-        <div className="flex max-w-[720px] flex-col items-center gap-4">
+      <div className="flex flex-col items-center gap-6 px-8 pt-8 pb-0 text-center md:pt-16 md:px-[var(--nav-edge-w)]">
+        <div className="flex max-w-[600px] flex-col items-center gap-4">
           <H1>Projets</H1>
-          <Body1 className="font-light !text-xl md:!text-2xl">
-            Voici une sélection de mes projets UX/UI.
-            <br />
-            Bonne exploration !
+          <Body1 className="font-light">
+            Trois projets UX/UI menés de la recherche au prototype.
           </Body1>
         </div>
       </div>
 
-      <ProjectCategorySection
-        title="UX/UI Design"
-        description="Mes projets d'interface utilisateur et d'expérience digitale"
-        projects={uxUiProjects}
-      />
+      <ProjectCategorySection projects={uxUiProjects} />
 
       <Contact />
     </div>

@@ -1,10 +1,13 @@
 import Contact from '../components/Contact'
-import { Body1 } from '../components/Typography'
+import { H2, Body1, Body2 } from '../components/Typography'
 import portraitImg from '../assets/about-portrait-bust.png'
 import canoeSketchImg from '../assets/about-canoe-sketch.png'
 import clapperboardImg from '../assets/about-clapperboard.png'
 import wireframeSketchImg from '../assets/about-wireframe-sketch.png'
 import libanParisMapImg from '../assets/about-liban-paris-map.png'
+import franceMapImg from '../assets/about-france-map.png'
+import lebanonMapImg from '../assets/about-lebanon-map.png'
+import routeLineImg from '../assets/about-route-line.png'
 import arrowDownIcon from '../assets/about-arrow.svg'
 
 function TimelineItem({
@@ -16,12 +19,10 @@ function TimelineItem({
 }) {
   return (
     <div className="flex w-full items-start justify-center gap-4 border-l-2 border-white/15 pl-4">
-      <div className="flex-1 text-white/85">
-        <p className="text-xl leading-7 text-white">{title}</p>
+      <div className="flex flex-1 flex-col gap-2 text-white/85">
+        <p className="text-xl leading-tight text-white">{title}</p>
         {paragraphs.map((paragraph) => (
-          <p key={paragraph} className="text-lg leading-7 text-white/70">
-            {paragraph}
-          </p>
+          <Body2 key={paragraph}>{paragraph}</Body2>
         ))}
       </div>
     </div>
@@ -36,7 +37,7 @@ export default function AboutPage() {
           <img
             src={portraitImg}
             alt="Portrait illustré d'Athar"
-            className="size-[380px] object-contain"
+            className="size-[280px] object-contain lg:size-[380px]"
           />
         </div>
         <div className="flex max-w-[510px] flex-col items-start gap-4 self-start">
@@ -48,29 +49,29 @@ export default function AboutPage() {
             <p className="font-syne text-2xl leading-8 text-white">
               UX/UI designer et Réalisatrice
             </p>
-            <p className="text-lg leading-7 text-white/85 md:text-xl">
+            <Body1>
               Je suis une personne polyvalente, en quête de ma prochaine
               aventure ! La créativité, c'est mon point de départ, peu importe
               où elle m'emmène.
-            </p>
+            </Body1>
           </div>
         </div>
       </div>
 
-      <section className="relative flex items-start justify-center gap-16 overflow-hidden border-b border-white/10 p-8 md:py-16 md:px-[var(--nav-edge-w)]">
+      <section className="relative flex flex-col items-center justify-center gap-8 overflow-hidden border-b border-white/10 p-8 md:flex-row md:items-start md:gap-16 md:py-16 md:px-[var(--nav-edge-w)]">
         <img
           src={canoeSketchImg}
           alt=""
           className="pointer-events-none absolute -left-24 top-0 w-[550px] rotate-12 opacity-25 invert"
         />
         <div className="relative z-10 shrink-0">
-          <h2 className="font-syne text-4xl leading-tight text-white md:text-5xl md:leading-[48px]">
+          <H2>
             Là où tout a
             <br />
             commencé
-          </h2>
+          </H2>
         </div>
-        <div className="relative z-10 flex max-w-[740px] flex-col gap-4">
+        <div className="relative z-10 flex w-full max-w-[740px] flex-col gap-4 md:w-auto">
           <TimelineItem
             title="Le cinéma avant tout"
             paragraphs={[
@@ -80,7 +81,7 @@ export default function AboutPage() {
           <TimelineItem
             title="3 ans de Freelance"
             paragraphs={[
-              'Après mon diplôme, j\'ai travaillé sur plusieurs postes dans le monde des médias : assistante casting, assistante réalisatrice, monteuse vidéo, photographe et directrice de production. J\'ai eu la chance de travailler sur différents types de projets : des campagnes pour des ONG, des films, des clips musicaux, et même d\'avoir l\'opportunité de collaborer avec Netflix sur le show "Love is Blind Habibi".',
+              'Après mon diplôme, j\'ai enchaîné les postes dans les médias : casting, réalisation, montage, photo, direction de production. J\'ai travaillé sur des campagnes ONG, des films et des clips musicaux, dont une collaboration avec Netflix sur "Love is Blind Habibi".',
             ]}
           />
           <TimelineItem
@@ -92,52 +93,60 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="relative flex flex-col items-center gap-6 overflow-hidden border-y border-white/10 p-8 text-center md:py-16 md:px-[var(--nav-edge-w)]">
-        <div
-          className="pointer-events-none absolute right-6 top-1/2 hidden -translate-y-1/2 overflow-hidden md:block"
-          style={{ width: 160, height: 200 }}
-        >
+      <section className="relative flex flex-col items-center gap-4 overflow-hidden border-y border-white/10 px-8 pb-8 pt-8 text-center lg:flex-row lg:items-center lg:justify-center lg:gap-4 lg:px-16 lg:pb-16 lg:pt-[146px] xl:px-24 xl:pt-[163px]">
+        {/* combined single image — mobile & tablet only, one block above the heading */}
+        <img
+          src={libanParisMapImg}
+          alt=""
+          className="h-auto w-[300px] opacity-25 invert md:w-[420px] lg:hidden"
+        />
+
+        {/* France — desktop (lg+) only, flanks the text on the left */}
+        <img
+          src={franceMapImg}
+          alt=""
+          className="hidden h-auto shrink-0 opacity-25 invert lg:block lg:w-[240px] xl:w-[280px]"
+        />
+        <div className="relative flex w-full max-w-[900px] flex-1 flex-col items-center gap-4 [text-shadow:0_2px_10px_rgba(0,0,0,0.85)]">
+          {/* route line — desktop (lg+) only: absolutely positioned above the heading, stretched wider */}
           <img
-            src={libanParisMapImg}
+            src={routeLineImg}
             alt=""
-            className="max-w-none opacity-25 invert"
-            style={{ width: 976, height: 650, marginLeft: -737, marginTop: -402 }}
+            className="pointer-events-none absolute left-1/2 top-0 hidden max-w-none -translate-x-1/2 opacity-25 invert lg:block lg:h-[145px] lg:w-[620px] lg:-top-[128px] xl:h-[165px] xl:w-[700px] xl:-top-[145px]"
           />
-        </div>
-        <div className="hidden overflow-hidden md:block" style={{ width: 280, height: 270 }}>
-          <img
-            src={libanParisMapImg}
-            alt=""
-            className="max-w-none opacity-25 invert"
-            style={{ width: 788, height: 525, marginLeft: -37, marginTop: -23 }}
-          />
-        </div>
-        <h2 className="relative z-10 font-syne text-4xl leading-tight text-white md:text-5xl md:leading-[48px]">
-          Un Tournant Décisif
-        </h2>
-        <div className="relative z-10 flex max-w-[720px] flex-col items-center gap-4">
+          <H2 className="relative z-10">Un Tournant Décisif</H2>
           <Body1 className="font-light">
-            Mais avec l'instabilité économique et sociale croissante au Liban,
-            j'ai commencé à repenser mon avenir. Je voulais évoluer, explorer
-            de nouvelles manières de raconter des histoires et construire une
-            carrière dans un environnement plus stable.
+            Mais avec l'instabilité économique et sociale croissante au
+            Liban, j'ai commencé à repenser mon avenir. Je voulais évoluer,
+            explorer de nouvelles manières de raconter des histoires et
+            construire une carrière dans un environnement plus stable.
           </Body1>
           <Body1 className="font-light">
-            C'est ainsi qu'en août 2024, je suis arrivée à Paris pour suivre
-            un Master en UX/UI Lead Design à Sup de Pub.
+            C'est ainsi qu'en août 2024, je suis arrivée à Paris pour
+            suivre un Master en UX/UI Lead Design à Sup de Pub.
           </Body1>
         </div>
+        {/* Lebanon — desktop (lg+) only, flanks the text on the right */}
+        <img
+          src={lebanonMapImg}
+          alt=""
+          className="hidden h-auto shrink-0 opacity-25 invert lg:block lg:w-[200px] xl:w-[230px]"
+        />
       </section>
 
       <section className="flex flex-col items-start justify-center gap-20 border-b border-white/10 p-8 md:flex-row md:py-16 md:px-[var(--nav-edge-w)]">
-        <div className="flex flex-col items-center gap-12">
-          <h2 className="w-full font-syne text-4xl leading-tight text-white md:w-[300px] md:text-5xl md:leading-[48px]">
+        <div className="flex flex-col items-center gap-4">
+          <H2 className="md:w-[300px] !text-left">
             Un nouveau
             <br />
             chapitre
-          </h2>
-          <div className="hidden flex-col items-center gap-12 md:flex">
-            <div className="relative w-[220px] overflow-hidden" style={{ aspectRatio: '159 / 133' }}>
+          </H2>
+          {/* Left illustration column: clapperboard / arrow / wireframe,
+              sized uniformly (both crops at w-[180px]) with tight gaps so the
+              stack ends roughly where the text column does (tuned at ~1450px;
+              text reflow at much narrower/wider md widths shifts the match). */}
+          <div className="hidden flex-col items-center gap-3 md:flex">
+            <div className="relative w-[180px] overflow-hidden" style={{ aspectRatio: '159 / 133' }}>
               <img
                 src={clapperboardImg}
                 alt=""
@@ -150,15 +159,15 @@ export default function AboutPage() {
                 }}
               />
             </div>
-            <div className="flex h-[130px] w-[25px] items-center justify-center">
+            <div className="flex h-[76px] w-4 items-center justify-center">
               <img
                 src={arrowDownIcon}
                 alt=""
-                className="w-[130px] max-w-none shrink-0 rotate-90"
+                className="w-[76px] max-w-none shrink-0 rotate-90"
                 style={{ aspectRatio: '113.667 / 22' }}
               />
             </div>
-            <div className="relative w-[220px] overflow-hidden" style={{ aspectRatio: '92.6228 / 77.137' }}>
+            <div className="relative w-[180px] overflow-hidden" style={{ aspectRatio: '92.6228 / 77.137' }}>
               <img
                 src={wireframeSketchImg}
                 alt=""
@@ -190,7 +199,7 @@ export default function AboutPage() {
               <TimelineItem
                 title="Stage Fine Line Production"
                 paragraphs={[
-                  "J'ai travaillé sur la refonte complète du site d'une société de production libanaise, à distance. J'ai pris en charge tout le projet, de la recherche jusqu'au design final, avec une vraie liberté dans les décisions. Le site a été conçu et développé sur Webflow, marquant ma première expérience complète en UX/UI.",
+                  "Refonte complète du site d'une société de production libanaise, à distance : j'ai porté tout le projet, de la recherche au design final, en toute autonomie. Le site a été conçu et développé sur Webflow, ma première vraie expérience UX/UI de bout en bout.",
                 ]}
               />
             </div>
@@ -204,7 +213,7 @@ export default function AboutPage() {
                 title="Alternance HEIP"
                 paragraphs={[
                   "Aujourd'hui, je suis en alternance à HEIP, une université de sciences politiques à Paris, un univers que je ne connaissais pas du tout avant d'y mettre les pieds.",
-                  "Je m'occupe de tout ce qui touche aux réseaux sociaux : trouver les concepts, tourner, monter, suivre les tendances. Ce n'était pas mon terrain de jeu naturel, mais je n'ai jamais eu peur de me lancer dans ce que je ne connais pas, et c'est souvent là que j'apprends le plus.",
+                  "Je gère tout le contenu réseaux sociaux : concepts, tournage, montage, veille tendances. Ce n'était pas mon terrain naturel, mais c'est souvent en terrain inconnu que j'apprends le plus.",
                 ]}
               />
             </div>

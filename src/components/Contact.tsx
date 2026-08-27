@@ -1,5 +1,5 @@
-import { Link } from 'react-router-dom'
 import { H2, Body1 } from './Typography'
+import Button from './Button'
 
 export default function Contact({ transparent }: { transparent?: boolean }) {
   return (
@@ -43,18 +43,9 @@ export default function Contact({ transparent }: { transparent?: boolean }) {
           à me contacter.
         </Body1>
       </div>
-      <Link
-        to="/contactez-moi"
-        className="relative flex cursor-pointer items-center justify-center rounded-full px-6 py-2 text-white transition-all duration-300 hover:-translate-y-0.5"
-        style={{
-          background: 'linear-gradient(135deg, var(--color-black-elevated) 0%, var(--color-black-soft) 100%)',
-          boxShadow: '0 0 20px color-mix(in srgb, var(--color-black-ink) 50%, transparent)',
-        }}
-      >
-        <Body1 className="!text-white whitespace-nowrap text-center">
-          Contactez-Moi
-        </Body1>
-      </Link>
+      <Button to="/contactez-moi" tone="dark" className="relative">
+        Contactez-Moi
+      </Button>
     </section>
   )
 }

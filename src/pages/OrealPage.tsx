@@ -1,7 +1,8 @@
 import { useLayoutEffect, useRef, useState } from 'react'
-import type { RefObject } from 'react'
+import type { CSSProperties, RefObject } from 'react'
 import Contact from '../components/Contact'
 import Lightbox from '../components/Lightbox'
+import VideoModal from '../components/VideoModal'
 import CaseStudyNav from '../components/CaseStudyNav'
 import logo from '../assets/loreal/logo.svg'
 import heroSilkBg from '../assets/loreal/hero-silk-bg.png'
@@ -15,7 +16,18 @@ import slide3 from '../assets/loreal/slide3.jpg'
 import playIcon from '../assets/loreal/play-icon.svg'
 import videoEquipe from '../assets/loreal/video-equipe.mp4'
 import videoThumbnail from '../assets/loreal/video-thumbnail.png'
-import { H1, H2 as SectionTitle, H3, H4, H5, Body1, Body2 } from '../components/Typography'
+import { H1, H2 as SectionTitle, H3, H4, H5, Body1 } from '../components/Typography'
+
+const numberNodeGlowStyle = {
+  '--glow-color': 'var(--color-purple-light)',
+  '--glow-opacity': '45%',
+} as CSSProperties
+
+const videoPlayGlowStyle = {
+  '--glow-color': 'var(--color-purple-light)',
+  '--glow-blur': '40px',
+  '--glow-opacity': '40%',
+} as CSSProperties
 
 function TimelineNode({
   number,
@@ -31,11 +43,8 @@ function TimelineNode({
     >
       <div
         ref={circleRef}
-        className="flex size-10 items-center justify-center rounded-full border border-purple-pale/50 bg-purple-dark/70 md:size-12"
-        style={{
-          boxShadow:
-            '0 0 20px color-mix(in oklab, var(--color-purple-light) 45%, transparent)',
-        }}
+        className="flex size-10 items-center justify-center rounded-full border border-purple-pale/50 bg-purple-dark/70 shadow-glow md:size-12"
+        style={numberNodeGlowStyle}
       >
         <span className="text-sm font-semibold text-purple-pale md:text-base">
           {number}
@@ -106,7 +115,7 @@ function SlideImage({
   onZoom: () => void
 }) {
   return (
-    <div className="mx-auto flex w-full max-w-[900px] flex-col gap-6 rounded-2xl border border-white/15 bg-white/5 p-6 backdrop-blur-sm md:p-8">
+    <div className="mx-auto flex w-full max-w-[900px] flex-col gap-6 rounded-2xl border border-white/15 bg-white/5 p-6 backdrop-blur-sm">
       <div className="flex flex-col items-center gap-4 text-center">
         <H3>{label}</H3>
         <Body1 className={descriptionClassName}>{description}</Body1>
@@ -136,9 +145,9 @@ function SlideImage({
             className="group/img relative block w-full cursor-pointer overflow-hidden rounded-xl"
           >
             <img src={src} alt={label} className="w-full rounded-xl" />
-            <div className="absolute inset-0 flex items-center justify-center bg-black/0 opacity-0 transition-all duration-300 group-hover/img:bg-black/35 group-hover/img:opacity-100">
+            <div className="absolute inset-0 flex items-center justify-center bg-black/15 transition-all duration-300 group-hover/img:bg-black/35">
               <svg
-                className="size-8 text-white"
+                className="size-8 text-white opacity-70 transition-opacity duration-300 group-hover/img:opacity-100"
                 viewBox="0 0 24 24"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
@@ -210,7 +219,7 @@ export default function OrealPage() {
       <div id="overview" className="flex flex-col items-center gap-6 px-8 pb-8 pt-4 md:pb-16 md:pt-10 md:px-[var(--nav-edge-w)]">
         <div className="flex w-full flex-col items-center gap-4 text-center">
           <img src={logo} alt="L'Oréal Groupe" className="h-9 aspect-[131.469/30]" />
-          <H1 className="md:!text-5xl md:!leading-[56px]">YSL Sélection Privée</H1>
+          <H1 className="md:!text-5xl md:!leading-[52.8px]">YSL Sélection Privée</H1>
 
           <div className="relative w-full max-w-[820px] aspect-[820/429] overflow-hidden rounded-2xl border border-purple-pale/50 bg-purple-dark/35">
             <img src={heroSilkBg} alt="" className="absolute inset-0 h-full w-full object-cover opacity-60" />
@@ -224,7 +233,7 @@ export default function OrealPage() {
           <div className="flex w-full flex-col items-center gap-8 border-t border-white/10 pt-8 text-center">
             <div className="flex w-full flex-col items-center gap-2">
               <H5 className="!text-lg">Overview</H5>
-              <Body1 className="!text-white font-light">
+              <Body1 className="case-prose !text-white font-light">
                 Projet réalisé dans le cadre du concours L'Oréal Brandstorm
                 2026, en équipe de 3 designers UX/UI sur 4 jours intensifs.
                 De la recherche utilisateur à la conception du concept, nous
@@ -294,7 +303,7 @@ export default function OrealPage() {
               />
             </div>
           </div>
-          <Body1 className="w-full rounded-2xl border border-white/15 bg-white/5 p-6 text-center font-light backdrop-blur-sm md:p-8">
+          <Body1 className="case-prose rounded-2xl border border-white/15 bg-white/5 p-6 font-light backdrop-blur-sm">
             Intégré à notre formation à Sup de Pub, le projet s'est déroulé
             sur 4 jours intensifs. Les livrables attendus : une présentation
             en 3 slides et une vidéo d'équipe répondant à 5 valeurs définies
@@ -313,7 +322,7 @@ export default function OrealPage() {
       <div id="processus" className="flex flex-col items-center gap-8 p-8 md:py-16 md:px-[var(--nav-edge-w)]">
         <SectionTitle>Processus</SectionTitle>
         <div className="mx-auto flex w-full max-w-[900px] flex-col gap-6">
-          <Body1 className="w-full text-center font-light">
+          <Body1 className="case-prose font-light">
             Face à un brief ambitieux et seulement 4 jours devant nous, nous
             avons adopté une méthode rapide et{' '}structurée.
           </Body1>
@@ -322,21 +331,22 @@ export default function OrealPage() {
             {processLines.map((seg, i) => (
               <div
                 key={i}
-                className="absolute left-5 w-[1.8px] -translate-x-1/2 md:left-6"
+                className="absolute left-5 w-[1.8px] -translate-x-1/2 shadow-glow md:left-6"
                 style={{
                   top: seg.top,
                   height: seg.height,
                   background:
                     'linear-gradient(to bottom, var(--color-purple-light), var(--color-purple-pale))',
-                  boxShadow:
-                    '0 0 6px color-mix(in oklab, var(--color-purple-light) 70%, transparent)',
-                }}
+                  '--glow-color': 'var(--color-purple-light)',
+                  '--glow-blur': '6px',
+                  '--glow-opacity': '70%',
+                } as CSSProperties}
                 aria-hidden="true"
               />
             ))}
             <div className="relative mb-6 flex gap-6">
               <TimelineNode number="01" circleRef={processNode1Ref} />
-              <div className="flex flex-1 flex-col gap-2 rounded-2xl border border-white/15 bg-white/5 p-6 backdrop-blur-sm md:p-8">
+              <div className="flex flex-1 flex-col gap-2 rounded-2xl border border-white/15 bg-white/5 p-6 backdrop-blur-sm">
                 <H4 className="w-auto text-left !text-white">Recherche individuelle</H4>
                 <Body1 className="font-light">
                   Chacun a exploré le sujet de son côté : données marché,
@@ -350,7 +360,7 @@ export default function OrealPage() {
 
             <div className="relative mb-6 flex gap-6">
               <TimelineNode number="02" circleRef={processNode2Ref} />
-              <div className="flex flex-1 flex-col gap-6 rounded-2xl border border-white/15 bg-white/5 p-6 backdrop-blur-sm md:flex-row md:items-center md:p-8">
+              <div className="flex flex-1 flex-col gap-6 rounded-2xl border border-white/15 bg-white/5 p-6 backdrop-blur-sm md:flex-row md:items-center">
                 <div className="flex flex-1 flex-col gap-2">
                   <H4 className="w-auto text-left !text-white">Crazy 8</H4>
                   <Body1 className="font-light">
@@ -372,9 +382,9 @@ export default function OrealPage() {
                     onLoad={measureProcessLines}
                     className="w-full rounded-xl transition-transform duration-300 group-hover/img:scale-105"
                   />
-                  <div className="absolute inset-0 flex items-center justify-center bg-black/0 opacity-0 transition-all duration-300 group-hover/img:bg-black/35 group-hover/img:opacity-100">
+                  <div className="absolute inset-0 flex items-center justify-center bg-black/15 transition-all duration-300 group-hover/img:bg-black/35">
                     <svg
-                      className="size-8 text-white"
+                      className="size-8 text-white opacity-70 transition-opacity duration-300 group-hover/img:opacity-100"
                       viewBox="0 0 24 24"
                       fill="none"
                       xmlns="http://www.w3.org/2000/svg"
@@ -394,7 +404,7 @@ export default function OrealPage() {
 
             <div className="relative flex gap-6">
               <TimelineNode number="03" circleRef={processNode3Ref} />
-              <div className="flex flex-1 flex-col gap-2 rounded-2xl border border-purple-pale/40 bg-purple-dark/25 p-6 backdrop-blur-sm md:p-8">
+              <div className="flex flex-1 flex-col gap-2 rounded-2xl border border-purple-pale/40 bg-purple-dark/25 p-6 backdrop-blur-sm">
                 <H4 className="w-auto text-left !text-white">L'insight clé</H4>
                 <Body1 className="font-light">
                   Un fil rouge est apparu dans toutes nos recherches :
@@ -405,7 +415,7 @@ export default function OrealPage() {
             </div>
           </div>
 
-          <Body1 className="w-full text-center font-light">
+          <Body1 className="case-prose font-light">
             De là est née l'idée centrale : construire un pont entre le
             digital et le physique, transformer l'essai en expérience, et
             la découverte en décision.
@@ -423,7 +433,7 @@ export default function OrealPage() {
       <div id="concept" className="flex flex-col items-center gap-8 p-8 md:py-16 md:px-[var(--nav-edge-w)]">
         <SectionTitle>Concept</SectionTitle>
         <div className="mx-auto flex w-full flex-wrap items-stretch justify-center gap-8">
-          <div className="flex min-w-[280px] flex-1 flex-col justify-center gap-6 rounded-2xl border border-white/15 bg-white/5 p-6 backdrop-blur-sm md:p-8">
+          <div className="flex min-w-[280px] flex-1 flex-col justify-center gap-6 rounded-2xl border border-white/15 bg-white/5 p-6 backdrop-blur-sm">
             <Body1 className="font-light">
               Partant du constat que le parfum reste l'un des derniers
               produits résistants au digital, nous avons conçu YSL
@@ -436,7 +446,7 @@ export default function OrealPage() {
               est absente."
             </H3>
           </div>
-          <div className="flex min-w-[280px] flex-1 flex-col gap-4 rounded-2xl border border-white/15 bg-white/5 p-6 backdrop-blur-sm md:p-8">
+          <div className="flex min-w-[280px] flex-1 flex-col gap-4 rounded-2xl border border-white/15 bg-white/5 p-6 backdrop-blur-sm">
             <H3>Tester. Porter. Choisir.</H3>
             <BulletPoint
               title="01 Sélectionner"
@@ -464,14 +474,14 @@ export default function OrealPage() {
       <div id="apporte" className="flex flex-col items-center gap-8 p-8 md:py-16 md:px-[var(--nav-edge-w)]">
         <div className="flex w-full flex-col items-center gap-8 text-center">
           <SectionTitle>Ce Qu'On Apporte À L'Oréal</SectionTitle>
-          <Body1 className="w-full font-light">
+          <Body1 className="case-prose font-light">
             YSL Sélection Privée n'est pas qu'une solution locale. C'est un
             modèle scalable, durable et mesurable, adaptable à l'ensemble des
             marques du Groupe L'Oréal et déployable à l'international.
           </Body1>
         </div>
         <div className="mx-auto flex w-full max-w-[1100px] flex-wrap items-stretch justify-center gap-8">
-          <div className="flex min-w-[280px] flex-1 flex-col gap-4 rounded-2xl border border-white/15 bg-white/5 p-6 backdrop-blur-sm md:p-8">
+          <div className="flex min-w-[280px] flex-1 flex-col gap-4 rounded-2xl border border-white/15 bg-white/5 p-6 backdrop-blur-sm">
             <BulletPoint
               title="Savoir-faire"
               body="Expertise sensorielle appliquée au format roll-on, maîtrise de l'évolution du parfum sur peau."
@@ -506,7 +516,7 @@ export default function OrealPage() {
       <div id="video" className="flex flex-col items-center gap-8 p-8 md:py-16 md:pb-32 md:px-[var(--nav-edge-w)]">
         <div className="flex w-full flex-col items-center gap-8 text-center">
           <SectionTitle>Vidéo Équipe</SectionTitle>
-          <Body1 className="w-full font-light">
+          <Body1 className="case-prose font-light">
             Au-delà du concept, L'Oréal Brandstorm demandait à chaque équipe
             de se révéler en tant que personnes. La vidéo devait répondre à 5
             valeurs fondamentales définies par L'Oréal :
@@ -552,11 +562,8 @@ export default function OrealPage() {
             type="button"
             onClick={() => setVideoOpen(true)}
             aria-label="Lire la vidéo d'équipe"
-            className="group/video absolute left-1/2 top-1/2 z-10 flex aspect-video w-[40%] -translate-x-1/2 -translate-y-1/2 cursor-pointer items-center justify-center overflow-hidden rounded-2xl border border-purple-pale/50 transition-all duration-300 hover:border-purple-pale/80"
-            style={{
-              boxShadow:
-                '0 0 40px color-mix(in oklab, var(--color-purple-light) 40%, transparent)',
-            }}
+            className="group/video absolute left-1/2 top-1/2 z-10 flex aspect-video w-[40%] -translate-x-1/2 -translate-y-1/2 cursor-pointer items-center justify-center overflow-hidden rounded-2xl border border-purple-pale/50 shadow-glow transition-all duration-300 hover:border-purple-pale/80"
+            style={videoPlayGlowStyle}
           >
             <img
               src={videoThumbnail}
@@ -623,39 +630,14 @@ export default function OrealPage() {
       <Contact transparent />
 
       {videoOpen && (
-        <div
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black/85 p-6"
-          onClick={() => setVideoOpen(false)}
-        >
-          <button
-            type="button"
-            onClick={() => setVideoOpen(false)}
-            aria-label="Fermer"
-            className="absolute right-6 top-6 flex size-14 cursor-pointer items-center justify-center opacity-80 hover:opacity-100"
-          >
-            <svg
-              className="size-8"
-              viewBox="0 0 24 24"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M6 6L18 18M18 6L6 18"
-                stroke="var(--color-white)"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
-          </button>
+        <VideoModal onClose={() => setVideoOpen(false)}>
           <video
             src={videoEquipe}
             controls
             autoPlay
-            onClick={(event) => event.stopPropagation()}
             className="max-h-[80vh] max-w-[90vw] cursor-default rounded-lg"
           />
-        </div>
+        </VideoModal>
       )}
 
       {singleImage && (

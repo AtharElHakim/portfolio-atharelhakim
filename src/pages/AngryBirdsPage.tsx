@@ -1,11 +1,20 @@
-import { useState } from 'react'
+import { useState, type CSSProperties } from 'react'
 import Contact from '../components/Contact'
 import Lightbox from '../components/Lightbox'
 import CaseStudyNav from '../components/CaseStudyNav'
 import logoLabel from '../assets/angrybirds/logo-full.svg'
 import heroIllustration from '../assets/angrybirds/hero-illustration.gif'
 import briefIllustration from '../assets/angrybirds/brief-illustration.png'
-import { H1, H2 as SectionTitle, H5, Body1, Body2 } from '../components/Typography'
+import { H1, H2 as SectionTitle, H5, Body1 } from '../components/Typography'
+
+const thumbnailGlowStyle = {
+  '--glow-y': '4px',
+  '--glow-blur': '14px',
+  '--glow-opacity': '20%',
+  '--glow-y-hover': '8px',
+  '--glow-blur-hover': '20px',
+  '--glow-opacity-hover': '35%',
+} as CSSProperties
 
 function loadGallery(globResult: Record<string, string>) {
   return Object.entries(globResult)
@@ -95,7 +104,7 @@ function SlideGallery({
   return (
     <div id={id} className="relative flex flex-col items-center gap-6 p-8 md:py-16 md:px-[var(--nav-edge-w)]">
       <SectionTitle>{title}</SectionTitle>
-      <div className="mx-auto flex w-full max-w-[900px] flex-col items-center gap-6 rounded-2xl border border-white/15 bg-white/5 p-6 backdrop-blur-sm md:p-8">
+      <div className="mx-auto flex w-full max-w-[900px] flex-col items-center gap-6 rounded-2xl border border-white/15 bg-white/5 p-6 backdrop-blur-sm">
         <ul className="flex w-full list-disc flex-col gap-2 pl-5 text-left text-base leading-6 text-white/70">
           {bullets.map((bullet) => (
             <li key={bullet}>{bullet}</li>
@@ -107,7 +116,8 @@ function SlideGallery({
               key={src}
               type="button"
               onClick={() => onOpen(images, i)}
-              className="h-[86px] w-[153px] shrink-0 cursor-pointer overflow-hidden rounded-xl border border-purple-pale/40 opacity-90 shadow-[0_4px_14px_color-mix(in_oklab,var(--color-purple-mid)_20%,transparent)] transition-all duration-300 hover:-translate-y-0.5 hover:opacity-100 hover:shadow-[0_8px_20px_color-mix(in_oklab,var(--color-purple-mid)_35%,transparent)]"
+              className="h-[86px] w-[153px] shrink-0 cursor-pointer overflow-hidden rounded-xl border border-purple-pale/40 opacity-90 shadow-glow transition-all duration-300 hover:-translate-y-0.5 hover:opacity-100"
+              style={thumbnailGlowStyle}
             >
               <img
                 src={src}
@@ -144,12 +154,15 @@ export default function AngryBirdsPage() {
       />
 
       {/* Header */}
-      <div id="overview" className="relative flex flex-col items-center gap-6 px-8 pb-8 pt-4 md:pb-16 md:pt-10 md:px-[var(--nav-edge-w)]">
+      <div id="overview" className="flex flex-col items-center gap-6 px-8 pb-8 pt-4 md:pb-16 md:pt-10 md:px-[var(--nav-edge-w)]">
         <div className="flex w-full flex-col items-center gap-4 text-center">
           <img src={logoLabel} alt="Angry Birds" className="h-9" />
-          <H1 className="md:!text-5xl md:!leading-[56px]">Research Ops · Angry Birds</H1>
+          <H1 className="md:!text-5xl md:!leading-[52.8px]">Research Ops · Angry Birds</H1>
 
-          <div className="flex w-full max-w-[820px] aspect-[820/429] items-center justify-center overflow-hidden rounded-2xl border border-purple-pale/50 bg-[#514DA1] p-4">
+          <div
+            className="flex w-full max-w-[820px] aspect-[820/429] items-center justify-center overflow-hidden rounded-2xl border border-purple-pale/50"
+            style={{ background: 'color-mix(in srgb, var(--color-purple-dark) 70%, var(--color-grey) 30%)' }}
+          >
             <img
               src={heroIllustration}
               alt="Illustration Angry Birds"
@@ -158,10 +171,10 @@ export default function AngryBirdsPage() {
             />
           </div>
 
-          <div className="flex w-full max-w-[820px] flex-col items-center gap-8 border-t border-white/10 pt-8 text-center">
+          <div className="flex w-full flex-col items-center gap-8 border-t border-white/10 pt-8 text-center">
             <div className="flex w-full flex-col items-center gap-2">
               <H5 className="!text-lg">Overview</H5>
-              <Body1 className="!text-white font-light">
+              <Body1 className="case-prose !text-white font-light">
                 Ce projet, réalisé seul sur 4 jours dans le cadre d'un
                 exercice de Research Ops à Sup de Pub, consistait à inventer
                 une étude qualitative de A à Z et à la vendre à un client. Le
@@ -207,7 +220,7 @@ export default function AngryBirdsPage() {
         className="relative flex flex-col items-center gap-8 p-8 md:py-16 md:px-[var(--nav-edge-w)]"
       >
         <SectionTitle>Le Brief</SectionTitle>
-        <div className="mx-auto flex w-full max-w-[900px] flex-col items-center gap-8 rounded-2xl border border-white/15 bg-white/5 p-6 backdrop-blur-sm md:flex-row md:p-8">
+        <div className="mx-auto flex w-full max-w-[900px] flex-col items-center gap-8 rounded-2xl border border-white/15 bg-white/5 p-6 backdrop-blur-sm md:flex-row">
           <img
             src={briefIllustration}
             alt=""
@@ -231,7 +244,7 @@ export default function AngryBirdsPage() {
       {/* Le Dossier */}
       <div id="dossier" className="relative flex flex-col items-center gap-4 p-8 text-center md:py-16 md:px-[var(--nav-edge-w)]">
         <SectionTitle>Le Dossier</SectionTitle>
-        <Body1 className="w-full max-w-[720px] font-light">
+        <Body1 className="case-prose font-light">
           Voici le dossier complet tel qu'il aurait été présenté à un client
           réel, qui ne maîtrise pas nécessairement le vocabulaire UX/UI.
           Cliquez sur une vignette pour le parcourir diapositive par
