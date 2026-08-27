@@ -84,8 +84,9 @@ function ProjectCard({ project }: { project: Project }) {
 
 /* Featured project = the page's focal point. Borrows the "active card"
    language from the Home carousel (purple-pale ring, glass-dark fill,
-   glass-card + lift shadow) at a larger scale: full-bleed hero still on
-   top, title and description stacked below. */
+   glass-card + lift shadow) at a larger scale: framed screenshot on the
+   left (inset + rounded like the grid cards), title and description on
+   the right. Stacks on mobile. */
 function FeaturedCard({ project }: { project: Project }) {
   return (
     <Link
@@ -97,18 +98,19 @@ function FeaturedCard({ project }: { project: Project }) {
           '--lift-opacity': '45%',
         } as CSSProperties
       }
-      className={`group flex w-full flex-col overflow-hidden rounded-3xl border-[1.5px] border-purple-pale/50 bg-purple-dark/35 backdrop-blur-[20px] shadow-glass-card shadow-lift transition-all duration-300 hover:-translate-y-1 hover:border-purple-pale/80 ${focusRing}`}
+      className={`group flex w-full flex-col gap-4 rounded-3xl border-[1.5px] border-purple-pale/50 bg-purple-dark/35 p-4 backdrop-blur-[20px] shadow-glass-card shadow-lift transition-all duration-300 hover:-translate-y-1 hover:border-purple-pale/80 lg:flex-row lg:items-center lg:gap-6 lg:p-5 ${focusRing}`}
     >
-      {/* Container matches the capture's native ratio so the full Webflow
-          screenshot (nav, hero, tagline) shows with nothing cropped. */}
-      <div className="relative aspect-[1881/1058] w-full overflow-hidden">
+      {/* Full Webflow screenshot (nav, hero, tagline), nothing cropped.
+          Inset from the card edge with its own rounding, matching the
+          grid cards' framed-image treatment. */}
+      <div className="relative aspect-[1881/1058] w-full shrink-0 overflow-hidden rounded-2xl bg-black-ink lg:w-[56%]">
         <img
           src={project.featureImage ?? project.image}
           alt={project.title}
-          className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+          className="h-full w-full object-contain transition-transform duration-500 group-hover:scale-105"
         />
       </div>
-      <div className="flex flex-col items-start gap-3 p-8 md:p-10">
+      <div className="flex flex-1 flex-col items-start justify-center gap-3 p-4 lg:p-4">
         <H5 className="!text-purple-pale/70">Étude de cas complète</H5>
         <H3 className="!text-3xl md:!text-4xl">{project.title}</H3>
         <Body1 className="font-light">{project.description}</Body1>
