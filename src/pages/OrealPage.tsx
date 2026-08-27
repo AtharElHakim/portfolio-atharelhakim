@@ -422,8 +422,8 @@ export default function OrealPage() {
           </Body1>
         </div>
         <SlideImage
-          label="Slide 1"
-          description="Voici la première slide de notre présentation orale devant le jury L'Oréal, elle pose le diagnostic et l'insight qui a guidé la suite du projet."
+          label="Slide 1 · Le diagnostic"
+          description="Le pitch imposé par L'Oréal tenait en trois slides. Celle-ci pose le problème : en ligne, un parfum ne se sent pas."
           src={slide1}
           onZoom={() => setSingleImage({ src: slide1, alt: 'Slide 1' })}
         />
@@ -463,8 +463,8 @@ export default function OrealPage() {
           </div>
         </div>
         <SlideImage
-          label="Slide 2"
-          description="Voici la deuxième slide de notre présentation orale devant le jury L'Oréal, elle explique le concept que nous avons imaginé."
+          label="Slide 2 · Le concept"
+          description="« From Trial to Desire » : le parcours de l'essai à l'achat, résumé en un visuel."
           src={slide2}
           onZoom={() => setSingleImage({ src: slide2, alt: 'Slide 2' })}
         />
@@ -505,8 +505,8 @@ export default function OrealPage() {
           </div>
         </div>
         <SlideImage
-          label="Slide 3"
-          description="Voici la troisième slide de notre présentation orale devant le jury L'Oréal, elle explique ce que notre idée apporte au Groupe."
+          label="Slide 3 · L'apport au Groupe"
+          description="Pourquoi le modèle vaut au-delà d'YSL, pour l'ensemble du Groupe L'Oréal."
           src={slide3}
           onZoom={() => setSingleImage({ src: slide3, alt: 'Slide 3' })}
         />
