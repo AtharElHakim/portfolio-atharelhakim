@@ -1,7 +1,10 @@
+import { type CSSProperties } from 'react'
 import { Link } from 'react-router-dom'
 import Contact from '../components/Contact'
-import { H1, H2, H3, Body1, Body2 } from '../components/Typography'
+import { focusRing } from '../components/Button'
+import { H1, H2, H3, H5, Body1, Body2 } from '../components/Typography'
 import fineLineImg from '../assets/listing-fine-line.png'
+import fineLineFeatureImg from '../assets/fineline/hero-prototype.png'
 import yslImg from '../assets/listing-ysl.png'
 import angryBirdsImg from '../assets/listing-angry-birds.jpg'
 
@@ -10,6 +13,8 @@ interface Project {
   title: string
   description: string
   image: string
+  /** Larger, cleaner crop used only when this project is the featured card. */
+  featureImage?: string
 }
 
 const uxUiProjects: Project[] = [
@@ -19,6 +24,7 @@ const uxUiProjects: Project[] = [
     description:
       "Refonte complète du site web d'une société de production libanaise, de la recherche UX au design et au prototypage sur Webflow.",
     image: fineLineImg,
+    featureImage: fineLineFeatureImg,
   },
   {
     slug: 'loreal',
@@ -36,10 +42,91 @@ const uxUiProjects: Project[] = [
   },
 ]
 
+function ArrowRight() {
+  return (
+    <svg
+      className="size-4 shrink-0"
+      viewBox="0 0 24 24"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M5 12h14M13 6l6 6-6 6"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  )
+}
+
+function ProjectCard({ project }: { project: Project }) {
+  return (
+    <Link
+      to={`/projects/${project.slug}`}
+      className={`group flex flex-col gap-4 rounded-3xl border border-white/10 bg-white/5 p-3 transition-all duration-300 hover:-translate-y-1 hover:border-purple-pale/40 ${focusRing}`}
+    >
+      <div className="h-[220px] w-full overflow-hidden rounded-2xl">
+        <img
+          src={project.image}
+          alt={project.title}
+          className="size-full object-cover transition-transform duration-500 group-hover:scale-105"
+        />
+      </div>
+      <div className="flex flex-col items-start gap-2 px-3 pb-3">
+        <H3>{project.title}</H3>
+        <Body2>{project.description}</Body2>
+      </div>
+    </Link>
+  )
+}
+
+/* Featured project = the page's focal point. Borrows the "active card"
+   language from the Home carousel (purple-pale ring, glass-dark fill,
+   glass-card + lift shadow) at a larger scale, image and text side by
+   side from lg up. */
+function FeaturedCard({ project }: { project: Project }) {
+  return (
+    <Link
+      to={`/projects/${project.slug}`}
+      style={
+        {
+          '--lift-y': '8px',
+          '--lift-blur': '34px',
+          '--lift-opacity': '45%',
+        } as CSSProperties
+      }
+      className={`group flex w-full flex-col overflow-hidden rounded-3xl border-[1.5px] border-purple-pale/50 bg-purple-dark/35 backdrop-blur-[20px] shadow-glass-card shadow-lift transition-all duration-300 hover:-translate-y-1 hover:border-purple-pale/80 lg:min-h-[360px] lg:flex-row ${focusRing}`}
+    >
+      <div className="relative aspect-[16/10] w-full shrink-0 overflow-hidden lg:aspect-auto lg:w-[56%]">
+        {/* -top / h > 100% trims the Webflow-preview chrome (grey bar, nav,
+            carousel dots) baked into the source capture, without zooming. */}
+        <img
+          src={project.featureImage ?? project.image}
+          alt={project.title}
+          className="absolute inset-x-0 -top-[15%] h-[124%] w-full max-w-none object-cover object-center transition-transform duration-500 group-hover:scale-105"
+        />
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-purple-void/40 to-transparent" />
+      </div>
+      <div className="flex flex-1 flex-col items-start justify-center gap-3 p-8 md:p-10">
+        <H5 className="!text-purple-pale/70">Étude de cas complète</H5>
+        <H3 className="!text-3xl md:!text-4xl">{project.title}</H3>
+        <Body1 className="font-light">{project.description}</Body1>
+        <span className="mt-1 inline-flex items-center gap-2 font-medium text-white transition-transform duration-300 group-hover:translate-x-1">
+          Voir le projet
+          <ArrowRight />
+        </span>
+      </div>
+    </Link>
+  )
+}
+
 function ProjectCategorySection({
   title,
   description,
   projects,
+  featuredSlug,
 }: {
   /* Category header is optional: while there's only one category it's just
      redundant scaffolding under the page's own H1, so ProjectsPage omits
@@ -47,7 +134,15 @@ function ProjectCategorySection({
   title?: string
   description?: string
   projects: Project[]
+  featuredSlug?: string
 }) {
+  const featured = featuredSlug
+    ? projects.find((p) => p.slug === featuredSlug)
+    : undefined
+  const rest = featured
+    ? projects.filter((p) => p.slug !== featuredSlug)
+    : projects
+
   return (
     <section className="flex w-full flex-col items-center gap-10 p-8 md:py-16 md:px-[var(--nav-edge-w)]">
       {title && (
@@ -57,27 +152,19 @@ function ProjectCategorySection({
         </div>
       )}
 
-      <div className="grid w-full grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
-        {projects.map((project) => (
-          <Link
-            key={project.slug}
-            to={`/projects/${project.slug}`}
-            className="group flex flex-col gap-4 rounded-3xl border border-white/10 bg-white/5 p-3 transition-all duration-300 hover:-translate-y-1 hover:border-purple-pale/40 hover:bg-white/5"
-          >
-            <div className="h-[220px] w-full overflow-hidden rounded-2xl">
-              <img
-                src={project.image}
-                alt={project.title}
-                className="size-full object-cover transition-transform duration-500 group-hover:scale-105"
-              />
-            </div>
-            <div className="flex flex-col items-start gap-2 px-3 pb-3">
-              <H3>{project.title}</H3>
-              <Body2>{project.description}</Body2>
-            </div>
-          </Link>
-        ))}
-      </div>
+      {featured && <FeaturedCard project={featured} />}
+
+      {rest.length > 0 && (
+        <div
+          className={`grid w-full grid-cols-1 gap-8 sm:grid-cols-2 ${
+            rest.length > 2 ? 'lg:grid-cols-3' : ''
+          }`}
+        >
+          {rest.map((project) => (
+            <ProjectCard key={project.slug} project={project} />
+          ))}
+        </div>
+      )}
     </section>
   )
 }
@@ -85,7 +172,6 @@ function ProjectCategorySection({
 export default function ProjectsPage() {
   return (
     <div className="relative isolate">
-
       <div className="flex flex-col items-center gap-6 px-8 pt-8 pb-0 text-center md:pt-16 md:px-[var(--nav-edge-w)]">
         <div className="flex max-w-[600px] flex-col items-center gap-4">
           <H1>Projets</H1>
@@ -95,7 +181,10 @@ export default function ProjectsPage() {
         </div>
       </div>
 
-      <ProjectCategorySection projects={uxUiProjects} />
+      <ProjectCategorySection
+        projects={uxUiProjects}
+        featuredSlug="fine-line-production"
+      />
 
       <Contact />
     </div>
