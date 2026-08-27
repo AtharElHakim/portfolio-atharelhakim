@@ -99,16 +99,14 @@ function FeaturedCard({ project }: { project: Project }) {
       }
       className={`group flex w-full flex-col overflow-hidden rounded-3xl border-[1.5px] border-purple-pale/50 bg-purple-dark/35 backdrop-blur-[20px] shadow-glass-card shadow-lift transition-all duration-300 hover:-translate-y-1 hover:border-purple-pale/80 ${focusRing}`}
     >
-      {/* Shown at the source's native ratio so the whole composition
-          (both chevrons + title) stays uncropped. The PNG is pre-trimmed
-          to the neon frame only, no Webflow-preview chrome. */}
-      <div className="relative aspect-[1780/688] w-full overflow-hidden">
+      {/* Container matches the capture's native ratio so the full Webflow
+          screenshot (nav, hero, tagline) shows with nothing cropped. */}
+      <div className="relative aspect-[1881/1058] w-full overflow-hidden">
         <img
           src={project.featureImage ?? project.image}
           alt={project.title}
           className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
         />
-        <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-purple-void/50 to-transparent" />
       </div>
       <div className="flex flex-col items-start gap-3 p-8 md:p-10">
         <H5 className="!text-purple-pale/70">Étude de cas complète</H5>
