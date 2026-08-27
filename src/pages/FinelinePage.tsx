@@ -247,7 +247,7 @@ export default function FinelinePage() {
           <div className="flex w-full flex-col items-center gap-8 border-t border-white/10 pt-8 text-center">
             <div className="flex w-full flex-col items-center gap-2">
               <H5 className="!text-lg">Overview</H5>
-              <Body1 className="case-prose !text-white font-light">
+              <Body1 className="w-full text-center !text-white font-light">
                 Refonte complète du site web de Fine Line Production, une
                 société de production créative libanaise dont l'ancien site
                 avait été désactivé. De la recherche UX au design final, j'ai
@@ -295,7 +295,7 @@ export default function FinelinePage() {
       >
         <div className="flex w-full flex-col items-center gap-8">
           <SectionTitle>Contexte</SectionTitle>
-          <Body1 className="case-prose font-light">
+          <Body1 className="w-full text-center font-light">
             Fine Line Production est une société de production créative basée
             au Liban depuis 2017. Elle collabore avec des ONG et des marques
             de grande consommation pour concevoir des récits visuels
@@ -322,7 +322,7 @@ export default function FinelinePage() {
       <div id="probleme" className="flex flex-col items-center gap-8 p-8 md:py-16 md:px-[var(--nav-edge-w)]">
         <div className="flex w-full flex-col items-start gap-8">
           <SectionTitle>Problème</SectionTitle>
-          <Body1 className="case-prose font-light">
+          <Body1 className="w-full text-center font-light">
             Fine Line Production disposait d'un site WordPress qui ne
             reflétait plus l'identité de l'agence : visuellement daté,
             difficile à mettre à jour, en décalage avec ses projets récents.
@@ -402,7 +402,7 @@ export default function FinelinePage() {
         <div className="flex w-full flex-col items-center gap-8">
           <H4>Recherche Secondaire</H4>
           <SectionTitle>Audit</SectionTitle>
-          <Body1 className="case-prose font-light">
+          <Body1 className="w-full text-center font-light">
             Pour analyser l'ancien site de Fine Line, j'ai réalisé un audit UX
             basé sur les critères ergonomiques de{' '}
             <span className="font-semibold">Bastien &amp; Scapin</span>.
@@ -606,7 +606,7 @@ export default function FinelinePage() {
         <div className="flex w-full flex-col gap-6">
           <div className="flex flex-col items-center text-center">
             <H3>Concurrents</H3>
-            <Body1 className="case-prose font-light">
+            <Body1 className="w-full text-center font-light">
               Pour situer Fine Line dans son environnement, j'ai choisi deux
               concurrents directs.
             </Body1>
@@ -661,7 +661,7 @@ export default function FinelinePage() {
         </div>
         <div className="flex w-full flex-col items-center text-center">
           <H3>Méthode</H3>
-          <Body1 className="case-prose font-light">
+          <Body1 className="w-full text-center font-light">
             J'ai ensuite réalisé un benchmark à l'aide de la méthode de
             l'Océan Bleu, afin d'analyser plusieurs critères clés liés à
             l'expérience utilisateur et à la visibilité en ligne, et de
@@ -721,7 +721,7 @@ export default function FinelinePage() {
       <div id="hypotheses" className="flex flex-col items-start gap-4 p-8 md:py-16 md:px-[var(--nav-edge-w)]">
         <div className="flex w-full flex-col items-center gap-4">
           <SectionTitle>Hypothèses</SectionTitle>
-          <Body1 className="case-prose font-light">
+          <Body1 className="w-full text-center font-light">
             Suite à cette analyse, et à partir de la recherche secondaire,
             j'ai formulé les hypothèses suivantes.
           </Body1>
@@ -765,7 +765,7 @@ export default function FinelinePage() {
           <H4>Recherche Primaire</H4>
           <SectionTitle>Méthodologie de Recherche</SectionTitle>
           <div className="flex w-full flex-wrap items-center justify-center gap-16">
-            <Body1 className="case-prose font-light">
+            <Body1 className="w-full text-center font-light">
               Dans le cadre de la refonte du site de Fine Line Production, il
               me semblait essentiel de comprendre les attentes des
               utilisateurs, leurs comportements face aux sites de sociétés de
@@ -843,7 +843,7 @@ export default function FinelinePage() {
       <div id="empathy-map" className="flex flex-col items-center gap-8 p-8 md:py-16 md:px-[var(--nav-edge-w)]">
         <div className="flex w-full flex-col items-start gap-4">
           <SectionTitle>Empathy Map</SectionTitle>
-          <Body1 className="case-prose font-light">
+          <Body1 className="w-full text-center font-light">
             Afin de transformer les résultats du sondage et des entretiens en
             une vision claire et exploitable, j'ai construit une Empathy Map.
             Cet outil permet de représenter de façon visuelle ce que les
@@ -907,7 +907,7 @@ export default function FinelinePage() {
       <div id="cible" className="flex flex-col items-center gap-8 p-8 md:py-16 md:px-[var(--nav-edge-w)]">
         <div className="flex w-full flex-col items-start gap-4">
           <SectionTitle>Cible</SectionTitle>
-          <Body1 className="case-prose font-light">
+          <Body1 className="w-full text-center font-light">
             Les recherches menées m'ont permis de définir la cible du projet,
             puis de la concrétiser à travers un persona primaire
           </Body1>
@@ -1026,7 +1026,7 @@ export default function FinelinePage() {
       <div id="plateforme" className="flex flex-col items-center gap-8 p-8 md:py-16 md:px-[var(--nav-edge-w)]">
         <div className="flex w-full flex-col items-start gap-4">
           <SectionTitle>Plateforme de Marque</SectionTitle>
-          <Body1 className="case-prose font-light">
+          <Body1 className="w-full text-center font-light">
             Pour passer de la phase de recherche à la phase de conception,
             j'ai commencé par définir la plateforme de marque afin de
             clarifier l'identité et le positionnement de Fine Line.
@@ -1039,7 +1039,7 @@ export default function FinelinePage() {
       <div id="direction-artistique" className="flex flex-col items-center gap-8 p-8 md:py-16 md:px-[var(--nav-edge-w)]">
         <div className="flex w-full flex-col items-start gap-4">
           <SectionTitle>Direction Artistique</SectionTitle>
-          <Body1 className="case-prose font-light">
+          <Body1 className="w-full text-center font-light">
             Pour répondre aux objectifs clés, j'ai choisi de conserver les
             couleurs historiques de Fine Line tout en leur donnant une
             nouvelle énergie à travers un design plus moderne et évolutif.
@@ -1114,7 +1114,7 @@ export default function FinelinePage() {
       <div id="prototype" className="flex flex-col items-center gap-12 p-8 md:py-16 md:px-[var(--nav-edge-w)]">
         <div className="flex flex-col items-center gap-6">
           <SectionTitle>Prototype</SectionTitle>
-          <Body1 className="case-prose font-light">
+          <Body1 className="w-full text-center font-light">
             Pendant le stage, j'ai pu concevoir deux pages complètes :
             l'accueil et le blog. Des contraintes techniques et un contrat
             court ont écourté le projet, repris ensuite en interne par
@@ -1243,7 +1243,7 @@ export default function FinelinePage() {
       <div id="budget" className="flex flex-col items-start gap-8 p-8 md:py-16 md:px-[var(--nav-edge-w)]">
         <div className="flex flex-col items-start gap-4">
           <SectionTitle>Budget</SectionTitle>
-          <Body1 className="case-prose font-light">
+          <Body1 className="w-full text-center font-light">
             J'ai établi une estimation budgétaire correspondant aux étapes
             que j'ai menées, jusqu'à la conception et au prototypage. Elle
             reflète les ressources et outils nécessaires pour couvrir
@@ -1325,7 +1325,7 @@ export default function FinelinePage() {
       <div id="roadmap" className="flex flex-col items-start gap-8 p-8 md:py-16 md:px-[var(--nav-edge-w)]">
         <div className="flex flex-col items-start gap-4">
           <SectionTitle>Roadmap</SectionTitle>
-          <Body1 className="case-prose font-light">
+          <Body1 className="w-full text-center font-light">
             J'ai construit une roadmap retraçant les étapes clés du projet,
             de l'analyse du contexte au prototypage. Elle m'a permis
             d'avancer avec des livrables clairs et d'assurer une transition
@@ -1365,7 +1365,7 @@ export default function FinelinePage() {
       {/* Conclusion */}
       <div id="conclusion" className="flex flex-col items-start gap-8 p-8 md:py-16 md:pb-32 md:px-[var(--nav-edge-w)]">
         <SectionTitle>Conclusion</SectionTitle>
-        <Body1 className="case-prose font-light">
+        <Body1 className="w-full text-center font-light">
           Ce projet de refonte du site de Fine Line m'a permis d'appliquer
           concrètement mes compétences en UX/UI design, depuis la recherche
           et l'analyse jusqu'à la conception d'un prototype fonctionnel.

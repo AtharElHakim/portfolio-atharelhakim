@@ -120,19 +120,6 @@ p, h1, h2, h3 {
   text-wrap: pretty;
 }
 
-/* Case-study section prose: cap the measure and left-align. Replaces the
-   old `w-full text-center` treatment on section-intro paragraphs, which
-   ran 84–109 characters per line at ~984px wide (see DESIGN_SYSTEM.md
-   "Body copy"). The block still centres under its (centred) section
-   heading via `margin-inline: auto`; only the text goes left.
-   60ch lands at ~72–74 real chars/line for Roboto at 20px (the `ch`
-   unit overshoots for a proportional face — 68ch measured ~82). */
-.case-prose {
-  max-width: 60ch;
-  margin-inline: auto;
-  text-align: left;
-}
-
 @keyframes fade-in-up {
   from {
     opacity: 0;

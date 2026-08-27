@@ -233,7 +233,7 @@ export default function OrealPage() {
           <div className="flex w-full flex-col items-center gap-8 border-t border-white/10 pt-8 text-center">
             <div className="flex w-full flex-col items-center gap-2">
               <H5 className="!text-lg">Overview</H5>
-              <Body1 className="case-prose !text-white font-light">
+              <Body1 className="w-full text-center !text-white font-light">
                 Projet réalisé dans le cadre du concours L'Oréal Brandstorm
                 2026, en équipe de 3 designers UX/UI sur 4 jours intensifs.
                 De la recherche utilisateur à la conception du concept, nous
@@ -303,7 +303,7 @@ export default function OrealPage() {
               />
             </div>
           </div>
-          <Body1 className="case-prose rounded-2xl border border-white/15 bg-white/5 p-6 font-light backdrop-blur-sm">
+          <Body1 className="w-full rounded-2xl border border-white/15 bg-white/5 p-6 font-light backdrop-blur-sm">
             Intégré à notre formation à Sup de Pub, le projet s'est déroulé
             sur 4 jours intensifs. Les livrables attendus : une présentation
             en 3 slides et une vidéo d'équipe répondant à 5 valeurs définies
@@ -322,7 +322,7 @@ export default function OrealPage() {
       <div id="processus" className="flex flex-col items-center gap-8 p-8 md:py-16 md:px-[var(--nav-edge-w)]">
         <SectionTitle>Processus</SectionTitle>
         <div className="mx-auto flex w-full max-w-[900px] flex-col gap-6">
-          <Body1 className="case-prose font-light">
+          <Body1 className="w-full text-center font-light">
             Face à un brief ambitieux et seulement 4 jours devant nous, nous
             avons adopté une méthode rapide et{' '}structurée.
           </Body1>
@@ -415,7 +415,7 @@ export default function OrealPage() {
             </div>
           </div>
 
-          <Body1 className="case-prose font-light">
+          <Body1 className="w-full text-center font-light">
             De là est née l'idée centrale : construire un pont entre le
             digital et le physique, transformer l'essai en expérience, et
             la découverte en décision.
@@ -474,7 +474,7 @@ export default function OrealPage() {
       <div id="apporte" className="flex flex-col items-center gap-8 p-8 md:py-16 md:px-[var(--nav-edge-w)]">
         <div className="flex w-full flex-col items-center gap-8 text-center">
           <SectionTitle>Ce Qu'On Apporte À L'Oréal</SectionTitle>
-          <Body1 className="case-prose font-light">
+          <Body1 className="w-full text-center font-light">
             YSL Sélection Privée n'est pas qu'une solution locale. C'est un
             modèle scalable, durable et mesurable, adaptable à l'ensemble des
             marques du Groupe L'Oréal et déployable à l'international.
@@ -516,7 +516,7 @@ export default function OrealPage() {
       <div id="video" className="flex flex-col items-center gap-8 p-8 md:py-16 md:pb-32 md:px-[var(--nav-edge-w)]">
         <div className="flex w-full flex-col items-center gap-8 text-center">
           <SectionTitle>Vidéo Équipe</SectionTitle>
-          <Body1 className="case-prose font-light">
+          <Body1 className="w-full text-center font-light">
             Au-delà du concept, L'Oréal Brandstorm demandait à chaque équipe
             de se révéler en tant que personnes. La vidéo devait répondre à 5
             valeurs fondamentales définies par L'Oréal :

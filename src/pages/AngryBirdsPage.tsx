@@ -158,7 +158,7 @@ export default function AngryBirdsPage() {
           <div className="flex w-full flex-col items-center gap-8 border-t border-white/10 pt-8 text-center">
             <div className="flex w-full flex-col items-center gap-2">
               <H5 className="!text-lg">Overview</H5>
-              <Body1 className="case-prose !text-white font-light">
+              <Body1 className="w-full text-center !text-white font-light">
                 Ce projet, réalisé seul sur 4 jours dans le cadre d'un
                 exercice de Research Ops à Sup de Pub, consistait à inventer
                 une étude qualitative de A à Z et à la vendre à un client. Le
@@ -231,7 +231,7 @@ export default function AngryBirdsPage() {
         className="relative flex flex-col items-center gap-4 p-8 text-center md:py-16 md:px-[var(--nav-edge-w)]"
       >
         <SectionTitle>Le Dossier</SectionTitle>
-        <Body1 className="case-prose font-light">
+        <Body1 className="w-full text-center font-light">
           Le dossier a été conçu pour un client qui ne maîtrise pas le
           vocabulaire UX. Les sections ci-dessous en retracent le fil,
           diapositives à l'appui.
@@ -247,7 +247,7 @@ export default function AngryBirdsPage() {
         <p className="mx-auto max-w-[26ch] text-center font-syne text-2xl leading-snug text-white md:text-3xl">
           « Pour voir les poissons, il faut plonger. »
         </p>
-        <Body1 className="case-prose font-light">
+        <Body1 className="w-full text-center font-light">
           C'est l'image qui ouvre le dossier. Comprendre les usages du
           téléphone chez des garçons de 8 à 12 ans demandait la même chose :
           entrer dans leur quotidien numérique plutôt que l'observer de loin.
@@ -260,7 +260,7 @@ export default function AngryBirdsPage() {
         images={protocoleImages}
         onOpen={setLightboxIndex}
       >
-        <Body1 className="case-prose font-light">
+        <Body1 className="w-full text-center font-light">
           Un protocole en 6 étapes, du cadrage à la restitution client.
         </Body1>
         <ol className="flex w-full flex-wrap items-center justify-center gap-2">
@@ -301,7 +301,7 @@ export default function AngryBirdsPage() {
         images={etudesM1Images}
         onOpen={setLightboxIndex}
       >
-        <Body1 className="case-prose font-light">
+        <Body1 className="w-full text-center font-light">
           <strong className="font-medium text-white">Phone tracking.</strong>{' '}
           10 garçons suivis 2 jours chacun, un jour d'école et un jour de
           week-end, via l'application Qustodio, sans accès à leurs données
@@ -318,7 +318,7 @@ export default function AngryBirdsPage() {
         images={etudesM2Images}
         onOpen={setLightboxIndex}
       >
-        <Body1 className="case-prose font-light">
+        <Body1 className="w-full text-center font-light">
           <strong className="font-medium text-white">
             Atelier participatif, 2 heures
           </strong>
@@ -329,7 +329,7 @@ export default function AngryBirdsPage() {
           avec son téléphone ; le tout est reporté sur une carte de journée
           type.
         </Body1>
-        <Micro1 className="case-prose italic">
+        <Micro1 className="w-full text-center italic">
           Cadre légal : consentement parental, RGPD, autorisation
           d'enregistrement, droit de retrait.
         </Micro1>
@@ -344,7 +344,7 @@ export default function AngryBirdsPage() {
         <p className="mx-auto max-w-[40ch] text-center font-syne text-xl font-medium text-purple-pale md:text-2xl">
           Le twist : ce sont les enfants qui interrogent leurs parents.
         </p>
-        <Body1 className="case-prose font-light">
+        <Body1 className="w-full text-center font-light">
           Après un vote sur leurs 4 souhaits et 4 obstacles prioritaires, les
           enfants les ont reformulés en questions, qu'ils ont posées
           eux-mêmes à leurs parents en entretien individuel de 15 minutes. En
@@ -360,7 +360,7 @@ export default function AngryBirdsPage() {
         images={budgetImages}
         onOpen={setLightboxIndex}
       >
-        <Body1 className="case-prose font-light">
+        <Body1 className="w-full text-center font-light">
           Trois formules, chiffrées poste par poste : logistique, recrutement
           des familles, temps de recherche.
         </Body1>
@@ -383,7 +383,7 @@ export default function AngryBirdsPage() {
             <Body2 className="mt-1">+ implémentation et tests utilisateurs.</Body2>
           </div>
         </div>
-        <Body1 className="case-prose font-light">
+        <Body1 className="w-full text-center font-light">
           Impact projeté : session moyenne de 10 à 14&nbsp;min, rétention à
           7&nbsp;jours de&nbsp;15&nbsp;% à 20–22&nbsp;%.
         </Body1>
@@ -395,7 +395,7 @@ export default function AngryBirdsPage() {
         images={roadmapImages}
         onOpen={setLightboxIndex}
       >
-        <Body1 className="case-prose font-light">
+        <Body1 className="w-full text-center font-light">
           9 phases sur 6 mois, du recrutement des familles aux tests
           utilisateurs finaux. Un livrable concret à chaque étape :
           cartographies, rapport, présentation client.
@@ -424,7 +424,7 @@ export default function AngryBirdsPage() {
         images={kpisImages}
         onOpen={setLightboxIndex}
       >
-        <Body1 className="case-prose font-light">
+        <Body1 className="w-full text-center font-light">
           Au-delà du temps d'écran, des indicateurs quantitatifs et
           qualitatifs.
         </Body1>
@@ -475,12 +475,12 @@ export default function AngryBirdsPage() {
         images={conclusionImages}
         onOpen={setLightboxIndex}
       >
-        <Body1 className="case-prose font-light">
+        <Body1 className="w-full text-center font-light">
           Au bout de cette étude, Angry Birds ne mesure plus seulement le temps
           de jeu : le studio comprend ce qui fait rester un enfant et ce qui le
           frustre.
         </Body1>
-        <Body1 className="case-prose font-light">
+        <Body1 className="w-full text-center font-light">
           À court terme, de quoi ajuster l'engagement ; à plus long terme, de
           quoi construire une relation durable avec les jeunes joueurs et leurs
           parents.
