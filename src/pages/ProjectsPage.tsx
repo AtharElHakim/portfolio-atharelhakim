@@ -105,7 +105,7 @@ function FeaturedCard({ project }: { project: Project }) {
         <img
           src={project.featureImage ?? project.image}
           alt={project.title}
-          className="absolute inset-x-0 -top-[17%] h-[188%] w-full max-w-none object-cover object-center transition-transform duration-500 group-hover:scale-105"
+          className="absolute inset-x-0 -top-[15%] h-[143%] w-full max-w-none object-cover object-center transition-transform duration-500 group-hover:scale-105"
         />
         <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-purple-void/40 to-transparent" />
       </div>
