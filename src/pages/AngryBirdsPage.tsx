@@ -145,7 +145,10 @@ export default function AngryBirdsPage() {
 
           <div
             className="flex w-full max-w-[820px] aspect-[820/429] items-center justify-center overflow-hidden rounded-2xl border border-purple-pale/50"
-            style={{ background: 'color-mix(in srgb, var(--color-purple-dark) 70%, var(--color-grey) 30%)' }}
+            /* Exception: frame fill is sampled straight from the hero
+               illustration's own flat background (#514ea1) so the letterbox
+               bars blend into the artwork instead of showing a seam. */
+            style={{ background: '#514ea1' }}
           >
             <img
               src={heroIllustration}
