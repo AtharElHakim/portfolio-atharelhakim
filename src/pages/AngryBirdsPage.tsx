@@ -59,6 +59,28 @@ const sectionOffset: Record<string, number> = {}
   }
 }
 
+/* Read off the deck slides (protocole/2.png, roadmap/2-4.png). */
+const protocoleSteps = [
+  'Contexte',
+  'Objectifs',
+  'Hypothèses',
+  'Études',
+  'Panélistes',
+  'Restitution',
+]
+
+const roadmapPhases = [
+  { name: 'Préparation Méthode 1', duration: '3 semaines' },
+  { name: 'Méthode 1 : tracking mobile', duration: '2 semaines' },
+  { name: 'Analyse Méthode 1', duration: '2 semaines' },
+  { name: 'Préparation Méthode 2', duration: '2 jours' },
+  { name: 'Méthode 2 : ateliers + entretiens', duration: '2 jours' },
+  { name: 'Analyse Méthode 2', duration: '3 semaines' },
+  { name: 'Analyse globale & recommandations', duration: '3 semaines' },
+  { name: 'Restitution client', duration: '3 semaines' },
+  { name: 'Implémentation & tests utilisateurs', duration: '6 mois' },
+]
+
 function DeckSection({
   id,
   title,
@@ -241,6 +263,19 @@ export default function AngryBirdsPage() {
         <Body1 className="case-prose font-light">
           Un protocole en 6 étapes, du cadrage à la restitution client.
         </Body1>
+        <ol className="flex w-full flex-wrap items-center justify-center gap-2">
+          {protocoleSteps.map((step, i) => (
+            <li
+              key={step}
+              className="flex items-center gap-2 rounded-full border border-white/15 bg-white/5 py-1.5 pl-1.5 pr-3.5"
+            >
+              <span className="flex size-6 items-center justify-center rounded-full bg-purple-mid/30 text-xs font-semibold text-purple-pale">
+                {i + 1}
+              </span>
+              <span className="text-sm text-white/80">{step}</span>
+            </li>
+          ))}
+        </ol>
         <div className="grid w-full gap-4 sm:grid-cols-2">
           <div className="flex flex-col gap-2 rounded-2xl border border-white/15 bg-white/5 p-6 backdrop-blur-sm">
             <H5 className="!text-purple-pale/70">Cible</H5>
@@ -362,11 +397,25 @@ export default function AngryBirdsPage() {
       >
         <Body1 className="case-prose font-light">
           9 phases sur 6 mois, du recrutement des familles aux tests
-          utilisateurs finaux. Les deux méthodes s'enchaînent, tracking mobile
-          puis atelier et entretiens, avant une phase d'analyse croisée. Un
-          livrable concret à chaque étape : cartographies, rapport,
-          présentation client.
+          utilisateurs finaux. Un livrable concret à chaque étape :
+          cartographies, rapport, présentation client.
         </Body1>
+        <ol className="flex w-full max-w-[640px] flex-col">
+          {roadmapPhases.map((phase, i) => (
+            <li
+              key={phase.name}
+              className="flex items-baseline gap-4 border-l-2 border-white/15 py-2 pl-4"
+            >
+              <span className="font-syne text-lg leading-none text-purple-pale/70">
+                {String(i + 1).padStart(2, '0')}
+              </span>
+              <span className="flex-1 text-white/85">{phase.name}</span>
+              <span className="shrink-0 text-sm text-white/50">
+                {phase.duration}
+              </span>
+            </li>
+          ))}
+        </ol>
       </DeckSection>
 
       <DeckSection
