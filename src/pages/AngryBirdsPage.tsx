@@ -1,21 +1,15 @@
-import { useState, type CSSProperties } from 'react'
+import { useState, type ReactNode } from 'react'
 import Contact from '../components/Contact'
 import Lightbox from '../components/Lightbox'
 import CaseStudyNav from '../components/CaseStudyNav'
+import Coverflow from '../components/Coverflow'
 import logoLabel from '../assets/angrybirds/logo-full.svg'
 import heroIllustration from '../assets/angrybirds/hero-illustration.gif'
 import briefIllustration from '../assets/angrybirds/brief-illustration.png'
-import { H1, H2 as SectionTitle, H5, Body1 } from '../components/Typography'
+import { H1, H2 as SectionTitle, H5, Body1, Body2, Micro1 } from '../components/Typography'
 
-const thumbnailGlowStyle = {
-  '--glow-y': '4px',
-  '--glow-blur': '14px',
-  '--glow-opacity': '20%',
-  '--glow-y-hover': '8px',
-  '--glow-blur-hover': '20px',
-  '--glow-opacity-hover': '35%',
-} as CSSProperties
-
+/* Sort by the trailing number in the source path (the glob KEY, not the
+   resolved URL — Vite hashes and flattens URLs in the production build). */
 function loadGallery(globResult: Record<string, string>) {
   return Object.entries(globResult)
     .sort(([a], [b]) => {
@@ -26,121 +20,78 @@ function loadGallery(globResult: Record<string, string>) {
     .map(([, url]) => url)
 }
 
-const introImages = loadGallery(
-  import.meta.glob('../assets/angrybirds/intro/*.png', {
-    eager: true,
-    import: 'default',
-  }) as Record<string, string>,
-)
-const protocoleImages = loadGallery(
-  import.meta.glob('../assets/angrybirds/protocole/*.png', {
-    eager: true,
-    import: 'default',
-  }) as Record<string, string>,
-)
-const etudesM1Images = loadGallery(
-  import.meta.glob('../assets/angrybirds/etudes-m1/*.png', {
-    eager: true,
-    import: 'default',
-  }) as Record<string, string>,
-)
-const etudesM2P1aImages = loadGallery(
-  import.meta.glob('../assets/angrybirds/etudes-m2p1a/*.png', {
-    eager: true,
-    import: 'default',
-  }) as Record<string, string>,
-)
-const etudesM2P1bImages = loadGallery(
-  import.meta.glob('../assets/angrybirds/etudes-m2p1b/*.png', {
-    eager: true,
-    import: 'default',
-  }) as Record<string, string>,
-)
-const etudesM2P1Images = [...etudesM2P1aImages, ...etudesM2P1bImages]
-const etudesM2P2Images = loadGallery(
-  import.meta.glob('../assets/angrybirds/etudes-m2p2/*.png', {
-    eager: true,
-    import: 'default',
-  }) as Record<string, string>,
-)
-const budgetImages = loadGallery(
-  import.meta.glob('../assets/angrybirds/budget/*.png', {
-    eager: true,
-    import: 'default',
-  }) as Record<string, string>,
-)
-const roadmapImages = loadGallery(
-  import.meta.glob('../assets/angrybirds/roadmap/*.png', {
-    eager: true,
-    import: 'default',
-  }) as Record<string, string>,
-)
-const kpisImages = loadGallery(
-  import.meta.glob('../assets/angrybirds/kpis/*.png', {
-    eager: true,
-    import: 'default',
-  }) as Record<string, string>,
-)
-const conclusionImages = loadGallery(
-  import.meta.glob('../assets/angrybirds/conclusion/*.png', {
-    eager: true,
-    import: 'default',
-  }) as Record<string, string>,
-)
+/* Vite requires the options object to be an inline literal in each call. */
+const introImages = loadGallery(import.meta.glob('../assets/angrybirds/intro/*.png', { eager: true, import: 'default' }) as Record<string, string>)
+const protocoleImages = loadGallery(import.meta.glob('../assets/angrybirds/protocole/*.png', { eager: true, import: 'default' }) as Record<string, string>)
+const etudesM1Images = loadGallery(import.meta.glob('../assets/angrybirds/etudes-m1/*.png', { eager: true, import: 'default' }) as Record<string, string>)
+const etudesM2Images = [
+  ...loadGallery(import.meta.glob('../assets/angrybirds/etudes-m2p1a/*.png', { eager: true, import: 'default' }) as Record<string, string>),
+  ...loadGallery(import.meta.glob('../assets/angrybirds/etudes-m2p1b/*.png', { eager: true, import: 'default' }) as Record<string, string>),
+]
+const etudesM2P2Images = loadGallery(import.meta.glob('../assets/angrybirds/etudes-m2p2/*.png', { eager: true, import: 'default' }) as Record<string, string>)
+const budgetImages = loadGallery(import.meta.glob('../assets/angrybirds/budget/*.png', { eager: true, import: 'default' }) as Record<string, string>)
+const roadmapImages = loadGallery(import.meta.glob('../assets/angrybirds/roadmap/*.png', { eager: true, import: 'default' }) as Record<string, string>)
+const kpisImages = loadGallery(import.meta.glob('../assets/angrybirds/kpis/*.png', { eager: true, import: 'default' }) as Record<string, string>)
+const conclusionImages = loadGallery(import.meta.glob('../assets/angrybirds/conclusion/*.png', { eager: true, import: 'default' }) as Record<string, string>)
 
-function SlideGallery({
+/* Sections in deck order. Each carousel shows its own slice, but clicking a
+   card opens the Lightbox on the whole deck at the right slide — so the
+   viewer can keep flipping past section boundaries. */
+const deckSections = [
+  { id: 'introduction', title: 'Introduction', images: introImages },
+  { id: 'protocole', title: 'Protocole de Recherche', images: protocoleImages },
+  { id: 'methode-1', title: 'Études (Méthode 1)', images: etudesM1Images },
+  { id: 'methode-2', title: 'Études (Méthode 2)', images: etudesM2Images },
+  { id: 'methode-2-phase-2', title: 'Études (Méthode 2 · Phase 2)', images: etudesM2P2Images },
+  { id: 'budget', title: 'Budget', images: budgetImages },
+  { id: 'roadmap', title: 'Roadmap', images: roadmapImages },
+  { id: 'kpis', title: 'KPIs', images: kpisImages },
+  { id: 'conclusion', title: 'Conclusion', images: conclusionImages },
+] as const
+
+const allSlides = deckSections.flatMap((s) => s.images)
+const sectionOffset: Record<string, number> = {}
+{
+  let acc = 0
+  for (const s of deckSections) {
+    sectionOffset[s.id] = acc
+    acc += s.images.length
+  }
+}
+
+function DeckSection({
   id,
   title,
-  bullets,
   images,
   onOpen,
+  children,
 }: {
-  id?: string
+  id: string
   title: string
-  bullets: string[]
   images: string[]
-  onOpen: (images: string[], index: number) => void
+  onOpen: (globalIndex: number) => void
+  children: ReactNode
 }) {
   return (
-    <div id={id} className="relative flex flex-col items-center gap-6 p-8 md:py-16 md:px-[var(--nav-edge-w)]">
+    <div
+      id={id}
+      className="relative flex flex-col items-center gap-8 p-8 md:py-16 md:px-[var(--nav-edge-w)]"
+    >
       <SectionTitle>{title}</SectionTitle>
-      <div className="mx-auto flex w-full max-w-[900px] flex-col items-center gap-6 rounded-2xl border border-white/15 bg-white/5 p-6 backdrop-blur-sm">
-        <ul className="flex w-full list-disc flex-col gap-2 pl-5 text-left text-base leading-6 text-white/70">
-          {bullets.map((bullet) => (
-            <li key={bullet}>{bullet}</li>
-          ))}
-        </ul>
-        <div className="flex flex-wrap justify-center gap-3">
-          {images.map((src, i) => (
-            <button
-              key={src}
-              type="button"
-              onClick={() => onOpen(images, i)}
-              className="h-[86px] w-[153px] shrink-0 cursor-pointer overflow-hidden rounded-xl border border-purple-pale/40 opacity-90 shadow-glow transition-all duration-300 hover:-translate-y-0.5 hover:opacity-100"
-              style={thumbnailGlowStyle}
-            >
-              <img
-                src={src}
-                alt={`${title} ${i + 1}`}
-                className="size-full object-cover"
-              />
-            </button>
-          ))}
-        </div>
+      <div className="flex w-full max-w-[900px] flex-col items-center gap-6">
+        {children}
       </div>
+      <Coverflow
+        slides={images}
+        ariaLabel={`${title}, diapositives`}
+        onOpen={(i) => onOpen((sectionOffset[id] ?? 0) + i)}
+      />
     </div>
   )
 }
 
 export default function AngryBirdsPage() {
-  const [lightbox, setLightbox] = useState<{
-    images: string[]
-    index: number
-  } | null>(null)
-
-  function openGallery(images: string[], index: number) {
-    setLightbox({ images, index })
-  }
+  const [lightboxIndex, setLightboxIndex] = useState<number | null>(null)
 
   return (
     <div className="relative isolate">
@@ -149,12 +100,23 @@ export default function AngryBirdsPage() {
           { id: 'overview', label: 'Overview' },
           { id: 'brief', label: 'Le Brief' },
           { id: 'dossier', label: 'Le Dossier' },
+          { id: 'introduction', label: 'Introduction' },
+          { id: 'protocole', label: 'Protocole' },
+          { id: 'methode-1', label: 'Méthode 1' },
+          { id: 'methode-2', label: 'Méthode 2' },
+          { id: 'methode-2-phase-2', label: 'Méthode 2 · Phase 2' },
+          { id: 'budget', label: 'Budget' },
+          { id: 'roadmap', label: 'Roadmap' },
+          { id: 'kpis', label: 'KPIs' },
           { id: 'conclusion', label: 'Conclusion' },
         ]}
       />
 
       {/* Header */}
-      <div id="overview" className="flex flex-col items-center gap-6 px-8 pb-8 pt-4 md:pb-16 md:pt-10 md:px-[var(--nav-edge-w)]">
+      <div
+        id="overview"
+        className="flex flex-col items-center gap-6 px-8 pb-8 pt-4 md:pb-16 md:pt-10 md:px-[var(--nav-edge-w)]"
+      >
         <div className="flex w-full flex-col items-center gap-4 text-center">
           <img src={logoLabel} alt="Angry Birds" className="h-9" />
           <H1 className="md:!text-5xl md:!leading-[52.8px]">Research Ops · Angry Birds</H1>
@@ -242,130 +204,251 @@ export default function AngryBirdsPage() {
       </div>
 
       {/* Le Dossier */}
-      <div id="dossier" className="relative flex flex-col items-center gap-4 p-8 text-center md:py-16 md:px-[var(--nav-edge-w)]">
+      <div
+        id="dossier"
+        className="relative flex flex-col items-center gap-4 p-8 text-center md:py-16 md:px-[var(--nav-edge-w)]"
+      >
         <SectionTitle>Le Dossier</SectionTitle>
         <Body1 className="case-prose font-light">
-          Voici le dossier complet tel qu'il aurait été présenté à un client
-          réel, qui ne maîtrise pas nécessairement le vocabulaire UX/UI.
-          Cliquez sur une vignette pour le parcourir diapositive par
-          diapositive. Chaque section ci-dessous en résume aussi
-          l'enchaînement en quelques lignes.
+          Le dossier a été conçu pour un client qui ne maîtrise pas le
+          vocabulaire UX. Les sections ci-dessous en retracent le fil,
+          diapositives à l'appui.
         </Body1>
       </div>
 
-      <SlideGallery
+      <DeckSection
+        id="introduction"
         title="Introduction"
-        bullets={[
-          "J'ai ouvert sur une énigme : « Comment voir les poissons dans la mer ? » Réponse : on plonge",
-          "Et c'est exactement ce que j'ai fait, plonger dans l'univers numérique des enfants pour vraiment comprendre leurs usages",
-          "De là, j'ai enchaîné sur le sujet et le protocole que j'ai suivi pour y arriver",
-        ]}
         images={introImages}
-        onOpen={openGallery}
-      />
+        onOpen={setLightboxIndex}
+      >
+        <p className="mx-auto max-w-[26ch] text-center font-syne text-2xl leading-snug text-white md:text-3xl">
+          « Pour voir les poissons, il faut plonger. »
+        </p>
+        <Body1 className="case-prose font-light">
+          C'est l'image qui ouvre le dossier. Comprendre les usages du
+          téléphone chez des garçons de 8 à 12 ans demandait la même chose :
+          entrer dans leur quotidien numérique plutôt que l'observer de loin.
+        </Body1>
+      </DeckSection>
 
-      <SlideGallery
+      <DeckSection
+        id="protocole"
         title="Protocole de Recherche"
-        bullets={[
-          "J'ai posé le cadre : un protocole en 6 étapes, du contexte à la restitution finale",
-          "Angry Birds, c'est un jeu créé par Rovio en 2009 pour les enfants. J'ai resserré ma cible sur les garçons de 8 à 12 ans, et je l'ai coupée en deux (8 à 9 ans et 10 à 12 ans) pour mieux comparer",
-          "Je me suis fixé 4 objectifs (temps d'écran, motivations, moments de plaisir et de frustration, ce qui engage) et j'ai posé mes premières hypothèses",
-        ]}
         images={protocoleImages}
-        onOpen={openGallery}
-      />
+        onOpen={setLightboxIndex}
+      >
+        <Body1 className="case-prose font-light">
+          Un protocole en 6 étapes, du cadrage à la restitution client.
+        </Body1>
+        <div className="grid w-full gap-4 sm:grid-cols-2">
+          <div className="flex flex-col gap-2 rounded-2xl border border-white/15 bg-white/5 p-6 backdrop-blur-sm">
+            <H5 className="!text-purple-pale/70">Cible</H5>
+            <Body2>
+              Garçons de 8 à 12 ans, scindés en 8–9 ans et 10–12 ans pour
+              comparer les tranches d'âge (Angry Birds, Rovio, 2009).
+            </Body2>
+          </div>
+          <div className="flex flex-col gap-2 rounded-2xl border border-white/15 bg-white/5 p-6 backdrop-blur-sm">
+            <H5 className="!text-purple-pale/70">4 objectifs</H5>
+            <Body2>
+              Temps d'écran, motivations, moments de plaisir et de
+              frustration, leviers d'engagement. Premières hypothèses posées à
+              ce stade.
+            </Body2>
+          </div>
+        </div>
+      </DeckSection>
 
-      <SlideGallery
+      <DeckSection
+        id="methode-1"
         title="Études (Méthode 1)"
-        bullets={[
-          "Première méthode, le phone tracking : j'ai suivi 10 garçons 2 jours chacun (un jour d'école, un jour de week-end) via l'application Qustudio, sans jamais toucher à leurs données privées",
-          "J'ai récolté le temps d'écran total, la durée et le nombre de sessions, les applications les plus utilisées",
-          "Résultat : une cartographie du parcours type par tranche d'âge, et un tableau qui compare les deux groupes",
-        ]}
         images={etudesM1Images}
-        onOpen={openGallery}
-      />
+        onOpen={setLightboxIndex}
+      >
+        <Body1 className="case-prose font-light">
+          <strong className="font-medium text-white">Phone tracking.</strong>{' '}
+          10 garçons suivis 2 jours chacun, un jour d'école et un jour de
+          week-end, via l'application Qustodio, sans accès à leurs données
+          personnelles. Relevé : temps d'écran total, nombre et durée des
+          sessions, applications les plus utilisées. Sortie : une cartographie
+          du parcours type par tranche d'âge et un tableau comparant les deux
+          groupes.
+        </Body1>
+      </DeckSection>
 
-      <SlideGallery
+      <DeckSection
+        id="methode-2"
         title="Études (Méthode 2)"
-        bullets={[
-          "Deuxième méthode, un atelier de 2h avec les mêmes 10 garçons. J'ai démarré par un icebreaker, la création d'un avatar : « il n'y a pas de bonne ou mauvaise réponse »",
-          "Sur des post-its verts et rouges, chacun a noté ses souhaits et ce qui le bloquait avec son téléphone, puis j'ai tout collé sur une carte représentant une journée type",
-          "Et j'ai encadré tout ça légalement : consentement parental, RGPD, autorisation d'enregistrement, droit de retrait",
-        ]}
-        images={etudesM2P1Images}
-        onOpen={openGallery}
-      />
+        images={etudesM2Images}
+        onOpen={setLightboxIndex}
+      >
+        <Body1 className="case-prose font-light">
+          <strong className="font-medium text-white">
+            Atelier participatif, 2 heures
+          </strong>
+          , avec les mêmes 10 garçons. Démarrage par un icebreaker (création
+          d'un avatar, « il n'y a pas de bonne ou de mauvaise réponse ») pour
+          lever la barrière de la performance. Chacun note ensuite sur des
+          post-its verts et rouges ce qu'il aimerait faire et ce qui le bloque
+          avec son téléphone ; le tout est reporté sur une carte de journée
+          type.
+        </Body1>
+        <Micro1 className="case-prose italic">
+          Cadre légal : consentement parental, RGPD, autorisation
+          d'enregistrement, droit de retrait.
+        </Micro1>
+      </DeckSection>
 
-      <SlideGallery
-        title="Études (Méthode 2 Phase 2)"
-        bullets={[
-          "Les enfants ont voté pour leurs 4 souhaits et 4 obstacles préférés, puis les ont transformés eux-mêmes en questions pour leurs parents",
-          "Et là, je leur ai réservé une surprise : « c'est vous qui allez poser ces questions directement à vos parents », en entretien individuel de 15 minutes",
-          "J'en suis ressorti avec 4 cartographies d'usage, un tableau comparatif, et une analyse qui révèle les écarts entre ce que vivent les enfants et ce qu'en perçoivent leurs parents",
-        ]}
+      <DeckSection
+        id="methode-2-phase-2"
+        title="Études (Méthode 2 · Phase 2)"
         images={etudesM2P2Images}
-        onOpen={openGallery}
-      />
+        onOpen={setLightboxIndex}
+      >
+        <p className="mx-auto max-w-[40ch] text-center font-syne text-xl font-medium text-purple-pale md:text-2xl">
+          Le twist : ce sont les enfants qui interrogent leurs parents.
+        </p>
+        <Body1 className="case-prose font-light">
+          Après un vote sur leurs 4 souhaits et 4 obstacles prioritaires, les
+          enfants les ont reformulés en questions, qu'ils ont posées
+          eux-mêmes à leurs parents en entretien individuel de 15 minutes. En
+          sortie : 4 cartographies d'usage, un tableau comparatif et une
+          analyse des écarts entre ce que vivent les enfants et ce qu'en
+          perçoivent leurs parents.
+        </Body1>
+      </DeckSection>
 
-      <SlideGallery
+      <DeckSection
+        id="budget"
         title="Budget"
-        bullets={[
-          "J'ai proposé trois formules, du plus simple au plus complet : phone tracking seul (26 500€), tracking plus atelier (42 800€, mon choix conseillé), ou le pack complet avec implémentation et tests utilisateurs (60 200€)",
-          "Chaque euro était justifié, poste par poste : logistique, recrutement des familles, temps des UX researchers",
-          "Et j'ai chiffré l'impact attendu : la durée moyenne de session pourrait grimper à 10 à 14 minutes, la rétention à 7 jours passer de 15% à 20 ou 22%",
-        ]}
         images={budgetImages}
-        onOpen={openGallery}
-      />
+        onOpen={setLightboxIndex}
+      >
+        <Body1 className="case-prose font-light">
+          Trois formules, chiffrées poste par poste : logistique, recrutement
+          des familles, temps de recherche.
+        </Body1>
+        <div className="grid w-full gap-4 md:grid-cols-3">
+          <div className="flex flex-col gap-1 rounded-2xl border border-white/15 bg-white/5 p-6 backdrop-blur-sm">
+            <H5 className="!text-white/50">Essentiel</H5>
+            <p className="font-syne text-2xl text-white">26 500 €</p>
+            <Body2 className="mt-1">Phone tracking seul.</Body2>
+          </div>
+          <div className="flex flex-col gap-1 rounded-2xl border-[1.5px] border-purple-pale/50 bg-purple-dark/25 p-6 backdrop-blur-sm">
+            <H5 className="!text-purple-pale/70">Conseillé</H5>
+            <p className="font-syne text-2xl text-white">42 800 €</p>
+            <Body2 className="mt-1 !text-white/85">
+              Tracking + atelier participatif.
+            </Body2>
+          </div>
+          <div className="flex flex-col gap-1 rounded-2xl border border-white/15 bg-white/5 p-6 backdrop-blur-sm">
+            <H5 className="!text-white/50">Complet</H5>
+            <p className="font-syne text-2xl text-white">60 200 €</p>
+            <Body2 className="mt-1">+ implémentation et tests utilisateurs.</Body2>
+          </div>
+        </div>
+        <Body1 className="case-prose font-light">
+          Impact projeté : session moyenne de 10 à 14&nbsp;min, rétention à
+          7&nbsp;jours de&nbsp;15&nbsp;% à 20–22&nbsp;%.
+        </Body1>
+      </DeckSection>
 
-      <SlideGallery
+      <DeckSection
+        id="roadmap"
         title="Roadmap"
-        bullets={[
-          "9 phases, 6 mois : je suis parti du recrutement des 10 familles pour arriver aux tests utilisateurs finaux sur Angry Birds",
-          "J'ai enchaîné les deux méthodes, tracking mobile puis atelier et entretiens, avant de croiser les deux regards dans une phase d'analyse",
-          "Et à chaque étape, j'ai livré quelque chose de concret (cartographies, rapport, présentation client) pour suivre l'avancement semaine par semaine",
-        ]}
         images={roadmapImages}
-        onOpen={openGallery}
-      />
+        onOpen={setLightboxIndex}
+      >
+        <Body1 className="case-prose font-light">
+          9 phases sur 6 mois, du recrutement des familles aux tests
+          utilisateurs finaux. Les deux méthodes s'enchaînent, tracking mobile
+          puis atelier et entretiens, avant une phase d'analyse croisée. Un
+          livrable concret à chaque étape : cartographies, rapport,
+          présentation client.
+        </Body1>
+      </DeckSection>
 
-      <SlideGallery
+      <DeckSection
+        id="kpis"
         title="KPIs"
-        bullets={[
-          "Je suis allé plus loin que le simple « combien de temps » : temps d'écran, nombre et durée des sessions, applications préférées, pics d'usage en semaine ou le week-end",
-          "J'ai aussi regardé la fidélité, ce qui fait revenir un enfant sur une appli, et à quelle vitesse",
-          "Et j'ai gardé des indicateurs plus humains, ceux de l'atelier : quels obstacles reviennent le plus souvent, et où enfants et parents ne voient pas les choses pareil",
-        ]}
         images={kpisImages}
-        onOpen={openGallery}
-      />
+        onOpen={setLightboxIndex}
+      >
+        <Body1 className="case-prose font-light">
+          Au-delà du temps d'écran, des indicateurs quantitatifs et
+          qualitatifs.
+        </Body1>
+        <div className="flex w-full flex-col gap-4">
+          {[
+            {
+              label: 'Usage',
+              items: [
+                "temps d'écran",
+                'sessions',
+                'durée des sessions',
+                'applications préférées',
+                'pics semaine / week-end',
+              ],
+            },
+            {
+              label: 'Fidélité',
+              items: ['taux de retour', "vitesse de retour sur l'appli"],
+            },
+            {
+              label: 'Atelier',
+              items: [
+                'obstacles les plus fréquents',
+                'écarts de perception enfant / parent',
+              ],
+            },
+          ].map((group) => (
+            <div key={group.label} className="flex flex-col items-center gap-2">
+              <H5 className="!text-purple-pale/70">{group.label}</H5>
+              <div className="flex flex-wrap justify-center gap-2">
+                {group.items.map((item) => (
+                  <span
+                    key={item}
+                    className="rounded-full border border-white/15 bg-white/5 px-3 py-1 text-sm text-white/70"
+                  >
+                    {item}
+                  </span>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      </DeckSection>
 
-      <SlideGallery
+      <DeckSection
         id="conclusion"
         title="Conclusion"
-        bullets={[
-          "Avec cette étude, Angry Birds ne se contente plus de savoir combien de temps un enfant joue, mais comprend ce qui le fait rester, et ce qui le frustre",
-          "À court terme, ça optimise l'engagement. À long terme, ça construit une relation durable avec les jeunes joueurs et leurs parents",
-          "Et j'ai refermé sur une note pensée pour convaincre le client de dire oui",
-        ]}
         images={conclusionImages}
-        onOpen={openGallery}
-      />
+        onOpen={setLightboxIndex}
+      >
+        <Body1 className="case-prose font-light">
+          Au bout de cette étude, Angry Birds ne mesure plus seulement le temps
+          de jeu : le studio comprend ce qui fait rester un enfant et ce qui le
+          frustre.
+        </Body1>
+        <Body1 className="case-prose font-light">
+          À court terme, de quoi ajuster l'engagement ; à plus long terme, de
+          quoi construire une relation durable avec les jeunes joueurs et leurs
+          parents.
+        </Body1>
+      </DeckSection>
 
       <Contact transparent />
 
-      {lightbox && (
+      {lightboxIndex !== null && (
         <Lightbox
-          images={lightbox.images.map((src, i) => ({
+          images={allSlides.map((src, i) => ({
             src,
             alt: `Diapositive ${i + 1}`,
           }))}
-          index={lightbox.index}
-          onClose={() => setLightbox(null)}
-          onNavigate={(index) =>
-            setLightbox((prev) => (prev ? { ...prev, index } : null))
-          }
+          index={lightboxIndex}
+          onClose={() => setLightboxIndex(null)}
+          onNavigate={setLightboxIndex}
         />
       )}
     </div>
