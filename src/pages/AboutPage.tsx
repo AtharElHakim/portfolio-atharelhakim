@@ -32,7 +32,7 @@ function TimelineItem({
 export default function AboutPage() {
   return (
     <div className="relative isolate">
-      <div className="flex items-end justify-center gap-12 border-b border-white/10 px-8 pb-[88px] pt-[138px] md:gap-24 md:px-[var(--nav-edge-w)]">
+      <div className="flex items-end justify-center gap-12 border-b border-white/10 px-8 pb-[88px] pt-[138px] md:flex-row-reverse md:gap-24 md:px-[var(--nav-edge-w)]">
         <div className="-mb-[88px] hidden shrink-0 items-end md:flex">
           <img
             src={portraitImg}

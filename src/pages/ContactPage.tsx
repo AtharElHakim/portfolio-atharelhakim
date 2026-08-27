@@ -1,6 +1,7 @@
 import emailIcon from '../assets/icon-email.svg'
 import phoneIcon from '../assets/icon-phone.svg'
 import linkedinIcon from '../assets/icon-linkedin-white.svg'
+import portraitImg from '../assets/portrait-dark-2-transparent.png'
 import { H1, Body1, Micro1 } from '../components/Typography'
 import { focusRing } from '../components/Button'
 
@@ -39,8 +40,11 @@ export default function ContactPage() {
           d'un café !
         </Body1>
       </div>
-      <div className="flex w-full max-w-[730px] items-center justify-center px-4">
-        <div className="flex w-full flex-col items-start justify-center gap-6 rounded-3xl border border-white/10 bg-white/5 px-8 py-16 md:px-16 md:py-24">
+
+      {/* Card + portrait side by side from md, mirroring the Home / About
+          hero layout (portrait on the right). */}
+      <div className="flex w-full max-w-[920px] flex-col items-center gap-10 md:flex-row md:items-center md:gap-16">
+        <div className="flex w-full flex-1 flex-col items-start justify-center gap-6 rounded-3xl border border-white/10 bg-white/5 p-8 backdrop-blur-sm md:p-10">
           {contactItems.map((item) => (
             <div key={item.label} className="flex w-full items-center gap-6">
               <div className="flex size-14 shrink-0 items-center justify-center rounded-full bg-black-elevated p-3">
@@ -63,6 +67,14 @@ export default function ContactPage() {
               </div>
             </div>
           ))}
+        </div>
+
+        <div className="hidden shrink-0 items-end md:flex">
+          <img
+            src={portraitImg}
+            alt="Portrait illustré d'Athar"
+            className="h-[420px] w-auto object-contain lg:h-[480px]"
+          />
         </div>
       </div>
     </section>
