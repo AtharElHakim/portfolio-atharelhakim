@@ -15,7 +15,7 @@ import asana from '../assets/tools/asana.webp'
 import monday from '../assets/tools/monday.webp'
 import googleWorkspace from '../assets/tools/google-workspace.svg'
 import claudeCode from '../assets/tools/claude-code.webp'
-import github from '../assets/tools/github.webp'
+import github from '../assets/tools/github.svg'
 import { H2, Micro1 } from './Typography'
 
 const tools = [
