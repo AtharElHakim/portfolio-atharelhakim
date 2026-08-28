@@ -10,11 +10,8 @@
  * social previews would need build-time prerendering — tracked as a follow-up.
  */
 
-/** Canonical origin. PLACEHOLDER — replace with the real domain once it
- *  exists, then mirror the same value into the og:/twitter: tags in
- *  index.html. Shipping this placeholder just yields obviously-fake
- *  canonical/preview URLs, not a wrong real-looking one. */
-export const SITE_URL = 'https://your-domain-here.com'
+/** Canonical origin. Keep in sync with the og:/twitter: URLs in index.html. */
+export const SITE_URL = 'https://atharelhakim.com'
 
 const SITE_NAME = 'Athar El Hakim'
 
