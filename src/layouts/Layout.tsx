@@ -1,3 +1,4 @@
+import { Suspense } from 'react'
 import { Outlet, useLocation } from 'react-router-dom'
 import NavBar from '../components/NavBar'
 import Footer from '../components/Footer'
@@ -21,7 +22,9 @@ export default function Layout() {
       <div className="relative flex flex-1 flex-col">
         <NavBar />
         <main className="mx-auto w-full max-w-[1440px]">
-          <Outlet />
+          <Suspense fallback={<div className="min-h-[70vh]" />}>
+            <Outlet />
+          </Suspense>
         </main>
       </div>
       <Footer />

@@ -3,9 +3,9 @@ import { Link } from 'react-router-dom'
 import { H2, H3, Body1, Body2 } from './Typography'
 import { focusRing } from './Button'
 import { useSwipe } from '../hooks/useSwipe'
-import fineLineImg from '../assets/fineline/ancien-site.png'
-import yslImg from '../assets/project-ysl.png'
-import researchOpsImg from '../assets/project-research-ops.png'
+import fineLineImg from '../assets/fineline/ancien-site.webp'
+import yslImg from '../assets/project-ysl.webp'
+import researchOpsImg from '../assets/project-research-ops.webp'
 
 const projects = [
   {
@@ -104,7 +104,7 @@ export default function Projects() {
                 className="relative min-h-0 flex-1 overflow-hidden rounded-2xl border border-white/10 shadow-lift shadow-frame"
                 style={{ '--lift-y': '6px', '--lift-blur': '18px', '--lift-opacity': '40%' } as CSSProperties}
               >
-                <img
+                <img loading="lazy" decoding="async"
                   src={project.image}
                   alt={project.title}
                   className="absolute inset-0 size-full object-cover"

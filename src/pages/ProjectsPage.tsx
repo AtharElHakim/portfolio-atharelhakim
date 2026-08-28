@@ -3,10 +3,11 @@ import { Link } from 'react-router-dom'
 import Contact from '../components/Contact'
 import { focusRing } from '../components/Button'
 import { H1, H2, H3, H5, Body1, Body2 } from '../components/Typography'
-import fineLineImg from '../assets/listing-fine-line.png'
-import fineLineFeatureImg from '../assets/fineline/hero-prototype.png'
-import yslImg from '../assets/listing-ysl.png'
-import angryBirdsImg from '../assets/listing-angry-birds.jpg'
+import Seo from '../components/Seo'
+import fineLineImg from '../assets/listing-fine-line.webp'
+import fineLineFeatureImg from '../assets/fineline/hero-prototype.webp'
+import yslImg from '../assets/listing-ysl.webp'
+import angryBirdsImg from '../assets/listing-angry-birds.webp'
 
 interface Project {
   slug: string
@@ -68,7 +69,7 @@ function ProjectCard({ project }: { project: Project }) {
       className={`group flex flex-col gap-4 rounded-3xl border border-white/10 bg-white/5 p-3 transition-all duration-300 hover:-translate-y-1 hover:border-purple-pale/40 ${focusRing}`}
     >
       <div className="h-[220px] w-full overflow-hidden rounded-2xl">
-        <img
+        <img loading="lazy" decoding="async"
           src={project.image}
           alt={project.title}
           className="size-full object-cover transition-transform duration-500 group-hover:scale-105"
@@ -104,7 +105,7 @@ function FeaturedCard({ project }: { project: Project }) {
           Inset from the card edge with its own rounding, matching the
           grid cards' framed-image treatment. */}
       <div className="relative aspect-[1881/1058] w-full shrink-0 overflow-hidden rounded-2xl bg-black-ink lg:w-[56%]">
-        <img
+        <img loading="lazy" decoding="async"
           src={project.featureImage ?? project.image}
           alt={project.title}
           className="h-full w-full object-contain transition-transform duration-500 group-hover:scale-105"
@@ -173,6 +174,11 @@ function ProjectCategorySection({
 export default function ProjectsPage() {
   return (
     <div className="relative isolate">
+      <Seo
+        title="Projets"
+        description="Trois études de cas UX/UI menées de la recherche au prototype : Fine Line Production, YSL Sélection Privée et Angry Birds."
+        path="/projects"
+      />
       <div className="flex flex-col items-center gap-6 px-8 pt-8 pb-0 text-center md:pt-16 md:px-[var(--nav-edge-w)]">
         <div className="flex max-w-[600px] flex-col items-center gap-4">
           <H1>Projets</H1>

@@ -1,15 +1,21 @@
-import { StrictMode } from 'react'
+/* eslint-disable react-refresh/only-export-components -- app entry: the lazy()
+   route consts aren't components to hot-reload. */
+import { StrictMode, lazy } from 'react'
 import { createRoot } from 'react-dom/client'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import './index.css'
 import Layout from './layouts/Layout'
-import HomePage from './pages/HomePage'
-import ProjectsPage from './pages/ProjectsPage'
-import AboutPage from './pages/AboutPage'
-import ContactPage from './pages/ContactPage'
-import FinelinePage from './pages/FinelinePage'
-import OrealPage from './pages/OrealPage'
-import AngryBirdsPage from './pages/AngryBirdsPage'
+
+/* Each page is its own chunk — the three case studies pull the bulk of the
+   imagery, so they should never be in the first-load bundle. */
+const HomePage = lazy(() => import('./pages/HomePage'))
+const ProjectsPage = lazy(() => import('./pages/ProjectsPage'))
+const AboutPage = lazy(() => import('./pages/AboutPage'))
+const ContactPage = lazy(() => import('./pages/ContactPage'))
+const FinelinePage = lazy(() => import('./pages/FinelinePage'))
+const OrealPage = lazy(() => import('./pages/OrealPage'))
+const AngryBirdsPage = lazy(() => import('./pages/AngryBirdsPage'))
+const NotFoundPage = lazy(() => import('./pages/NotFoundPage'))
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
@@ -23,6 +29,7 @@ createRoot(document.getElementById('root')!).render(
           <Route path="/projects/fine-line-production" element={<FinelinePage />} />
           <Route path="/projects/loreal" element={<OrealPage />} />
           <Route path="/projects/angry-birds" element={<AngryBirdsPage />} />
+          <Route path="*" element={<NotFoundPage />} />
         </Route>
       </Routes>
     </BrowserRouter>

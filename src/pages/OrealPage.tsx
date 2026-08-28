@@ -5,18 +5,19 @@ import Lightbox from '../components/Lightbox'
 import VideoModal from '../components/VideoModal'
 import CaseStudyNav from '../components/CaseStudyNav'
 import logo from '../assets/loreal/logo.svg'
-import heroSilkBg from '../assets/loreal/hero-silk-bg.png'
-import heroProduct from '../assets/loreal/hero-product.png'
-import brandstormBadge from '../assets/loreal/brandstorm-badge.png'
-import pitchPhoto from '../assets/loreal/pitch-photo.jpg'
-import crazy8 from '../assets/loreal/crazy8.png'
-import slide1 from '../assets/loreal/slide1.jpg'
-import slide2 from '../assets/loreal/slide2.jpg'
-import slide3 from '../assets/loreal/slide3.jpg'
+import heroSilkBg from '../assets/loreal/hero-silk-bg.webp'
+import heroProduct from '../assets/loreal/hero-product.webp'
+import brandstormBadge from '../assets/loreal/brandstorm-badge.webp'
+import pitchPhoto from '../assets/loreal/pitch-photo.webp'
+import crazy8 from '../assets/loreal/crazy8.webp'
+import slide1 from '../assets/loreal/slide1.webp'
+import slide2 from '../assets/loreal/slide2.webp'
+import slide3 from '../assets/loreal/slide3.webp'
 import playIcon from '../assets/loreal/play-icon.svg'
 import videoEquipe from '../assets/loreal/video-equipe.mp4'
-import videoThumbnail from '../assets/loreal/video-thumbnail.png'
+import videoThumbnail from '../assets/loreal/video-thumbnail.webp'
 import { H1, H2 as SectionTitle, H3, H4, H5, Body1 } from '../components/Typography'
+import Seo from '../components/Seo'
 
 const numberNodeGlowStyle = {
   '--glow-color': 'var(--color-purple-light)',
@@ -144,7 +145,7 @@ function SlideImage({
             aria-label={`Agrandir : ${label}`}
             className="group/img relative block w-full cursor-pointer overflow-hidden rounded-xl"
           >
-            <img src={src} alt={label} className="w-full rounded-xl" />
+            <img loading="lazy" decoding="async" src={src} alt={label} className="w-full rounded-xl" />
             <div className="absolute inset-0 flex items-center justify-center bg-black/15 transition-all duration-300 group-hover/img:bg-black/35">
               <svg
                 className="size-8 text-white opacity-70 transition-opacity duration-300 group-hover/img:opacity-100"
@@ -204,6 +205,11 @@ export default function OrealPage() {
 
   return (
     <div className="relative isolate">
+      <Seo
+        title="YSL Sélection Privée — Étude de cas L'Oréal Brandstorm"
+        description="Concept produit et service pour L'Oréal Brandstorm 2026 : un coffret de parfums YSL personnalisable, du contexte au pitch devant le jury."
+        path="/projects/loreal"
+      />
       <CaseStudyNav
         sections={[
           { id: 'overview', label: 'Overview' },
@@ -218,7 +224,7 @@ export default function OrealPage() {
       {/* Header */}
       <div id="overview" className="flex flex-col items-center gap-6 px-8 pb-8 pt-4 md:pb-16 md:pt-10 md:px-[var(--nav-edge-w)]">
         <div className="flex w-full flex-col items-center gap-4 text-center">
-          <img src={logo} alt="L'Oréal Groupe" className="h-9 aspect-[131.469/30]" />
+          <img loading="lazy" decoding="async" src={logo} alt="L'Oréal Groupe" className="h-9 aspect-[131.469/30]" />
           <H1 className="md:!text-5xl md:!leading-[52.8px]">YSL Sélection Privée</H1>
 
           <div className="relative w-full max-w-[820px] aspect-[820/429] overflow-hidden rounded-2xl border border-purple-pale/50 bg-purple-dark/35">
@@ -226,6 +232,7 @@ export default function OrealPage() {
             <img
               src={heroProduct}
               alt="Coffret YSL Sélection Privée"
+              fetchPriority="high"
               className="absolute inset-0 h-full w-full scale-[0.82] object-cover"
             />
           </div>
@@ -277,7 +284,7 @@ export default function OrealPage() {
         <div className="mx-auto flex w-full max-w-[1000px] flex-col gap-8">
           <div className="grid w-full grid-cols-1 items-stretch gap-10 md:grid-cols-2">
             <div className="flex flex-col items-start justify-center gap-5">
-              <img
+              <img loading="lazy" decoding="async"
                 src={brandstormBadge}
                 alt="L'Oréal Brandstorm 2026"
                 className="w-[120px] rounded-lg"
@@ -296,7 +303,7 @@ export default function OrealPage() {
               </Body1>
             </div>
             <div className="relative h-full min-h-[280px] w-full overflow-hidden rounded-2xl">
-              <img
+              <img loading="lazy" decoding="async"
                 src={pitchPhoto}
                 alt="Pitch devant le jury L'Oréal"
                 className="absolute inset-0 h-full w-full object-cover object-[50%_78%]"
@@ -376,7 +383,7 @@ export default function OrealPage() {
                   aria-label="Agrandir : Crazy 8"
                   className="group/img relative min-w-[200px] flex-1 cursor-pointer overflow-hidden rounded-xl"
                 >
-                  <img
+                  <img loading="lazy" decoding="async"
                     src={crazy8}
                     alt="Crazy 8"
                     onLoad={measureProcessLines}
@@ -565,13 +572,13 @@ export default function OrealPage() {
             className="group/video absolute left-1/2 top-1/2 z-10 flex aspect-video w-[40%] -translate-x-1/2 -translate-y-1/2 cursor-pointer items-center justify-center overflow-hidden rounded-2xl border border-purple-pale/50 shadow-glow transition-all duration-300 hover:border-purple-pale/80"
             style={videoPlayGlowStyle}
           >
-            <img
+            <img loading="lazy" decoding="async"
               src={videoThumbnail}
               alt=""
               className="absolute inset-0 h-full w-full object-cover"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-purple-void/80 via-purple-void/30 to-purple-dark/20 transition-colors duration-300 group-hover/video:from-purple-void/70" />
-            <img
+            <img loading="lazy" decoding="async"
               src={playIcon}
               alt=""
               className="relative h-14 w-14 transition-transform duration-300 group-hover/video:scale-110"
@@ -607,13 +614,13 @@ export default function OrealPage() {
             aria-label="Lire la vidéo d'équipe"
             className="group/video relative flex h-[220px] w-full items-center justify-center overflow-hidden rounded-2xl border border-purple-pale/50"
           >
-            <img
+            <img loading="lazy" decoding="async"
               src={videoThumbnail}
               alt=""
               className="absolute inset-0 h-full w-full object-cover"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-purple-void/80 via-purple-void/30 to-purple-dark/20" />
-            <img
+            <img loading="lazy" decoding="async"
               src={playIcon}
               alt=""
               className="relative h-16 w-16 transition-transform duration-300 group-hover/video:scale-110"
@@ -633,6 +640,8 @@ export default function OrealPage() {
         <VideoModal onClose={() => setVideoOpen(false)}>
           <video
             src={videoEquipe}
+            poster={videoThumbnail}
+            preload="metadata"
             controls
             autoPlay
             className="max-h-[80vh] max-w-[90vw] cursor-default rounded-lg"

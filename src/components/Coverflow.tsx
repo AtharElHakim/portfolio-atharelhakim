@@ -68,7 +68,7 @@ export default function Coverflow({
             aria-label={`${ariaLabel}, agrandir la diapositive ${i + 1}`}
             className={`${cardBase} w-full max-w-[340px] cursor-pointer transition-all duration-300 hover:-translate-y-0.5 ${focusRing}`}
           >
-            <img src={src} alt="" className="size-full object-cover" />
+            <img loading="lazy" decoding="async" src={src} alt="" className="size-full object-cover" />
           </button>
         ))}
       </div>
@@ -107,7 +107,7 @@ export default function Coverflow({
                 className={`${className} ${focusRing}`}
                 style={style}
               >
-                <img src={src} alt="" className="size-full object-cover" />
+                <img loading="lazy" decoding="async" src={src} alt="" className="size-full object-cover" />
               </button>
             )
           }
@@ -121,7 +121,7 @@ export default function Coverflow({
               className={className}
               style={style}
             >
-              <img src={src} alt="" className="size-full object-cover" />
+              <img loading="lazy" decoding="async" src={src} alt="" className="size-full object-cover" />
             </button>
           )
         })}

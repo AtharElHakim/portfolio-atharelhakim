@@ -1,4 +1,4 @@
-import portraitImg from '../assets/portrait-dark-2-transparent.png'
+import portraitImg from '../assets/portrait-dark-2-transparent.webp'
 import { Display, H2, Body1 } from './Typography'
 import Button from './Button'
 
@@ -34,6 +34,7 @@ export default function Hero() {
         <img
           src={portraitImg}
           alt="Portrait illustré d'Athar"
+          fetchPriority="high"
           className="h-[600px] w-auto object-contain"
         />
       </div>

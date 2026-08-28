@@ -1,21 +1,21 @@
-import figma from '../assets/tools/figma.png'
-import webflow from '../assets/tools/webflow.png'
-import adobeCC from '../assets/tools/adobe-cc.png'
-import uxPilot from '../assets/tools/uxpilot.jpg'
-import maze from '../assets/tools/maze.png'
+import figma from '../assets/tools/figma.webp'
+import webflow from '../assets/tools/webflow.webp'
+import adobeCC from '../assets/tools/adobe-cc.webp'
+import uxPilot from '../assets/tools/uxpilot.webp'
+import maze from '../assets/tools/maze.webp'
 import miro from '../assets/tools/miro.svg'
-import notebookLM from '../assets/tools/notebooklm.png'
-import notion from '../assets/tools/notion.png'
-import slack from '../assets/tools/slack.png'
-import jira from '../assets/tools/jira.png'
-import linear from '../assets/tools/linear.jpg'
+import notebookLM from '../assets/tools/notebooklm.webp'
+import notion from '../assets/tools/notion.webp'
+import slack from '../assets/tools/slack.webp'
+import jira from '../assets/tools/jira.webp'
+import linear from '../assets/tools/linear.webp'
 import confluence from '../assets/tools/confluence.svg'
-import trello from '../assets/tools/trello.png'
-import asana from '../assets/tools/asana.jpg'
-import monday from '../assets/tools/monday.jpg'
+import trello from '../assets/tools/trello.webp'
+import asana from '../assets/tools/asana.webp'
+import monday from '../assets/tools/monday.webp'
 import googleWorkspace from '../assets/tools/google-workspace.svg'
-import claudeCode from '../assets/tools/claude-code.png'
-import github from '../assets/tools/github.png'
+import claudeCode from '../assets/tools/claude-code.webp'
+import github from '../assets/tools/github.webp'
 import { H2, Micro1 } from './Typography'
 
 const tools = [
@@ -55,7 +55,7 @@ export default function Tools() {
                   tool.circle ? 'rounded-full' : 'rounded-xl'
                 } ${tool.padded ? 'border-[0.2px] border-black-ink/15 bg-white p-2' : ''}`}
               >
-                <img
+                <img loading="lazy" decoding="async"
                   src={tool.icon}
                   alt={tool.name}
                   className={`size-full object-cover ${

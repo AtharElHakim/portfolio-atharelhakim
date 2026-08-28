@@ -3,6 +3,7 @@ import phoneIcon from '../assets/icon-phone.svg'
 import linkedinIcon from '../assets/icon-linkedin-white.svg'
 import { H1, Body1, Micro1 } from '../components/Typography'
 import { focusRing } from '../components/Button'
+import Seo from '../components/Seo'
 
 const contactItems = [
   {
@@ -31,6 +32,11 @@ const contactItems = [
 export default function ContactPage() {
   return (
     <section className="flex flex-col items-center gap-12 p-8 md:py-16 md:px-[var(--nav-edge-w)]">
+      <Seo
+        title="Contact"
+        description="Prenons contact : email, téléphone et LinkedIn d'Athar El Hakim, UX/UI Designer."
+        path="/contactez-moi"
+      />
       <div className="flex flex-col items-center gap-4 text-center">
         <H1>Prenons Contact !</H1>
         <Body1 className="max-w-[633px] font-light">
@@ -44,7 +50,7 @@ export default function ContactPage() {
         {contactItems.map((item) => (
           <div key={item.label} className="flex w-full items-center gap-6">
             <div className="flex size-14 shrink-0 items-center justify-center rounded-full bg-black-elevated p-3">
-              <img src={item.icon} alt="" className={item.iconSize} />
+              <img loading="lazy" decoding="async" src={item.icon} alt="" className={item.iconSize} />
             </div>
             <div className="flex min-w-0 flex-1 flex-col items-start gap-1">
               <Micro1 className="!text-white/50 font-bold uppercase tracking-wide">

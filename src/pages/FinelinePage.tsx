@@ -3,39 +3,40 @@ import Contact from '../components/Contact'
 import Lightbox from '../components/Lightbox'
 import CaseStudyNav from '../components/CaseStudyNav'
 import Button from '../components/Button'
+import Seo from '../components/Seo'
 import VideoModal from '../components/VideoModal'
-import logoMark from '../assets/fineline/logo-mark.png'
-import ancienSite from '../assets/fineline/ancien-site.png'
-import productionHouse from '../assets/fineline/production-house.png'
-import currentWebsite from '../assets/fineline/current-website.png'
+import logoMark from '../assets/fineline/logo-mark.webp'
+import ancienSite from '../assets/fineline/ancien-site.webp'
+import productionHouse from '../assets/fineline/production-house.webp'
+import currentWebsite from '../assets/fineline/current-website.webp'
 import playIcon from '../assets/fineline/play-icon.svg'
 import oldWebsiteVideo from '../assets/fineline/old-website.mp4'
-import oldWebsiteThumb from '../assets/fineline/old-website-thumb.jpg'
+import oldWebsiteThumb from '../assets/fineline/old-website-thumb.webp'
 import checkIcon from '../assets/fineline/icon-check.svg'
 import xIcon from '../assets/fineline/icon-x.svg'
-import auditStrength1 from '../assets/fineline/audit-strength-1.png'
-import auditStrength2 from '../assets/fineline/audit-strength-2.png'
-import auditStrength3 from '../assets/fineline/audit-strength-3.png'
-import auditWeak1 from '../assets/fineline/audit-weak-1.png'
-import auditWeak2 from '../assets/fineline/audit-weak-2.png'
-import auditWeak3 from '../assets/fineline/audit-weak-3.png'
-import auditWeak4 from '../assets/fineline/audit-weak-4.png'
-import auditWeak5 from '../assets/fineline/audit-weak-5.png'
-import auditWeak6 from '../assets/fineline/audit-weak-6.png'
-import auditWeak7 from '../assets/fineline/audit-weak-7.png'
-import competitorNab from '../assets/fineline/competitor-nab.png'
-import competitorForward from '../assets/fineline/competitor-forward.jpg'
-import benchmarkChart from '../assets/fineline/benchmark-chart.png'
-import empathyMap from '../assets/fineline/empathy-map.png'
-import personaTania from '../assets/fineline/persona-tania.png'
-import personaMoodboard from '../assets/fineline/persona-moodboard.png'
-import brandPlatform from '../assets/fineline/brand-platform.png'
-import da1 from '../assets/fineline/da-1.png'
-import da2 from '../assets/fineline/da-2.png'
-import wireframeWork from '../assets/fineline/wireframe-work.png'
-import wireframeAbout from '../assets/fineline/wireframe-about.png'
-import wireframeContact from '../assets/fineline/wireframe-contact.png'
-import roadmapTimeline from '../assets/fineline/roadmap-timeline.png'
+import auditStrength1 from '../assets/fineline/audit-strength-1.webp'
+import auditStrength2 from '../assets/fineline/audit-strength-2.webp'
+import auditStrength3 from '../assets/fineline/audit-strength-3.webp'
+import auditWeak1 from '../assets/fineline/audit-weak-1.webp'
+import auditWeak2 from '../assets/fineline/audit-weak-2.webp'
+import auditWeak3 from '../assets/fineline/audit-weak-3.webp'
+import auditWeak4 from '../assets/fineline/audit-weak-4.webp'
+import auditWeak5 from '../assets/fineline/audit-weak-5.webp'
+import auditWeak6 from '../assets/fineline/audit-weak-6.webp'
+import auditWeak7 from '../assets/fineline/audit-weak-7.webp'
+import competitorNab from '../assets/fineline/competitor-nab.webp'
+import competitorForward from '../assets/fineline/competitor-forward.webp'
+import benchmarkChart from '../assets/fineline/benchmark-chart.webp'
+import empathyMap from '../assets/fineline/empathy-map.webp'
+import personaTania from '../assets/fineline/persona-tania.webp'
+import personaMoodboard from '../assets/fineline/persona-moodboard.webp'
+import brandPlatform from '../assets/fineline/brand-platform.webp'
+import da1 from '../assets/fineline/da-1.webp'
+import da2 from '../assets/fineline/da-2.webp'
+import wireframeWork from '../assets/fineline/wireframe-work.webp'
+import wireframeAbout from '../assets/fineline/wireframe-about.webp'
+import wireframeContact from '../assets/fineline/wireframe-contact.webp'
+import roadmapTimeline from '../assets/fineline/roadmap-timeline.webp'
 import surveyIcons from '../assets/fineline/survey-icons.svg'
 import interviewIcons from '../assets/fineline/interview-icons.svg'
 import {
@@ -200,6 +201,11 @@ export default function FinelinePage() {
 
   return (
     <div className="relative isolate">
+      <Seo
+        title="Fine Line Production — Étude de cas UX/UI"
+        description="Refonte du site d'une maison de production audiovisuelle : audit, benchmark, recherche utilisateur, plateforme de marque et prototype."
+        path="/projects/fine-line-production"
+      />
       <CaseStudyNav
         sections={[
           { id: 'overview', label: 'Overview' },
@@ -224,7 +230,7 @@ export default function FinelinePage() {
       {/* Header */}
       <div id="overview" className="flex flex-col items-center gap-6 px-8 pb-8 pt-4 md:pb-16 md:pt-10 md:px-[var(--nav-edge-w)]">
         <div className="flex w-full flex-col items-center gap-4 text-center">
-          <img src={logoMark} alt="Fine Line" className="h-9" />
+          <img loading="lazy" decoding="async" src={logoMark} alt="Fine Line" className="h-9" />
           <H1 className="md:!text-5xl md:!leading-[52.8px]">Fine Line Production</H1>
 
           <div className="group/hero relative w-full max-w-[820px] overflow-hidden rounded-2xl border border-white/15 bg-black-soft shadow-lift">
@@ -233,7 +239,7 @@ export default function FinelinePage() {
               <span className="size-2.5 rounded-full bg-[#febc2e]" />
               <span className="size-2.5 rounded-full bg-[#28c840]" />
             </div>
-            <img src={ancienSite} alt="Ancien site Fine Line" className="w-full" />
+            <img loading="lazy" decoding="async" src={ancienSite} alt="Ancien site Fine Line" className="w-full" />
             <div className="pointer-events-none absolute inset-0 top-[45px] flex items-center justify-center bg-black/0 transition-all duration-300 group-hover/hero:bg-black/50">
               <Button
                 href="https://preview.webflow.com/preview/finelinelb-f6eecdd75ed16d10638c2e844afe?utm_medium=preview_link&utm_source=designer&utm_content=finelinelb-f6eecdd75ed16d10638c2e844afe&preview=b67d353f0c30868940d4ff182615a6a4&locale=en&workflow=preview"
@@ -310,7 +316,7 @@ export default function FinelinePage() {
               'radial-gradient(circle at 50% 40%, #fcb02c 0%, #b07003 55%, #3c2701 100%)',
           }}
         >
-          <img
+          <img loading="lazy" decoding="async"
             src={productionHouse}
             alt="Fine Line Production"
             className="w-full max-w-[280px]"
@@ -345,7 +351,7 @@ export default function FinelinePage() {
               aria-label="Agrandir : Site web actuel"
               className="group/img relative w-full cursor-pointer overflow-hidden rounded-xl"
             >
-              <img
+              <img loading="lazy" decoding="async"
                 src={currentWebsite}
                 alt="Site web actuel"
                 className="aspect-[576/367] w-full rounded-xl object-cover transition-transform duration-300 group-hover/img:scale-105"
@@ -378,13 +384,13 @@ export default function FinelinePage() {
               aria-label="Lire la vidéo : Ancien site web"
               className="group/video relative flex aspect-[576/367] w-full cursor-pointer items-center justify-center overflow-hidden rounded-xl"
             >
-              <img
+              <img loading="lazy" decoding="async"
                 src={oldWebsiteThumb}
                 alt=""
                 className="absolute inset-0 size-full object-cover transition-transform duration-300 group-hover/video:scale-105"
               />
               <div className="absolute inset-0 bg-black/35 transition-all duration-300 group-hover/video:bg-black/40" />
-              <img
+              <img loading="lazy" decoding="async"
                 src={playIcon}
                 alt=""
                 className="relative h-20 w-20 transition-transform duration-300 group-hover/video:scale-110"
@@ -423,7 +429,7 @@ export default function FinelinePage() {
             } as CSSProperties}
           >
             <H4 className="flex items-center justify-center gap-2 !text-success-bg">
-              <img src={checkIcon} alt="" className="h-5 w-4" />
+              <img loading="lazy" decoding="async" src={checkIcon} alt="" className="h-5 w-4" />
               Point Forts
             </H4>
             <div
@@ -442,7 +448,7 @@ export default function FinelinePage() {
                   aria-label={`Agrandir : Point fort ${i + 1}`}
                   className="group/img relative h-32 w-48 shrink-0 cursor-pointer overflow-hidden rounded-xl"
                 >
-                  <img
+                  <img loading="lazy" decoding="async"
                     src={img}
                     alt=""
                     className="h-full w-full rounded-xl object-cover transition-transform duration-300 group-hover/img:scale-110"
@@ -495,7 +501,7 @@ export default function FinelinePage() {
             } as CSSProperties}
           >
             <H4 className="flex items-center justify-center gap-2 !text-danger-bg">
-              <img src={xIcon} alt="" className="h-5 w-4" />
+              <img loading="lazy" decoding="async" src={xIcon} alt="" className="h-5 w-4" />
               Point Faible
             </H4>
             <div
@@ -515,7 +521,7 @@ export default function FinelinePage() {
                     aria-label={`Agrandir : Point faible ${i + 1}`}
                     className="group/img relative h-28 w-40 shrink-0 cursor-pointer overflow-hidden rounded-xl"
                   >
-                    <img
+                    <img loading="lazy" decoding="async"
                       src={auditWeaknesses[i]}
                       alt=""
                       className="h-full w-full rounded-xl object-cover transition-transform duration-300 group-hover/img:scale-110"
@@ -548,7 +554,7 @@ export default function FinelinePage() {
                     aria-label={`Agrandir : Point faible ${i + 1}`}
                     className="group/img relative min-h-11 w-full cursor-pointer overflow-hidden rounded-xl"
                   >
-                    <img
+                    <img loading="lazy" decoding="async"
                       src={auditWeaknesses[i]}
                       alt=""
                       className="absolute inset-0 h-full w-full rounded-xl object-cover transition-transform duration-300 group-hover/img:scale-105"
@@ -613,7 +619,7 @@ export default function FinelinePage() {
           </div>
           <div className="grid w-full grid-cols-1 gap-6 md:grid-cols-2">
             <div className="flex flex-col gap-4 rounded-2xl border border-white/15 bg-white/5 p-4 backdrop-blur-sm">
-              <img
+              <img loading="lazy" decoding="async"
                 src={competitorNab}
                 alt="Né à Beyrouth Films"
                 className="aspect-[727/510] w-full rounded-xl object-cover"
@@ -636,7 +642,7 @@ export default function FinelinePage() {
               </div>
             </div>
             <div className="flex flex-col gap-4 rounded-2xl border border-white/15 bg-white/5 p-4 backdrop-blur-sm">
-              <img
+              <img loading="lazy" decoding="async"
                 src={competitorForward}
                 alt="Forward Film Production"
                 className="aspect-[727/510] w-full rounded-xl object-cover"
@@ -681,7 +687,7 @@ export default function FinelinePage() {
             aria-label="Agrandir : Benchmark des concurrents"
             className="group/img relative flex-1 min-w-[280px] cursor-pointer overflow-hidden rounded-xl"
           >
-            <img
+            <img loading="lazy" decoding="async"
               src={benchmarkChart}
               alt="Benchmark des concurrents"
               className="w-full rounded-xl transition-transform duration-300 group-hover/img:scale-105"
@@ -790,7 +796,7 @@ export default function FinelinePage() {
                       'radial-gradient(circle, var(--color-purple-light) 0%, var(--color-purple) 50%, transparent 72%)',
                   }}
                 />
-                <img src={surveyIcons} alt="" className="relative h-16 w-auto" />
+                <img loading="lazy" decoding="async" src={surveyIcons} alt="" className="relative h-16 w-auto" />
               </div>
             </div>
             <Body2 className="w-full flex-1 text-center">
@@ -801,7 +807,7 @@ export default function FinelinePage() {
             </Body2>
             <Button
               className="mt-auto"
-              href="https://drive.google.com/file/d/1Dcz9YvuJ6D4sM-q5-dw0wePRM2TpTPAz/view?usp=sharing"
+              href="/fineline/resultats-sondage.pdf"
             >
               Consulter les résultats (PDF)
             </Button>
@@ -820,7 +826,7 @@ export default function FinelinePage() {
                       'radial-gradient(circle, var(--color-purple-light) 0%, var(--color-purple) 50%, transparent 72%)',
                   }}
                 />
-                <img src={interviewIcons} alt="" className="relative h-16 w-auto" />
+                <img loading="lazy" decoding="async" src={interviewIcons} alt="" className="relative h-16 w-auto" />
               </div>
             </div>
             <Body2 className="w-full flex-1 text-center">
@@ -831,7 +837,7 @@ export default function FinelinePage() {
             </Body2>
             <Button
               className="mt-auto"
-              href="https://drive.google.com/file/d/1Tjnpj-1FCYM2leUcvz4Cjz4xHyJ4Acht/view?usp=sharing"
+              href="/fineline/restitution-entretiens.pdf"
             >
               Consulter la restitution (PDF)
             </Button>
@@ -856,7 +862,7 @@ export default function FinelinePage() {
           aria-label="Agrandir : Empathy Map"
           className="group/img relative w-full cursor-pointer overflow-hidden rounded-xl"
         >
-          <img
+          <img loading="lazy" decoding="async"
             src={empathyMap}
             alt="Empathy Map"
             className="w-full rounded-xl transition-transform duration-300 group-hover/img:scale-105"
@@ -940,7 +946,7 @@ export default function FinelinePage() {
         <div className="flex w-full max-w-[1000px] flex-col gap-8 rounded-2xl border border-white/15 bg-white/5 p-8 backdrop-blur-sm">
           <H3 className="w-full text-center">Personas Primaire</H3>
           <div className="flex w-full flex-wrap gap-10">
-            <img
+            <img loading="lazy" decoding="async"
               src={personaTania}
               alt="Persona Tania"
               className="h-[240px] w-[280px] shrink-0 rounded-xl object-cover object-top"
@@ -1013,7 +1019,7 @@ export default function FinelinePage() {
                 </ul>
               </div>
             </div>
-            <img
+            <img loading="lazy" decoding="async"
               src={personaMoodboard}
               alt="Moodboard"
               className="h-full w-full rounded-xl object-cover"
@@ -1032,7 +1038,7 @@ export default function FinelinePage() {
             clarifier l'identité et le positionnement de Fine Line.
           </Body1>
         </div>
-        <img src={brandPlatform} alt="Plateforme de marque" className="w-full rounded-xl" />
+        <img loading="lazy" decoding="async" src={brandPlatform} alt="Plateforme de marque" className="w-full rounded-xl" />
       </div>
 
       {/* Direction Artistique */}
@@ -1057,7 +1063,7 @@ export default function FinelinePage() {
             aria-label="Agrandir : Direction artistique 1"
             className="group/img relative min-w-[280px] flex-1 cursor-pointer overflow-hidden rounded-xl"
           >
-            <img
+            <img loading="lazy" decoding="async"
               src={da1}
               alt="Direction artistique 1"
               className="w-full rounded-xl transition-transform duration-300 group-hover/img:scale-105"
@@ -1085,7 +1091,7 @@ export default function FinelinePage() {
             aria-label="Agrandir : Direction artistique 2"
             className="group/img relative min-w-[280px] flex-1 cursor-pointer overflow-hidden rounded-xl"
           >
-            <img
+            <img loading="lazy" decoding="async"
               src={da2}
               alt="Direction artistique 2"
               className="w-full rounded-xl transition-transform duration-300 group-hover/img:scale-105"
@@ -1142,7 +1148,7 @@ export default function FinelinePage() {
                   className="relative h-[220px] w-full overflow-hidden rounded-2xl border border-white/10 shadow-lift shadow-frame"
                   style={frameLiftStyle}
                 >
-                  <img
+                  <img loading="lazy" decoding="async"
                     src={w.img}
                     alt={w.label}
                     className="absolute inset-0 size-full scale-110 object-cover object-top"
@@ -1217,6 +1223,8 @@ export default function FinelinePage() {
           <video
             ref={videoRef}
             src={oldWebsiteVideo}
+            poster={oldWebsiteThumb}
+            preload="metadata"
             controls
             autoPlay
             className="max-h-[75vh] max-w-[85vw] cursor-default rounded-lg"
@@ -1340,7 +1348,7 @@ export default function FinelinePage() {
             onScroll={updateRoadmapScrollState}
             className="hide-scrollbar h-[445px] w-full overflow-x-auto overflow-y-hidden rounded-xl"
           >
-            <img
+            <img loading="lazy" decoding="async"
               src={roadmapTimeline}
               alt="Roadmap"
               onLoad={updateRoadmapScrollState}

@@ -27,20 +27,20 @@ export default function Footer() {
         </div>
         <div className="flex items-center gap-4">
           <a
-            href="https://www.linkedin.com/"
+            href="https://www.linkedin.com/in/atharhakim"
             target="_blank"
             rel="noreferrer"
             aria-label="LinkedIn"
             className={`flex size-11 items-center justify-center rounded-full opacity-80 transition-all duration-300 hover:scale-110 hover:opacity-100 ${focusRing}`}
           >
-            <img src={linkedinIcon} alt="" className="size-8" />
+            <img loading="lazy" decoding="async" src={linkedinIcon} alt="" className="size-8" />
           </a>
           <a
             href="mailto:athar.elhakim@supdepub.com"
             aria-label="Email"
             className={`flex size-11 items-center justify-center rounded-full opacity-80 transition-all duration-300 hover:scale-110 hover:opacity-100 ${focusRing}`}
           >
-            <img src={mailIcon} alt="" className="size-8 p-1" />
+            <img loading="lazy" decoding="async" src={mailIcon} alt="" className="size-8 p-1" />
           </a>
         </div>
       </div>

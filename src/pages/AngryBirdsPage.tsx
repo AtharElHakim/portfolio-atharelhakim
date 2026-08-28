@@ -4,35 +4,36 @@ import Lightbox from '../components/Lightbox'
 import CaseStudyNav from '../components/CaseStudyNav'
 import Coverflow from '../components/Coverflow'
 import logoLabel from '../assets/angrybirds/logo-full.svg'
-import heroIllustration from '../assets/angrybirds/hero-illustration.gif'
-import briefIllustration from '../assets/angrybirds/brief-illustration.png'
+import heroIllustration from '../assets/angrybirds/hero-illustration.webp'
+import briefIllustration from '../assets/angrybirds/brief-illustration.webp'
 import { H1, H2 as SectionTitle, H5, Body1, Body2, Micro1 } from '../components/Typography'
+import Seo from '../components/Seo'
 
 /* Sort by the trailing number in the source path (the glob KEY, not the
    resolved URL — Vite hashes and flattens URLs in the production build). */
 function loadGallery(globResult: Record<string, string>) {
   return Object.entries(globResult)
     .sort(([a], [b]) => {
-      const numA = parseInt(a.match(/(\d+)\.png$/)?.[1] ?? '0', 10)
-      const numB = parseInt(b.match(/(\d+)\.png$/)?.[1] ?? '0', 10)
+      const numA = parseInt(a.match(/(\d+)\.webp$/)?.[1] ?? '0', 10)
+      const numB = parseInt(b.match(/(\d+)\.webp$/)?.[1] ?? '0', 10)
       return numA - numB
     })
     .map(([, url]) => url)
 }
 
 /* Vite requires the options object to be an inline literal in each call. */
-const introImages = loadGallery(import.meta.glob('../assets/angrybirds/intro/*.png', { eager: true, import: 'default' }) as Record<string, string>)
-const protocoleImages = loadGallery(import.meta.glob('../assets/angrybirds/protocole/*.png', { eager: true, import: 'default' }) as Record<string, string>)
-const etudesM1Images = loadGallery(import.meta.glob('../assets/angrybirds/etudes-m1/*.png', { eager: true, import: 'default' }) as Record<string, string>)
+const introImages = loadGallery(import.meta.glob('../assets/angrybirds/intro/*.webp', { eager: true, import: 'default' }) as Record<string, string>)
+const protocoleImages = loadGallery(import.meta.glob('../assets/angrybirds/protocole/*.webp', { eager: true, import: 'default' }) as Record<string, string>)
+const etudesM1Images = loadGallery(import.meta.glob('../assets/angrybirds/etudes-m1/*.webp', { eager: true, import: 'default' }) as Record<string, string>)
 const etudesM2Images = [
-  ...loadGallery(import.meta.glob('../assets/angrybirds/etudes-m2p1a/*.png', { eager: true, import: 'default' }) as Record<string, string>),
-  ...loadGallery(import.meta.glob('../assets/angrybirds/etudes-m2p1b/*.png', { eager: true, import: 'default' }) as Record<string, string>),
+  ...loadGallery(import.meta.glob('../assets/angrybirds/etudes-m2p1a/*.webp', { eager: true, import: 'default' }) as Record<string, string>),
+  ...loadGallery(import.meta.glob('../assets/angrybirds/etudes-m2p1b/*.webp', { eager: true, import: 'default' }) as Record<string, string>),
 ]
-const etudesM2P2Images = loadGallery(import.meta.glob('../assets/angrybirds/etudes-m2p2/*.png', { eager: true, import: 'default' }) as Record<string, string>)
-const budgetImages = loadGallery(import.meta.glob('../assets/angrybirds/budget/*.png', { eager: true, import: 'default' }) as Record<string, string>)
-const roadmapImages = loadGallery(import.meta.glob('../assets/angrybirds/roadmap/*.png', { eager: true, import: 'default' }) as Record<string, string>)
-const kpisImages = loadGallery(import.meta.glob('../assets/angrybirds/kpis/*.png', { eager: true, import: 'default' }) as Record<string, string>)
-const conclusionImages = loadGallery(import.meta.glob('../assets/angrybirds/conclusion/*.png', { eager: true, import: 'default' }) as Record<string, string>)
+const etudesM2P2Images = loadGallery(import.meta.glob('../assets/angrybirds/etudes-m2p2/*.webp', { eager: true, import: 'default' }) as Record<string, string>)
+const budgetImages = loadGallery(import.meta.glob('../assets/angrybirds/budget/*.webp', { eager: true, import: 'default' }) as Record<string, string>)
+const roadmapImages = loadGallery(import.meta.glob('../assets/angrybirds/roadmap/*.webp', { eager: true, import: 'default' }) as Record<string, string>)
+const kpisImages = loadGallery(import.meta.glob('../assets/angrybirds/kpis/*.webp', { eager: true, import: 'default' }) as Record<string, string>)
+const conclusionImages = loadGallery(import.meta.glob('../assets/angrybirds/conclusion/*.webp', { eager: true, import: 'default' }) as Record<string, string>)
 
 /* Sections in deck order. Each carousel shows its own slice, but clicking a
    card opens the Lightbox on the whole deck at the right slide — so the
@@ -117,6 +118,11 @@ export default function AngryBirdsPage() {
 
   return (
     <div className="relative isolate">
+      <Seo
+        title="Angry Birds — Étude de cas recherche utilisateur"
+        description="Protocole de recherche utilisateur autour de l'engagement des joueurs d'Angry Birds : études terrain, budget, roadmap et KPIs."
+        path="/projects/angry-birds"
+      />
       <CaseStudyNav
         sections={[
           { id: 'overview', label: 'Overview' },
@@ -140,7 +146,7 @@ export default function AngryBirdsPage() {
         className="flex flex-col items-center gap-6 px-8 pb-8 pt-4 md:pb-16 md:pt-10 md:px-[var(--nav-edge-w)]"
       >
         <div className="flex w-full flex-col items-center gap-4 text-center">
-          <img src={logoLabel} alt="Angry Birds" className="h-9" />
+          <img loading="lazy" decoding="async" src={logoLabel} alt="Angry Birds" className="h-9" />
           <H1 className="md:!text-5xl md:!leading-[52.8px]">Research Ops · Angry Birds</H1>
 
           <div
@@ -153,6 +159,7 @@ export default function AngryBirdsPage() {
             <img
               src={heroIllustration}
               alt="Illustration Angry Birds"
+              fetchPriority="high"
               className="max-h-full max-w-full rounded-xl"
               style={{ clipPath: 'inset(1px 1px 1px 0)' }}
             />
@@ -208,7 +215,7 @@ export default function AngryBirdsPage() {
       >
         <SectionTitle>Le Brief</SectionTitle>
         <div className="mx-auto flex w-full max-w-[900px] flex-col items-center gap-8 rounded-2xl border border-white/15 bg-white/5 p-6 backdrop-blur-sm md:flex-row">
-          <img
+          <img loading="lazy" decoding="async"
             src={briefIllustration}
             alt=""
             className="w-full max-w-[280px] shrink-0 opacity-70 invert md:max-w-[320px]"

@@ -115,7 +115,7 @@ export default function Lightbox({
         </button>
       )}
 
-      <img
+      <img loading="lazy" decoding="async"
         src={current.src}
         alt={current.alt}
         onClick={(event) => event.stopPropagation()}

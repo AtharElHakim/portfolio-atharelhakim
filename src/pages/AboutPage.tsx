@@ -1,13 +1,14 @@
 import Contact from '../components/Contact'
 import { H2, Body1, Body2 } from '../components/Typography'
-import portraitImg from '../assets/about-portrait-bust.png'
-import canoeSketchImg from '../assets/about-canoe-sketch.png'
-import clapperboardImg from '../assets/about-clapperboard.png'
-import wireframeSketchImg from '../assets/about-wireframe-sketch.png'
-import libanParisMapImg from '../assets/about-liban-paris-map.png'
-import franceMapImg from '../assets/about-france-map.png'
-import lebanonMapImg from '../assets/about-lebanon-map.png'
-import routeLineImg from '../assets/about-route-line.png'
+import Seo from '../components/Seo'
+import portraitImg from '../assets/about-portrait-bust.webp'
+import canoeSketchImg from '../assets/about-canoe-sketch.webp'
+import clapperboardImg from '../assets/about-clapperboard.webp'
+import wireframeSketchImg from '../assets/about-wireframe-sketch.webp'
+import libanParisMapImg from '../assets/about-liban-paris-map.webp'
+import franceMapImg from '../assets/about-france-map.webp'
+import lebanonMapImg from '../assets/about-lebanon-map.webp'
+import routeLineImg from '../assets/about-route-line.webp'
 import arrowDownIcon from '../assets/about-arrow.svg'
 
 function TimelineItem({
@@ -32,11 +33,17 @@ function TimelineItem({
 export default function AboutPage() {
   return (
     <div className="relative isolate">
+      <Seo
+        title="À propos"
+        description="Athar El Hakim, UX/UI Designer et Directrice Artistique franco-libanaise. Parcours du cinéma au design produit."
+        path="/a-propos-de-moi"
+      />
       <div className="flex items-end justify-center gap-12 border-b border-white/10 px-8 pb-[88px] pt-[138px] md:flex-row-reverse md:gap-24 md:px-[var(--nav-edge-w)]">
         <div className="-mb-[88px] hidden shrink-0 items-end md:flex">
           <img
             src={portraitImg}
             alt="Portrait illustré d'Athar"
+            fetchPriority="high"
             className="size-[280px] object-contain lg:size-[380px]"
           />
         </div>
@@ -59,7 +66,7 @@ export default function AboutPage() {
       </div>
 
       <section className="relative flex flex-col items-center justify-center gap-8 overflow-hidden border-b border-white/10 p-8 md:flex-row md:items-start md:gap-16 md:py-16 md:px-[var(--nav-edge-w)]">
-        <img
+        <img loading="lazy" decoding="async"
           src={canoeSketchImg}
           alt=""
           className="pointer-events-none absolute -left-24 top-0 w-[550px] rotate-12 opacity-25 invert"
@@ -95,21 +102,21 @@ export default function AboutPage() {
 
       <section className="relative flex flex-col items-center gap-4 overflow-hidden border-y border-white/10 px-8 pb-8 pt-8 text-center lg:flex-row lg:items-center lg:justify-center lg:gap-4 lg:px-16 lg:pb-16 lg:pt-[146px] xl:px-24 xl:pt-[163px]">
         {/* combined single image — mobile & tablet only, one block above the heading */}
-        <img
+        <img loading="lazy" decoding="async"
           src={libanParisMapImg}
           alt=""
           className="h-auto w-[300px] opacity-25 invert md:w-[420px] lg:hidden"
         />
 
         {/* France — desktop (lg+) only, flanks the text on the left */}
-        <img
+        <img loading="lazy" decoding="async"
           src={franceMapImg}
           alt=""
           className="hidden h-auto shrink-0 opacity-25 invert lg:block lg:w-[240px] xl:w-[280px]"
         />
         <div className="relative flex w-full max-w-[900px] flex-1 flex-col items-center gap-4 [text-shadow:0_2px_10px_rgba(0,0,0,0.85)]">
           {/* route line — desktop (lg+) only: absolutely positioned above the heading, stretched wider */}
-          <img
+          <img loading="lazy" decoding="async"
             src={routeLineImg}
             alt=""
             className="pointer-events-none absolute left-1/2 top-0 hidden max-w-none -translate-x-1/2 opacity-25 invert lg:block lg:h-[145px] lg:w-[620px] lg:-top-[128px] xl:h-[165px] xl:w-[700px] xl:-top-[145px]"
@@ -127,7 +134,7 @@ export default function AboutPage() {
           </Body1>
         </div>
         {/* Lebanon — desktop (lg+) only, flanks the text on the right */}
-        <img
+        <img loading="lazy" decoding="async"
           src={lebanonMapImg}
           alt=""
           className="hidden h-auto shrink-0 opacity-25 invert lg:block lg:w-[200px] xl:w-[230px]"
@@ -147,7 +154,7 @@ export default function AboutPage() {
               text reflow at much narrower/wider md widths shifts the match). */}
           <div className="hidden flex-col items-center gap-3 md:flex">
             <div className="relative w-[180px] overflow-hidden" style={{ aspectRatio: '159 / 133' }}>
-              <img
+              <img loading="lazy" decoding="async"
                 src={clapperboardImg}
                 alt=""
                 className="absolute max-w-none opacity-25 invert"
@@ -160,7 +167,7 @@ export default function AboutPage() {
               />
             </div>
             <div className="flex h-[76px] w-4 items-center justify-center">
-              <img
+              <img loading="lazy" decoding="async"
                 src={arrowDownIcon}
                 alt=""
                 className="w-[76px] max-w-none shrink-0 rotate-90"
@@ -168,7 +175,7 @@ export default function AboutPage() {
               />
             </div>
             <div className="relative w-[180px] overflow-hidden" style={{ aspectRatio: '92.6228 / 77.137' }}>
-              <img
+              <img loading="lazy" decoding="async"
                 src={wireframeSketchImg}
                 alt=""
                 className="absolute max-w-none opacity-25 invert"
