@@ -247,7 +247,7 @@ export default function AngryBirdsPage() {
         images={introImages}
         onOpen={setLightboxIndex}
       >
-        <p className="mx-auto max-w-[26ch] text-center font-syne text-2xl leading-snug text-white md:text-3xl">
+        <p className="mx-auto whitespace-nowrap text-center font-syne text-[clamp(0.95rem,4.6vw,1.875rem)] leading-snug text-white">
           « Pour voir les poissons, il faut plonger. »
         </p>
         <Body1 className="w-full text-center font-light">
