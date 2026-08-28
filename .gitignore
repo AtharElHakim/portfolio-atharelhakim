@@ -23,3 +23,22 @@ dist-ssr
 *.sln
 *.sw?
 .claude/settings.local.json
+
+# Local scratch / working files — kept on disk at the repo root, not tracked
+/.session-handoff.md
+/lighthouse-*.html
+/open-site.html
+/old website_1.mp4
+/old-website-thumb*.jpg
+/production house.png
+/roadmap.png
+/Arrow 1.svg
+/Budget Image Container.png
+/Icon and Label Container.svg
+/Interview Method Icons.svg
+/Survey Method Icons.svg
+/original-4a538f79c3a138a1e16ec12adc8a21da.webp
+/0f6d549d5db56058e63261e1f666e691.jpg
+/78fe9c343d83cf5731eeba8297b013a0.jpg
+/78fe9c343d83cf5731eeba8297b013a0 (1).jpg
+/aaa54393e7445c3e2b2aaad51fae0546.jpg
