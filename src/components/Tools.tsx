@@ -36,7 +36,7 @@ const tools = [
   { name: 'Monday.com', icon: monday, rounded: true },
   { name: 'Google Workspace', icon: googleWorkspace, padded: true },
   { name: 'Claude Code', icon: claudeCode },
-  { name: 'GitHub', icon: github, padded: true },
+  { name: 'GitHub', icon: github },
 ]
 
 export default function Tools() {
