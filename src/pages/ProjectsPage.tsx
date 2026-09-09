@@ -170,10 +170,7 @@ export default function ProjectsPage() {
         </div>
       </div>
 
-      <ProjectCategorySection
-        projects={uxUiProjects}
-        featuredSlug="par-ici"
-      />
+      <ProjectCategorySection projects={uxUiProjects} />
 
       <Contact />
     </div>
