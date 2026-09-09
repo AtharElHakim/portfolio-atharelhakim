@@ -164,9 +164,6 @@ export default function ProjectsPage() {
       <div className="flex flex-col items-center gap-6 px-8 pt-8 pb-0 text-center md:pt-16 md:px-[var(--nav-edge-w)]">
         <div className="flex max-w-[600px] flex-col items-center gap-4">
           <H1>Projets</H1>
-          <Body1 className="font-light">
-            Cinq projets UX/UI menés de la recherche au prototype.
-          </Body1>
         </div>
       </div>
 
