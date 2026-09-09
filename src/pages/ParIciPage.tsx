@@ -13,6 +13,7 @@ import playIcon from '../assets/par-ici/play-icon.svg'
 import personaKarim from '../assets/par-ici/persona-karim.webp'
 import personaDorra from '../assets/par-ici/persona-dorra.webp'
 import personaJiho from '../assets/par-ici/persona-jiho.webp'
+import compassLogo from '../assets/par-ici/logo.webp'
 
 const FIGMA_PROTO_URL =
   'https://www.figma.com/proto/ramDR1CZvokt75ymWXOqUY/CNP-Prototype?node-id=340-666&t=lQcSUq85oW64SEuU-1'
@@ -69,28 +70,6 @@ function Epigraph({ children, attribution }: { children: ReactNode; attribution?
       </blockquote>
       {attribution && <figcaption className="text-sm text-white/50">{attribution}</figcaption>}
     </figure>
-  )
-}
-
-/** Standard placeholder box — same footprint as the real asset it stands in
- *  for, clearly labelled. All uses are marked with a `{/* PLACEHOLDER … *​/}`
- *  comment at the call site. */
-function PlaceholderBox({
-  label,
-  className = 'w-full aspect-[820/460]',
-}: {
-  label: string
-  className?: string
-}) {
-  return (
-    <div
-      className={`flex shrink-0 items-center justify-center rounded-2xl border border-dashed border-white/20 bg-white/5 p-4 text-center ${className}`}
-    >
-      <span className="flex flex-col gap-1 text-xs text-white/45 sm:text-sm">
-        <span className="font-semibold uppercase tracking-widest text-white/40">Placeholder</span>
-        {label}
-      </span>
-    </div>
   )
 }
 
@@ -828,8 +807,7 @@ export default function ParIciPage() {
       {/* ============ Hero ============ */}
       <div id="hero" className="flex flex-col items-center gap-6 px-8 pb-8 pt-4 md:pb-16 md:pt-10 md:px-[var(--nav-edge-w)]">
         <div className="flex w-full flex-col items-center gap-4 text-center">
-          {/* PLACEHOLDER: logo « La Boussole » (compass mark) */}
-          <PlaceholderBox className="h-11 w-32" label="Logo" />
+          <img src={compassLogo} alt="Logo Par ici : une boussole" className="size-14" />
           <H1 className="md:!text-5xl md:!leading-[52.8px]">Par ici</H1>
           <Body1 className="!text-white/70 font-light">
             Un compagnon mobile pour les étrangers non-UE primo-arrivants en France
@@ -1567,9 +1545,8 @@ export default function ParIciPage() {
 
         {/* Le logo : Par ici */}
         <div className="flex w-full max-w-[900px] flex-col items-center gap-6 rounded-2xl border border-white/15 bg-white/5 p-8 backdrop-blur-sm md:flex-row">
-          {/* PLACEHOLDER: le logo « La Boussole » (compass mark) */}
           <div className="shrink-0">
-            <PlaceholderBox className="size-[200px]" label="Logo « La Boussole »" />
+            <img src={compassLogo} alt="Logo « La Boussole »" className="size-[200px]" />
           </div>
           <div className="flex flex-col gap-3">
             <H3 className="!text-xl !leading-normal">Le logo : « La Boussole »</H3>
