@@ -3,6 +3,7 @@ import { createPortal } from 'react-dom'
 import { Link, useLocation } from 'react-router-dom'
 import { Micro1 } from './Typography'
 import Button, { focusRing } from './Button'
+import { projects } from '../data/projects'
 
 const CV_HREF = 'https://drive.google.com/file/d/1ixItPzB_x42w22SA-K9QslNWl_UHh2OB/view?usp=sharing'
 
@@ -72,13 +73,10 @@ function MenuIcon({ open }: { open: boolean }) {
   )
 }
 
+// Order follows src/data/projects.ts (single source of truth).
 const projectLinks = [
   { to: '/projects', label: 'Tous les projets' },
-  { to: '/projects/fine-line-production', label: 'Fine Line Production' },
-  { to: '/projects/loreal', label: 'YSL Sélection Privée' },
-  { to: '/projects/angry-birds', label: 'Research Ops · Angry Birds' },
-  { to: '/projects/spotify', label: 'Spotify' },
-  { to: '/projects/par-ici', label: 'Par ici' },
+  ...projects.map((p) => ({ to: `/projects/${p.slug}`, label: p.title })),
 ]
 
 function ProjectsDropdown() {
