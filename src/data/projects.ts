@@ -6,8 +6,7 @@ import yslHome from '../assets/project-ysl.webp'
 import angryBirdsListing from '../assets/listing-angry-birds.webp'
 import angryBirdsHome from '../assets/project-research-ops.webp'
 import spotifyHero from '../assets/spotify/hero.webp'
-import parIciListing from '../assets/par-ici/listing-placeholder.svg'
-import parIciFeature from '../assets/par-ici/hero.webp'
+import parIciHero from '../assets/par-ici/hero.webp'
 
 export interface Project {
   slug: string
@@ -37,11 +36,11 @@ export const projects: Project[] = [
     featuredOnHome: true,
     gridDescription:
       "Compagnon mobile assurantiel et administratif pour les étrangers non-UE primo-arrivants en France, conçu lors du hackathon PULSE (CNP Assurances × Sinnasse).",
-    gridImage: parIciListing,
-    featureImage: parIciFeature,
+    gridImage: parIciHero,
+    featureImage: parIciHero,
     homeDescription:
       'Compagnon mobile pour les étrangers non-UE primo-arrivants en France.',
-    homeImage: parIciFeature,
+    homeImage: parIciHero,
   },
   {
     slug: 'spotify',
