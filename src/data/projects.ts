@@ -5,8 +5,7 @@ import yslListing from '../assets/listing-ysl.webp'
 import yslHome from '../assets/project-ysl.webp'
 import angryBirdsListing from '../assets/listing-angry-birds.webp'
 import angryBirdsHome from '../assets/project-research-ops.webp'
-import spotifyListing from '../assets/spotify/hero-mockup.png'
-import spotifyHome from '../assets/spotify/hero.webp'
+import spotifyHero from '../assets/spotify/hero.webp'
 import parIciListing from '../assets/par-ici/listing-placeholder.svg'
 import parIciFeature from '../assets/par-ici/hero.webp'
 
@@ -50,10 +49,10 @@ export const projects: Project[] = [
     featuredOnHome: true,
     gridDescription:
       "Redesign de l'expérience multi-service de Spotify, de l'audit de marque à une recommandation mettant en avant musique, podcasts et audiobooks.",
-    gridImage: spotifyListing,
+    gridImage: spotifyHero,
     homeDescription:
       "Redesign de l'expérience multi-service, de l'audit de marque à la recommandation.",
-    homeImage: spotifyHome,
+    homeImage: spotifyHero,
   },
   {
     slug: 'fine-line-production',
