@@ -4,12 +4,7 @@ import Contact from '../components/Contact'
 import { focusRing } from '../components/Button'
 import { H1, H2, H3, H5, Body1, Body2 } from '../components/Typography'
 import Seo from '../components/Seo'
-import fineLineImg from '../assets/listing-fine-line.webp'
-import fineLineFeatureImg from '../assets/fineline/hero-prototype.webp'
-import yslImg from '../assets/listing-ysl.webp'
-import angryBirdsImg from '../assets/listing-angry-birds.webp'
-import spotifyImg from '../assets/spotify/hero-mockup.png'
-import parIciImg from '../assets/par-ici/listing-placeholder.svg'
+import { projects } from '../data/projects'
 
 interface Project {
   slug: string
@@ -20,45 +15,15 @@ interface Project {
   featureImage?: string
 }
 
-const uxUiProjects: Project[] = [
-  {
-    slug: 'fine-line-production',
-    title: 'Fine Line Production',
-    description:
-      "Refonte complète du site web d'une société de production libanaise, de la recherche UX au design et au prototypage sur Webflow.",
-    image: fineLineImg,
-    featureImage: fineLineFeatureImg,
-  },
-  {
-    slug: 'loreal',
-    title: 'YSL Sélection Privée',
-    description:
-      "Projet réalisé dans le cadre du concours L'Oréal Brandstorm 2026, visant à concevoir une expérience phygitale autour du parfum de luxe.",
-    image: yslImg,
-  },
-  {
-    slug: 'angry-birds',
-    title: 'Research Ops · Angry Birds',
-    description:
-      "Étude qualitative conçue dans le cadre d'un exercice de Research Ops pour analyser les usages mobiles des enfants de 8 à 12 ans.",
-    image: angryBirdsImg,
-  },
-  {
-    slug: 'spotify',
-    title: 'Spotify',
-    description:
-      "Redesign de l'expérience multi-service de Spotify, de l'audit de marque à une recommandation mettant en avant musique, podcasts et audiobooks.",
-    image: spotifyImg,
-  },
-  {
-    slug: 'par-ici',
-    title: 'Par ici',
-    description:
-      "Compagnon mobile assurantiel et administratif pour les étrangers non-UE primo-arrivants en France, conçu lors du hackathon PULSE (CNP Assurances × Sinnasse).",
-    // PLACEHOLDER: real Par ici listing thumbnail (using placeholder SVG for now)
-    image: parIciImg,
-  },
-]
+// Order, copy and images all come from src/data/projects.ts (single source of
+// truth, shared with the homepage carousel).
+const uxUiProjects: Project[] = projects.map((p) => ({
+  slug: p.slug,
+  title: p.title,
+  description: p.gridDescription,
+  image: p.gridImage,
+  featureImage: p.featureImage,
+}))
 
 function ArrowRight() {
   return (
@@ -193,21 +158,21 @@ export default function ProjectsPage() {
     <div className="relative isolate">
       <Seo
         title="Projets"
-        description="Trois études de cas UX/UI menées de la recherche au prototype : Fine Line Production, YSL Sélection Privée et Angry Birds."
+        description="Cinq études de cas UX/UI menées de la recherche au prototype : Par ici, Spotify, Fine Line Production, YSL Sélection Privée et Angry Birds."
         path="/projects"
       />
       <div className="flex flex-col items-center gap-6 px-8 pt-8 pb-0 text-center md:pt-16 md:px-[var(--nav-edge-w)]">
         <div className="flex max-w-[600px] flex-col items-center gap-4">
           <H1>Projets</H1>
           <Body1 className="font-light">
-            Trois projets UX/UI menés de la recherche au prototype.
+            Cinq projets UX/UI menés de la recherche au prototype.
           </Body1>
         </div>
       </div>
 
       <ProjectCategorySection
         projects={uxUiProjects}
-        featuredSlug="fine-line-production"
+        featuredSlug="par-ici"
       />
 
       <Contact />

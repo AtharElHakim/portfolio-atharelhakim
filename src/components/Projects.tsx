@@ -3,32 +3,7 @@ import { Link } from 'react-router-dom'
 import { H2, H3, Body1, Body2 } from './Typography'
 import { focusRing } from './Button'
 import { useSwipe } from '../hooks/useSwipe'
-import fineLineImg from '../assets/fineline/ancien-site.webp'
-import yslImg from '../assets/project-ysl.webp'
-import researchOpsImg from '../assets/project-research-ops.webp'
-
-const projects = [
-  {
-    slug: 'loreal',
-    title: 'YSL Sélection Privée',
-    description:
-      'Concept phygital pour réinventer la découverte du parfum de luxe.',
-    image: yslImg,
-  },
-  {
-    slug: 'fine-line-production',
-    title: 'Fine Line Production',
-    description:
-      "Refonte UX/UI d'un site de production audiovisuelle, de l'audit au prototype.",
-    image: fineLineImg,
-  },
-  {
-    slug: 'angry-birds',
-    title: 'Research Ops · Angry Birds',
-    description: 'Étude UX pour comprendre les usages mobiles des enfants.',
-    image: researchOpsImg,
-  },
-]
+import { homeProjects as projects } from '../data/projects'
 
 const arrowGlowStyle = {
   '--glow-color': 'var(--color-purple-light)',
@@ -105,7 +80,7 @@ export default function Projects() {
                 style={{ '--lift-y': '6px', '--lift-blur': '18px', '--lift-opacity': '40%' } as CSSProperties}
               >
                 <img loading="lazy" decoding="async"
-                  src={project.image}
+                  src={project.homeImage}
                   alt={project.title}
                   className="absolute inset-0 size-full object-cover"
                 />
@@ -118,7 +93,7 @@ export default function Projects() {
                     isActive ? 'opacity-100' : 'opacity-0'
                   }`}
                 >
-                  {project.description}
+                  {project.homeDescription}
                 </Body2>
               </div>
             </div>
