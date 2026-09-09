@@ -77,6 +77,8 @@ const projectLinks = [
   { to: '/projects/fine-line-production', label: 'Fine Line Production' },
   { to: '/projects/loreal', label: 'YSL Sélection Privée' },
   { to: '/projects/angry-birds', label: 'Research Ops · Angry Birds' },
+  { to: '/projects/spotify', label: 'Spotify' },
+  { to: '/projects/par-ici', label: 'Par ici' },
 ]
 
 function ProjectsDropdown() {

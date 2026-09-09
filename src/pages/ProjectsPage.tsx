@@ -8,6 +8,8 @@ import fineLineImg from '../assets/listing-fine-line.webp'
 import fineLineFeatureImg from '../assets/fineline/hero-prototype.webp'
 import yslImg from '../assets/listing-ysl.webp'
 import angryBirdsImg from '../assets/listing-angry-birds.webp'
+import spotifyImg from '../assets/spotify/hero-mockup.png'
+import parIciImg from '../assets/par-ici/listing-placeholder.svg'
 
 interface Project {
   slug: string
@@ -40,6 +42,21 @@ const uxUiProjects: Project[] = [
     description:
       "Étude qualitative conçue dans le cadre d'un exercice de Research Ops pour analyser les usages mobiles des enfants de 8 à 12 ans.",
     image: angryBirdsImg,
+  },
+  {
+    slug: 'spotify',
+    title: 'Spotify',
+    description:
+      "Redesign de l'expérience multi-service de Spotify, de l'audit de marque à une recommandation mettant en avant musique, podcasts et audiobooks.",
+    image: spotifyImg,
+  },
+  {
+    slug: 'par-ici',
+    title: 'Par ici',
+    description:
+      "Compagnon mobile assurantiel et administratif pour les étrangers non-UE primo-arrivants en France, conçu lors du hackathon PULSE (CNP Assurances × Sinnasse).",
+    // PLACEHOLDER: real Par ici listing thumbnail (using placeholder SVG for now)
+    image: parIciImg,
   },
 ]
 
