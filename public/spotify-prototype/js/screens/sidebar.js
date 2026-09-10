@@ -10,6 +10,14 @@
   var el = C.el;
   var SB = "assets/sidebar/";
 
+  /* which universe screen the drawer was opened from -> that service row
+     shows the green active state. "All" (route "home") -> none active. */
+  var ROUTE_TO_SERVICE = {
+    "home-music": "music",
+    "home-podcasts": "podcasts",
+    "home-audiobooks": "audiobooks",
+  };
+
   var SERVICES = {
     music: { label: "Music", glyph: SB + "glyph_music.svg", badgePad: "8px" },
     podcasts: { label: "Podcasts", glyph: SB + "glyph_podcasts.svg", badgePad: "0px" },
@@ -84,7 +92,8 @@
 
   function Sidebar(nav) {
     var order = C.getServiceOrder();
-    var activeId = order[0] === "music" || true ? "music" : order[0];
+    var base = (global.App.getBaseRoute && global.App.getBaseRoute()) || {};
+    var activeId = ROUTE_TO_SERVICE[base.name] || null;
 
     var servicesEl = el(
       "div",

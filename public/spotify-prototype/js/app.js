@@ -106,7 +106,12 @@
     nav(b.name, b.query);
   }
 
-  global.App = { nav: nav, render: render, closeOverlay: closeOverlay };
+  global.App = {
+    nav: nav,
+    render: render,
+    closeOverlay: closeOverlay,
+    getBaseRoute: function () { return baseRoute; },
+  };
 
   window.addEventListener("hashchange", render);
   window.addEventListener("DOMContentLoaded", function () {
