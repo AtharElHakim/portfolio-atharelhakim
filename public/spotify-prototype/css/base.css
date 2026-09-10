@@ -1,0 +1,228 @@
+/* ============================================================
+   Spotify Multi – Prototype base styles
+   Design tokens pulled from Figma Dev Mode MCP (node 543:1916)
+   ============================================================ */
+
+/* ---------- Fonts ---------- */
+@font-face {
+  font-family: "Spotify Mix UI Title";
+  src: url("../assets/fonts/spotify_mix_ui_title_bold.otf") format("opentype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: block;
+}
+@font-face {
+  font-family: "Spotify Mix UI Title";
+  src: url("../assets/fonts/spotify_mix_ui_title_extrabold.otf") format("opentype");
+  font-weight: 800;
+  font-style: normal;
+  font-display: block;
+}
+@font-face {
+  font-family: "Spotify Mix UI";
+  src: url("../assets/fonts/spotify_mix_ui_regular.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: block;
+}
+@font-face {
+  font-family: "Spotify Mix UI";
+  src: url("../assets/fonts/spotify_mix_ui_bold.otf") format("opentype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: block;
+}
+/* ABeeZee – body (offline copy of Google Font v23) */
+@font-face {
+  font-family: "ABeeZee";
+  src: url("../assets/fonts/abeezee-latin.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: block;
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+    U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193,
+    U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "ABeeZee";
+  src: url("../assets/fonts/abeezee-latin-ext.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: block;
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF,
+    U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020,
+    U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+/* ---------- Tokens ---------- */
+:root {
+  --green: #1db954;          /* Primary/Green            */
+  --white: #ffffff;          /* Text/White               */
+  --grey-text: #b7b7b7;      /* Text/Grey                */
+  --grey-btn: #333333;       /* Primary/Grey Rnd Btns    */
+  --black-bg: #121212;       /* Primary/Black Bg         */
+  --system-black: #000000;   /* system/black             */
+
+  --frame-w: 393px;
+  --frame-h: 852px;
+
+  /* Type ramp (family / size / line-height / tracking) */
+  --font-title: "Spotify Mix UI Title", "Spotify Mix UI", system-ui, sans-serif;
+  --font-body: "ABeeZee", system-ui, sans-serif;
+}
+
+/* ---------- Reset ---------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+html,
+body {
+  height: 100%;
+}
+body {
+  /* soft Spotify-green surround (green #1db954 at low intensity) so the dark
+     app frame reads clearly as a phone. alts: beige #e4dccb, off-white #ece7dd */
+  --page-bg: #cdeed7;
+  background: var(--page-bg);
+  font-family: var(--font-body);
+  color: var(--white);
+  -webkit-font-smoothing: antialiased;
+  display: flex;
+  min-height: 100vh;
+  padding: 24px;
+  overflow: auto;
+}
+img {
+  display: block;
+  max-width: 100%;
+}
+button {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: 0;
+  cursor: pointer;
+}
+
+/* ---------- Device frame ---------- */
+.device {
+  position: relative;
+  width: var(--frame-w);
+  height: var(--frame-h);
+  background: var(--black-bg);
+  overflow: hidden;
+  flex: none;
+  /* margin:auto centers the phone when the viewport has room, but lets it
+     scroll from the very top (never clipped) when the window is shorter */
+  margin: auto;
+  border-radius: 30px;
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.28), 0 6px 18px rgba(0, 0, 0, 0.16);
+}
+
+.screen {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+/* ---------- Type helpers ---------- */
+.h1 {
+  font-family: var(--font-title);
+  font-weight: 700;
+  font-size: 26px;
+  line-height: 30px;
+  letter-spacing: 0.52px;
+}
+.h2 {
+  font-family: var(--font-title);
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 30px;
+  letter-spacing: 0;
+}
+.h3 {
+  font-family: var(--font-title);
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 30px;
+  letter-spacing: 0.48px;
+}
+.body-1 {
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 20px;
+  letter-spacing: -0.2px;
+}
+.body-2 {
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 20px;
+  letter-spacing: 0.32px;
+}
+
+/* ============================================================
+   iOS Status Bar  (Figma node 543:1966 — 393 x 54 overlay)
+   ============================================================ */
+.status-bar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 54px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 32px 0 43px; /* time ~x43, icons end ~x32 from right (Figma) */
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 100;
+  /* opaque strip so scrolling page content never shows through
+     (Figma has a solid #121212 bar behind the status area) */
+  background: var(--black-bg);
+}
+.status-bar__left {
+  display: flex;
+  align-items: center;
+  flex: none;
+}
+.status-bar__time {
+  font-family: "SF Pro", -apple-system, BlinkMacSystemFont, "Helvetica Neue",
+    system-ui, sans-serif;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 23px;
+  letter-spacing: -0.44px;
+  color: var(--white);
+  white-space: nowrap;
+}
+.status-bar__island {
+  position: absolute;
+  left: 50%;
+  top: 11px;
+  transform: translateX(-50%);
+}
+.status-bar__island-hole {
+  width: 126px;
+  height: 37px;
+  background: var(--system-black);
+  border-radius: 100px;
+}
+.status-bar__right {
+  display: flex;
+  align-items: center;
+  flex: none;
+}
+.status-bar__icons {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.status-bar__icons svg {
+  display: block;
+}

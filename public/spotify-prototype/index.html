@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Spotify Multi — Prototype</title>
+    <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="css/onboarding.css" />
+    <link rel="stylesheet" href="css/sidebar.css" />
+    <link rel="stylesheet" href="css/home.css" />
+    <style>
+      /* Placeholder screen (temporary, replaced as build order advances) */
+      .placeholder {
+        position: absolute;
+        inset: 0;
+        background: var(--black-bg);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .placeholder__inner {
+        text-align: center;
+        color: var(--grey-text);
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        text-transform: capitalize;
+      }
+      .placeholder__inner .h2 {
+        color: var(--white);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="device" id="device"></div>
+
+    <script src="js/components.js"></script>
+    <script src="js/screens/onboarding.js"></script>
+    <script src="js/screens/sidebar.js"></script>
+    <script src="js/screens/home.js"></script>
+    <script src="js/screens/universe.js"></script>
+    <script src="js/app.js"></script>
+  </body>
+</html>

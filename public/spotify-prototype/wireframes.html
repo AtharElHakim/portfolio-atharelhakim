@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Spotify Multi, wireframes basse fidélité</title>
+<style>
+  :root{
+    --paper:#fff;
+    --ink:#3a3a3a;
+    --line:#9c9c9c;
+    --line-soft:#c4c4c4;
+    --faint:#f1f1f1;
+    --muted:#767676;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{
+    background:#f2f2f0;
+    color:var(--ink);
+    font-family:"Segoe UI",-apple-system,Helvetica,Arial,sans-serif;
+    line-height:1.5;
+    padding:40px 24px 72px;
+  }
+  .sheet{max-width:1180px;margin:0 auto;}
+
+  header.page-head h1{font-size:20px;font-weight:600;letter-spacing:.2px;}
+  header.page-head p{color:var(--muted);font-size:13px;max-width:60ch;margin-top:4px;}
+
+  /* legend */
+  .legend{
+    display:flex;flex-wrap:wrap;gap:18px 28px;
+    border:1px solid var(--line-soft);
+    background:var(--paper);
+    padding:14px 18px;border-radius:8px;
+    margin:20px 0 40px;font-size:12px;color:var(--muted);
+  }
+  .legend div{display:flex;align-items:center;gap:8px;}
+  .lg-tx{font-size:9px;color:#b3b3b3;}
+  .lg-media{width:20px;height:20px;border:1px dashed var(--line);position:relative;}
+  .lg-media::before,.lg-media::after{content:"";position:absolute;inset:0;border-top:1px dashed var(--line);transform-origin:center;}
+  .lg-media::before{transform:rotate(45deg);}
+  .lg-media::after{transform:rotate(-45deg);}
+  .lg-circle{width:18px;height:18px;border:1px solid var(--line);border-radius:50%;background:var(--faint);}
+  .lg-pill{width:44px;height:16px;border:1.5px solid var(--ink);border-radius:999px;}
+
+  /* grid of screens */
+  .grid{display:flex;flex-wrap:wrap;gap:44px 40px;align-items:flex-start;}
+  figure{width:300px;}
+  figcaption{margin-top:12px;font-size:12px;color:var(--muted);}
+  figcaption b{color:var(--ink);font-weight:600;display:block;font-size:12.5px;margin-bottom:3px;}
+  figcaption ul{margin:4px 0 0 16px;padding:0;}
+  figcaption li{margin:1px 0;}
+
+  /* device frame */
+  .wf{
+    width:300px;min-height:640px;
+    background:var(--paper);
+    border:1.5px solid var(--line);
+    border-radius:20px;
+    position:relative;
+    overflow:hidden;
+    display:flex;flex-direction:column;
+  }
+
+  /* placeholder text (lorem ipsum, kept grey so it still reads as filler) */
+  .tx{font-size:8.5px;line-height:1.5;color:#b3b3b3;}
+  .txh{font-size:11px;line-height:1.4;color:#8a8a8a;font-weight:600;}
+  .txs{font-size:7.5px;line-height:1.5;color:#c2c2c2;}
+
+  /* primitives */
+  .statusbar{
+    height:22px;flex:none;
+    border-bottom:1px solid var(--line-soft);
+    display:flex;align-items:center;justify-content:space-between;
+    padding:0 12px;
+  }
+  .sb-time{width:22px;height:7px;background:#e6e6e6;border-radius:2px;}
+  .sb-island{width:46px;height:12px;background:#d7d7d7;border-radius:8px;}
+  .sb-icons{display:flex;gap:3px;}
+  .sb-icons i{width:9px;height:8px;background:#e6e6e6;display:block;border-radius:1px;}
+
+  .pad{padding:14px 16px;flex:1 0 auto;overflow:visible;display:flex;flex-direction:column;}
+  .pad.center{align-items:center;text-align:center;gap:10px;}
+
+  .stack{display:flex;flex-direction:column;gap:5px;width:100%;}
+  .mt6{margin-top:6px}.mt10{margin-top:10px}.mt14{margin-top:14px}.mt20{margin-top:20px}
+
+  .row{display:flex;align-items:center;gap:10px;width:100%;}
+  .rowb{display:flex;align-items:center;justify-content:space-between;width:100%;}
+  .col{display:flex;flex-direction:column;gap:3px;flex:1;min-width:0;}
+
+  .circle{border:1px solid var(--line);border-radius:50%;background:var(--faint);flex:none;}
+  .c16{width:16px;height:16px}.c22{width:22px;height:22px}.c28{width:28px;height:28px}
+  .c34{width:34px;height:34px}.c40{width:40px;height:40px}.c46{width:46px;height:46px}
+
+  .sq{border:1px solid var(--line);background:var(--faint);flex:none;border-radius:4px;}
+  .s20{width:20px;height:20px}.s28{width:28px;height:28px}
+
+  .media{
+    border:1px dashed var(--line);background:#fafafa;position:relative;flex:none;border-radius:3px;
+  }
+  .media::before,.media::after{content:"";position:absolute;inset:0;background:
+    linear-gradient(to top left,transparent calc(50% - .6px),var(--line) calc(50% - .6px),var(--line) calc(50% + .6px),transparent calc(50% + .6px));}
+  .media::after{transform:scaleX(-1);}
+
+  .pill{
+    border:1.5px solid var(--ink);border-radius:999px;
+    height:30px;display:flex;align-items:center;justify-content:center;
+    font-size:10px;color:var(--muted);letter-spacing:.3px;
+    white-space:nowrap;padding:0 14px;flex:none;
+  }
+  .pill.mini{height:20px;font-size:9px;padding:0 10px;}
+
+  .card{border:1px solid var(--line);border-radius:8px;padding:12px;width:100%;background:var(--faint);}
+  .card.plain{background:var(--paper);}
+  .card .label{font-size:8px;color:var(--muted);border-bottom:1px solid var(--line-soft);padding-bottom:6px;width:100%;}
+
+  .divider{height:1px;background:var(--line-soft);width:100%;margin:10px 0;}
+
+  /* filter bar */
+  .filterbar{
+    display:flex;align-items:center;gap:12px;
+    padding:8px 12px;border-bottom:1px solid var(--line-soft);flex:none;
+  }
+  .tabs{display:flex;gap:14px;font-size:10px;color:var(--muted);overflow:hidden;}
+  .tabs span{white-space:nowrap;padding-bottom:6px;}
+  .tabs span.on{color:var(--ink);border-bottom:2px solid var(--ink);}
+
+  /* bottom bar */
+  .bottom{margin-top:auto;flex:none;}
+  .player{
+    border:1px solid var(--line);border-radius:8px;margin:6px 8px;
+    padding:8px;display:flex;align-items:center;gap:8px;background:var(--faint);
+  }
+  .tabbar{
+    display:flex;justify-content:space-around;align-items:flex-start;
+    padding:8px 12px;border-top:1px solid var(--line-soft);
+  }
+  .tabbar div{display:flex;flex-direction:column;align-items:center;gap:4px;}
+
+  .qc-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;width:100%;}
+  .qc{border:1px solid var(--line);border-radius:4px;padding:6px;display:flex;align-items:center;gap:8px;background:var(--paper);min-width:0;}
+  .qc .tx{overflow:hidden;white-space:nowrap;text-overflow:ellipsis;}
+
+  .skip{position:absolute;top:26px;right:14px;font-size:10px;color:var(--muted);}
+
+  .tag{
+    display:inline-block;border:1px solid var(--line-soft);border-radius:4px;
+    font-size:9px;color:var(--muted);padding:1px 6px;margin-top:6px;
+  }
+  .section-title{font-size:13px;font-weight:600;margin:44px 0 4px;color:var(--ink);}
+  .footnote{font-size:12px;color:var(--muted);margin-top:40px;border-top:1px solid var(--line-soft);padding-top:16px;}
+</style>
+</head>
+<body>
+<div class="sheet">
+
+  <header class="page-head">
+    <h1>Spotify Multi, wireframes basse fidélité</h1>
+    <p>Structure et mise en page uniquement. Pas de couleur, de typographie, d'images ni d'interaction. Voir le prototype pour cela. Un cadre &asymp; un écran iOS de 393 &times; 852. Le texte est du faux-texte lorem ipsum.</p>
+  </header>
+
+  <div class="legend">
+    <div><span class="lg-tx">Lorem ipsum</span> faux-texte</div>
+    <div><span class="lg-media"></span> image / visuel</div>
+    <div><span class="lg-circle"></span> icône / avatar</div>
+    <div><span class="lg-pill"></span> bouton</div>
+  </div>
+
+  <!-- ============================= ONBOARDING ============================= -->
+  <div class="section-title">Onboarding. Apparaît une fois, après la mise à jour (ou après l'inscription)</div>
+  <div class="grid">
+
+    <!-- Onboarding 1 -->
+    <figure>
+      <div class="wf">
+        <div class="statusbar"><span class="sb-time"></span><span class="sb-island"></span><span class="sb-icons"><i></i><i></i><i></i></span></div>
+        <div class="pad center">
+          <p class="txh mt20">Lorem ipsum</p>
+          <p class="txh">Lorem ipsum dolor sit amet, consectetur adipiscing elit sed.</p>
+          <p class="txh">Lorem ipsum.</p>
+          <p class="tx mt6">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.</p>
+          <div class="row mt20" style="justify-content:center;gap:22px">
+            <div class="col" style="align-items:center;flex:none"><span class="circle c40"></span><span class="txs">Lorem</span></div>
+            <div class="col" style="align-items:center;flex:none"><span class="circle c40"></span><span class="txs">Lorem ipsum</span></div>
+            <div class="col" style="align-items:center;flex:none"><span class="circle c40"></span><span class="txs">Lorem ipsum</span></div>
+          </div>
+          <p class="txh mt20">Lorem ipsum dolor sit amet consectetur adipiscing elit.</p>
+          <div class="pill mt20" style="width:70%">See what's changed</div>
+        </div>
+      </div>
+      <figcaption>
+        <b>1 &middot; Onboarding, « What's New! »</b>
+        Révèle les trois services (Music &middot; Podcasts &middot; Audiobooks) dès le premier contact. Le CTA passe à l'écran 2.
+      </figcaption>
+    </figure>
+
+    <!-- Onboarding 2 -->
+    <figure>
+      <div class="wf">
+        <div class="statusbar"><span class="sb-time"></span><span class="sb-island"></span><span class="sb-icons"><i></i><i></i><i></i></span></div>
+        <div class="skip">Skip</div>
+        <div class="pad center">
+          <p class="txh mt20">Lorem ipsum dolor sit amet.</p>
+          <p class="tx mt6">Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor.</p>
+          <div class="card mt20" style="text-align:left">
+            <div class="row"><span class="circle c28"></span><span class="txh">Lorem ipsum</span></div>
+            <p class="tx mt10">Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor incididunt.</p>
+          </div>
+          <div class="card mt10" style="text-align:left">
+            <div class="row"><span class="circle c28"></span><span class="txh">Lorem ipsum</span></div>
+            <p class="tx mt10">Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore.</p>
+          </div>
+          <div class="pill mt20" style="width:55%">Show me how</div>
+        </div>
+      </div>
+      <figcaption>
+        <b>2 &middot; Onboarding, « You're in control »</b>
+        Deux façons d'ordonner les onglets :
+        <ul><li>Automatic, présenté tel quel</li><li>Manual, appui long et glissement (le mécanisme utilisé par le prototype)</li></ul>
+      </figcaption>
+    </figure>
+
+    <!-- Onboarding 3 -->
+    <figure>
+      <div class="wf">
+        <div class="statusbar"><span class="sb-time"></span><span class="sb-island"></span><span class="sb-icons"><i></i><i></i><i></i></span></div>
+        <div class="skip">Skip</div>
+        <div class="pad center">
+          <p class="txh mt20">Lorem ipsum dolor sit?</p>
+          <p class="tx mt6">Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore.</p>
+          <div class="card mt20" style="text-align:left">
+            <div class="label">Lorem ipsum dolor</div>
+            <div class="stack mt10" style="width:62%">
+              <div class="row"><span class="circle c16"></span><span class="tx">Lorem ipsum dolor</span></div>
+              <div class="row"><span class="circle c16"></span><span class="tx">Lorem ipsum</span></div>
+              <div class="row"><span class="circle c16"></span><span class="tx">Lorem</span></div>
+            </div>
+          </div>
+          <div class="card mt10" style="text-align:left">
+            <div class="label">Lorem ipsum dolor sit</div>
+            <div class="row mt10"><span class="circle c22"></span><span class="tx">Lorem</span><span class="tx" style="color:#8a8a8a">Ipsum</span><span class="tx">Dolor sit</span><span class="tx">Amet</span></div>
+          </div>
+          <div class="pill mt20" style="width:52%">Want to try?</div>
+        </div>
+      </div>
+      <figcaption>
+        <b>3 &middot; Onboarding, « How to do it ? »</b>
+        Montre les deux endroits où se fait la réorganisation (menu latéral et barre du haut) ; les deux restent synchronisés. CTA / Skip &rarr; Home.
+      </figcaption>
+    </figure>
+
+  </div>
+
+  <!-- ============================= SIDEBAR ============================= -->
+  <div class="section-title">Sidebar. S'ouvre par-dessus l'écran courant (swipe depuis la gauche / icône de profil)</div>
+  <div class="grid">
+
+    <figure>
+      <div class="wf">
+        <div class="statusbar"><span class="sb-time"></span><span class="sb-island"></span><span class="sb-icons"><i></i><i></i><i></i></span></div>
+        <div class="pad" style="gap:2px">
+          <div class="row mt6"><span class="circle c46"></span>
+            <span class="col"><span class="txh">Lorem Ipsum</span><span class="tx">Lorem ipsum</span></span></div>
+          <div class="divider"></div>
+
+          <div class="row"><span class="circle c34"></span><span class="txh">Lorem</span></div>
+          <div class="row mt10"><span class="circle c34"></span><span class="txh">Lorem ipsum</span></div>
+          <div class="row mt10"><span class="circle c34"></span><span class="txh">Lorem ipsum</span></div>
+          <div class="tag">&#9650;&#9660; glisser pour réordonner, partagé avec la filter bar</div>
+          <div class="divider"></div>
+
+          <div class="row"><span class="sq s20"></span><span class="tx">Lorem ipsum dolor</span></div>
+          <div class="row mt10"><span class="sq s20"></span><span class="tx">Lorem ipsum</span></div>
+          <div class="row mt10"><span class="sq s20"></span><span class="tx">Lorem ipsum</span></div>
+          <div class="row mt10"><span class="sq s20"></span><span class="tx">Lorem ipsum dolor</span></div>
+          <div class="row mt10"><span class="sq s20"></span><span class="tx">Lorem</span></div>
+          <div class="row mt10"><span class="sq s20"></span><span class="tx">Lorem ipsum</span></div>
+          <div class="row mt10"><span class="sq s20"></span><span class="tx">Lorem ipsum dolor sit</span></div>
+          <div class="divider"></div>
+
+          <div class="rowb"><span class="txh">Lorem ipsum</span><span class="sq s20"></span></div>
+          <div class="row mt10"><span class="circle c34"></span><span class="col"><span class="tx" style="color:#8a8a8a">Lorem</span><span class="txs">Lorem ipsum dolor sit</span></span></div>
+          <div class="row mt10"><span class="circle c34"></span><span class="col"><span class="tx" style="color:#8a8a8a">Lorem</span><span class="txs">Lorem ipsum dolor</span></span></div>
+          <div class="row mt10"><span class="circle c34"></span><span class="col"><span class="tx" style="color:#8a8a8a">Lorem</span><span class="txs">Lorem ipsum</span></span></div>
+          <div class="row mt10"><span class="circle c34"></span><span class="tx">Lorem ipsum</span></div>
+        </div>
+      </div>
+      <figcaption>
+        <b>4 &middot; Sidebar</b>
+        Accès permanent aux trois univers (le groupe du haut est réordonnable par glissement), puis les éléments de compte et Messages. Le panneau fait ~90&nbsp;% de largeur sur un fond assombri.
+      </figcaption>
+    </figure>
+
+  </div>
+
+  <!-- ============================= HOME ALL ============================= -->
+  <div class="section-title">Home « All ». Hub restructuré, plus deep linking</div>
+  <div class="grid">
+
+    <figure>
+      <div class="wf">
+        <div class="statusbar"><span class="sb-time"></span><span class="sb-island"></span><span class="sb-icons"><i></i><i></i><i></i></span></div>
+        <div class="filterbar">
+          <span class="circle c28"></span>
+          <span class="tabs"><span class="on">ALL</span><span>MUSIC</span><span>PODCASTS</span><span>AUDIOB&hellip;</span></span>
+        </div>
+        <div class="pad" style="gap:14px">
+          <div class="qc-grid">
+            <div class="qc"><span class="sq s28"></span><span class="tx">Lorem ipsum</span></div>
+            <div class="qc"><span class="sq s28"></span><span class="tx">Lorem ipsum</span></div>
+            <div class="qc"><span class="sq s28"></span><span class="tx">Lorem ipsum</span></div>
+            <div class="qc"><span class="sq s28"></span><span class="tx">Lorem ipsum</span></div>
+          </div>
+
+          <div class="stack"><p class="txh">Lorem</p>
+            <div class="card plain">
+              <p class="txs">Lorem ipsum</p>
+              <div class="row mt10"><span class="media" style="width:56px;height:56px"></span>
+                <span class="col"><span class="tx" style="color:#8a8a8a">Lorem ipsum dolor sit amet</span><span class="txs">Lorem ipsum</span></span></div>
+              <p class="txs mt10">Lorem ipsum dolor sit amet, consectetur adipiscing.</p>
+              <div class="rowb mt10"><span style="display:flex;align-items:center;gap:8px;flex:none"><span class="circle c22"></span><span class="circle c22"></span></span>
+                <span class="pill mini">View More</span></div>
+            </div>
+          </div>
+
+          <div class="stack"><p class="txh">Lorem ipsum</p>
+            <div class="card plain">
+              <p class="txs">Lorem ipsum</p>
+              <div class="row mt10"><span class="media" style="width:56px;height:56px"></span>
+                <span class="col"><span class="tx" style="color:#8a8a8a">Lorem ipsum dolor sit amet</span><span class="txs">Lorem</span></span></div>
+              <p class="txs mt10">Lorem ipsum dolor sit amet consectetur.</p>
+              <div class="rowb mt10"><span style="display:flex;align-items:center;gap:8px;flex:none"><span class="circle c22"></span><span class="circle c22"></span></span>
+                <span class="pill mini">View More</span></div>
+            </div>
+          </div>
+
+          <div class="stack"><p class="txh">Lorem ipsum dolor</p>
+            <div class="card plain">
+              <p class="txs">Lorem ipsum dolor</p>
+              <div class="row mt10"><span class="media" style="width:56px;height:56px"></span>
+                <span class="col"><span class="tx" style="color:#8a8a8a">Lorem ipsum dolor sit amet</span><span class="txs">Lorem</span></span></div>
+              <p class="txs mt10">Lorem ipsum dolor sit amet consectetur.</p>
+              <div class="rowb mt10"><span style="display:flex;align-items:center;gap:8px;flex:none"><span class="circle c22"></span><span class="circle c22"></span></span>
+                <span class="pill mini">View More</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="bottom">
+          <div class="player"><span class="media s28"></span><span class="col"><span class="tx" style="color:#8a8a8a">Lorem ipsum dolor</span><span class="txs">Lorem ipsum</span></span><span class="circle c16"></span><span class="circle c16"></span></div>
+          <div class="tabbar">
+            <div><span class="sq s20"></span><span class="txs">Lorem</span></div>
+            <div><span class="sq s20"></span><span class="txs">Lorem</span></div>
+            <div><span class="sq s20"></span><span class="txs">Lorem</span></div>
+            <div><span class="sq s20"></span><span class="txs">Lorem</span></div>
+          </div>
+        </div>
+      </div>
+      <figcaption>
+        <b>5 &middot; Home « All »</b>
+        Trois sections de poids égal ; l'ordre suit l'ordre manuel des services. Chaque « View More » renvoie (deep link) vers l'écran dédié de cet univers.
+      </figcaption>
+    </figure>
+
+  </div>
+
+  <!-- ============================= UNIVERSE SCREENS ============================= -->
+  <div class="section-title">Écran d'univers dédié. Une mise en page, trois instances (Music / Podcasts / Audiobooks)</div>
+  <div class="grid">
+
+    <figure>
+      <div class="wf">
+        <div class="statusbar"><span class="sb-time"></span><span class="sb-island"></span><span class="sb-icons"><i></i><i></i><i></i></span></div>
+        <div class="filterbar">
+          <span class="circle c28"></span>
+          <span class="tabs"><span>ALL</span><span class="on">MUSIC</span><span>PODCASTS</span><span>AUDIOB&hellip;</span></span>
+        </div>
+        <div class="pad" style="gap:16px">
+          <div class="qc-grid">
+            <div class="qc"><span class="sq s28"></span><span class="tx">Lorem ipsum</span></div>
+            <div class="qc"><span class="sq s28"></span><span class="tx">Lorem ipsum</span></div>
+            <div class="qc"><span class="sq s28"></span><span class="tx">Lorem ipsum</span></div>
+            <div class="qc"><span class="sq s28"></span><span class="tx">Lorem ipsum</span></div>
+          </div>
+
+          <div class="card plain">
+            <p class="txs">Lorem ipsum</p>
+            <div class="row mt10"><span class="media" style="width:56px;height:56px"></span>
+              <span class="col"><span class="tx" style="color:#8a8a8a">Lorem ipsum dolor sit amet</span><span class="txs">Lorem ipsum</span></span></div>
+            <p class="txs mt10">Lorem ipsum dolor sit amet, consectetur adipiscing.</p>
+            <div class="row mt10" style="justify-content:flex-end;gap:8px"><span class="circle c22"></span><span class="circle c22"></span></div>
+          </div>
+          <div class="card plain">
+            <p class="txs">Lorem ipsum dolor</p>
+            <div class="row mt10"><span class="media" style="width:56px;height:56px"></span>
+              <span class="col"><span class="tx" style="color:#8a8a8a">Lorem ipsum dolor sit</span><span class="txs">Lorem</span></span></div>
+            <p class="txs mt10">Lorem ipsum dolor sit amet consectetur adipiscing elit.</p>
+            <div class="row mt10" style="justify-content:flex-end;gap:8px"><span class="circle c22"></span><span class="circle c22"></span></div>
+          </div>
+          <div class="card plain">
+            <p class="txs">Lorem ipsum</p>
+            <div class="row mt10"><span class="media" style="width:56px;height:56px"></span>
+              <span class="col"><span class="tx" style="color:#8a8a8a">Lorem ipsum dolor sit amet</span><span class="txs">Lorem</span></span></div>
+            <p class="txs mt10">Lorem ipsum dolor sit amet consectetur.</p>
+            <div class="row mt10" style="justify-content:flex-end;gap:8px"><span class="circle c22"></span><span class="circle c22"></span></div>
+          </div>
+        </div>
+
+        <div class="bottom">
+          <div class="player"><span class="media s28"></span><span class="col"><span class="tx" style="color:#8a8a8a">Lorem ipsum dolor</span><span class="txs">Lorem ipsum</span></span><span class="circle c16"></span><span class="circle c16"></span></div>
+          <div class="tabbar">
+            <div><span class="sq s20"></span><span class="txs">Lorem</span></div>
+            <div><span class="sq s20"></span><span class="txs">Lorem</span></div>
+            <div><span class="sq s20"></span><span class="txs">Lorem</span></div>
+            <div><span class="sq s20"></span><span class="txs">Lorem</span></div>
+          </div>
+        </div>
+      </div>
+      <figcaption>
+        <b>6 &middot; Home, Music / Podcasts / Audiobooks</b>
+        Même ossature que Home « All » : filter bar avec l'onglet de l'univers actif, quatre cartes d'accès rapide, puis trois cartes de contenu empilées (commandes de lecture uniquement, pas de « View More »). Le contenu des cartes d'accès rapide et des cartes diffère selon l'univers.
+      </figcaption>
+    </figure>
+
+  </div>
+
+  <p class="footnote">
+    Les écrans 6a à 6c (Music, Podcasts, Audiobooks) partagent le cadre ci-dessus ; seuls l'onglet de filtre actif, les quatre libellés d'accès rapide et le contenu des trois cartes changent. Réordonner les services (sidebar ou filter bar) réordonne les onglets et les sections de Home « All » partout.
+  </p>
+
+</div>
+</body>
+</html>

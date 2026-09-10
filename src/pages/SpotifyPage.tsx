@@ -36,8 +36,7 @@ import logoFnac from '../assets/spotify/logo-fnac.svg'
 import logoHeadspace from '../assets/spotify/logo-headspace.svg'
 import logoVinted from '../assets/spotify/logo-vinted.svg'
 
-const FIGMA_PROTO_URL =
-  'https://www.figma.com/proto/NxWTAasklV3PJpeZRBcD9e/Spotify?node-id=228-215&t=IXH3EaRy0MC6qZUl-1'
+const PROTOTYPE_URL = '/spotify-prototype/index.html'
 
 /* ---------- Local helpers (mirrors the small per-page components already
    established in FinelinePage/OrealPage/AngryBirdsPage — each case study
@@ -1188,7 +1187,7 @@ export default function SpotifyPage() {
             <img loading="lazy" decoding="async" src={heroImg} alt="Recommandation Spotify Multi : la Home « All » redessinée" className="block w-full" fetchPriority="high" />
             <div className="pointer-events-none absolute inset-0 flex items-center justify-center bg-black/0 transition-all duration-300 group-hover/hero:bg-black/50">
               <Button
-                href={FIGMA_PROTO_URL}
+                href={PROTOTYPE_URL}
                 className="pointer-events-auto opacity-80 transition-opacity duration-300 group-hover/hero:opacity-100"
               >
                 Voir le Prototype
@@ -1697,7 +1696,7 @@ export default function SpotifyPage() {
           Après la présentation des fonctionnalités, découvrez leur mise en situation dans le prototype
           interactif. Naviguez dans l'interface et explorez les 4 leviers de la recommandation.
         </Body1>
-        <Button href={FIGMA_PROTO_URL}>Lien vers le Prototype</Button>
+        <Button href={PROTOTYPE_URL}>Lien vers le Prototype</Button>
       </div>
 
       {/* Impact par profil */}
