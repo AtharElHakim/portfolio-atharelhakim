@@ -37,6 +37,24 @@ import logoHeadspace from '../assets/spotify/logo-headspace.svg'
 import logoVinted from '../assets/spotify/logo-vinted.svg'
 
 const PROTOTYPE_URL = '/spotify-prototype/index.html'
+const WIREFRAMES_URL = '/spotify-prototype/wireframes.html'
+
+const WIREFRAME_GROUPS: { title: string; screens: string[] }[] = [
+  {
+    title: 'Onboarding',
+    screens: [
+      'Onboarding · « What\'s New! »',
+      'Onboarding · « You\'re in control »',
+      'Onboarding · « How to do it ? »',
+    ],
+  },
+  { title: 'Sidebar', screens: ['Sidebar'] },
+  { title: 'Home « All »', screens: ['Home « All »'] },
+  {
+    title: 'Écran d\'univers dédié',
+    screens: ['Home · Music / Podcasts / Audiobooks'],
+  },
+]
 
 /* ---------- Local helpers (mirrors the small per-page components already
    established in FinelinePage/OrealPage/AngryBirdsPage — each case study
@@ -1165,6 +1183,7 @@ export default function SpotifyPage() {
           { id: 'cible', label: 'Cible' },
           { id: 'probleme', label: 'Problème' },
           { id: 'recommandation', label: 'Recommandation' },
+          { id: 'wireframes', label: 'Wireframes' },
           { id: 'prototype', label: 'Prototype' },
           { id: 'impact', label: 'Impact par profil' },
           { id: 'equipe', label: 'Équipe projet' },
@@ -1687,6 +1706,31 @@ export default function SpotifyPage() {
             <ScreenCard src={onboarding3} label="Écran 3/3" phone onZoom={() => openLightbox(onboardingImages, 2)} />
           </div>
         </FeatureBlock>
+      </div>
+
+      {/* Wireframes */}
+      <div id="wireframes" className="flex flex-col items-center gap-8 p-8 md:py-16 md:px-[var(--nav-edge-w)]">
+        <SectionTitle>Wireframes</SectionTitle>
+        <Body1 className="w-full max-w-[820px] text-center font-light">
+          Wireframes basse fidélité, structure et mise en page uniquement : ni couleur, ni typographie,
+          ni image, ni interaction. Un cadre correspond à un écran iOS.
+        </Body1>
+        <div className="grid w-full max-w-[900px] grid-cols-1 gap-6 sm:grid-cols-2">
+          {WIREFRAME_GROUPS.map((group) => (
+            <div
+              key={group.title}
+              className="flex flex-col gap-3 rounded-2xl border border-white/15 bg-white/5 p-6 backdrop-blur-sm"
+            >
+              <H5 className="!text-purple-pale/70">{group.title}</H5>
+              <ul className="list-disc pl-5 text-base font-light leading-6 text-white/70">
+                {group.screens.map((screen) => (
+                  <li key={screen}>{screen}</li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+        <Button href={WIREFRAMES_URL}>Voir les wireframes</Button>
       </div>
 
       {/* Prototype — reuses Fineline's Prototype CTA section pattern */}
