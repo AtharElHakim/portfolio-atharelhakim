@@ -788,6 +788,7 @@ export default function ParIciPage() {
           { id: 'hero', label: 'Hero' },
           { id: 'overview', label: 'Overview' },
           { id: 'brief', label: 'Brief' },
+          { id: 'intro', label: 'Intro' },
           { id: 'contexte', label: 'Contexte' },
           { id: 'recherche-quantitative', label: 'Recherche quantitative' },
           { id: 'cible', label: 'Cible' },
@@ -875,6 +876,21 @@ export default function ParIciPage() {
       {/* ============ Brief ============ */}
       <div id="brief" className={SECTION}>
         <SectionTitle>Le Brief</SectionTitle>
+
+        <div className="mx-auto flex w-full max-w-[900px] flex-col items-center gap-8 rounded-2xl border border-white/15 bg-white/5 p-6 backdrop-blur-sm">
+          <Body1 className="text-center font-light">
+            Dans le cadre du hackathon national PULSE, organisé par le Lab d'Innovation de CNP Assurances et
+            l'agence Sinnasse, notre équipe a choisi le brief #Solutions Inclusives : « Et si CNP Assurances
+            luttait contre la Mal-Assurance auprès des populations vulnérables ? » Le jury attendait un produit
+            ou service innovant, conforme aux critères SUAVE, directement distribuable et capable d'accompagner
+            ces utilisateurs vers une couverture d'assurance juste et compréhensible.
+          </Body1>
+        </div>
+      </div>
+
+      {/* ============ Intro ============ */}
+      <div id="intro" className={SECTION}>
+        <SectionTitle>Intro</SectionTitle>
         <Epigraph attribution="George Washington">
           « La confiance pousse lentement, mais une fois enracinée, elle devient difficile à ébranler. »
         </Epigraph>
@@ -912,16 +928,6 @@ export default function ParIciPage() {
             className="relative h-20 w-20 transition-transform duration-300 group-hover/video:scale-110"
           />
         </button>
-
-        <div className="mx-auto flex w-full max-w-[900px] flex-col items-center gap-8 rounded-2xl border border-white/15 bg-white/5 p-6 backdrop-blur-sm">
-          <Body1 className="text-center font-light">
-            Dans le cadre du hackathon national PULSE, organisé par le Lab d'Innovation de CNP Assurances et
-            l'agence Sinnasse, notre équipe a choisi le brief #Solutions Inclusives : « Et si CNP Assurances
-            luttait contre la Mal-Assurance auprès des populations vulnérables ? » Le jury attendait un produit
-            ou service innovant, conforme aux critères SUAVE, directement distribuable et capable d'accompagner
-            ces utilisateurs vers une couverture d'assurance juste et compréhensible.
-          </Body1>
-        </div>
       </div>
 
       {/* ============ Contexte ============ */}
