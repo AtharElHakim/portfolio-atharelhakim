@@ -814,7 +814,7 @@ export default function ParIciPage() {
             Un compagnon mobile pour les étrangers non-UE primo-arrivants en France
           </Body1>
 
-          <div className="mx-auto w-full max-w-[820px] overflow-hidden rounded-2xl border border-white/15 bg-black-soft shadow-lift">
+          <div className="group/hero relative mx-auto w-full max-w-[820px] overflow-hidden rounded-2xl border border-white/15 bg-black-soft shadow-lift">
             <img
               loading="lazy"
               decoding="async"
@@ -823,6 +823,14 @@ export default function ParIciPage() {
               alt="Écran d'accueil de Par ici : « Bienvenue en France », sur fond CNP Assurances"
               className="block w-full"
             />
+            <div className="pointer-events-none absolute inset-0 flex items-center justify-center bg-black/0 transition-all duration-300 group-hover/hero:bg-black/50">
+              <Button
+                href={FIGMA_PROTO_URL}
+                className="pointer-events-auto opacity-80 transition-opacity duration-300 group-hover/hero:opacity-100"
+              >
+                Voir le Prototype
+              </Button>
+            </div>
           </div>
         </div>
       </div>
