@@ -142,7 +142,7 @@ function SlideImage({
           <button
             type="button"
             onClick={onZoom}
-            aria-label={`Agrandir : ${label}`}
+            aria-label={`Agrandir : ${label}`}
             className="group/img relative block w-full cursor-pointer overflow-hidden rounded-xl"
           >
             <img loading="lazy" decoding="async" src={src} alt={label} className="w-full rounded-xl" />
@@ -207,7 +207,7 @@ export default function OrealPage() {
     <div className="relative isolate">
       <Seo
         title="YSL Sélection Privée — Étude de cas L'Oréal Brandstorm"
-        description="Concept produit et service pour L'Oréal Brandstorm 2026 : un coffret de parfums YSL personnalisable, du contexte au pitch devant le jury."
+        description="Concept produit et service pour L'Oréal Brandstorm 2026 : un coffret de parfums YSL personnalisable, du contexte au pitch devant le jury."
         path="/projects/loreal"
       />
       <CaseStudyNav
@@ -312,7 +312,7 @@ export default function OrealPage() {
           </div>
           <Body1 className="w-full rounded-2xl border border-white/15 bg-white/5 p-6 font-light backdrop-blur-sm">
             Intégré à notre formation à Sup de Pub, le projet s'est déroulé
-            sur 4 jours intensifs. Les livrables attendus : une présentation
+            sur 4 jours intensifs. Les livrables attendus : une présentation
             en 3 slides et une vidéo d'équipe répondant à 5 valeurs définies
             par L'Oréal. Le 5e jour, nous avons présenté notre concept
             oralement au siège de L'Oréal Groupe, devant 2 membres du jury
@@ -356,7 +356,7 @@ export default function OrealPage() {
               <div className="flex flex-1 flex-col gap-2 rounded-2xl border border-white/15 bg-white/5 p-6 backdrop-blur-sm">
                 <H4 className="w-auto text-left !text-white">Recherche individuelle</H4>
                 <Body1 className="font-light">
-                  Chacun a exploré le sujet de son côté : données marché,
+                  Chacun a exploré le sujet de son côté : données marché,
                   comportements d'achat, tendances du luxe, social listening.
                   Plutôt que de chercher la même chose, chacun a identifié ses
                   propres patterns et insights pour maximiser la couverture en
@@ -380,7 +380,7 @@ export default function OrealPage() {
                 <button
                   type="button"
                   onClick={() => setSingleImage({ src: crazy8, alt: 'Crazy 8' })}
-                  aria-label="Agrandir : Crazy 8"
+                  aria-label="Agrandir : Crazy 8"
                   className="group/img relative min-w-[200px] flex-1 cursor-pointer overflow-hidden rounded-xl"
                 >
                   <img loading="lazy" decoding="async"
@@ -414,7 +414,7 @@ export default function OrealPage() {
               <div className="flex flex-1 flex-col gap-2 rounded-2xl border border-purple-pale/40 bg-purple-dark/25 p-6 backdrop-blur-sm">
                 <H4 className="w-auto text-left !text-white">L'insight clé</H4>
                 <Body1 className="font-light">
-                  Un fil rouge est apparu dans toutes nos recherches :
+                  Un fil rouge est apparu dans toutes nos recherches :
                   "Aujourd'hui, tout s'achète en ligne. Mais le parfum échappe
                   encore au digital. On ne peut pas le sentir."
                 </Body1>
@@ -423,14 +423,14 @@ export default function OrealPage() {
           </div>
 
           <Body1 className="w-full text-center font-light">
-            De là est née l'idée centrale : construire un pont entre le
+            De là est née l'idée centrale : construire un pont entre le
             digital et le physique, transformer l'essai en expérience, et
             la découverte en décision.
           </Body1>
         </div>
         <SlideImage
           label="Slide 1 · Le diagnostic"
-          description="Le pitch imposé par L'Oréal tenait en trois slides. Celle-ci pose le problème : en ligne, un parfum ne se sent pas."
+          description="Le pitch imposé par L'Oréal tenait en trois slides. Celle-ci pose le problème : en ligne, un parfum ne se sent pas."
           src={slide1}
           onZoom={() => setSingleImage({ src: slide1, alt: 'Slide 1' })}
         />
@@ -471,7 +471,7 @@ export default function OrealPage() {
         </div>
         <SlideImage
           label="Slide 2 · Le concept"
-          description="« From Trial to Desire » : le parcours de l'essai à l'achat, résumé en un visuel."
+          description="« From Trial to Desire » : le parcours de l'essai à l'achat, résumé en un visuel."
           src={slide2}
           onZoom={() => setSingleImage({ src: slide2, alt: 'Slide 2' })}
         />
@@ -499,7 +499,7 @@ export default function OrealPage() {
             />
             <BulletPoint
               title="Expérience"
-              body="Parcours fluide : sélection · test · achat. Un rituel d'essai immersif sur 30 jours."
+              body="Parcours fluide : sélection · test · achat. Un rituel d'essai immersif sur 30 jours."
             />
             <BulletPoint
               title="Innovation"
@@ -526,7 +526,7 @@ export default function OrealPage() {
           <Body1 className="w-full text-center font-light">
             Au-delà du concept, L'Oréal Brandstorm demandait à chaque équipe
             de se révéler en tant que personnes. La vidéo devait répondre à 5
-            valeurs fondamentales définies par L'Oréal :
+            valeurs fondamentales définies par L'Oréal :
           </Body1>
         </div>
 

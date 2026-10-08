@@ -10,7 +10,7 @@ export default function HomePage() {
       <Seo
         bareTitle
         title="Athar El Hakim · UX/UI Designer & Directrice Artistique"
-        description="Portfolio d'Athar El Hakim, UX/UI Designer : études de cas, projets de recherche utilisateur et direction artistique."
+        description="Portfolio d'Athar El Hakim, UX/UI Designer : études de cas, projets de recherche utilisateur et direction artistique."
         path="/"
       />
       <Hero />

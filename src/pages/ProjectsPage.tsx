@@ -158,7 +158,7 @@ export default function ProjectsPage() {
     <div className="relative isolate">
       <Seo
         title="Projets"
-        description="Cinq études de cas UX/UI menées de la recherche au prototype : Par ici, Spotify, Fine Line Production, YSL Sélection Privée et Angry Birds."
+        description="Cinq études de cas UX/UI menées de la recherche au prototype : Par ici, Spotify, Fine Line Production, YSL Sélection Privée et Angry Birds."
         path="/projects"
       />
       <div className="flex flex-col items-center gap-6 px-8 pt-8 pb-0 text-center md:pt-16 md:px-[var(--nav-edge-w)]">

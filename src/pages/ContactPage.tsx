@@ -34,7 +34,7 @@ export default function ContactPage() {
     <section className="flex flex-col items-center gap-12 p-8 md:py-16 md:px-[var(--nav-edge-w)]">
       <Seo
         title="Contact"
-        description="Prenons contact : email, téléphone et LinkedIn d'Athar El Hakim, UX/UI Designer."
+        description="Prenons contact : email, téléphone et LinkedIn d'Athar El Hakim, UX/UI Designer."
         path="/contactez-moi"
       />
       <div className="flex flex-col items-center gap-4 text-center">

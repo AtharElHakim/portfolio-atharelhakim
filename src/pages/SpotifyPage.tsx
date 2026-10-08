@@ -309,7 +309,7 @@ function ReasonCard({ text, source }: { text: string; source: string }) {
   return (
     <div className="flex flex-col gap-3 rounded-2xl border border-white/15 bg-white/5 p-6 backdrop-blur-sm">
       <Body2>{text}</Body2>
-      <Micro1 className="border-t border-white/10 pt-3">Source : {source}</Micro1>
+      <Micro1 className="border-t border-white/10 pt-3">Source : {source}</Micro1>
     </div>
   )
 }
@@ -810,7 +810,7 @@ const syntheseStats: { headline: string; detail?: string }[] = [
   { headline: '180+ pays', detail: '31,7% de parts de marché mondial, #1 du streaming audio' },
   { headline: "114 min d'écoute par jour", detail: 'en moyenne par utilisateur' },
   { headline: '44% écoutent quotidien­nement', detail: "33% des utilisateurs génèrent 60% des streams" },
-  { headline: 'Auditeurs très engagés : 2%', detail: 'génèrent 18% des streams, 9x plus susceptibles de partager' },
+  { headline: 'Auditeurs très engagés : 2%', detail: 'génèrent 18% des streams, 9x plus susceptibles de partager' },
   { headline: '100M titres, 7M podcasts, 350K audiobooks' },
   { headline: '68% utilisent Spotify uniquement pour la musique' },
   {
@@ -1169,7 +1169,7 @@ export default function SpotifyPage() {
     <div className="relative isolate">
       <Seo
         title="Spotify — Étude de cas UX/UI"
-        description="Redesign de l'expérience multi-service de Spotify : audit de marque, benchmark, recherche utilisateur et recommandation, du brief au prototype."
+        description="Redesign de l'expérience multi-service de Spotify : audit de marque, benchmark, recherche utilisateur et recommandation, du brief au prototype."
         path="/projects/spotify"
       />
       <CaseStudyNav
@@ -1203,7 +1203,7 @@ export default function SpotifyPage() {
           <Body1 className="!text-white/70 font-light">Redesign de l'expérience multi-service</Body1>
 
           <div className="group/hero relative mx-auto w-full max-w-[820px] overflow-hidden rounded-2xl border border-white/15 bg-black-soft shadow-lift">
-            <img loading="lazy" decoding="async" src={heroImg} alt="Recommandation Spotify Multi : la Home « All » redessinée" className="block w-full" fetchPriority="high" />
+            <img loading="lazy" decoding="async" src={heroImg} alt="Recommandation Spotify Multi : la Home « All » redessinée" className="block w-full" fetchPriority="high" />
             <div className="pointer-events-none absolute inset-0 flex items-center justify-center bg-black/0 transition-all duration-300 group-hover/hero:bg-black/50">
               <Button
                 href={PROTOTYPE_URL}
@@ -1258,9 +1258,9 @@ export default function SpotifyPage() {
         <div className="mx-auto flex w-full max-w-[900px] flex-col items-center gap-8 rounded-2xl border border-white/15 bg-white/5 p-6 backdrop-blur-sm">
           <Body1 className="text-center font-light">
             Ce projet, réalisé seul dans le cadre du Processus Créatif (Bloc 5 Lead Design à Sup de Pub),
-            m'a permis de choisir librement la marque sur laquelle travailler parmi plusieurs propositions :
+            m'a permis de choisir librement la marque sur laquelle travailler parmi plusieurs propositions :
             Hachette, Fnac, Playmobil, Lush, National Geographic, ou Spotify. J'ai choisi Spotify, une
-            application que j'utilise tous les jours, parce que je voulais creuser un vrai problème produit :
+            application que j'utilise tous les jours, parce que je voulais creuser un vrai problème produit :
             pourquoi la plupart des utilisateurs, moi y compris, n'exploitent presque jamais tout ce que la
             plateforme propose au-delà de la musique.
           </Body1>
@@ -1315,11 +1315,11 @@ export default function SpotifyPage() {
 
         <div className="flex w-full flex-col items-center gap-3 text-center">
           <Body1>
-            <span className="font-semibold text-white">Positionnement : </span>
+            <span className="font-semibold text-white">Positionnement : </span>
             <span className="text-white/70">Connecter les artistes et les auditeurs à grande échelle</span>
           </Body1>
           <Body1>
-            <span className="font-semibold text-white">Mission : </span>
+            <span className="font-semibold text-white">Mission : </span>
             <span className="text-white/70">
               Délivrer la créativité au monde, une note, une voix, une idée à la fois
             </span>
@@ -1383,7 +1383,7 @@ export default function SpotifyPage() {
           />
           <CalloutBox>
             Une application multi-services est rendue possible par une arborescence claire. Ces deux
-            constats soulèvent un enjeu central pour Spotify : si la plateforme est la seule à proposer une
+            constats soulèvent un enjeu central pour Spotify : si la plateforme est la seule à proposer une
             offre multi-service complète, son arborescence moyenne freine la découverte de ces services par
             ses utilisateurs.
           </CalloutBox>
@@ -1566,7 +1566,7 @@ export default function SpotifyPage() {
             <div className="flex flex-col gap-2">
               <H5 className="!text-purple-pale/70">Objectif</H5>
               <Body1 className="font-light">
-                Offrir un point d'accès permanent et structuré aux trois univers de Spotify : Musique,
+                Offrir un point d'accès permanent et structuré aux trois univers de Spotify : Musique,
                 Podcasts et Audiobooks, pour simplifier la navigation et réduire la charge cognitive liée à
                 l'arborescence actuelle.
               </Body1>
@@ -1612,7 +1612,7 @@ export default function SpotifyPage() {
             <NumberedPoint
               n="1"
               title="Redesign de la barre de filtres"
-              body="Les boutons de type « pill » de l'interface actuelle sont remplacés par un système d'underline : un soulignement vert sous le texte en gras indique le service actif."
+              body="Les boutons de type « pill » de l'interface actuelle sont remplacés par un système d'underline : un soulignement vert sous le texte en gras indique le service actif."
             />
             <NumberedPoint
               n="2"
@@ -1659,7 +1659,7 @@ export default function SpotifyPage() {
           <NumberedPoint
             n="1"
             title={'Home « All » restructurée'}
-            body="La nouvelle Home propose une approche rééquilibrée : elle est structurée en trois sections distinctes, une pour chaque service. L'ordre reste adaptatif selon les usages, mais chaque univers conserve une visibilité équivalente."
+            body="La nouvelle Home propose une approche rééquilibrée : elle est structurée en trois sections distinctes, une pour chaque service. L'ordre reste adaptatif selon les usages, mais chaque univers conserve une visibilité équivalente."
           />
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
             <ScreenCard src={homeOld} label="Ancien" phone onZoom={() => openLightbox(homeCompareImages, 0)} />
@@ -1712,7 +1712,7 @@ export default function SpotifyPage() {
       <div id="wireframes" className="flex flex-col items-center gap-8 p-8 md:py-16 md:px-[var(--nav-edge-w)]">
         <SectionTitle>Wireframes</SectionTitle>
         <Body1 className="w-full max-w-[820px] text-center font-light">
-          Wireframes basse fidélité, structure et mise en page uniquement : ni couleur, ni typographie,
+          Wireframes basse fidélité, structure et mise en page uniquement : ni couleur, ni typographie,
           ni image, ni interaction. Un cadre correspond à un écran iOS.
         </Body1>
         <div className="grid w-full max-w-[900px] grid-cols-1 gap-6 sm:grid-cols-2">
@@ -1986,7 +1986,7 @@ export default function SpotifyPage() {
         </OrphanCentered>
 
         <div className="flex w-full flex-col items-center gap-2 text-center">
-          <p className="font-syne text-2xl text-white">Estimation globale : 300 000€ à 400 000€</p>
+          <p className="font-syne text-2xl text-white">Estimation globale : 300 000€ à 400 000€</p>
           <Micro1>12 mois · 5 phases · 7 profils</Micro1>
         </div>
 
@@ -2009,7 +2009,7 @@ export default function SpotifyPage() {
         <Body1 className="w-full text-center font-light">
           Afin d'évaluer la pertinence de la solution avant son déploiement, plusieurs KPIs permettent de
           mesurer si la refonte répond à la problématique identifiée et améliore l'expérience utilisateur.
-          Ces indicateurs s'appuient sur cinq dimensions clés en UX : découvrabilité, usabilité, utilité,
+          Ces indicateurs s'appuient sur cinq dimensions clés en UX : découvrabilité, usabilité, utilité,
           satisfaction et adéquation problème-solution.
         </Body1>
 

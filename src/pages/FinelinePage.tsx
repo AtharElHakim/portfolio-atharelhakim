@@ -203,7 +203,7 @@ export default function FinelinePage() {
     <div className="relative isolate">
       <Seo
         title="Fine Line Production — Étude de cas UX/UI"
-        description="Refonte du site d'une maison de production audiovisuelle : audit, benchmark, recherche utilisateur, plateforme de marque et prototype."
+        description="Refonte du site d'une maison de production audiovisuelle : audit, benchmark, recherche utilisateur, plateforme de marque et prototype."
         path="/projects/fine-line-production"
       />
       <CaseStudyNav
@@ -330,14 +330,14 @@ export default function FinelinePage() {
           <SectionTitle>Problème</SectionTitle>
           <Body1 className="w-full text-center font-light">
             Fine Line Production disposait d'un site WordPress qui ne
-            reflétait plus l'identité de l'agence : visuellement daté,
+            reflétait plus l'identité de l'agence : visuellement daté,
             difficile à mettre à jour, en décalage avec ses projets récents.
             L'équipe a choisi de le désactiver. À la place, une page
             temporaire propose uniquement de télécharger le company profile
             ou de contacter l'équipe par email.
             <br />
             <br />
-            Mon rôle : mener une refonte complète pour redonner au site
+            Mon rôle : mener une refonte complète pour redonner au site
             cohérence, clarté et impact.
           </Body1>
         </div>
@@ -348,7 +348,7 @@ export default function FinelinePage() {
               onClick={() =>
                 setSingleImage({ src: currentWebsite, alt: 'Site web actuel' })
               }
-              aria-label="Agrandir : Site web actuel"
+              aria-label="Agrandir : Site web actuel"
               className="group/img relative w-full cursor-pointer overflow-hidden rounded-xl"
             >
               <img loading="lazy" decoding="async"
@@ -381,7 +381,7 @@ export default function FinelinePage() {
             <button
               type="button"
               onClick={() => setVideoOpen(true)}
-              aria-label="Lire la vidéo : Ancien site web"
+              aria-label="Lire la vidéo : Ancien site web"
               className="group/video relative flex aspect-[576/367] w-full cursor-pointer items-center justify-center overflow-hidden rounded-xl"
             >
               <img loading="lazy" decoding="async"
@@ -445,7 +445,7 @@ export default function FinelinePage() {
                   key={img}
                   type="button"
                   onClick={() => setStrengthIndex(i)}
-                  aria-label={`Agrandir : Point fort ${i + 1}`}
+                  aria-label={`Agrandir : Point fort ${i + 1}`}
                   className="group/img relative h-32 w-48 shrink-0 cursor-pointer overflow-hidden rounded-xl"
                 >
                   <img loading="lazy" decoding="async"
@@ -518,7 +518,7 @@ export default function FinelinePage() {
                     key={auditWeaknesses[i]}
                     type="button"
                     onClick={() => setWeaknessIndex(i)}
-                    aria-label={`Agrandir : Point faible ${i + 1}`}
+                    aria-label={`Agrandir : Point faible ${i + 1}`}
                     className="group/img relative h-28 w-40 shrink-0 cursor-pointer overflow-hidden rounded-xl"
                   >
                     <img loading="lazy" decoding="async"
@@ -551,7 +551,7 @@ export default function FinelinePage() {
                     key={auditWeaknesses[i]}
                     type="button"
                     onClick={() => setWeaknessIndex(i)}
-                    aria-label={`Agrandir : Point faible ${i + 1}`}
+                    aria-label={`Agrandir : Point faible ${i + 1}`}
                     className="group/img relative min-h-11 w-full cursor-pointer overflow-hidden rounded-xl"
                   >
                     <img loading="lazy" decoding="async"
@@ -684,7 +684,7 @@ export default function FinelinePage() {
                 alt: 'Benchmark des concurrents',
               })
             }
-            aria-label="Agrandir : Benchmark des concurrents"
+            aria-label="Agrandir : Benchmark des concurrents"
             className="group/img relative flex-1 min-w-[280px] cursor-pointer overflow-hidden rounded-xl"
           >
             <img loading="lazy" decoding="async"
@@ -859,7 +859,7 @@ export default function FinelinePage() {
         <button
           type="button"
           onClick={() => setSingleImage({ src: empathyMap, alt: 'Empathy Map' })}
-          aria-label="Agrandir : Empathy Map"
+          aria-label="Agrandir : Empathy Map"
           className="group/img relative w-full cursor-pointer overflow-hidden rounded-xl"
         >
           <img loading="lazy" decoding="async"
@@ -896,11 +896,11 @@ export default function FinelinePage() {
           />
           <BulletPoint
             title="Portfolio à jour et hiérarchisé = crédibilité perçue"
-            body="Des projets récents et bien classés renforcent la crédibilité : 93,8 % jugent leur visibilité essentielle."
+            body="Des projets récents et bien classés renforcent la crédibilité : 93,8 % jugent leur visibilité essentielle."
           />
           <BulletPoint
             title="Une navigation fluide et une structure lisible sont indispensables"
-            body="Un site trop chargé ou désorganisé décourage immédiatement : près de 94 % ont déjà quitté un site pour cette raison."
+            body="Un site trop chargé ou désorganisé décourage immédiatement : près de 94 % ont déjà quitté un site pour cette raison."
           />
           <BulletPoint
             title="Crédibilité et confiance renforcées par l'apparence et le contact humain"
@@ -937,7 +937,7 @@ export default function FinelinePage() {
             <Body1 className="!text-white/70 font-light">
               Fine Line s'adresse à des ONG locales et internationales qui
               souhaitent produire des contenus audiovisuels à fort impact
-              social : campagnes de sensibilisation, documentaires, portraits
+              social : campagnes de sensibilisation, documentaires, portraits
               ou vidéos éducatives.
             </Body1>
           </div>
@@ -1060,7 +1060,7 @@ export default function FinelinePage() {
           <button
             type="button"
             onClick={() => setDaIndex(0)}
-            aria-label="Agrandir : Direction artistique 1"
+            aria-label="Agrandir : Direction artistique 1"
             className="group/img relative min-w-[280px] flex-1 cursor-pointer overflow-hidden rounded-xl"
           >
             <img loading="lazy" decoding="async"
@@ -1088,7 +1088,7 @@ export default function FinelinePage() {
           <button
             type="button"
             onClick={() => setDaIndex(1)}
-            aria-label="Agrandir : Direction artistique 2"
+            aria-label="Agrandir : Direction artistique 2"
             className="group/img relative min-w-[280px] flex-1 cursor-pointer overflow-hidden rounded-xl"
           >
             <img loading="lazy" decoding="async"
@@ -1121,7 +1121,7 @@ export default function FinelinePage() {
         <div className="flex flex-col items-center gap-6">
           <SectionTitle>Prototype</SectionTitle>
           <Body1 className="w-full text-center font-light">
-            Pendant le stage, j'ai pu concevoir deux pages complètes :
+            Pendant le stage, j'ai pu concevoir deux pages complètes :
             l'accueil et le blog. Des contraintes techniques et un contrat
             court ont écourté le projet, repris ensuite en interne par
             l'équipe. Pour donner une vision d'ensemble, j'ai wireframé les
@@ -1324,7 +1324,7 @@ export default function FinelinePage() {
           </div>
 
           <p className="font-syne text-2xl text-white">
-            Budget Total : 847,78 €
+            Budget Total : 847,78 €
           </p>
         </div>
       </div>

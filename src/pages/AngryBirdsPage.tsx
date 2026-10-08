@@ -73,10 +73,10 @@ const protocoleSteps = [
 
 const roadmapPhases = [
   { name: 'Préparation Méthode 1', duration: '3 semaines' },
-  { name: 'Méthode 1 : tracking mobile', duration: '2 semaines' },
+  { name: 'Méthode 1 : tracking mobile', duration: '2 semaines' },
   { name: 'Analyse Méthode 1', duration: '2 semaines' },
   { name: 'Préparation Méthode 2', duration: '2 jours' },
-  { name: 'Méthode 2 : ateliers + entretiens', duration: '2 jours' },
+  { name: 'Méthode 2 : ateliers + entretiens', duration: '2 jours' },
   { name: 'Analyse Méthode 2', duration: '3 semaines' },
   { name: 'Analyse globale & recommandations', duration: '3 semaines' },
   { name: 'Restitution client', duration: '3 semaines' },
@@ -124,7 +124,7 @@ export default function AngryBirdsPage() {
     <div className="relative isolate">
       <Seo
         title="Angry Birds — Étude de cas recherche utilisateur"
-        description="Protocole de recherche utilisateur autour de l'engagement des joueurs d'Angry Birds : études terrain, budget, roadmap et KPIs."
+        description="Protocole de recherche utilisateur autour de l'engagement des joueurs d'Angry Birds : études terrain, budget, roadmap et KPIs."
         path="/projects/angry-birds"
       />
       <CaseStudyNav
@@ -176,7 +176,7 @@ export default function AngryBirdsPage() {
                 Ce projet, réalisé seul sur 4 jours dans le cadre d'un
                 exercice de Research Ops à Sup de Pub, consistait à inventer
                 une étude qualitative de A à Z et à la vendre à un client. Le
-                brief qui m'a été donné : comprendre les usages du
+                brief qui m'a été donné : comprendre les usages du
                 téléphone chez les garçons de 8 à 12 ans pour Angry Birds.
                 J'ai conçu une méthodologie combinant mobile tracking
                 et ateliers participatifs avec entretiens parent-enfant,
@@ -231,7 +231,7 @@ export default function AngryBirdsPage() {
             <br />
             <br />
             Le client et la cible ont été tirés au sort parmi 4 options. J'ai
-            hérité du cas Angry Birds : comprendre les usages
+            hérité du cas Angry Birds : comprendre les usages
             quotidiens du téléphone chez les garçons de 8 à 12 ans, afin
             d'identifier les moments de jeu, les motivations et les
             frustrations pour mieux adapter l'expérience utilisateur du jeu.
@@ -263,7 +263,7 @@ export default function AngryBirdsPage() {
         </p>
         <Body1 className="w-full text-center font-light">
           C'est l'image qui ouvre le dossier. Comprendre les usages du
-          téléphone chez des garçons de 8 à 12 ans demandait la même chose :
+          téléphone chez des garçons de 8 à 12 ans demandait la même chose :
           entrer dans leur quotidien numérique plutôt que l'observer de loin.
         </Body1>
       </DeckSection>
@@ -319,8 +319,8 @@ export default function AngryBirdsPage() {
           <strong className="font-medium text-white">Phone tracking.</strong>{' '}
           10 garçons suivis 2 jours chacun, un jour d'école et un jour de
           week-end, via l'application Qustodio, sans accès à leurs données
-          personnelles. Relevé : temps d'écran total, nombre et durée des
-          sessions, applications les plus utilisées. Sortie : une cartographie
+          personnelles. Relevé : temps d'écran total, nombre et durée des
+          sessions, applications les plus utilisées. Sortie : une cartographie
           du parcours type par tranche d'âge et un tableau comparant les deux
           groupes.
         </Body1>
@@ -344,7 +344,7 @@ export default function AngryBirdsPage() {
           type.
         </Body1>
         <Micro1 className="w-full text-center italic">
-          Cadre légal : consentement parental, RGPD, autorisation
+          Cadre légal : consentement parental, RGPD, autorisation
           d'enregistrement, droit de retrait.
         </Micro1>
       </DeckSection>
@@ -356,13 +356,13 @@ export default function AngryBirdsPage() {
         onOpen={setLightboxIndex}
       >
         <p className="mx-auto max-w-[40ch] text-center font-syne text-xl font-medium text-purple-pale md:text-2xl">
-          Le twist : ce sont les enfants qui interrogent leurs parents.
+          Le twist : ce sont les enfants qui interrogent leurs parents.
         </p>
         <Body1 className="w-full text-center font-light">
           Après un vote sur leurs 4 souhaits et 4 obstacles prioritaires, les
           enfants les ont reformulés en questions, qu'ils ont posées
           eux-mêmes à leurs parents en entretien individuel de 15 minutes. En
-          sortie : 4 cartographies d'usage, un tableau comparatif et une
+          sortie : 4 cartographies d'usage, un tableau comparatif et une
           analyse des écarts entre ce que vivent les enfants et ce qu'en
           perçoivent leurs parents.
         </Body1>
@@ -375,7 +375,7 @@ export default function AngryBirdsPage() {
         onOpen={setLightboxIndex}
       >
         <Body1 className="w-full text-center font-light">
-          Trois formules, chiffrées poste par poste : logistique, recrutement
+          Trois formules, chiffrées poste par poste : logistique, recrutement
           des familles, temps de recherche.
         </Body1>
         <div className="grid w-full gap-4 md:grid-cols-3">
@@ -398,7 +398,7 @@ export default function AngryBirdsPage() {
           </div>
         </div>
         <Body1 className="w-full text-center font-light">
-          Impact projeté : session moyenne de 10 à 14&nbsp;min, rétention à
+          Impact projeté : session moyenne de 10 à 14&nbsp;min, rétention à
           7&nbsp;jours de&nbsp;15&nbsp;% à 20–22&nbsp;%.
         </Body1>
       </DeckSection>
@@ -411,7 +411,7 @@ export default function AngryBirdsPage() {
       >
         <Body1 className="w-full text-center font-light">
           9 phases sur 6 mois, du recrutement des familles aux tests
-          utilisateurs finaux. Un livrable concret à chaque étape :
+          utilisateurs finaux. Un livrable concret à chaque étape :
           cartographies, rapport, présentation client.
         </Body1>
         <ol className="flex w-full max-w-[640px] flex-col">
@@ -483,7 +483,7 @@ export default function AngryBirdsPage() {
       >
         <Body1 className="w-full text-center font-light">
           Au bout de cette étude, Angry Birds ne mesure plus seulement le temps
-          de jeu : le studio comprend ce qui fait rester un enfant et ce qui le
+          de jeu : le studio comprend ce qui fait rester un enfant et ce qui le
           frustre.
         </Body1>
         <Body1 className="w-full text-center font-light">

@@ -88,7 +88,7 @@ export default function AboutPage() {
           <TimelineItem
             title="3 ans de Freelance"
             paragraphs={[
-              'Après mon diplôme, j\'ai enchaîné les postes dans les médias : casting, réalisation, montage, photo, direction de production. J\'ai travaillé sur des campagnes ONG, des films et des clips musicaux, dont une collaboration avec Netflix sur "Love is Blind Habibi".',
+              'Après mon diplôme, j\'ai enchaîné les postes dans les médias : casting, réalisation, montage, photo, direction de production. J\'ai travaillé sur des campagnes ONG, des films et des clips musicaux, dont une collaboration avec Netflix sur "Love is Blind Habibi".',
             ]}
           />
           <TimelineItem
@@ -206,7 +206,7 @@ export default function AboutPage() {
               <TimelineItem
                 title="Stage Fine Line Production"
                 paragraphs={[
-                  "Refonte complète du site d'une société de production libanaise, à distance : j'ai porté tout le projet, de la recherche au design final, en toute autonomie. Le site a été conçu et développé sur Webflow, ma première vraie expérience UX/UI de bout en bout.",
+                  "Refonte complète du site d'une société de production libanaise, à distance : j'ai porté tout le projet, de la recherche au design final, en toute autonomie. Le site a été conçu et développé sur Webflow, ma première vraie expérience UX/UI de bout en bout.",
                 ]}
               />
             </div>
@@ -220,7 +220,7 @@ export default function AboutPage() {
                 title="Alternance HEIP"
                 paragraphs={[
                   "Aujourd'hui, je suis en alternance à HEIP, une université de sciences politiques à Paris, un univers que je ne connaissais pas du tout avant d'y mettre les pieds.",
-                  "Je gère tout le contenu réseaux sociaux : concepts, tournage, montage, veille tendances. Ce n'était pas mon terrain naturel, mais c'est souvent en terrain inconnu que j'apprends le plus.",
+                  "Je gère tout le contenu réseaux sociaux : concepts, tournage, montage, veille tendances. Ce n'était pas mon terrain naturel, mais c'est souvent en terrain inconnu que j'apprends le plus.",
                 ]}
               />
             </div>

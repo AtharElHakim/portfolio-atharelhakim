@@ -1,4 +1,4 @@
-import { useRef, useState, type CSSProperties, type ReactNode } from 'react'
+import { Fragment, useRef, useState, type CSSProperties, type ReactNode } from 'react'
 import Contact from '../components/Contact'
 import CaseStudyNav from '../components/CaseStudyNav'
 import Button, { focusRing } from '../components/Button'
@@ -208,40 +208,99 @@ function BudgetCard({
 }
 
 /** NEW — risk-matrix visual (§6). Not a radar (that's Spotify's Cible): a
- *  scored heat row per profile, crossing 4 vulnerability criteria on a /10
- *  scale. */
-function RiskMatrix({ rows }: { rows: { profile: string; origin: 'Hors UE' | 'UE'; score: number }[] }) {
+ *  heat grid per origin (Hors UE / UE), crossing administrative status with
+ *  time in France, each cell scored /10 on 4 vulnerability criteria. A
+ *  segmented toggle switches origin, mirroring the source slide. */
+type RiskOrigin = 'Hors UE' | 'Union Européenne'
+
+const RISK_LEVELS = [
+  { min: 8, label: 'Très élevé', range: '8 à 10', color: '#ef4444' },
+  { min: 6, label: 'Élevé', range: '6 à 7', color: '#f97316' },
+  { min: 4, label: 'Modéré', range: '4 à 5', color: '#eab308' },
+  { min: 1, label: 'Faible', range: '1 à 3', color: '#22c55e' },
+] as const
+
+const riskLevel = (score: number) => RISK_LEVELS.find((l) => score >= l.min) ?? RISK_LEVELS[3]
+
+const RISK_COLUMNS = [
+  { label: 'Primo-arrivant', note: "moins d'1 an" },
+  { label: 'En transition', note: '1 à 3 ans' },
+  { label: 'Établi', note: '3 ans et plus' },
+]
+
+function RiskMatrix({
+  matrices,
+}: {
+  matrices: Record<RiskOrigin, { profile: string; scores: [number, number, number] }[]>
+}) {
+  const origins = Object.keys(matrices) as RiskOrigin[]
+  const [origin, setOrigin] = useState<RiskOrigin>(origins[0])
   return (
-    <div className="flex w-full max-w-[820px] flex-col gap-3 rounded-2xl border border-white/15 bg-white/5 p-6 backdrop-blur-sm">
-      {rows.map((r) => (
-        <div key={r.profile} className="flex flex-col gap-1.5 sm:flex-row sm:items-center sm:gap-4">
-          <div className="flex w-full items-center justify-between gap-3 sm:w-64 sm:shrink-0">
-            <span className="text-base leading-6 text-white/85">{r.profile}</span>
-            <span className="shrink-0 text-xs font-semibold uppercase tracking-wide text-purple-pale/70">
-              {r.origin}
-            </span>
-          </div>
-          <div className="flex flex-1 items-center gap-3">
-            <div className="h-2.5 flex-1 overflow-hidden rounded-full bg-white/10">
-              <div
-                className="h-full rounded-full"
-                style={{
-                  width: `${r.score * 10}%`,
-                  background:
-                    r.score >= 7
-                      ? 'var(--color-danger-bg)'
-                      : r.score >= 4
-                        ? 'var(--color-purple-pale)'
-                        : 'var(--color-success-bg)',
-                }}
-              />
-            </div>
-            <span className="w-12 shrink-0 text-right font-syne text-lg text-white">{r.score}/10</span>
-          </div>
+    <div className="flex w-full max-w-[820px] flex-col gap-6 rounded-2xl border border-white/15 bg-white/5 p-4 backdrop-blur-sm sm:p-6">
+      <div className="flex flex-wrap items-center gap-3">
+        <span className="text-sm text-white/70">Origine :</span>
+        <div role="tablist" aria-label="Origine" className="flex gap-1 rounded-full border border-white/15 bg-black-soft p-1">
+          {origins.map((o) => (
+            <button
+              key={o}
+              type="button"
+              role="tab"
+              aria-selected={origin === o}
+              onClick={() => setOrigin(o)}
+              className={`rounded-full px-4 py-1.5 text-sm font-medium transition-colors duration-200 ${focusRing} ${
+                origin === o ? 'bg-purple text-white' : 'text-white/60 hover:text-white'
+              }`}
+            >
+              {o}
+            </button>
+          ))}
         </div>
-      ))}
-      <Micro1 className="mt-2">
-        Score de vulnérabilité sur 10, croisant : connaissance des garanties, connaissance des obligations
+      </div>
+
+      <div
+        role="tabpanel"
+        aria-label={origin}
+        className="grid grid-cols-[minmax(0,1.2fr)_repeat(3,minmax(0,1fr))] items-center gap-1.5 sm:gap-3"
+      >
+        <span className="text-xs text-white/50 sm:text-sm">Statut administratif</span>
+        {RISK_COLUMNS.map((c) => (
+          <div key={c.label} className="flex flex-col items-center text-center">
+            <span className="text-xs text-white/70 sm:text-sm">{c.label}</span>
+            <span className="text-[10px] text-white/40 sm:text-xs">{c.note}</span>
+          </div>
+        ))}
+        {matrices[origin].map((row) => (
+          <Fragment key={row.profile}>
+            <span className="text-sm leading-5 text-white sm:text-base">{row.profile}</span>
+            {row.scores.map((score, i) => {
+              const level = riskLevel(score)
+              return (
+                <div
+                  key={i}
+                  className="flex flex-col items-center justify-center rounded-xl border py-2 sm:py-3"
+                  style={{ background: `${level.color}26`, borderColor: `${level.color}66` }}
+                >
+                  <span className="font-syne text-base text-white sm:text-xl">{score}/10</span>
+                  <span className="text-[10px] sm:text-xs" style={{ color: level.color }}>
+                    {level.label}
+                  </span>
+                </div>
+              )
+            })}
+          </Fragment>
+        ))}
+      </div>
+
+      <ul className="flex flex-wrap gap-x-4 gap-y-1.5">
+        {RISK_LEVELS.map((l) => (
+          <li key={l.label} className="flex items-center gap-1.5 text-xs text-white/70">
+            <span className="size-2.5 rounded-sm" style={{ background: l.color }} />
+            Risque {l.label.toLowerCase()} ({l.range})
+          </li>
+        ))}
+      </ul>
+      <Micro1>
+        Score de vulnérabilité sur 10, croisant : connaissance des garanties, connaissance des obligations
         légales, suivi du contrat dans le temps et confiance envers le système assurantiel.
       </Micro1>
     </div>
@@ -569,7 +628,7 @@ const targetProfiles: GridCard[] = [
     title: 'Le Primo-Arrivant',
     stat: '9 / 10',
     description:
-      "Étranger non-UE arrivé depuis moins d'un an, en pleine saturation administrative : titre de séjour, logement, compte bancaire, sécurité sociale. L'assurance n'est pas une priorité consciente ; elle devient une urgence uniquement quand une contrainte externe l'impose.",
+      "Étranger non-UE arrivé depuis moins d'un an, en pleine saturation administrative : titre de séjour, logement, compte bancaire, sécurité sociale. L'assurance n'est pas une priorité consciente ; elle devient une urgence uniquement quand une contrainte externe l'impose.",
   },
   {
     title: 'Le Résident en Transition',
@@ -581,7 +640,7 @@ const targetProfiles: GridCard[] = [
     title: "L'Établi",
     stat: '2 / 10',
     description:
-      "En France depuis plus de 3 ans, souvent titulaire d'une carte de résident. Il s'en sort mieux administrativement mais garde des lacunes profondes : sa vie a changé (enfants, déménagements, voiture) mais ses contrats n'ont pas suivi.",
+      "En France depuis plus de 3 ans, souvent titulaire d'une carte de résident. Il s'en sort mieux administrativement mais garde des lacunes profondes : sa vie a changé (enfants, déménagements, voiture) mais ses contrats n'ont pas suivi.",
   },
 ]
 
@@ -625,7 +684,7 @@ const walk = (name: string) => walkImgs[`../assets/par-ici/walkthrough/${name}.w
 const walkthroughSteps: { title: string; body: string; screens: string[] }[] = [
   {
     title: 'Choix de la langue',
-    body: "Avant même de créer son compte, Karim choisit sa langue. L'app détecte automatiquement la langue du téléphone et la présélectionne ; il peut choisir n'importe quelle autre. Objectif : 27 langues disponibles dans l'app.",
+    body: "Avant même de créer son compte, Karim choisit sa langue. L'app détecte automatiquement la langue du téléphone et la présélectionne ; il peut choisir n'importe quelle autre. Objectif : 27 langues disponibles dans l'app.",
     screens: [walk('s1')],
   },
   {
@@ -635,12 +694,12 @@ const walkthroughSteps: { title: string; body: string; screens: string[] }[] = [
   },
   {
     title: 'Création de compte et profiling',
-    body: "Karim crée son compte en quelques secondes via email, Google ou Apple, puis répond à quelques questions simples : prénom, nom, âge, nationalité, situation et date d'arrivée en France. Vient ensuite le questionnaire de 7 questions, en swipe oui/non, dont l'objectif est de générer sa checklist personnalisée.",
+    body: "Karim crée son compte en quelques secondes via email, Google ou Apple, puis répond à quelques questions simples : prénom, nom, âge, nationalité, situation et date d'arrivée en France. Vient ensuite le questionnaire de 7 questions, en swipe oui/non, dont l'objectif est de générer sa checklist personnalisée.",
     screens: [walk('s3-1'), walk('s3-2'), walk('s3-3'), walk('s3-4')],
   },
   {
     title: 'Génération de la checklist personnalisée',
-    body: "En fonction de ses réponses, l'app génère automatiquement sa checklist, classée par ordre de priorité : Urgent (immédiat), Important (rapidement), À explorer (selon sa situation), Fait (déjà réglé).",
+    body: "En fonction de ses réponses, l'app génère automatiquement sa checklist, classée par ordre de priorité : Urgent (immédiat), Important (rapidement), À explorer (selon sa situation), Fait (déjà réglé).",
     screens: [walk('s4')],
   },
   {
@@ -808,7 +867,7 @@ export default function ParIciPage() {
       {/* ============ Hero ============ */}
       <div id="hero" className="flex flex-col items-center gap-6 px-8 pb-8 pt-4 md:pb-16 md:pt-10 md:px-[var(--nav-edge-w)]">
         <div className="flex w-full flex-col items-center gap-4 text-center">
-          <img src={compassLogo} alt="Logo Par ici : une boussole" className="size-14" />
+          <img src={compassLogo} alt="Logo Par ici : une boussole" className="size-14" />
           <H1 className="md:!text-5xl md:!leading-[52.8px]">Par ici</H1>
           <Body1 className="!text-white/70 font-light">
             Un compagnon mobile pour les étrangers non-UE primo-arrivants en France
@@ -820,7 +879,7 @@ export default function ParIciPage() {
               decoding="async"
               fetchPriority="high"
               src={heroImg}
-              alt="Écran d'accueil de Par ici : « Bienvenue en France », sur fond CNP Assurances"
+              alt="Écran d'accueil de Par ici : « Bienvenue en France », sur fond CNP Assurances"
               className="block w-full"
             />
             <div className="pointer-events-none absolute inset-0 flex items-center justify-center bg-black/0 transition-all duration-300 group-hover/hero:bg-black/50">
@@ -888,7 +947,7 @@ export default function ParIciPage() {
         <div className="mx-auto flex w-full max-w-[900px] flex-col items-center gap-8 rounded-2xl border border-white/15 bg-white/5 p-6 backdrop-blur-sm">
           <Body1 className="text-center font-light">
             Dans le cadre du hackathon national PULSE, organisé par le Lab d'Innovation de CNP Assurances et
-            l'agence Sinnasse, notre équipe a choisi le brief #Solutions Inclusives : « Et si CNP Assurances
+            l'agence Sinnasse, notre équipe a choisi le brief #Solutions Inclusives : « Et si CNP Assurances
             luttait contre la Mal-Assurance auprès des populations vulnérables ? » Le jury attendait un produit
             ou service innovant, conforme aux critères SUAVE, directement distribuable et capable d'accompagner
             ces utilisateurs vers une couverture d'assurance juste et compréhensible.
@@ -959,7 +1018,7 @@ export default function ParIciPage() {
             </ul>
           </div>
           <div className="flex flex-col gap-2 rounded-2xl border border-white/15 bg-white/5 p-6 backdrop-blur-sm">
-            <H5 className="!text-purple-pale/70">La stratégie : Lead for Impact</H5>
+            <H5 className="!text-purple-pale/70">La stratégie : Lead for Impact</H5>
             <ul className="list-disc pl-5 text-base leading-6 text-white/70">
               <li>Accélérer la conquête commerciale en allant directement vers les clients</li>
               <li>Diversifier les canaux et partenariats de distribution</li>
@@ -983,7 +1042,7 @@ export default function ParIciPage() {
         <div className="flex w-full flex-col items-center gap-4">
           <SectionTitle>Recherche quantitative</SectionTitle>
           <Body1 className="w-full text-center font-light">
-            Data et social listening : on a plongé dans les données officielles.
+            Data et social listening : on a plongé dans les données officielles.
           </Body1>
         </div>
 
@@ -1019,7 +1078,7 @@ export default function ParIciPage() {
         <div className="flex w-full flex-col items-center gap-4">
           <H3 className="w-full text-center">Sondage quantitatif</H3>
           <Body1 className="w-full text-center font-light">
-            Pour recueillir plus de données, on a créé un sondage. Le questionnaire couvrait 4 thèmes : la
+            Pour recueillir plus de données, on a créé un sondage. Le questionnaire couvrait 4 thèmes : la
             situation administrative, le nombre et la dispersion des contrats, le niveau de compréhension des
             assurances et les préférences pour une solution idéale.
           </Body1>
@@ -1035,7 +1094,7 @@ export default function ParIciPage() {
               </div>
             ))}
           </div>
-          <Micro1>Outil : Google Forms</Micro1>
+          <Micro1>Outil : Google Forms</Micro1>
         </div>
 
         <div className="flex w-full flex-col items-center gap-4">
@@ -1050,10 +1109,10 @@ export default function ParIciPage() {
           <H3 className="w-full text-center">Insights complémentaires issus du sondage</H3>
           <ul className="mx-auto flex w-full max-w-[820px] flex-col gap-3">
             {[
-              "Les participants veulent un endroit unique pour centraliser tous leurs contrats : 84% jugent une plateforme centralisée très utile.",
+              "Les participants veulent un endroit unique pour centraliser tous leurs contrats : 84% jugent une plateforme centralisée très utile.",
               "La banque est l'acteur de confiance privilégié, cité en premier devant l'assureur, le conseiller indépendant et l'application digitale.",
-              "Comprendre pour choisir soi-même prime sur être conseillé : « Le plus important est de comprendre ce qui se joue à la base pour qu'ensuite je puisse moi-même choisir. »",
-              "Une solution purement digitale ne suffit pas : les répondants citent spontanément une application et un conseiller humain, un rendez-vous physique annuel, une messagerie.",
+              "Comprendre pour choisir soi-même prime sur être conseillé : « Le plus important est de comprendre ce qui se joue à la base pour qu'ensuite je puisse moi-même choisir. »",
+              "Une solution purement digitale ne suffit pas : les répondants citent spontanément une application et un conseiller humain, un rendez-vous physique annuel, une messagerie.",
             ].map((it) => (
               <li key={it} className="border-l-2 border-white/15 py-1 pl-4 text-white/80">
                 {it}
@@ -1068,7 +1127,7 @@ export default function ParIciPage() {
         <div className="flex w-full flex-col items-center gap-4">
           <SectionTitle>Cible</SectionTitle>
           <Body1 className="w-full text-center font-light">
-            Le sondage nous a guidés vers notre cible : les étrangers en France.
+            Le sondage nous a guidés vers notre cible : les étrangers en France.
           </Body1>
         </div>
 
@@ -1104,19 +1163,24 @@ export default function ParIciPage() {
           </Body1>
           {/* NEW component — risk matrix (not the Spotify radar) */}
           <RiskMatrix
-            rows={[
-              { profile: 'Étudiant hors UE, primo-arrivant', origin: 'Hors UE', score: 9 },
-              { profile: 'Travailleur hors UE, primo-arrivant', origin: 'Hors UE', score: 8 },
-              { profile: 'Résident hors UE, en transition', origin: 'Hors UE', score: 5 },
-              { profile: 'Résident permanent hors UE, établi', origin: 'Hors UE', score: 2 },
-              { profile: 'Étudiant / travailleur UE', origin: 'UE', score: 3 },
-            ]}
+            matrices={{
+              'Hors UE': [
+                { profile: 'Étudiant étranger', scores: [9, 6, 4] },
+                { profile: 'Travailleur étranger', scores: [8, 5, 3] },
+                { profile: 'Résident permanent (10 ans)', scores: [5, 3, 2] },
+              ],
+              'Union Européenne': [
+                { profile: 'Étudiant UE', scores: [7, 4, 2] },
+                { profile: 'Travailleur UE', scores: [5, 3, 2] },
+                { profile: 'Résident permanent UE', scores: [3, 2, 1] },
+              ],
+            }}
           />
           <CalloutBox>
             La matrice parle d'elle-même. Les étrangers non-UE primo-arrivants obtiennent les scores les plus
-            élevés : les étudiants hors UE atteignent 9/10, les travailleurs 8/10. Plus l'ancienneté en France
+            élevés : les étudiants hors UE atteignent 9/10, les travailleurs 8/10. Plus l'ancienneté en France
             augmente, plus les scores baissent, et les profils UE restent significativement en dessous. Notre
-            cible principale est donc claire : les étrangers non-UE résidant en France, avec une priorité
+            cible principale est donc claire : les étrangers non-UE résidant en France, avec une priorité
             donnée aux primo-arrivants.
           </CalloutBox>
         </div>
@@ -1171,7 +1235,7 @@ export default function ParIciPage() {
               <H5 className="!text-purple-pale/70">Bio</H5>
               <Body2>
                 Karim vient du Liban, d'un quartier qui s'appelle Naccache. Avec la situation au Liban, il a
-                décidé de partir faire son master en audiovisuel à Paris, avec un rêve : devenir réalisateur.
+                décidé de partir faire son master en audiovisuel à Paris, avec un rêve : devenir réalisateur.
                 Il vit avec des colocataires à Villejuif, et c'est la première fois qu'il vit loin de chez lui.
                 Paris n'est pas juste une ville pour lui, c'est un engagement sur le long terme.
               </Body2>
@@ -1180,7 +1244,7 @@ export default function ParIciPage() {
               <H5 className="!text-purple-pale/70">Personnalité</H5>
               <Body2>
                 Doux et attentionné, il prend soin des gens autour de lui. Aventurier, il a tout quitté pour
-                Paris. Mais perfectionniste : quand il a trop de choses à gérer, il se retrouve vite submergé
+                Paris. Mais perfectionniste : quand il a trop de choses à gérer, il se retrouve vite submergé
                 et sa to-do list tourne en boucle dans sa tête.
               </Body2>
             </div>
@@ -1259,7 +1323,7 @@ export default function ParIciPage() {
           <SectionTitle>Recherche qualitative</SectionTitle>
           <Body1 className="w-full text-center font-light">
             Notre cible était définie. Il nous fallait des données qualitatives. Trois segments, trois réalités
-            différentes : on a interviewé une personne par segment, un primo-arrivant, un résident en
+            différentes : on a interviewé une personne par segment, un primo-arrivant, un résident en
             transition, un établi.
           </Body1>
         </div>
@@ -1277,7 +1341,7 @@ export default function ParIciPage() {
           ))}
         </div>
         <Micro1>
-          Consentement verbal recueilli avant chaque entretien · Outils : Google Docs, NotebookLM, Recorder
+          Consentement verbal recueilli avant chaque entretien · Outils : Google Docs, NotebookLM, Recorder
         </Micro1>
 
         <div className="flex w-full flex-col items-center gap-6">
@@ -1375,7 +1439,7 @@ export default function ParIciPage() {
           <H5 className="!text-purple-pale/70">La Solution</H5>
           <H3>Par ici, un compagnon administratif et assurantiel indépendant</H3>
           <Body1 className="w-full text-center font-light">
-            Par ici est une application indépendante de l'app CNP. Le concept : un compagnon administratif et
+            Par ici est une application indépendante de l'app CNP. Le concept : un compagnon administratif et
             assurantiel pour les étrangers non-UE en France, dès leur arrivée.
           </Body1>
         </div>
@@ -1383,7 +1447,7 @@ export default function ParIciPage() {
           <Body1 className="w-full text-center font-light">
             Arriver dans un nouveau pays, ce n'est pas juste une liste de démarches administratives. C'est une
             nouvelle langue, un nouveau système, un nouvel environnement, souvent sans réseau, sans repères,
-            sans savoir par où commencer. Et parmi ces démarches, il y a les assurances : RC Habitation,
+            sans savoir par où commencer. Et parmi ces démarches, il y a les assurances : RC Habitation,
             mutuelle, assurance auto, assurance voyage. Des obligations légales que personne n'a expliquées,
             dans une langue juridique que l'utilisateur ne maîtrise pas. C'est exactement là que Par ici
             intervient.
@@ -1440,7 +1504,7 @@ export default function ParIciPage() {
           <Body1 className="w-full text-center font-light">
             Technology, human connection, and clarity. Par ici s'adresse à une génération connectée, habituée
             aux interfaces modernes. On voulait un design qui inspire confiance dès le premier regard, sans
-            être froid ni corporate. Notre direction artistique puise dans trois idées : la technologie
+            être froid ni corporate. Notre direction artistique puise dans trois idées : la technologie
             accessible, la connexion humaine et la clarté dans la complexité, pour un univers sombre et
             lumineux à la fois. Le bleu qui domine est directement inspiré du logo de CNP Assurances.
           </Body1>
@@ -1450,7 +1514,7 @@ export default function ParIciPage() {
         <div className="flex w-full flex-col gap-6 rounded-2xl border border-white/15 bg-white/5 p-8 backdrop-blur-sm">
           <H3 className="w-full text-center">Palette de couleurs</H3>
           <Body1 className="w-full text-center font-light">
-            On a choisi de mélanger le violet et le bleu plutôt qu'une seule couleur : le bleu seul aurait été
+            On a choisi de mélanger le violet et le bleu plutôt qu'une seule couleur : le bleu seul aurait été
             trop corporate, le violet seul trop dramatique. Ensemble ils créent un univers plus nuancé, avec
             une vraie profondeur. Ce choix prend tout son sens avec le Liquid Glass (iOS 26) : un effet de
             verre translucide et dépoli qui laisse transparaître le dégradé violet/bleu à travers les boutons
@@ -1522,15 +1586,15 @@ export default function ParIciPage() {
             </div>
           </div>
           <Micro1>
-            Neutres : Blanc #FAFAFA (textes et icônes) · Noir #0D0D0D (fond sombre) · Gris #EAEAEA (éléments
+            Neutres : Blanc #FAFAFA (textes et icônes) · Noir #0D0D0D (fond sombre) · Gris #EAEAEA (éléments
             secondaires)
           </Micro1>
         </div>
 
-        {/* Typographie : Poppins */}
+        {/* Typographie : Poppins */}
         <div className="flex w-full flex-col gap-6 rounded-2xl border border-white/15 bg-white/5 p-8 backdrop-blur-sm">
           <div className="flex w-full flex-col items-center gap-2 text-center">
-            <H3>Typographie : Poppins</H3>
+            <H3>Typographie : Poppins</H3>
             <Micro1>Police géométrique · Google Fonts · Multilingue</Micro1>
           </div>
           <Body1 className="w-full text-center font-light">
@@ -1557,18 +1621,18 @@ export default function ParIciPage() {
           </div>
         </div>
 
-        {/* Le logo : Par ici */}
+        {/* Le logo : Par ici */}
         <div className="flex w-full max-w-[900px] flex-col items-center gap-6 rounded-2xl border border-white/15 bg-white/5 p-8 backdrop-blur-sm md:flex-row">
           <div className="shrink-0">
             <img src={compassLogo} alt="Logo « La Boussole »" className="size-[200px]" />
           </div>
           <div className="flex flex-col gap-3">
-            <H3 className="!text-xl !leading-normal">Le logo : « La Boussole »</H3>
+            <H3 className="!text-xl !leading-normal">Le logo : « La Boussole »</H3>
             <Body1 className="font-light">
-              Le logo de Par ici, c'est une boussole. Pas par hasard : une boussole, c'est ce qu'on cherche
+              Le logo de Par ici, c'est une boussole. Pas par hasard : une boussole, c'est ce qu'on cherche
               quand on est perdu, quand on ne sait pas par où commencer, quand on a besoin d'une direction.
               C'est exactement ce que ressent un étranger qui arrive en France pour la première fois. Par ici
-              est cette boussole : elle pointe dans la bonne direction, elle guide.
+              est cette boussole : elle pointe dans la bonne direction, elle guide.
             </Body1>
           </div>
         </div>
@@ -1595,14 +1659,14 @@ export default function ParIciPage() {
 
         <div className="w-full max-w-[900px]">
           <Body1 className="w-full text-center font-light">
-            Par ici ne sort pas de nulle part : CNP Assurances est une filiale à 100% de La Banque Postale
+            Par ici ne sort pas de nulle part : CNP Assurances est une filiale à 100% de La Banque Postale
             depuis 2023, et les conseillers LBP distribuent déjà les produits CNP en agence. Par ici ne crée
             pas un nouveau partenariat, elle exploite un lien qui existe déjà pour atteindre une population que
-            ni l'un ni l'autre ne touche via ses canaux traditionnels. Le lien fonctionne dans les deux sens :
+            ni l'un ni l'autre ne touche via ses canaux traditionnels. Le lien fonctionne dans les deux sens :
             un étranger qui arrive ouvre un compte à La Banque Postale, la seule banque française avec une
             mission légale d'accessibilité bancaire, et le conseiller lui parle de Par ici ; à l'inverse, si
             l'app détecte que l'utilisateur n'a pas de compte bancaire, elle lui recommande La Banque Postale.
-            Deux portes d'entrée, un même écosystème de confiance, et au centre : CNP Assurances.
+            Deux portes d'entrée, un même écosystème de confiance, et au centre : CNP Assurances.
           </Body1>
         </div>
 
@@ -1630,7 +1694,7 @@ export default function ParIciPage() {
             ]}
           />
           <CalloutBox>
-            Par ici occupe un espace vide : aucune solution existante ne combine l'accompagnement
+            Par ici occupe un espace vide : aucune solution existante ne combine l'accompagnement
             administratif, la simplification multilingue des contrats et la distribution de produits CNP
             adaptés aux étrangers non-UE.
           </CalloutBox>
@@ -1650,8 +1714,8 @@ export default function ParIciPage() {
             <H5 className="!text-purple-pale/70">Le pari long terme</H5>
             <Body2>
               Les étrangers non-UE représentent 6,5% de la population française, soit près de 4 millions de
-              personnes : un segment massif, sous-adressé et structurellement fidèle. La durabilité du modèle
-              repose sur trois mécaniques : la loyauté (le premier contact crée une confiance durable),
+              personnes : un segment massif, sous-adressé et structurellement fidèle. La durabilité du modèle
+              repose sur trois mécaniques : la loyauté (le premier contact crée une confiance durable),
               l'effet communautaire (propagation sans coût d'acquisition) et la montée en gamme (chaque
               changement de vie est une nouvelle opportunité commerciale).
             </Body2>
@@ -1659,7 +1723,7 @@ export default function ParIciPage() {
         </div>
 
         <div className="flex w-full flex-col items-center gap-4">
-          <H3 className="w-full text-center">SUAVE : Par ici répond aux critères</H3>
+          <H3 className="w-full text-center">SUAVE : Par ici répond aux critères</H3>
           <CardGrid cards={suave} cols="md:grid-cols-2 lg:grid-cols-3" />
         </div>
       </div>
@@ -1722,7 +1786,7 @@ export default function ParIciPage() {
         </div>
 
         <div className="flex w-full flex-col items-center gap-4">
-          <H3 className="w-full text-center">Déploiement total : 11 mois</H3>
+          <H3 className="w-full text-center">Déploiement total : 11 mois</H3>
           <Body1 className="w-full text-center font-light">
             8 phases, des conventions de partenariat jusqu'au lancement officiel sur les stores et à la
             consolidation.
@@ -1790,8 +1854,8 @@ export default function ParIciPage() {
         <Body1 className="w-full text-center font-light">
           Avec Par ici, CNP se positionne comme le premier point de confiance des étrangers non-UE en France.
           4 millions d'entre eux vivent ici, parmi les populations les plus exposées à la mal-assurance, et
-          jusqu'ici personne ne s'est vraiment occupé d'eux. Par ici change ça : être là au bon moment, dès le
-          premier jour, avant la concurrence. Cette relation qui commence avec une RC Habitation à 21 ans peut naturellement évoluer :
+          jusqu'ici personne ne s'est vraiment occupé d'eux. Par ici change ça : être là au bon moment, dès le
+          premier jour, avant la concurrence. Cette relation qui commence avec une RC Habitation à 21 ans peut naturellement évoluer :
           une mutuelle, une assurance auto, une assurance vie, une retraite.
         </Body1>
         <Body1 className="w-full text-center font-light">
