@@ -5,7 +5,7 @@ import { Micro1 } from './Typography'
 import Button, { focusRing } from './Button'
 import { projects } from '../data/projects'
 
-const CV_HREF = 'https://drive.google.com/file/d/1ixItPzB_x42w22SA-K9QslNWl_UHh2OB/view?usp=sharing'
+const CV_HREF = '/cv-athar-el-hakim.pdf'
 
 function CaretDownIcon({ className }: { className?: string }) {
   return (
