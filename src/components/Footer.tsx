@@ -5,12 +5,12 @@ import Button, { focusRing } from './Button'
 export default function Footer() {
   return (
     <footer className="relative flex flex-col items-center justify-end bg-black">
-      <div className="mx-auto flex w-full max-w-[1440px] flex-col items-center justify-between gap-8 px-8 py-12 md:flex-row md:px-[var(--nav-edge-w)] md:py-20">
-        <div className="flex flex-col items-center gap-8 md:flex-row md:gap-12">
+      <div className="mx-auto flex w-full max-w-[1440px] flex-col items-center justify-between gap-6 px-8 py-10 md:flex-row md:gap-8 md:px-[var(--nav-edge-w)] md:py-20">
+        <div className="flex flex-col items-center gap-4 md:flex-row md:gap-12">
           <p className="font-syne text-2xl leading-9 text-white/70 md:text-3xl">
             Athar El Hakim
           </p>
-          <nav className="flex flex-wrap items-center justify-center gap-4">
+          <nav className="flex flex-wrap items-center justify-center gap-x-4 gap-y-1 md:gap-4">
             <Button to="/" variant="ghost">
               Home
             </Button>
