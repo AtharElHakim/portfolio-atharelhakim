@@ -21,7 +21,7 @@ export default function CategoryTabs() {
           to={t.to}
           end
           className={({ isActive }) =>
-            `rounded-full px-5 py-2 text-sm font-medium transition-colors duration-200 md:text-base ${focusRing} ${
+            `flex min-h-11 items-center rounded-full px-5 py-2 text-sm font-medium transition-colors duration-200 md:text-base ${focusRing} ${
               isActive ? 'bg-purple text-white' : 'text-white/60 hover:text-white'
             }`
           }

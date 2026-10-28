@@ -629,7 +629,7 @@ export default function FinelinePage() {
                   href="https://neabeyrouth.org/"
                   target="_blank"
                   rel="noreferrer"
-                  className="font-medium text-xl text-link underline"
+                  className="inline-flex min-h-11 items-center font-medium text-xl text-link underline"
                 >
                   Né à Beyrouth Films
                 </a>
@@ -652,7 +652,7 @@ export default function FinelinePage() {
                   href="https://forwardfilmproduction.com/"
                   target="_blank"
                   rel="noreferrer"
-                  className="font-medium text-xl text-link underline"
+                  className="inline-flex min-h-11 items-center font-medium text-xl text-link underline"
                 >
                   Forward Film Production
                 </a>

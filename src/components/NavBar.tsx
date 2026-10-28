@@ -166,7 +166,7 @@ function MobileMenu({
   const [projectsOpen, setProjectsOpen] = useState(false)
 
   return createPortal(
-    <div className="fixed inset-0 z-30 flex flex-col overflow-y-auto bg-black px-6 pb-10 pt-28 md:hidden">
+    <div className="fixed inset-0 z-30 flex flex-col overflow-y-auto bg-black px-6 pb-10 pt-28 lg:hidden">
       <nav className="mx-auto flex w-full max-w-sm flex-1 flex-col items-stretch gap-2">
         <Link to="/" onClick={onClose} className={mobileItemClass(isHomeActive)}>
           Home
@@ -244,10 +244,12 @@ export default function NavBar() {
     const el = edgeRef.current
     if (!el) return
     const observer = new ResizeObserver(([entry]) => {
-      document.documentElement.style.setProperty(
-        '--nav-edge-w',
-        `${entry.contentRect.width}px`,
-      )
+      const root = document.documentElement.style
+      const width = entry.contentRect.width
+      // Hidden below lg (burger menu): fall back to the 6rem default in index.css
+      // instead of collapsing every page's side padding to 0.
+      if (width > 0) root.setProperty('--nav-edge-w', `${width}px`)
+      else root.removeProperty('--nav-edge-w')
     })
     observer.observe(el)
     return () => observer.disconnect()
@@ -289,7 +291,7 @@ export default function NavBar() {
         </Link>
 
         <nav
-          className="glass-dark hidden flex-wrap items-center justify-center gap-2 rounded-full p-2 md:flex md:absolute md:left-1/2 md:-translate-x-1/2"
+          className="glass-dark hidden flex-wrap items-center justify-center gap-2 rounded-full p-2 lg:flex lg:absolute lg:left-1/2 lg:-translate-x-1/2"
         >
           <Button to="/" variant="ghost" active={isHomeActive}>
             Home
@@ -300,7 +302,7 @@ export default function NavBar() {
           </Button>
         </nav>
 
-        <div ref={edgeRef} className="hidden shrink-0 items-center justify-end gap-6 md:flex">
+        <div ref={edgeRef} className="hidden shrink-0 items-center justify-end gap-6 lg:flex">
           <Link
             to="/contactez-moi"
             className={`group flex min-h-11 cursor-pointer items-center gap-2 rounded-full text-base leading-6 text-white/70 transition-colors duration-300 hover:text-white ${focusRing}`}
@@ -324,7 +326,7 @@ export default function NavBar() {
           onClick={() => setMobileOpen((prev) => !prev)}
           aria-expanded={mobileOpen}
           aria-label={mobileOpen ? 'Fermer le menu' : 'Ouvrir le menu'}
-          className={`flex size-11 shrink-0 cursor-pointer items-center justify-center rounded-full border border-white/15 bg-white/5 text-white md:hidden ${focusRing}`}
+          className={`flex size-11 shrink-0 cursor-pointer items-center justify-center rounded-full border border-white/15 bg-white/5 text-white lg:hidden ${focusRing}`}
         >
           <MenuIcon open={mobileOpen} />
         </button>

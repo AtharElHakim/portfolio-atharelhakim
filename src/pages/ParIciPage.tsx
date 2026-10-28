@@ -247,7 +247,7 @@ function RiskMatrix({
               role="tab"
               aria-selected={origin === o}
               onClick={() => setOrigin(o)}
-              className={`rounded-full px-4 py-1.5 text-sm font-medium transition-colors duration-200 ${focusRing} ${
+              className={`min-h-11 rounded-full px-4 py-1.5 text-sm font-medium transition-colors duration-200 ${focusRing} ${
                 origin === o ? 'bg-purple text-white' : 'text-white/60 hover:text-white'
               }`}
             >
@@ -1417,7 +1417,7 @@ export default function ParIciPage() {
             href={RESEARCH_REPO_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className={`text-sm text-link underline decoration-white/30 underline-offset-4 ${focusRing}`}
+            className={`inline-flex min-h-11 items-center text-sm text-link underline decoration-white/30 underline-offset-4 ${focusRing}`}
           >
             Voir le Research Repository
           </a>
