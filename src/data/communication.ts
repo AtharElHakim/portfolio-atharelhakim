@@ -326,7 +326,7 @@ const allBlocs = alternance.sections.flatMap((s) => s.blocs)
 export const blocPoster = (b: Bloc) => b.rangees.flat().find((x) => x.poster)?.poster ?? ''
 
 export const accueil = {
-  titre: 'Communication & contenus',
+  titre: 'Créations de Contenu',
   texte: 'Reels, interviews et séries réalisés pour HEIP et Sup de Pub.',
   /** The 3 blocks shown on the homepage, by id: each links to its block on the page. */
   blocs: ['campagnes-acquisition', 'projection-courts-metrages', 'tips-tournage-montage']
