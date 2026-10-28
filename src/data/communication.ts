@@ -119,7 +119,8 @@ export const cartesCom: CarteCom[] = [
 export const alternance = {
   slug: 'alternance-omnes',
   titre: 'Alternance OMNES Education',
-  sousTitre: 'Chargée de Communication & de Création de Contenu',
+  /** `\n` = line break in the page headline. */
+  sousTitre: 'Chargée de Communication &\nde Création de Contenu',
   infos: ['Déc. 2025 – sept. 2026', 'Instagram, TikTok, YouTube Shorts, LinkedIn, site web'],
   intro:
     "En alternance au sein du groupe OMNES Education, j'ai créé des contenus pour les réseaux sociaux et le site web de deux écoles : HEIP, école de sciences politiques et de relations internationales, et Sup de Pub, école de communication et de création. Selon les projets, j'ai imaginé les formats, tourné, monté ou présenté face caméra. Les vidéos sont classées par rôle.",
