@@ -2,21 +2,18 @@ import { useEffect, useRef, useState } from 'react'
 import { showreel } from '../../data/communication'
 import { focusRing } from '../Button'
 import { Micro1 } from '../Typography'
-import { Placeholder, claimPlayback, useMediaQuery, useReducedMotion } from './media'
+import { Placeholder, claimPlayback, useReducedMotion } from './media'
 
 const ctrl = `flex size-11 cursor-pointer items-center justify-center rounded-full border border-white/20 bg-black/60 text-white backdrop-blur-sm transition-colors hover:bg-black/80 ${focusRing}`
 
-/** 16:9 on desktop, 9:16 on mobile. Muted autoplay loop + pause & sound buttons. */
+/** 9:16 on every screen. Muted autoplay loop + pause & sound buttons. */
 export default function Showreel() {
-  const isDesktop = useMediaQuery('(min-width: 768px)')
   const reducedMotion = useReducedMotion()
   const ref = useRef<HTMLVideoElement>(null)
   const [playing, setPlaying] = useState(!reducedMotion)
   const [muted, setMuted] = useState(true)
 
-  const src = isDesktop ? showreel.srcDesktop : showreel.srcMobile
-  const poster = isDesktop ? showreel.posterDesktop : showreel.posterMobile
-  const format = isDesktop ? '16:9' : '9:16'
+  const { src, poster } = showreel
 
   useEffect(() => {
     setPlaying(!reducedMotion)
@@ -34,9 +31,7 @@ export default function Showreel() {
   return (
     <figure className="flex w-full flex-col items-center gap-3">
       <div
-        className={`relative w-full overflow-hidden rounded-3xl border-[1.5px] border-purple-pale/50 shadow-glass-card ${
-          isDesktop ? 'aspect-video' : 'aspect-[9/16] max-w-[380px]'
-        }`}
+        className="relative aspect-[9/16] w-full max-w-[320px] overflow-hidden rounded-3xl border-[1.5px] border-purple-pale/50 shadow-glass-card md:max-w-[360px]"
       >
         {src ? (
           <video
@@ -54,7 +49,7 @@ export default function Showreel() {
             className="absolute inset-0 size-full object-cover"
           />
         ) : (
-          <Placeholder label={showreel.titre} format={format} className="absolute inset-0 !rounded-3xl" />
+          <Placeholder label={showreel.titre} format="9:16" className="absolute inset-0 !rounded-3xl" />
         )}
         <div className="absolute bottom-4 right-4 flex gap-2">
           <button

@@ -74,12 +74,9 @@ const v = (d: Omit<Video, 'src' | 'poster' | 'url'> & Partial<Pick<Video, 'src' 
 export const showreel = {
   titre: 'Showreel 2026',
   duree: '20 s',
-  /** 16:9 version, shown on desktop. */
-  srcDesktop: '',
-  posterDesktop: '',
-  /** 9:16 version, shown on mobile. */
-  srcMobile: '',
-  posterMobile: '',
+  /** 9:16 video, shown at the same ratio on every screen size. */
+  src: '',
+  poster: '',
 }
 
 /* ------------------------------------------------------------------ */
