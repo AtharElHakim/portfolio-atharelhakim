@@ -9,7 +9,7 @@ export default function Hero() {
       className="relative flex flex-wrap items-center gap-10 p-8 md:py-16 md:px-[var(--nav-edge-w)]"
     >
       <div className="relative mx-auto flex w-full max-w-[1440px] flex-wrap items-center gap-10">
-      <div className="relative flex flex-1 min-w-[280px] flex-col items-start gap-12">
+      <div className="relative z-10 flex flex-1 min-w-[280px] flex-col items-start gap-12">
         <div className="animate-fade-in-up flex flex-col items-start gap-4">
           <Display className="w-full">Salut, moi c'est Athar !</Display>
           <Body1 className="w-full font-light">
@@ -33,15 +33,17 @@ export default function Hero() {
           </div>
         </div>
       </div>
+      {/* Mobile: the portrait sits behind the text, dimmed so the text stays
+          readable; beside the text from md up. */}
       <div
-        className="animate-fade-in-up relative flex w-[320px] items-center justify-center"
+        className="animate-fade-in-up pointer-events-none flex items-center justify-center max-md:absolute max-md:inset-x-0 max-md:top-0 max-md:bottom-0 max-md:z-0 max-md:opacity-35 md:pointer-events-auto md:relative md:w-[320px]"
         style={{ animationDelay: '200ms' }}
       >
         <img
           src={portraitImg}
           alt="Portrait illustré d'Athar"
           fetchPriority="high"
-          className="h-[600px] w-auto object-contain"
+          className="w-auto object-contain max-md:h-full max-md:max-h-[640px] md:h-[600px]"
         />
       </div>
       </div>
