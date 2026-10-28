@@ -13,10 +13,9 @@ export default function Hero() {
         <div className="animate-fade-in-up flex flex-col items-start gap-4">
           <Display className="w-full">Salut, moi c'est Athar !</Display>
           <Body1 className="w-full font-light">
-            Je suis UX/UI designer, photographe et réalisatrice, passionnée
-            par les façons non conventionnelles de créer. J'aime donner vie
-            aux idées et raconter des histoires à travers des expériences
-            visuelles et digitales.
+            UX/UI designer et créatrice de contenu. Du prototype Figma au reel
+            de 30 secondes, je fais de chaque idée une histoire qu'on a envie
+            de suivre.
           </Body1>
         </div>
         <div
@@ -24,7 +23,16 @@ export default function Hero() {
           style={{ animationDelay: '120ms' }}
         >
           <H2 className="!w-auto whitespace-nowrap text-left">Prêt à explorer ?</H2>
-          <Button to="/projects">Voir mes projets</Button>
+          <div className="flex flex-wrap items-center gap-3">
+            <Button to="/projects">Voir mes projets UX/UI</Button>
+            <Button
+              to="/communication"
+              variant="ghost"
+              className="min-h-11 border border-purple-pale/50 px-6 !text-lg !text-white hover:border-purple-pale/80 md:!text-xl"
+            >
+              Voir mes contenus
+            </Button>
+          </div>
         </div>
       </div>
       <div

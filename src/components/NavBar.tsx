@@ -107,7 +107,7 @@ function ProjectsDropdown() {
         aria-expanded={open}
         className="gap-2"
       >
-        Projets
+        UX/UI
         <CaretDownIcon
           className={`size-4 shrink-0 transition-transform duration-300 ${
             open ? 'rotate-180' : ''
@@ -143,11 +143,13 @@ function MobileMenu({
   isHomeActive,
   isAboutActive,
   isProjectsActive,
+  isCommunicationActive,
 }: {
   onClose: () => void
   isHomeActive: boolean
   isAboutActive: boolean
   isProjectsActive: boolean
+  isCommunicationActive: boolean
 }) {
   const [projectsOpen, setProjectsOpen] = useState(false)
 
@@ -165,7 +167,7 @@ function MobileMenu({
             aria-expanded={projectsOpen}
             className={`flex items-center justify-center gap-2 ${mobileItemClass(isProjectsActive)}`}
           >
-            Projets
+            UX/UI
             <CaretDownIcon
               className={`size-6 shrink-0 transition-transform duration-300 ${
                 projectsOpen ? 'rotate-180' : ''
@@ -187,6 +189,10 @@ function MobileMenu({
             </div>
           )}
         </div>
+
+        <Link to="/communication" onClick={onClose} className={mobileItemClass(isCommunicationActive)}>
+          Communication
+        </Link>
 
         <Link to="/a-propos-de-moi" onClick={onClose} className={mobileItemClass(isAboutActive)}>
           À Propos De Moi
@@ -224,6 +230,7 @@ export default function NavBar() {
   const isHomeActive = location.pathname === '/'
   const isAboutActive = location.pathname === '/a-propos-de-moi'
   const isProjectsActive = location.pathname.startsWith('/projects')
+  const isCommunicationActive = location.pathname === '/communication'
   const [mobileOpen, setMobileOpen] = useState(false)
 
   useEffect(() => {
@@ -271,7 +278,7 @@ export default function NavBar() {
           <span className="font-syne text-lg leading-6 text-white">
             Athar El Hakim
           </span>
-          <Micro1>UX/UI Designer</Micro1>
+          <Micro1>UX/UI Designer & Créatrice de contenu</Micro1>
         </Link>
 
         <nav
@@ -281,6 +288,9 @@ export default function NavBar() {
             Home
           </Button>
           <ProjectsDropdown />
+          <Button to="/communication" variant="ghost" active={isCommunicationActive}>
+            Communication
+          </Button>
           <Button to="/a-propos-de-moi" variant="ghost" active={isAboutActive}>
             À Propos De Moi
           </Button>
@@ -322,6 +332,7 @@ export default function NavBar() {
           isHomeActive={isHomeActive}
           isAboutActive={isAboutActive}
           isProjectsActive={isProjectsActive}
+          isCommunicationActive={isCommunicationActive}
         />
       )}
     </header>

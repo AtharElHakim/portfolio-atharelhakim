@@ -1,5 +1,6 @@
 import { type CSSProperties } from 'react'
 import { Link } from 'react-router-dom'
+import CategoryTabs from '../components/CategoryTabs'
 import Contact from '../components/Contact'
 import { focusRing } from '../components/Button'
 import { H1, H2, H3, H5, Body1, Body2 } from '../components/Typography'
@@ -157,14 +158,15 @@ export default function ProjectsPage() {
   return (
     <div className="relative isolate">
       <Seo
-        title="Projets"
-        description="Cinq études de cas UX/UI menées de la recherche au prototype : Par ici, Spotify, Fine Line Production, YSL Sélection Privée et Angry Birds."
+        title="Projets UX/UI"
+        description="Cinq études de cas UX/UI menées de la recherche au prototype : Par ici, Spotify, Fine Line Production, YSL Sélection Privée et Angry Birds."
         path="/projects"
       />
       <div className="flex flex-col items-center gap-6 px-8 pt-8 pb-0 text-center md:pt-16 md:px-[var(--nav-edge-w)]">
         <div className="flex max-w-[600px] flex-col items-center gap-4">
           <H1>Projets</H1>
         </div>
+        <CategoryTabs />
       </div>
 
       <ProjectCategorySection projects={uxUiProjects} />

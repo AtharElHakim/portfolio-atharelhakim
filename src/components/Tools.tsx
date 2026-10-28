@@ -18,10 +18,26 @@ import claudeCode from '../assets/tools/claude-code.webp'
 import github from '../assets/tools/github.svg'
 import { H2, Micro1 } from './Typography'
 
-const tools = [
+/* Tools without a logo file yet render as a lettered tile in the brand's
+   colours (`badge`). Swap for a real icon by giving them `icon` instead. */
+type Tool = {
+  name: string
+  icon?: string
+  badge?: { text: string; bg: string; fg: string }
+  rounded?: boolean
+  padded?: boolean
+  circle?: boolean
+}
+
+const tools: Tool[] = [
   { name: 'Figma', icon: figma },
   { name: 'Webflow', icon: webflow },
   { name: 'Adobe Creative Cloud', icon: adobeCC },
+  { name: 'Premiere Pro', badge: { text: 'Pr', bg: '#00005b', fg: '#9999ff' } },
+  { name: 'After Effects', badge: { text: 'Ae', bg: '#00005b', fg: '#9999ff' } },
+  { name: 'Lightroom', badge: { text: 'Lr', bg: '#001e36', fg: '#31a8ff' } },
+  { name: 'CapCut', badge: { text: 'CC', bg: '#000000', fg: '#ffffff' } },
+  { name: 'Canva', badge: { text: 'Ca', bg: 'linear-gradient(135deg, #00c4cc, #7d2ae8)', fg: '#ffffff' } },
   { name: 'UX Pilot', icon: uxPilot, rounded: true },
   { name: 'Maze', icon: maze },
   { name: 'Miro', icon: miro },
@@ -55,6 +71,15 @@ export default function Tools() {
                   tool.circle ? 'rounded-full' : 'rounded-xl'
                 } ${tool.padded ? 'border-[0.2px] border-black-ink/15 bg-white p-2' : ''}`}
               >
+                {tool.badge ? (
+                  <span
+                    aria-hidden
+                    className="flex size-full items-center justify-center rounded-xl font-syne text-xl font-medium"
+                    style={{ background: tool.badge.bg, color: tool.badge.fg }}
+                  >
+                    {tool.badge.text}
+                  </span>
+                ) : (
                 <img loading="lazy" decoding="async"
                   src={tool.icon}
                   alt={tool.name}
@@ -64,6 +89,7 @@ export default function Tools() {
                     tool.padded ? 'object-contain' : ''
                   }`}
                 />
+                )}
               </div>
               <Micro1 className="text-center">{tool.name}</Micro1>
             </div>

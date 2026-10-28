@@ -7,6 +7,7 @@ import ProjectHeroGlow from '../components/ProjectHeroGlow'
 
 const PROJECT_PAGE_PATHS = [
   '/projects',
+  '/communication',
   '/projects/fine-line-production',
   '/projects/loreal',
   '/projects/angry-birds',

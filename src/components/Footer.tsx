@@ -15,7 +15,10 @@ export default function Footer() {
               Home
             </Button>
             <Button to="/projects" variant="ghost">
-              Projets
+              UX/UI
+            </Button>
+            <Button to="/communication" variant="ghost">
+              Communication
             </Button>
             <Button to="/a-propos-de-moi" variant="ghost">
               À Propos De Moi
