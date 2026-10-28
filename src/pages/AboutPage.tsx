@@ -217,10 +217,10 @@ export default function AboutPage() {
             </p>
             <div className="flex flex-col gap-2">
               <TimelineItem
-                title="Alternance HEIP"
+                title="Alternance OMNES Education"
                 paragraphs={[
-                  "Aujourd'hui, je suis en alternance à HEIP, une université de sciences politiques à Paris, un univers que je ne connaissais pas du tout avant d'y mettre les pieds.",
-                  "Je gère tout le contenu réseaux sociaux : concepts, tournage, montage, veille tendances. Ce n'était pas mon terrain naturel, mais c'est souvent en terrain inconnu que j'apprends le plus.",
+                  "De décembre 2025 à septembre 2026, j'ai fait mon alternance chez OMNES Education, pour HEIP, une université de sciences politiques à Paris, et Sup de Pub. Un univers que je ne connaissais pas du tout avant d'y mettre les pieds.",
+                  "J'ai géré le contenu réseaux sociaux : concepts, tournage, montage, veille tendances. Ce n'était pas mon terrain naturel, mais c'est souvent en terrain inconnu que j'apprends le plus.",
                 ]}
               />
             </div>
