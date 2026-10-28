@@ -6,7 +6,7 @@ import CaseStudyNav from '../components/CaseStudyNav'
 import TagRow from '../components/TagRow'
 import { H1, H2 as SectionTitle, H3, Body1, Micro1 } from '../components/Typography'
 import { VideoMedia } from '../components/communication/VideoCard'
-import { RolePills, fr } from '../components/communication/media'
+import { fr } from '../components/communication/media'
 import { alternance, type Bloc, type Video } from '../data/communication'
 
 /* Laid out like SpotifyPage: back button, centered column, side nav that
@@ -45,7 +45,6 @@ function BlocView({ bloc }: { bloc: Bloc }) {
     <div id={bloc.id} className="flex w-full scroll-mt-28 flex-col items-center gap-4 text-center">
       <H3 className="!text-2xl md:!text-3xl">{bloc.titre}</H3>
       <Micro1>{bloc.sousLigne}</Micro1>
-      <RolePills roles={bloc.roles} className="justify-center" />
       <Body1 className="w-full font-light">{fr(bloc.texte)}</Body1>
       <div className="mt-4 flex w-full flex-col items-center gap-10">
         {bloc.rangees.map((r) => (

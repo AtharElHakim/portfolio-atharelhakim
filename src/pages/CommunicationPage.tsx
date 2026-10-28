@@ -35,7 +35,6 @@ export default function CommunicationPage() {
               title={c.titre}
               meta={c.sousLigne}
               description={fr(c.texte)}
-              roles={c.roles}
               image={c.image}
             />
           ))}
