@@ -30,8 +30,11 @@ export interface CaseStudySection {
 
 export default function CaseStudyNav({
   sections,
+  backTo = '/projects',
 }: {
   sections: CaseStudySection[]
+  /** Listing the "← Projets" button returns to. */
+  backTo?: string
 }) {
   const [activeId, setActiveId] = useState<string | null>(null)
 
@@ -59,7 +62,7 @@ export default function CaseStudyNav({
     <>
       <div className="sticky top-20 z-10 flex items-center px-4 py-2 md:px-12">
         <Link
-          to="/projects"
+          to={backTo}
           className={`flex min-h-11 shrink-0 items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-2 text-sm text-white/85 transition-colors duration-300 hover:text-white ${focusRing}`}
           style={{
             backdropFilter: 'blur(20px)',

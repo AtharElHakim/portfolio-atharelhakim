@@ -1,10 +1,9 @@
 import { useEffect, useRef, useState, type PointerEvent } from 'react'
-import { evenement } from '../../data/communication'
+import { story } from '../../data/communication'
 import { focusRing } from '../Button'
 import { H6 } from '../Typography'
 import { Placeholder, RolePills, claimPlayback, useReducedMotion } from './media'
 
-const { story } = evenement
 const HOLD_MS = 220
 
 /**

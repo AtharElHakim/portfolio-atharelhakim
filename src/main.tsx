@@ -11,6 +11,7 @@ import Layout from './layouts/Layout'
 const HomePage = lazy(() => import('./pages/HomePage'))
 const ProjectsPage = lazy(() => import('./pages/ProjectsPage'))
 const CommunicationPage = lazy(() => import('./pages/CommunicationPage'))
+const CommunicationProjectPage = lazy(() => import('./pages/CommunicationProjectPage'))
 const AboutPage = lazy(() => import('./pages/AboutPage'))
 const ContactPage = lazy(() => import('./pages/ContactPage'))
 const FinelinePage = lazy(() => import('./pages/FinelinePage'))
@@ -28,6 +29,7 @@ createRoot(document.getElementById('root')!).render(
           <Route path="/" element={<HomePage />} />
           <Route path="/projects" element={<ProjectsPage />} />
           <Route path="/communication" element={<CommunicationPage />} />
+          <Route path="/communication/:slug" element={<CommunicationProjectPage />} />
           <Route path="/a-propos-de-moi" element={<AboutPage />} />
           <Route path="/contactez-moi" element={<ContactPage />} />
           <Route path="/projects/fine-line-production" element={<FinelinePage />} />

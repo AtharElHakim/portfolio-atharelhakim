@@ -1,9 +1,10 @@
 import { type CSSProperties } from 'react'
 import { Link } from 'react-router-dom'
 import CategoryTabs from '../components/CategoryTabs'
+import ProjectCard from '../components/ProjectCard'
 import Contact from '../components/Contact'
 import { focusRing } from '../components/Button'
-import { H1, H2, H3, H5, Body1, Body2 } from '../components/Typography'
+import { H1, H2, H3, H5, Body1 } from '../components/Typography'
 import Seo from '../components/Seo'
 import { projects } from '../data/projects'
 
@@ -42,27 +43,6 @@ function ArrowRight() {
         strokeLinejoin="round"
       />
     </svg>
-  )
-}
-
-function ProjectCard({ project }: { project: Project }) {
-  return (
-    <Link
-      to={`/projects/${project.slug}`}
-      className={`group flex flex-col gap-4 rounded-3xl border border-white/10 bg-white/5 p-3 transition-all duration-300 hover:-translate-y-1 hover:border-purple-pale/40 ${focusRing}`}
-    >
-      <div className="h-[220px] w-full overflow-hidden rounded-2xl">
-        <img loading="lazy" decoding="async"
-          src={project.image}
-          alt={project.title}
-          className="size-full object-cover transition-transform duration-500 group-hover:scale-105"
-        />
-      </div>
-      <div className="flex flex-col items-start gap-2 px-3 pb-3">
-        <H3>{project.title}</H3>
-        <Body2>{project.description}</Body2>
-      </div>
-    </Link>
   )
 }
 
@@ -146,7 +126,13 @@ function ProjectCategorySection({
           }`}
         >
           {rest.map((project) => (
-            <ProjectCard key={project.slug} project={project} />
+            <ProjectCard
+              key={project.slug}
+              to={`/projects/${project.slug}`}
+              title={project.title}
+              description={project.description}
+              image={project.image}
+            />
           ))}
         </div>
       )}

@@ -84,9 +84,9 @@ function Thumb({ video, previewRef }: { video: Video; previewRef?: React.Ref<HTM
   )
 }
 
-function Meta({ video }: { video: Video }) {
+function Meta({ video, episodesOpenByDefault = false }: { video: Video; episodesOpenByDefault?: boolean }) {
   const href = coverUrl(video)
-  const [episodesOpen, setEpisodesOpen] = useState(false)
+  const [episodesOpen, setEpisodesOpen] = useState(episodesOpenByDefault)
   const listId = useId()
   return (
     <div className="flex flex-1 flex-col items-start gap-2 px-1 pb-1">
@@ -262,8 +262,22 @@ function LinkVideo({ video, wide }: { video: Video; wide?: boolean }) {
   )
 }
 
-export default function VideoCard({ video, wide }: { video: Video; wide?: boolean }) {
+/** The clickable thumbnail alone: opens the post if there's a link, else plays on the page. */
+export function VideoMedia({ video, wide }: { video: Video; wide?: boolean }) {
   const Media = coverUrl(video) ? LinkVideo : SiteVideo
+  return <Media video={video} wide={wide} />
+}
+
+export default function VideoCard({
+  video,
+  wide,
+  episodesOpenByDefault,
+}: {
+  video: Video
+  wide?: boolean
+  /** Project pages show a series' episode list unfolded. */
+  episodesOpenByDefault?: boolean
+}) {
   return (
     <article
       id={video.id}
@@ -271,8 +285,8 @@ export default function VideoCard({ video, wide }: { video: Video; wide?: boolea
         wide ? 'lg:flex-row lg:items-center lg:gap-8 lg:p-4' : ''
       }`}
     >
-      <Media video={video} wide={wide} />
-      <Meta video={video} />
+      <VideoMedia video={video} wide={wide} />
+      <Meta video={video} episodesOpenByDefault={episodesOpenByDefault} />
     </article>
   )
 }

@@ -230,7 +230,7 @@ export default function NavBar() {
   const isHomeActive = location.pathname === '/'
   const isAboutActive = location.pathname === '/a-propos-de-moi'
   const isProjectsActive = location.pathname.startsWith('/projects')
-  const isCommunicationActive = location.pathname === '/communication'
+  const isCommunicationActive = location.pathname.startsWith('/communication')
   const [mobileOpen, setMobileOpen] = useState(false)
 
   useEffect(() => {
