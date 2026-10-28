@@ -1,74 +1,21 @@
-import { useEffect, useRef, useState, type CSSProperties } from 'react'
+import { useEffect, type CSSProperties } from 'react'
 import { useLocation } from 'react-router-dom'
 import Seo from '../components/Seo'
 import Contact from '../components/Contact'
 import CaseStudyNav from '../components/CaseStudyNav'
-import { focusRing } from '../components/Button'
 import TagRow from '../components/TagRow'
 import { H1, H2 as SectionTitle, H3, Body1, Micro1 } from '../components/Typography'
 import { VideoMedia } from '../components/communication/VideoCard'
 import { fr } from '../components/communication/media'
 import { alternance, type Bloc, type Video } from '../data/communication'
 
-/* Laid out like SpotifyPage: back button, centered column. Instead of the
-   side nav, a sticky pill bar (same look as CategoryTabs) lists the 4
-   positions and follows the scroll. All copy and media live in
-   src/data/communication.ts: edit that file, not this one. */
+/* Laid out like SpotifyPage: back button, centered column, side nav that
+   follows the scroll (one entry per section). All copy
+   and media live in src/data/communication.ts: edit that file, not this one. */
 
 const SECTION = 'flex flex-col items-center gap-10 p-8 md:py-16 md:px-[var(--nav-edge-w)]'
 
-/** Sticky bar of the 4 positions: highlights the section in view, click scrolls to it. */
-function PositionsNav() {
-  const [activeId, setActiveId] = useState(alternance.sections[0].id)
-  const navRef = useRef<HTMLElement>(null)
-
-  // On narrow screens the bar scrolls sideways: keep the active tab visible.
-  useEffect(() => {
-    const nav = navRef.current
-    const tab = nav?.querySelector<HTMLElement>('[aria-current="true"]')
-    if (nav && tab) nav.scrollTo({ left: tab.offsetLeft - (nav.clientWidth - tab.offsetWidth) / 2, behavior: 'smooth' })
-  }, [activeId])
-
-  useEffect(() => {
-    const els = alternance.sections
-      .map((s) => document.getElementById(s.id))
-      .filter((el): el is HTMLElement => el !== null)
-    const observer = new IntersectionObserver(
-      (entries) => {
-        for (const e of entries) if (e.isIntersecting) setActiveId(e.target.id)
-      },
-      { rootMargin: '-40% 0px -55% 0px', threshold: 0 },
-    )
-    els.forEach((el) => observer.observe(el))
-    return () => observer.disconnect()
-  }, [])
-
-  return (
-    <div className="sticky top-[8.5rem] z-10 flex justify-center px-4 md:top-20 md:px-[var(--nav-edge-w)]">
-      <nav
-        ref={navRef}
-        aria-label="Postes"
-        className="flex max-w-full gap-1 overflow-x-auto rounded-full border border-white/15 bg-black-soft/90 p-1 backdrop-blur-[20px] [scrollbar-width:none]"
-      >
-        {alternance.sections.map((s) => {
-          const active = s.id === activeId
-          return (
-            <a
-              key={s.id}
-              href={`#${s.id}`}
-              aria-current={active ? 'true' : undefined}
-              className={`shrink-0 whitespace-nowrap rounded-full px-4 py-2 text-sm font-medium transition-colors duration-200 md:px-5 md:text-base ${focusRing} ${
-                active ? 'bg-purple text-white' : 'text-white/60 hover:text-white'
-              }`}
-            >
-              {s.titre}
-            </a>
-          )
-        })}
-      </nav>
-    </div>
-  )
-}
+const navSections = alternance.sections.map((s) => ({ id: s.id, label: s.titre }))
 
 /** Desktop thumbnails per line: up to 6 on one line, more are split into two balanced lines (7 → 4 + 3). */
 const perLine = (n: number) => (n <= 6 ? n : Math.ceil(n / 2))
@@ -95,7 +42,7 @@ function Rangee({ videos }: { videos: Video[] }) {
 
 function BlocView({ bloc, numero }: { bloc: Bloc; numero: number }) {
   return (
-    <div id={bloc.id} className="flex w-full scroll-mt-44 flex-col items-center gap-4 text-center">
+    <div id={bloc.id} className="flex w-full scroll-mt-28 flex-col items-center gap-4 text-center">
       <H3 className="!text-2xl md:!text-3xl">
         <span className="mr-2 text-purple-pale/70">{numero}.</span>
         {bloc.titre}
@@ -126,7 +73,7 @@ export default function AlternanceOmnesPage() {
         description={alternance.sousTitre}
         path={`/communication/${alternance.slug}`}
       />
-      <CaseStudyNav sections={[]} backTo="/communication" />
+      <CaseStudyNav sections={navSections} backTo="/communication" labelMaxWidth="max-w-[160px]" />
 
       {/* Hero */}
       <div id="intro" className="flex flex-col items-center gap-6 px-8 pb-8 pt-4 md:pb-16 md:pt-10 md:px-[var(--nav-edge-w)]">
@@ -140,10 +87,8 @@ export default function AlternanceOmnesPage() {
         </div>
       </div>
 
-      <PositionsNav />
-
       {alternance.sections.map((s) => (
-        <div key={s.id} id={s.id} className={`${SECTION} scroll-mt-32`}>
+        <div key={s.id} id={s.id} className={SECTION}>
           <div className="flex w-full flex-col items-center gap-4 text-center">
             <SectionTitle className="!text-purple-pale">{s.titre}</SectionTitle>
             <Body1 className="w-full font-light">{fr(s.texte)}</Body1>
