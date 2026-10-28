@@ -49,7 +49,7 @@ export default function Projects() {
     >
       <div className="relative flex w-full max-w-[1440px] flex-col items-center gap-6">
         <div className="animate-fade-in-up flex flex-col items-center gap-4 text-center">
-          <H2>Projets</H2>
+          <H2>UX/UI</H2>
           <Body1 className="font-light">
             Découvrez mes projets UX/UI les plus récents
           </Body1>
