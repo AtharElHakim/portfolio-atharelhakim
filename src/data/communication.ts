@@ -126,7 +126,7 @@ export const alternance = {
   sections: [
     {
       id: 'conception-realisation-montage',
-      titre: 'Conception, réalisation et montage',
+      titre: 'Conception, Réalisation Et Montage',
       texte: "Les projets que j'ai portés de l'idée au montage.",
       blocs: [
         {
@@ -183,7 +183,7 @@ export const alternance = {
     },
     {
       id: 'face-camera',
-      titre: 'Face caméra',
+      titre: 'Face Caméra',
       texte: "Les contenus où je suis à l'écran, comme présentatrice ou intervieweuse.",
       blocs: [
         {
@@ -208,7 +208,7 @@ export const alternance = {
     },
     {
       id: 'realisation-montage',
-      titre: 'Réalisation et montage',
+      titre: 'Réalisation Et Montage',
       texte: "J'ai tourné et monté, à partir d'un concept défini avec l'équipe.",
       blocs: [
         {
