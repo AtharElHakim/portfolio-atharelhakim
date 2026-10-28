@@ -22,6 +22,10 @@ function ArrowLeftIcon() {
   )
 }
 
+/** Glues short French words to the next word, so a wrapped label never
+ *  leaves "de", "et", "à"… alone at the end of a line. */
+const keepShortWords = (text = '') => text.replace(/(^|\s)(de|du|des|et|à|au|aux|un|une|le|la|les|en|par)\s/gi, '$1$2 ')
+
 export interface CaseStudySection {
   id: string
   label: string
@@ -31,15 +35,15 @@ export interface CaseStudySection {
 export default function CaseStudyNav({
   sections,
   backTo = '/projects',
-  labelMaxWidth,
+  labelMaxWidth = 'max-w-[160px]',
 }: {
   sections: CaseStudySection[]
   /** Listing the "← Projets" button returns to. */
   backTo?: string
-  /** Lets long labels wrap at this width (e.g. 'max-w-[160px]') instead of staying on one line. */
+  /** Long labels wrap at this width so they never run into the content column. */
   labelMaxWidth?: string
 }) {
-  const labelWrap = labelMaxWidth ? `text-right ${labelMaxWidth}` : 'whitespace-nowrap'
+  const labelWrap = `text-left ${labelMaxWidth}`
   const [activeId, setActiveId] = useState<string | null>(null)
 
   useEffect(() => {
@@ -79,16 +83,16 @@ export default function CaseStudyNav({
       </div>
 
       {createPortal(
-        <div className="pointer-events-none fixed right-6 top-1/2 z-50 hidden -translate-y-1/2 lg:block xl:right-10">
-          <nav className="pointer-events-auto flex flex-col items-end gap-2 border-r border-white/15 pr-4">
+        <div className="pointer-events-none fixed left-6 top-1/2 z-50 hidden -translate-y-1/2 lg:block xl:left-10">
+          <nav className="pointer-events-auto flex flex-col items-start gap-2 border-l border-white/15 pl-4">
             {sections.map((section, i) => {
               const isActive = section.id === activeId
               const showGroup = section.group && section.group !== sections[i - 1]?.group
               return (
-                <div key={section.id} className="flex flex-col items-end">
+                <div key={section.id} className="flex flex-col items-start">
                   {showGroup && (
                     <p className={`mb-2 mt-2 ${labelWrap} text-xs font-semibold uppercase tracking-widest text-purple-pale/70 first:mt-0`}>
-                      {section.group}
+                      {keepShortWords(section.group)}
                     </p>
                   )}
                   <a
@@ -97,7 +101,7 @@ export default function CaseStudyNav({
                       isActive ? 'font-medium text-white' : 'text-white/50'
                     }`}
                   >
-                    {section.label}
+                    {keepShortWords(section.label)}
                   </a>
                 </div>
               )

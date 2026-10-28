@@ -73,7 +73,7 @@ export default function AlternanceOmnesPage() {
         description={alternance.sousTitre}
         path={`/communication/${alternance.slug}`}
       />
-      <CaseStudyNav sections={navSections} backTo="/communication" labelMaxWidth="max-w-[160px]" />
+      <CaseStudyNav sections={navSections} backTo="/communication" />
 
       {/* Hero */}
       <div id="intro" className="flex flex-col items-center gap-6 px-8 pb-8 pt-4 md:pb-16 md:pt-10 md:px-[var(--nav-edge-w)]">
