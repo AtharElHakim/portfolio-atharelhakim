@@ -1,6 +1,11 @@
 import figma from '../assets/tools/figma.webp'
 import webflow from '../assets/tools/webflow.webp'
 import adobeCC from '../assets/tools/adobe-cc.webp'
+import premierePro from '../assets/tools/premiere-pro.svg'
+import afterEffects from '../assets/tools/after-effects.svg'
+import lightroom from '../assets/tools/lightroom.svg'
+import capcut from '../assets/tools/capcut.svg'
+import canva from '../assets/tools/canva.svg'
 import uxPilot from '../assets/tools/uxpilot.webp'
 import maze from '../assets/tools/maze.webp'
 import miro from '../assets/tools/miro.svg'
@@ -33,11 +38,11 @@ const tools: Tool[] = [
   { name: 'Figma', icon: figma },
   { name: 'Webflow', icon: webflow },
   { name: 'Adobe Creative Cloud', icon: adobeCC },
-  { name: 'Premiere Pro', badge: { text: 'Pr', bg: '#00005b', fg: '#9999ff' } },
-  { name: 'After Effects', badge: { text: 'Ae', bg: '#00005b', fg: '#9999ff' } },
-  { name: 'Lightroom', badge: { text: 'Lr', bg: '#001e36', fg: '#31a8ff' } },
-  { name: 'CapCut', badge: { text: 'CC', bg: '#000000', fg: '#ffffff' } },
-  { name: 'Canva', badge: { text: 'Ca', bg: 'linear-gradient(135deg, #00c4cc, #7d2ae8)', fg: '#ffffff' } },
+  { name: 'Premiere Pro', icon: premierePro },
+  { name: 'After Effects', icon: afterEffects },
+  { name: 'Lightroom', icon: lightroom },
+  { name: 'CapCut', icon: capcut },
+  { name: 'Canva', icon: canva, padded: true },
   { name: 'UX Pilot', icon: uxPilot, rounded: true },
   { name: 'Maze', icon: maze },
   { name: 'Miro', icon: miro },
@@ -83,11 +88,9 @@ export default function Tools() {
                 <img loading="lazy" decoding="async"
                   src={tool.icon}
                   alt={tool.name}
-                  className={`size-full object-cover ${
+                  className={`size-full ${tool.padded ? 'object-contain' : 'object-cover'} ${
                     tool.rounded ? 'rounded-xl' : ''
-                  } ${tool.circle ? 'rounded-full' : ''} ${
-                    tool.padded ? 'object-contain' : ''
-                  }`}
+                  } ${tool.circle ? 'rounded-full' : ''}`}
                 />
                 )}
               </div>
