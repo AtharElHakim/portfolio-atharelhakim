@@ -21,7 +21,7 @@ export default function Hero() {
         {/* Compact block like the reference: smaller question centred
             above the two buttons, sitting under the paragraph. */}
         <div
-          className="animate-fade-in-up flex w-fit flex-col items-center gap-4 lg:self-center"
+          className="animate-fade-in-up flex w-fit flex-col items-center gap-6 lg:self-center"
           style={{ animationDelay: '120ms' }}
         >
           <H2 className="!w-auto whitespace-nowrap md:!text-[40px]">Prêt à explorer ?</H2>
