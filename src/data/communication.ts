@@ -106,7 +106,7 @@ export const cartesCom: CarteCom[] = [
     titre: 'Alternance OMNES Education',
     sousLigne: 'HEIP · Sup de Pub',
     texte:
-      'Neuf mois de création de contenu pour les réseaux sociaux de deux écoles : concept, tournage, montage et face caméra.',
+      'Création de contenu pour les réseaux sociaux de deux écoles : concept, tournage, montage et face caméra.',
     roles: ['Concept', 'Réalisation', 'Montage', 'Face caméra'],
     image: `${POSTERS}on-t-attend-a-heip.webp`,
   },
@@ -119,10 +119,10 @@ export const cartesCom: CarteCom[] = [
 export const alternance = {
   slug: 'alternance-omnes',
   titre: 'Alternance OMNES Education',
-  sousTitre: 'Chargée de communication et création de contenu pour HEIP et Sup de Pub',
+  sousTitre: 'Chargée de communication et de création de contenu pour HEIP et Sup de Pub',
   infos: ['Déc. 2025 – sept. 2026', 'Instagram, TikTok, LinkedIn, site web'],
   intro:
-    "En alternance au sein du groupe OMNES Education, j'ai créé des contenus pour les réseaux sociaux et le site web de deux écoles : HEIP, école de sciences politiques et de relations internationales, et Sup de Pub, école de communication et de création. Selon les projets, j'ai imaginé les formats, tourné, monté ou présenté face caméra. Les vidéos sont classées selon mon rôle.",
+    "En alternance au sein du groupe OMNES Education, j'ai créé des contenus pour les réseaux sociaux et le site web de deux écoles : HEIP, école de sciences politiques et de relations internationales, et Sup de Pub, école de communication et de création. Selon les projets, j'ai imaginé les formats, tourné, monté ou présenté face caméra. Les vidéos sont classées par rôle.",
   sections: [
     {
       id: 'conception-realisation-montage',
@@ -135,7 +135,7 @@ export const alternance = {
           sousLigne: 'Sup de Pub · TikTok',
           roles: ['Face caméra', 'Concept', 'Script', 'Réalisation', 'Montage'],
           texte:
-            "Une série TikTok de conseils de tournage et de montage pour Sup de Pub. J'ai choisi les sujets, écrit les textes, tourné, présenté et monté chaque épisode, en reprenant à chaque fois l'accroche du précédent.",
+            "Une série TikTok de conseils de tournage et de montage pour Sup de Pub. J'ai choisi les sujets, écrit les textes, tourné, présenté et monté chaque épisode.",
           rangees: [
             [
               enLigne('tips-3-choses', '3 choses à éviter', 'https://vt.tiktok.com/ZSg4HYjqY/'),
@@ -152,7 +152,7 @@ export const alternance = {
           sousLigne: 'HEIP · Sup de Pub · Instagram',
           roles: ['Concept', 'Direction artistique', 'Réalisation', 'Montage'],
           texte:
-            "Des pubs courtes pour donner envie aux futurs étudiants de candidater à HEIP et à Sup de Pub. Chaque pub existe en 9:16 et en 1:1, pour s'adapter à chaque plateforme.",
+            "Des Meta ads courtes pour donner envie aux futurs étudiants de candidater à HEIP et à Sup de Pub.",
           rangees: [
             [
               fichier('rejoignez-nous', 'Rejoignez-nous'),
@@ -192,7 +192,7 @@ export const alternance = {
           sousLigne: 'Sup de Pub · Instagram',
           roles: ['Concept', 'Face caméra', 'Interview', 'Photo et vidéo'],
           texte:
-            'La soirée de projection des films des étudiants en audiovisuel de Sup de Pub, couverte en deux formats : une story immersive pour vivre la soirée en direct, et un micro-trottoir où les familles devaient deviner le titre du film de leur proche.',
+            'Une soirée, deux formats : une story immersive pour vivre la projection en direct, et un micro-trottoir où les familles devinent le titre du film de leur proche.',
           rangees: [
             [
               enLigne(
@@ -217,7 +217,7 @@ export const alternance = {
           sousLigne: 'HEIP · Instagram et TikTok',
           roles: ['Réalisation', 'Montage', 'Sous-titrage'],
           texte:
-            "Une série d'interviews avec Fabrice Rizzoli, professeur de géopolitique des criminalités à HEIP. En moins de 2 minutes, chaque épisode explique un mécanisme du crime organisé : blanchiment, corruption, ports…",
+            "Une série d'interviews avec Fabrice Rizzoli, professeur de géopolitique des criminalités à HEIP. Chaque épisode explique un mécanisme du crime organisé : blanchiment, corruption, ports…",
           rangees: [
             [
               enLigne('rizzoli-blanchiment', 'Le blanchiment', 'https://www.instagram.com/reel/DaIctxLgY0y/'),
@@ -251,7 +251,7 @@ export const alternance = {
           sousLigne: 'HEIP · Instagram',
           roles: ['Réalisation', 'Montage'],
           texte:
-            "Des portraits d'étudiants et d'une diplômée de HEIP engagés dans la vie publique ou associative, et un sujet d'actualité sur la FIFA et la politique.",
+            "Des interviews d'étudiants et d'une diplômée de HEIP engagés dans la vie publique ou associative, et un sujet d'actualité sur la FIFA et la politique.",
           rangees: [
             [
               enLigne('barrio-14', 'Barrio 14', 'https://www.instagram.com/reel/DVs4uHAji-Y/'),
@@ -268,7 +268,7 @@ export const alternance = {
     {
       id: 'montage',
       titre: 'Montage',
-      texte: "J'ai monté et sous-titré à partir des rushs de l'équipe.",
+      texte: "J'ai monté à partir des rushs de l'équipe.",
       blocs: [
         {
           id: 'heip-london',
