@@ -43,11 +43,14 @@ function Rangee({ videos }: { videos: Video[] }) {
 function BlocView({ bloc, numero }: { bloc: Bloc; numero: number }) {
   return (
     <div id={bloc.id} className="flex w-full scroll-mt-28 flex-col items-center gap-4 text-center">
-      <H3 className="!text-2xl md:!text-3xl">
-        <span className="mr-2 text-purple-pale/70">{numero}.</span>
-        {bloc.titre}
-      </H3>
-      <Micro1>{bloc.sousLigne}</Micro1>
+      {/* Title + its « école · plateforme » line read as one unit: 8px apart, 16px before the text. */}
+      <div className="flex flex-col items-center gap-2">
+        <H3 className="!text-2xl md:!text-3xl">
+          <span className="mr-2 text-purple-pale/70">{numero}.</span>
+          {bloc.titre}
+        </H3>
+        <Micro1>{bloc.sousLigne}</Micro1>
+      </div>
       <Body1 className="w-full font-light">{fr(bloc.texte)}</Body1>
       <div className="mt-4 flex w-full flex-col items-center gap-10">
         {bloc.rangees.map((r) => (
