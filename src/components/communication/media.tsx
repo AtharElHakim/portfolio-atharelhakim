@@ -89,9 +89,9 @@ export const useFinePointer = () => useMediaQuery('(hover: hover) and (pointer: 
 
 /* ---------------- Small shared bits ---------------- */
 
-export function RolePills({ roles }: { roles: string[] }) {
+export function RolePills({ roles, className = '' }: { roles: string[]; className?: string }) {
   return (
-    <ul className="flex flex-wrap gap-1.5">
+    <ul className={`flex flex-wrap gap-1.5 ${className}`}>
       {roles.map((r) => (
         <li
           key={r}
@@ -111,3 +111,7 @@ export function PlayGlyph({ className = 'size-4' }: { className?: string }) {
     </svg>
   )
 }
+
+/** French typography: a non-breaking space before « : », « ? », « ! » and « ; »,
+ *  so the punctuation never wraps onto its own line. */
+export const fr = (text: string) => text.replace(/ ([:?!;])/g, ' $1')

@@ -31,11 +31,15 @@ export interface CaseStudySection {
 export default function CaseStudyNav({
   sections,
   backTo = '/projects',
+  labelMaxWidth,
 }: {
   sections: CaseStudySection[]
   /** Listing the "← Projets" button returns to. */
   backTo?: string
+  /** Lets long labels wrap at this width (e.g. 'max-w-[160px]') instead of staying on one line. */
+  labelMaxWidth?: string
 }) {
+  const labelWrap = labelMaxWidth ? `text-right ${labelMaxWidth}` : 'whitespace-nowrap'
   const [activeId, setActiveId] = useState<string | null>(null)
 
   useEffect(() => {
@@ -83,13 +87,13 @@ export default function CaseStudyNav({
               return (
                 <div key={section.id} className="flex flex-col items-end">
                   {showGroup && (
-                    <p className="mb-2 mt-2 whitespace-nowrap text-xs font-semibold uppercase tracking-widest text-purple-pale/70 first:mt-0">
+                    <p className={`mb-2 mt-2 ${labelWrap} text-xs font-semibold uppercase tracking-widest text-purple-pale/70 first:mt-0`}>
                       {section.group}
                     </p>
                   )}
                   <a
                     href={`#${section.id}`}
-                    className={`whitespace-nowrap text-sm transition-colors duration-300 hover:text-white ${
+                    className={`${labelWrap} text-sm transition-colors duration-300 hover:text-white ${
                       isActive ? 'font-medium text-white' : 'text-white/50'
                     }`}
                   >
