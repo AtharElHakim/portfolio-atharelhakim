@@ -127,7 +127,7 @@ export const alternance = {
   sections: [
     {
       id: 'conception-realisation-montage',
-      titre: 'Conception, Réalisation Et Montage',
+      titre: 'Conception + Réalisation + Montage',
       texte: "Les projets que j'ai portés de l'idée au montage.",
       blocs: [
         {
