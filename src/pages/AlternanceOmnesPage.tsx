@@ -88,7 +88,7 @@ export default function AlternanceOmnesPage() {
       {alternance.sections.map((s) => (
         <div key={s.id} id={s.id} className={SECTION}>
           <div className="flex w-full flex-col items-center gap-4 text-center">
-            <SectionTitle>{s.titre}</SectionTitle>
+            <SectionTitle className="!text-purple-pale">{s.titre}</SectionTitle>
             <Body1 className="w-full font-light">{fr(s.texte)}</Body1>
           </div>
           <div className="flex w-full flex-col items-center gap-20">
