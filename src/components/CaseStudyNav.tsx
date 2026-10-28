@@ -78,7 +78,8 @@ export default function CaseStudyNav({
         </Link>
       </div>
 
-      {createPortal(
+      {sections.length > 0 &&
+        createPortal(
         <div className="pointer-events-none fixed right-6 top-1/2 z-50 hidden -translate-y-1/2 lg:block xl:right-10">
           <nav className="pointer-events-auto flex flex-col items-end gap-2 border-r border-white/15 pr-4">
             {sections.map((section, i) => {
