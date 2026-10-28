@@ -33,7 +33,6 @@ export default function CommunicationPage() {
               key={c.slug}
               to={`/communication/${c.slug}`}
               title={c.titre}
-              meta={c.sousLigne}
               description={fr(c.texte)}
               image={c.image}
               imagePosition={c.imagePosition}
