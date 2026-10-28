@@ -19,25 +19,11 @@ const navSections = alternance.sections.flatMap((s) =>
   s.blocs.map((b) => ({ id: b.id, label: b.titre, group: s.titre })),
 )
 
-const sameRoles = (a: string[], b: string[]) => a.length === b.length && a.every((r, i) => r === b[i])
-
-/** One thumbnail + its short title, plus its own role pills when they differ from the block's. */
-function Episode({ video, blocRoles }: { video: Video; blocRoles: string[] }) {
-  const ownRoles = video.roles && !sameRoles(video.roles, blocRoles) ? video.roles : undefined
-  return (
-    <div className="flex flex-col items-center gap-2 text-center">
-      <VideoMedia video={video} />
-      <p className="text-sm font-medium leading-5 text-white/85">{fr(video.titre)}</p>
-      {ownRoles && <RolePills roles={ownRoles} className="justify-center" />}
-    </div>
-  )
-}
-
 /** Desktop thumbnails per line: up to 6 on one line, more are split into two balanced lines (7 → 4 + 3). */
 const perLine = (n: number) => (n <= 6 ? n : Math.ceil(n / 2))
 
 /** A row holds a single format: 9:16 thumbnails stay centered (2 per line on mobile), 16:9 spans the column. */
-function Rangee({ videos, blocRoles }: { videos: Video[]; blocRoles: string[] }) {
+function Rangee({ videos }: { videos: Video[] }) {
   const wide = videos[0]?.format === '16:9'
   const k = perLine(videos.length)
   return (
@@ -50,7 +36,7 @@ function Rangee({ videos, blocRoles }: { videos: Video[]; blocRoles: string[] })
       }`}
     >
       {videos.map((v) => (
-        <Episode key={v.id} video={v} blocRoles={blocRoles} />
+        <VideoMedia key={v.id} video={v} />
       ))}
     </div>
   )
@@ -65,7 +51,7 @@ function BlocView({ bloc }: { bloc: Bloc }) {
       <Body1 className="w-full font-light">{fr(bloc.texte)}</Body1>
       <div className="mt-4 flex w-full flex-col items-center gap-10">
         {bloc.rangees.map((r) => (
-          <Rangee key={r[0].id} videos={r} blocRoles={bloc.roles} />
+          <Rangee key={r[0].id} videos={r} />
         ))}
       </div>
     </div>
