@@ -22,7 +22,7 @@ export default function Hero() {
           className="animate-fade-in-up flex flex-col items-start justify-center gap-6"
           style={{ animationDelay: '120ms' }}
         >
-          <H2 className="!w-auto whitespace-nowrap text-left">Prêt à explorer ?</H2>
+          <H2 className="!w-auto whitespace-nowrap text-left">Prêt(e) à explorer ?</H2>
           <div className="flex flex-wrap items-center gap-3">
             <Button to="/projects">UX/UI</Button>
             <Button to="/communication">Créations de Contenu</Button>
