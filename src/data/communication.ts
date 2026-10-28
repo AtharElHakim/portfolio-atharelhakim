@@ -209,7 +209,7 @@ export const alternance = {
     },
     {
       id: 'realisation-montage',
-      titre: 'Réalisation Et Montage',
+      titre: 'Réalisation + Montage',
       texte: "J'ai tourné et monté, à partir d'un concept défini avec l'équipe.",
       blocs: [
         {
