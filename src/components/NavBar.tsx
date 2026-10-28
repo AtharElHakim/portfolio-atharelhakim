@@ -285,7 +285,7 @@ export default function NavBar() {
           <span className="font-syne text-lg leading-6 text-white">
             Athar El Hakim
           </span>
-          <Micro1>UX/UI Designer & Créatrice de contenu</Micro1>
+          <Micro1>UX/UI Designer & Créatrice de Contenu</Micro1>
         </Link>
 
         <nav

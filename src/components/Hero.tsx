@@ -25,7 +25,7 @@ export default function Hero() {
           <H2 className="!w-auto whitespace-nowrap text-left">Prêt à explorer ?</H2>
           <div className="flex flex-wrap items-center gap-3">
             <Button to="/projects">UX/UI</Button>
-            <Button to="/communication">Créations de contenu</Button>
+            <Button to="/communication">Créations de Contenu</Button>
           </div>
         </div>
       </div>
