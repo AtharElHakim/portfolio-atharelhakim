@@ -328,7 +328,7 @@ export const accueil = {
   titre: 'Communication & contenus',
   texte: 'Reels, interviews et séries réalisés pour HEIP et Sup de Pub.',
   /** The 3 blocks shown on the homepage, by id: each links to its block on the page. */
-  blocs: ['campagnes-acquisition', 'projection-courts-metrages', 'fabrice-rizzoli']
+  blocs: ['campagnes-acquisition', 'projection-courts-metrages', 'tips-tournage-montage']
     .map((id) => allBlocs.find((b) => b.id === id))
     .filter((b): b is Bloc => Boolean(b)),
 }
