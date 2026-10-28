@@ -135,6 +135,39 @@ p, h1, h2, h3 {
   animation: fade-in-up 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
+/* Mobile « Mes Outils » strip: the track holds the list twice and slides by
+   half its width (one copy + one gap), so the loop never jumps. */
+@keyframes tools-marquee {
+  to {
+    transform: translateX(calc(-50% - 0.5rem));
+  }
+}
+
+.tools-marquee {
+  mask-image: linear-gradient(to right, transparent, #000 10%, #000 90%, transparent);
+}
+
+.tools-marquee-track {
+  animation: tools-marquee 40s linear infinite;
+}
+
+.tools-marquee:active .tools-marquee-track {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tools-marquee {
+    overflow-x: auto;
+    mask-image: none;
+  }
+  .tools-marquee-track {
+    animation: none;
+  }
+  .tools-marquee-track > [aria-hidden='true'] {
+    display: none;
+  }
+}
+
 @keyframes float-blob {
   0%,
   100% {

@@ -60,42 +60,64 @@ const tools: Tool[] = [
   { name: 'GitHub', icon: github },
 ]
 
+/** One logo + its name. `decorative` = duplicate copy in the mobile loop (hidden from screen readers). */
+function ToolTile({ tool, decorative = false }: { tool: Tool; decorative?: boolean }) {
+  return (
+    <div
+      aria-hidden={decorative || undefined}
+      className="flex h-[101px] w-[100px] shrink-0 flex-col items-center gap-2"
+    >
+      <div
+        className={`flex h-[57px] w-[58px] items-center justify-center shadow-sm ${
+          tool.circle ? 'rounded-full' : 'rounded-xl'
+        } ${tool.padded ? 'border-[0.2px] border-black-ink/15 bg-white p-2' : ''}`}
+      >
+        {tool.badge ? (
+          <span
+            aria-hidden
+            className="flex size-full items-center justify-center rounded-xl font-syne text-xl font-medium"
+            style={{ background: tool.badge.bg, color: tool.badge.fg }}
+          >
+            {tool.badge.text}
+          </span>
+        ) : (
+        <img loading="lazy" decoding="async"
+          src={tool.icon}
+          alt={decorative ? '' : tool.name}
+          className={`size-full ${tool.padded ? 'object-contain' : 'object-cover'} ${
+            tool.rounded ? 'rounded-xl' : ''
+          } ${tool.circle ? 'rounded-full' : ''}`}
+        />
+        )}
+      </div>
+      <Micro1 className="text-center">{tool.name}</Micro1>
+    </div>
+  )
+}
+
 export default function Tools() {
   return (
     <section className="relative flex flex-col items-center gap-10 p-8 md:py-16 md:px-[var(--nav-edge-w)]">
       <div className="relative flex w-full max-w-[1440px] flex-col items-center gap-8">
         <H2>Mes Outils</H2>
-        <div className="flex max-w-[996px] flex-wrap items-start justify-center gap-x-4 gap-y-6 px-4 md:px-8">
+
+        {/* Mobile: one line of logos scrolling on a loop. The list is rendered
+            twice and the track slides by half its width, so the loop is seamless.
+            Paused on touch; static, swipeable row when reduced motion is on. */}
+        <div className="tools-marquee w-[calc(100%+4rem)] overflow-hidden md:hidden">
+          <div className="tools-marquee-track flex w-max gap-4">
+            {tools.map((tool) => (
+              <ToolTile key={tool.name} tool={tool} />
+            ))}
+            {tools.map((tool) => (
+              <ToolTile key={`${tool.name}-loop`} tool={tool} decorative />
+            ))}
+          </div>
+        </div>
+
+        <div className="hidden max-w-[996px] flex-wrap items-start justify-center gap-x-4 gap-y-6 px-4 md:flex md:px-8">
           {tools.map((tool) => (
-            <div
-              key={tool.name}
-              className="flex h-[101px] w-[100px] flex-col items-center gap-2"
-            >
-              <div
-                className={`flex h-[57px] w-[58px] items-center justify-center shadow-sm ${
-                  tool.circle ? 'rounded-full' : 'rounded-xl'
-                } ${tool.padded ? 'border-[0.2px] border-black-ink/15 bg-white p-2' : ''}`}
-              >
-                {tool.badge ? (
-                  <span
-                    aria-hidden
-                    className="flex size-full items-center justify-center rounded-xl font-syne text-xl font-medium"
-                    style={{ background: tool.badge.bg, color: tool.badge.fg }}
-                  >
-                    {tool.badge.text}
-                  </span>
-                ) : (
-                <img loading="lazy" decoding="async"
-                  src={tool.icon}
-                  alt={tool.name}
-                  className={`size-full ${tool.padded ? 'object-contain' : 'object-cover'} ${
-                    tool.rounded ? 'rounded-xl' : ''
-                  } ${tool.circle ? 'rounded-full' : ''}`}
-                />
-                )}
-              </div>
-              <Micro1 className="text-center">{tool.name}</Micro1>
-            </div>
+            <ToolTile key={tool.name} tool={tool} />
           ))}
         </div>
       </div>
