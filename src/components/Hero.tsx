@@ -25,11 +25,11 @@ export default function Hero() {
           style={{ animationDelay: '120ms' }}
         >
           <H2 className="!w-auto whitespace-nowrap !text-2xl md:!text-3xl">Prêt à explorer ?</H2>
-          {/* Equal-width buttons: an auto-sized grid with 1fr columns sizes both
-              to the longer label. Stacked on phones, side by side from 1024px. */}
-          <div className="inline-grid grid-cols-1 gap-3 lg:grid-cols-[1fr_1fr] lg:gap-4">
-            <Button to="/projects" className="w-full !px-4 min-[380px]:!px-5 sm:!px-6 [&_p]:!whitespace-nowrap">Projets UX/UI</Button>
-            <Button to="/communication" className="w-full !px-4 min-[380px]:!px-5 sm:!px-6 [&_p]:!whitespace-nowrap">Créations de Contenu</Button>
+          {/* Equal-width buttons: same fixed width (fits the longer label), side by
+              side when there's room, stacked when there isn't. */}
+          <div className="flex flex-wrap justify-center gap-3 sm:gap-4">
+            <Button to="/projects" className="w-60 !px-4 [&_p]:!whitespace-nowrap">Projets UX/UI</Button>
+            <Button to="/communication" className="w-60 !px-4 [&_p]:!whitespace-nowrap">Créations de Contenu</Button>
           </div>
         </div>
       </div>
