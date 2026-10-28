@@ -155,12 +155,12 @@ export const alternance = {
             "Des pubs courtes pour donner envie aux futurs étudiants de candidater à HEIP et à Sup de Pub. Chaque pub existe en 9:16 et en 1:1, pour s'adapter à chaque plateforme.",
           rangees: [
             [
-              fichier('on-t-attend-a-heip', "On t'attend à HEIP"),
-              fichier('pourquoi-pas-heip', 'Pourquoi pas HEIP'),
               fichier('rejoignez-nous', 'Rejoignez-nous'),
               fichier('quelle-ecole', 'Sciences Po, mais quelle école ?'),
               fichier('plot-twist-fevrier', 'Plot twist', { roles: ['Réalisation', 'Montage'] }),
               fichier('appel-canada', 'Un appel depuis le Canada', { roles: ["À l'écran", 'Montage'] }),
+              fichier('on-t-attend-a-heip', "On t'attend à HEIP"),
+              fichier('pourquoi-pas-heip', 'Pourquoi pas HEIP'),
             ],
           ],
         },
