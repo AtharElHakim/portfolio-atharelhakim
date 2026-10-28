@@ -2,10 +2,9 @@ import type { ReactNode } from 'react'
 import { Link } from 'react-router-dom'
 import { focusRing } from './Button'
 import { H3, Body2, Micro1 } from './Typography'
-import { RolePills } from './communication/media'
 
 /* Grid card shared by the two project listings (/projects and
-   /communication). `meta` and `roles` are only used by Communication. */
+   /communication). `meta` is only used by Communication. */
 export default function ProjectCard({
   to,
   title,
@@ -13,7 +12,6 @@ export default function ProjectCard({
   image,
   imagePlaceholder,
   meta,
-  roles,
 }: {
   to: string
   title: string
@@ -22,7 +20,6 @@ export default function ProjectCard({
   /** Rendered instead of the image while `image` is empty. */
   imagePlaceholder?: ReactNode
   meta?: string
-  roles?: string[]
 }) {
   return (
     <Link
@@ -46,7 +43,6 @@ export default function ProjectCard({
         <H3>{title}</H3>
         {meta && <Micro1>{meta}</Micro1>}
         <Body2>{description}</Body2>
-        {roles && roles.length > 0 && <RolePills roles={roles} />}
       </div>
     </Link>
   )

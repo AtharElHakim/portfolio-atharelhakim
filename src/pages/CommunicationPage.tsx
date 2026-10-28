@@ -8,7 +8,7 @@ import { Placeholder } from '../components/communication/media'
 import { projetsCom } from '../data/communication'
 
 /* Same structure as ProjectsPage (title, tabs, grid), with the showreel
-   between the tabs and the grid. Every piece of copy and media lives in
+   as the grid's first card. Every piece of copy and media lives in
    src/data/communication.ts: edit that file, not this one. */
 
 export default function CommunicationPage() {
@@ -27,9 +27,8 @@ export default function CommunicationPage() {
       </div>
 
       <section className="flex w-full flex-col items-center gap-10 p-8 md:py-16 md:px-[var(--nav-edge-w)]">
-        <Showreel />
-
         <div className="grid w-full grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
+          <Showreel />
           {projetsCom.map((p) => (
             <ProjectCard
               key={p.slug}
@@ -37,7 +36,6 @@ export default function CommunicationPage() {
               title={p.titre}
               meta={p.ecole}
               description={p.resume}
-              roles={p.rolesCle}
               image={p.couverture.poster}
               imagePlaceholder={<Placeholder label={p.titre} format={p.couverture.format} />}
             />

@@ -397,8 +397,6 @@ export interface ProjetCom {
   format: string
   /** One sentence: list card description + hero subtitle. */
   resume: string
-  /** Main role pills on the list card. */
-  rolesCle: string[]
   /** Every role on the project, shown in the hero. */
   roles: string[]
   /** Video used as the hero cover and the list-card thumbnail. */
@@ -434,7 +432,6 @@ export const projetsCom: ProjetCom[] = [
     periode: PERIODE_A_PRECISER,
     format: '9:16',
     resume: 'Une série TikTok de conseils vidéo, écrite, tournée et présentée face caméra.',
-    rolesCle: ['Concept', 'Face caméra', 'Réalisation', 'Montage'],
     roles: ['Concept', 'Script', 'Face caméra', 'Réalisation', 'Montage'],
     couverture: videoById('tips-tournage-montage'),
     videos: [videoById('tips-tournage-montage')],
@@ -448,7 +445,6 @@ export const projetsCom: ProjetCom[] = [
     periode: PERIODE_A_PRECISER,
     format: '9:16 · 1:1',
     resume: 'Des pubs courtes et des vidéos de rentrée pour donner envie de rejoindre les écoles.',
-    rolesCle: ['Concept', 'Direction artistique', 'Réalisation', 'Montage'],
     roles: ['Concept', 'Direction artistique', 'Réalisation', 'Montage', 'Rédaction'],
     couverture: videoById('on-t-attend-a-heip'),
     videos: ['on-t-attend-a-heip', 'essuie-camera', 'back-to-school-kit', 'plot-twist-fevrier', 'appel-canada'].map(videoById),
@@ -462,7 +458,6 @@ export const projetsCom: ProjetCom[] = [
     periode: PERIODE_A_PRECISER,
     format: 'Story · 9:16',
     resume: 'Un événement couvert en deux formats : une story immersive et un micro-trottoir.',
-    rolesCle: ['Concept', 'Face caméra', 'Interview'],
     roles: ['Concept', 'Face caméra', 'Interview', 'Photo & vidéo'],
     couverture: videoById('micro-trottoir-projection'),
     videos: [videoById('micro-trottoir-projection')],
@@ -477,7 +472,6 @@ export const projetsCom: ProjetCom[] = [
     periode: PERIODE_A_PRECISER,
     format: '9:16',
     resume: 'Une série de 7 interviews pour expliquer le crime organisé en moins de 2 minutes.',
-    rolesCle: ['Réalisation', 'Montage', 'Sous-titrage'],
     roles: ['Réalisation', 'Montage', 'Sous-titrage'],
     couverture: videoById('fabrice-rizzoli'),
     videos: [videoById('fabrice-rizzoli')],
@@ -491,7 +485,6 @@ export const projetsCom: ProjetCom[] = [
     periode: PERIODE_A_PRECISER,
     format: '16:9 · 9:16',
     resume: 'Les vidéos du programme : version site web en 16:9 et reels sur les métiers.',
-    rolesCle: ['Réalisation', 'Montage'],
     roles: ['Réalisation', 'Montage'],
     couverture: videoById('msc-erci-programme'),
     videosLarges: [videoById('msc-erci-programme')],
@@ -506,7 +499,6 @@ export const projetsCom: ProjetCom[] = [
     periode: PERIODE_A_PRECISER,
     format: '9:16',
     resume: "Une série d'interviews pour faire découvrir le campus de Londres.",
-    rolesCle: ['Montage', 'Sous-titrage'],
     roles: ['Montage', 'Sous-titrage'],
     couverture: videoById('heip-london'),
     videos: [videoById('heip-london')],
@@ -520,7 +512,6 @@ export const projetsCom: ProjetCom[] = [
     periode: PERIODE_A_PRECISER,
     format: '9:16',
     resume: 'Des formats récurrents avec les étudiants : Vrai ou Faux, Fast & Curious, alternance.',
-    rolesCle: ['Montage', "Concept de l'intro"],
     roles: ['Montage', "Concept de l'intro", 'Sous-titrage'],
     couverture: videoById('vrai-ou-faux-miap'),
     videos: ['vrai-ou-faux-miap', 'fast-and-curious', 'alternance-miap', 'ou-fais-tu-ton-alternance'].map(videoById),
@@ -534,7 +525,6 @@ export const projetsCom: ProjetCom[] = [
     periode: PERIODE_A_PRECISER,
     format: '9:16',
     resume: "Des portraits d'étudiants, d'alumni et d'associations engagés.",
-    rolesCle: ['Réalisation', 'Montage'],
     roles: ['Réalisation', 'Montage'],
     couverture: videoById('portrait-tom-carl'),
     videos: ['portrait-tom-carl', 'portrait-alumni', 'barrio-14', 'fifa-mbappe'].map(videoById),
