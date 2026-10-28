@@ -18,14 +18,16 @@ export default function Hero() {
             de suivre.
           </Body1>
         </div>
+        {/* Compact block like the reference: smaller question centred
+            above the two buttons, sitting under the paragraph. */}
         <div
-          className="animate-fade-in-up flex flex-col items-start justify-center gap-6"
+          className="animate-fade-in-up flex w-fit flex-col items-center gap-5"
           style={{ animationDelay: '120ms' }}
         >
-          <H2 className="!w-auto whitespace-nowrap text-left">Prêt à explorer ?</H2>
-          <div className="flex flex-wrap items-center gap-3">
-            <Button to="/projects">UX/UI</Button>
-            <Button to="/communication">Créations de Contenu</Button>
+          <H2 className="!w-auto whitespace-nowrap !text-2xl md:!text-3xl">Prêt à explorer ?</H2>
+          <div className="flex flex-nowrap items-center justify-center gap-2 min-[380px]:gap-3 sm:gap-4">
+            <Button to="/projects" className="!px-4 min-[380px]:!px-5 sm:!px-6 [&_p]:!whitespace-nowrap">UX/UI</Button>
+            <Button to="/communication" className="!px-4 min-[380px]:!px-5 sm:!px-6 [&_p]:!whitespace-nowrap">Créations de Contenu</Button>
           </div>
         </div>
       </div>
