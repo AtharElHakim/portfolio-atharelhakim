@@ -24,7 +24,7 @@ export default function Hero() {
           className="animate-fade-in-up flex w-fit flex-col items-center gap-4 lg:self-center"
           style={{ animationDelay: '120ms' }}
         >
-          <H2 className="!w-auto whitespace-nowrap !text-2xl md:!text-3xl">Prêt à explorer ?</H2>
+          <H2 className="!w-auto whitespace-nowrap md:!text-[40px]">Prêt à explorer ?</H2>
           {/* Equal-width buttons: same fixed width (fits the longer label), side by
               side when there's room, stacked when there isn't. */}
           <div className="flex flex-wrap justify-center gap-3 sm:gap-4">
