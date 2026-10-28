@@ -3,7 +3,6 @@ import { createPortal } from 'react-dom'
 import { Link, useLocation } from 'react-router-dom'
 import { Micro1 } from './Typography'
 import Button, { focusRing } from './Button'
-import { projects } from '../data/projects'
 
 const CV_HREF = '/cv-athar-el-hakim.pdf'
 
@@ -73,17 +72,19 @@ function MenuIcon({ open }: { open: boolean }) {
   )
 }
 
-// Order follows src/data/projects.ts (single source of truth).
+// The two project listings, opened from the "Projets" arrow.
 const projectLinks = [
-  { to: '/projects', label: 'Tous les projets' },
-  ...projects.map((p) => ({ to: `/projects/${p.slug}`, label: p.title })),
+  { to: '/projects', label: 'UX/UI' },
+  { to: '/communication', label: 'Communication' },
 ]
+
+const isProjectsPath = (path: string) => path.startsWith('/projects') || path.startsWith('/communication')
 
 function ProjectsDropdown() {
   const [open, setOpen] = useState(false)
   const containerRef = useRef<HTMLDivElement>(null)
   const location = useLocation()
-  const isActive = location.pathname.startsWith('/projects')
+  const isActive = isProjectsPath(location.pathname)
 
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
@@ -100,22 +101,35 @@ function ProjectsDropdown() {
 
   return (
     <div ref={containerRef} className="relative">
-      <Button
-        variant="ghost"
-        active={isActive}
-        onClick={() => setOpen((prev) => !prev)}
-        aria-expanded={open}
-        className="gap-2"
+      {/* Split control: the label goes to /projects, the arrow opens the menu. */}
+      <div
+        className={`flex items-center rounded-full transition-colors duration-300 ${
+          isActive ? 'bg-purple-mid/45 text-white' : 'text-white/70'
+        }`}
       >
-        UX/UI
-        <CaretDownIcon
-          className={`size-4 shrink-0 transition-transform duration-300 ${
-            open ? 'rotate-180' : ''
-          }`}
-        />
-      </Button>
+        <Link
+          to="/projects"
+          onClick={() => setOpen(false)}
+          className={`flex min-h-11 items-center rounded-full py-2 pl-4 pr-1 text-base leading-6 transition-colors duration-300 hover:text-white ${focusRing}`}
+        >
+          Projets
+        </Link>
+        <button
+          type="button"
+          onClick={() => setOpen((prev) => !prev)}
+          aria-expanded={open}
+          aria-label={open ? 'Fermer le menu Projets' : 'Ouvrir le menu Projets'}
+          className={`flex min-h-11 cursor-pointer items-center rounded-full py-2 pl-1 pr-3 transition-colors duration-300 hover:text-white ${focusRing}`}
+        >
+          <CaretDownIcon
+            className={`size-4 shrink-0 transition-transform duration-300 ${
+              open ? 'rotate-180' : ''
+            }`}
+          />
+        </button>
+      </div>
       {open && (
-        <div className="glass-dark animate-fade-in-up purple-glow absolute left-0 top-full z-10 mt-2 flex w-[240px] flex-col overflow-hidden rounded-xl">
+        <div className="glass-dark animate-fade-in-up purple-glow absolute left-0 top-full z-10 mt-2 flex w-[200px] flex-col overflow-hidden rounded-xl">
           {projectLinks.map((item) => (
             <Link
               key={item.to}
@@ -143,13 +157,11 @@ function MobileMenu({
   isHomeActive,
   isAboutActive,
   isProjectsActive,
-  isCommunicationActive,
 }: {
   onClose: () => void
   isHomeActive: boolean
   isAboutActive: boolean
   isProjectsActive: boolean
-  isCommunicationActive: boolean
 }) {
   const [projectsOpen, setProjectsOpen] = useState(false)
 
@@ -167,7 +179,7 @@ function MobileMenu({
             aria-expanded={projectsOpen}
             className={`flex items-center justify-center gap-2 ${mobileItemClass(isProjectsActive)}`}
           >
-            UX/UI
+            Projets
             <CaretDownIcon
               className={`size-6 shrink-0 transition-transform duration-300 ${
                 projectsOpen ? 'rotate-180' : ''
@@ -189,10 +201,6 @@ function MobileMenu({
             </div>
           )}
         </div>
-
-        <Link to="/communication" onClick={onClose} className={mobileItemClass(isCommunicationActive)}>
-          Communication
-        </Link>
 
         <Link to="/a-propos-de-moi" onClick={onClose} className={mobileItemClass(isAboutActive)}>
           À Propos De Moi
@@ -229,8 +237,7 @@ export default function NavBar() {
   const location = useLocation()
   const isHomeActive = location.pathname === '/'
   const isAboutActive = location.pathname === '/a-propos-de-moi'
-  const isProjectsActive = location.pathname.startsWith('/projects')
-  const isCommunicationActive = location.pathname.startsWith('/communication')
+  const isProjectsActive = isProjectsPath(location.pathname)
   const [mobileOpen, setMobileOpen] = useState(false)
 
   useEffect(() => {
@@ -288,9 +295,6 @@ export default function NavBar() {
             Home
           </Button>
           <ProjectsDropdown />
-          <Button to="/communication" variant="ghost" active={isCommunicationActive}>
-            Communication
-          </Button>
           <Button to="/a-propos-de-moi" variant="ghost" active={isAboutActive}>
             À Propos De Moi
           </Button>
@@ -332,7 +336,6 @@ export default function NavBar() {
           isHomeActive={isHomeActive}
           isAboutActive={isAboutActive}
           isProjectsActive={isProjectsActive}
-          isCommunicationActive={isCommunicationActive}
         />
       )}
     </header>
