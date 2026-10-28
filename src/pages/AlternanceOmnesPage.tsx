@@ -10,14 +10,12 @@ import { RolePills, fr } from '../components/communication/media'
 import { alternance, type Bloc, type Video } from '../data/communication'
 
 /* Laid out like SpotifyPage: back button, centered column, side nav that
-   follows the scroll (one entry per block, grouped by section). All copy
+   follows the scroll (one entry per section). All copy
    and media live in src/data/communication.ts: edit that file, not this one. */
 
 const SECTION = 'flex flex-col items-center gap-10 p-8 md:py-16 md:px-[var(--nav-edge-w)]'
 
-const navSections = alternance.sections.flatMap((s) =>
-  s.blocs.map((b) => ({ id: b.id, label: b.titre, group: s.titre })),
-)
+const navSections = alternance.sections.map((s) => ({ id: s.id, label: s.titre }))
 
 /** Desktop thumbnails per line: up to 6 on one line, more are split into two balanced lines (7 → 4 + 3). */
 const perLine = (n: number) => (n <= 6 ? n : Math.ceil(n / 2))
