@@ -40,10 +40,13 @@ function Rangee({ videos }: { videos: Video[] }) {
   )
 }
 
-function BlocView({ bloc }: { bloc: Bloc }) {
+function BlocView({ bloc, numero }: { bloc: Bloc; numero: number }) {
   return (
     <div id={bloc.id} className="flex w-full scroll-mt-28 flex-col items-center gap-4 text-center">
-      <H3 className="!text-2xl md:!text-3xl">{bloc.titre}</H3>
+      <H3 className="!text-2xl md:!text-3xl">
+        <span className="mr-2 text-purple-pale/70">{numero}.</span>
+        {bloc.titre}
+      </H3>
       <Micro1>{bloc.sousLigne}</Micro1>
       <Body1 className="w-full font-light">{fr(bloc.texte)}</Body1>
       <div className="mt-4 flex w-full flex-col items-center gap-10">
@@ -91,8 +94,8 @@ export default function AlternanceOmnesPage() {
             <Body1 className="w-full font-light">{fr(s.texte)}</Body1>
           </div>
           <div className="flex w-full flex-col items-center gap-20">
-            {s.blocs.map((b) => (
-              <BlocView key={b.id} bloc={b} />
+            {s.blocs.map((b, i) => (
+              <BlocView key={b.id} bloc={b} numero={i + 1} />
             ))}
           </div>
         </div>
