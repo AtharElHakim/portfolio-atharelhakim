@@ -24,14 +24,8 @@ export default function Hero() {
         >
           <H2 className="!w-auto whitespace-nowrap text-left">Prêt à explorer ?</H2>
           <div className="flex flex-wrap items-center gap-3">
-            <Button to="/projects">Voir mes projets UX/UI</Button>
-            <Button
-              to="/communication"
-              variant="ghost"
-              className="min-h-11 border border-purple-pale/50 px-6 !text-lg !text-white hover:border-purple-pale/80 md:!text-xl"
-            >
-              Voir mes contenus
-            </Button>
+            <Button to="/projects">UX/UI</Button>
+            <Button to="/communication">Créations de contenu</Button>
           </div>
         </div>
       </div>
