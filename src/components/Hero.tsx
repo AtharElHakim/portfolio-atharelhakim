@@ -36,7 +36,7 @@ export default function Hero() {
       {/* Mobile: the portrait sits behind the text, dimmed so the text stays
           readable; beside the text from md up. */}
       <div
-        className="animate-fade-in-up pointer-events-none flex items-center justify-center max-md:absolute max-md:inset-x-0 max-md:top-0 max-md:bottom-0 max-md:z-0 max-md:opacity-35 md:pointer-events-auto md:relative md:w-[320px]"
+        className="animate-fade-in-up pointer-events-none flex items-center justify-center max-md:absolute max-md:translate-x-[22%] max-md:inset-x-0 max-md:top-0 max-md:bottom-0 max-md:z-0 max-md:opacity-35 md:pointer-events-auto md:relative md:w-[320px]"
         style={{ animationDelay: '200ms' }}
       >
         <img
