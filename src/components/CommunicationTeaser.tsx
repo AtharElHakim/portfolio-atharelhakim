@@ -46,7 +46,8 @@ function Thumb({ bloc }: { bloc: Bloc }) {
 function CardBody({ bloc }: { bloc: Bloc }) {
   return (
     <div className="flex flex-col gap-1 px-1 pb-1 text-left">
-      <H6>{bloc.titre}</H6>
+      {/* Room for 2 lines on every card, so a long title doesn't make one card taller. */}
+      <H6 className="line-clamp-2 max-md:min-h-[2lh]">{bloc.titre}</H6>
       <Micro1>{bloc.sousLigne}</Micro1>
     </div>
   )
