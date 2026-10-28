@@ -28,8 +28,8 @@ export default function Hero() {
           {/* Equal-width buttons: same fixed width (fits the longer label), side by
               side when there's room, stacked when there isn't. */}
           <div className="flex flex-wrap justify-center gap-3 sm:gap-4">
-            <Button to="/projects" className="w-60 !px-4 [&_p]:!whitespace-nowrap">Projets UX/UI</Button>
-            <Button to="/communication" className="w-60 !px-4 [&_p]:!whitespace-nowrap">Créations de Contenu</Button>
+            <Button to="/projects" className="w-52 !px-4 sm:w-60 [&_p]:!whitespace-nowrap max-sm:[&_p]:!text-base">Projets UX/UI</Button>
+            <Button to="/communication" className="w-52 !px-4 sm:w-60 [&_p]:!whitespace-nowrap max-sm:[&_p]:!text-base">Créations de Contenu</Button>
           </div>
         </div>
       </div>
