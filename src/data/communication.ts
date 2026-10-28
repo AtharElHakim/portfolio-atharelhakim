@@ -247,7 +247,7 @@ export const alternance = {
         },
         {
           id: 'portraits-actualite',
-          titre: 'Portraits et actualité',
+          titre: 'Interviews et actualité',
           sousLigne: 'HEIP · Instagram',
           roles: ['Réalisation', 'Montage'],
           texte:
