@@ -79,7 +79,7 @@ export default function AlternanceOmnesPage() {
       <div id="intro" className="flex flex-col items-center gap-6 px-8 pb-8 pt-4 md:pb-16 md:pt-10 md:px-[var(--nav-edge-w)]">
         <div className="flex w-full flex-col items-center gap-4 text-center">
           {/* The role is the headline, the alternance name sits under it. */}
-          <H1 className="md:!text-5xl md:!leading-[52.8px]">{alternance.sousTitre}</H1>
+          <H1 className="md:!text-5xl md:!leading-[52.8px] xl:![text-wrap:nowrap] xl:!text-[min(2.6rem,2.75vw)]">{alternance.sousTitre}</H1>
           <Body1 className="!text-white/70 font-light">{alternance.titre} (HEIP et Sup de Pub)</Body1>
           <TagRow tags={alternance.infos} className="justify-center [&>span]:text-sm" />
           <div className="mt-4 w-full border-t border-white/10 pt-8">
