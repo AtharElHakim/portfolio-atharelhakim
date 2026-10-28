@@ -25,8 +25,8 @@ export default function Hero() {
           style={{ animationDelay: '120ms' }}
         >
           <H2 className="!w-auto whitespace-nowrap !text-2xl md:!text-3xl">Prêt à explorer ?</H2>
-          <div className="flex flex-nowrap items-center justify-center gap-2 min-[380px]:gap-3 sm:gap-4">
-            <Button to="/projects" className="!px-4 min-[380px]:!px-5 sm:!px-6 [&_p]:!whitespace-nowrap">UX/UI</Button>
+          <div className="flex flex-wrap items-center justify-center gap-3 min-[400px]:flex-nowrap sm:gap-4">
+            <Button to="/projects" className="!px-4 min-[380px]:!px-5 sm:!px-6 [&_p]:!whitespace-nowrap">Projets UX/UI</Button>
             <Button to="/communication" className="!px-4 min-[380px]:!px-5 sm:!px-6 [&_p]:!whitespace-nowrap">Créations de Contenu</Button>
           </div>
         </div>

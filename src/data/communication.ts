@@ -98,17 +98,20 @@ export interface CarteCom {
   texte: string
   roles: string[]
   image: string
+  /** Crop focus of the card thumbnail (CSS object-position). */
+  imagePosition?: string
 }
 
 export const cartesCom: CarteCom[] = [
   {
     slug: 'alternance-omnes',
-    titre: 'Alternance OMNES Education',
-    sousLigne: 'HEIP · Sup de Pub',
+    titre: 'Chargée de Communication & de Création de Contenu',
+    sousLigne: 'Alternance OMNES Education (HEIP et Sup de Pub)',
     texte:
       'Création de contenu pour les réseaux sociaux de deux écoles : concept, tournage, montage et face caméra.',
     roles: ['Concept', 'Réalisation', 'Montage', 'Face caméra'],
-    image: `${POSTERS}on-t-attend-a-heip.webp`,
+    image: `${POSTERS}tips-3-choses.webp`,
+    imagePosition: 'center 22%',
   },
 ]
 

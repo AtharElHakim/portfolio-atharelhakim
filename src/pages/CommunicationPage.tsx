@@ -36,6 +36,7 @@ export default function CommunicationPage() {
               meta={c.sousLigne}
               description={fr(c.texte)}
               image={c.image}
+              imagePosition={c.imagePosition}
             />
           ))}
         </div>

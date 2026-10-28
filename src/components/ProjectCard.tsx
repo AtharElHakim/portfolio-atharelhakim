@@ -12,6 +12,7 @@ export default function ProjectCard({
   image,
   imagePlaceholder,
   meta,
+  imagePosition,
 }: {
   to: string
   title: string
@@ -20,6 +21,8 @@ export default function ProjectCard({
   /** Rendered instead of the image while `image` is empty. */
   imagePlaceholder?: ReactNode
   meta?: string
+  /** CSS object-position for the thumbnail crop (e.g. 'center 20%'). */
+  imagePosition?: string
 }) {
   return (
     <Link
@@ -33,6 +36,7 @@ export default function ProjectCard({
             decoding="async"
             src={image}
             alt={title}
+            style={imagePosition ? { objectPosition: imagePosition } : undefined}
             className="size-full object-cover transition-transform duration-500 group-hover:scale-105"
           />
         ) : (
