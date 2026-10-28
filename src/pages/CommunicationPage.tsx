@@ -37,7 +37,6 @@ export default function CommunicationPage() {
               description={fr(c.texte)}
               image={c.image}
               imagePosition={c.imagePosition}
-              portrait
             />
           ))}
         </div>

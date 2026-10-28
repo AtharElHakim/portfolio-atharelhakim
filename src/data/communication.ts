@@ -105,13 +105,13 @@ export interface CarteCom {
 export const cartesCom: CarteCom[] = [
   {
     slug: 'alternance-omnes',
-    titre: 'Chargée de Communication & de Création de Contenu',
-    sousLigne: 'Alternance OMNES Education (HEIP et Sup de Pub)',
+    titre: 'Alternance OMNES Education',
+    sousLigne: 'Chargée de\u00a0Communication & de\u00a0Création de\u00a0Contenu\u00a0· HEIP\u00a0et\u00a0Sup\u00a0de\u00a0Pub',
     texte:
       'Création de contenu pour les réseaux sociaux de deux écoles : concept, tournage, montage et face caméra.',
     roles: ['Concept', 'Réalisation', 'Montage', 'Face caméra'],
-    image: `${POSTERS}tips-3-choses.webp`,
-    imagePosition: 'center 22%',
+    image: `${POSTERS}tips-3-points-de-vue.webp`,
+    imagePosition: 'center 30%',
   },
 ]
 
