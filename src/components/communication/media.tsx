@@ -89,21 +89,6 @@ export const useFinePointer = () => useMediaQuery('(hover: hover) and (pointer: 
 
 /* ---------------- Small shared bits ---------------- */
 
-export function RolePills({ roles, className = '' }: { roles: string[]; className?: string }) {
-  return (
-    <ul className={`flex flex-wrap gap-1.5 ${className}`}>
-      {roles.map((r) => (
-        <li
-          key={r}
-          className="rounded-full border border-purple-pale/30 bg-purple/15 px-2.5 py-0.5 text-xs leading-5 text-purple-highlight"
-        >
-          {r}
-        </li>
-      ))}
-    </ul>
-  )
-}
-
 export function PlayGlyph({ className = 'size-4' }: { className?: string }) {
   return (
     <svg className={className} viewBox="0 0 24 24" fill="currentColor" aria-hidden>
