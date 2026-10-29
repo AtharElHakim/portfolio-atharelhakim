@@ -38,17 +38,18 @@ export default function AboutPage() {
         description="Athar El Hakim, UX/UI Designer et Directrice Artistique franco-libanaise. Parcours du cinéma au design produit."
         path="/a-propos-de-moi"
       />
-      <div className="flex items-end justify-center gap-12 border-b border-white/10 px-8 pb-16 pt-16 md:pb-[88px] md:pt-[138px] md:flex-row md:gap-12 min-[1400px]:gap-24 md:px-[var(--nav-edge-w)]">
-        {/* Only beside the text when there's room for both (the text needs ~510px). */}
-        <div className="-mb-[88px] hidden shrink-0 items-end xl:flex">
+      <div className="relative isolate flex items-end justify-center gap-12 overflow-hidden border-b border-white/10 px-8 pb-16 pt-16 md:pb-[88px] md:pt-[138px] md:flex-row md:gap-12 min-[1400px]:gap-24 md:px-[var(--nav-edge-w)]">
+        {/* Beside the text when there's room for both (the text needs ~510px);
+            below xl it sits behind the text at 50% opacity, anchored bottom-right. */}
+        <div className="pointer-events-none absolute bottom-0 right-0 -z-10 flex items-end max-xl:translate-x-[12%] xl:pointer-events-auto xl:relative xl:z-auto xl:-mb-[88px] xl:shrink-0">
           <img
             src={portraitImg}
             alt="Portrait illustré d'Athar"
             fetchPriority="high"
-            className="size-[280px] object-contain min-[1400px]:size-[380px]"
+            className="size-[300px] object-contain max-xl:opacity-50 sm:size-[380px] xl:size-[280px] min-[1400px]:size-[380px]"
           />
         </div>
-        <div className="flex max-w-[510px] flex-col items-start gap-4 self-start">
+        <div className="relative flex max-w-[510px] flex-col items-start gap-4 self-start">
           <div className="font-syne text-5xl leading-tight md:text-[72px] md:leading-[72px]">
             <p className="text-white">Je m'appelle</p>
             <p className="whitespace-nowrap text-purple-pale">Athar El Hakim !</p>
