@@ -12,15 +12,17 @@ export default function Footer() {
           <p className="whitespace-nowrap font-syne text-xl leading-9 text-white/70 md:text-3xl">
             Athar El Hakim
           </p>
-          <nav className="flex flex-wrap items-center justify-center md:gap-4 max-md:[&>a]:!px-1.5 max-md:[&>a]:text-sm">
+          <nav className="flex flex-wrap items-center justify-center md:gap-4 max-md:[&>a]:!px-2.5 max-md:[&>a]:text-[15px]">
             <Button to="/" variant="ghost">
               Home
             </Button>
             <Button to="/projects" variant="ghost">
               Projets
             </Button>
-            <Button to="/a-propos-de-moi" variant="ghost">
-              À Propos De Moi
+            <Button to="/a-propos-de-moi" variant="ghost" aria-label="À Propos De Moi">
+              {/* Shorter on phones so the 4 links fit one line at a readable size. */}
+              <span className="md:hidden">À Propos</span>
+              <span className="hidden md:inline">À Propos De Moi</span>
             </Button>
             <Button to="/contactez-moi" variant="ghost">
               Contactez-Moi
