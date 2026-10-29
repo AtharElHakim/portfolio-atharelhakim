@@ -34,9 +34,10 @@ export default function Hero() {
         </div>
       </div>
       {/* Mobile: the portrait sits behind the text, dimmed so the text stays
-          readable; beside the text from md up. */}
+          readable; beside the text from md up. The opacity lives on the <img>:
+          on the wrapper, the fade-in animation's end state would override it. */}
       <div
-        className="animate-fade-in-up pointer-events-none flex items-center justify-center max-md:absolute max-md:translate-x-[22%] max-md:inset-x-0 max-md:top-0 max-md:bottom-0 max-md:z-0 max-md:opacity-25 md:pointer-events-auto md:relative md:shrink-0"
+        className="animate-fade-in-up pointer-events-none flex items-center justify-center max-md:absolute max-md:translate-x-[22%] max-md:inset-x-0 max-md:top-0 max-md:bottom-0 max-md:z-0 md:pointer-events-auto md:relative md:shrink-0"
         style={{ animationDelay: '200ms' }}
       >
         <img
@@ -54,7 +55,7 @@ export default function Hero() {
             maskComposite: 'intersect',
             WebkitMaskComposite: 'source-in',
           }}
-          className="w-auto max-w-none object-contain max-md:h-full max-md:max-h-[640px] md:h-[600px]"
+          className="w-auto max-w-none object-contain max-md:h-full max-md:opacity-25 max-md:max-h-[640px] md:h-[600px]"
         />
       </div>
       </div>
