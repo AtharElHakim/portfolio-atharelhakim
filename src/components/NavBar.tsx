@@ -239,6 +239,16 @@ export default function NavBar() {
   const isAboutActive = location.pathname === '/a-propos-de-moi'
   const isProjectsActive = isProjectsPath(location.pathname)
   const [mobileOpen, setMobileOpen] = useState(false)
+  // Below lg the bar is a plain strip: transparent at the top of the page,
+  // a solid blurred band once the page has scrolled.
+  const [scrolled, setScrolled] = useState(false)
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 8)
+    onScroll()
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [])
 
   useEffect(() => {
     const el = edgeRef.current
@@ -281,10 +291,14 @@ export default function NavBar() {
   }, [mobileOpen])
 
   return (
-    <header className="sticky top-4 z-40 px-4 md:px-12">
-      {/* Below lg (burger menu) the bar gets a light liquid-glass pill so the
-          name and burger stay readable over the content; transparent above. */}
-      <div className="relative mx-auto flex w-full max-w-[1440px] items-center justify-between gap-4 max-lg:rounded-full max-lg:border max-lg:border-white/10 max-lg:bg-white/[0.06] max-lg:py-1.5 max-lg:pl-5 max-lg:pr-1.5 max-lg:shadow-[inset_0_1px_0_rgba(255,255,255,0.08),0_8px_24px_rgba(0,0,0,0.35)] max-lg:backdrop-blur-xl max-lg:backdrop-saturate-150">
+    <header
+      className={`sticky z-40 px-4 transition-[background-color,border-color] duration-300 md:px-12 max-lg:top-0 max-lg:border-b max-lg:py-3 lg:top-4 ${
+        scrolled || mobileOpen
+          ? 'max-lg:border-white/10 max-lg:bg-black/80 max-lg:backdrop-blur-xl'
+          : 'max-lg:border-transparent'
+      }`}
+    >
+      <div className="relative mx-auto flex w-full max-w-[1440px] items-center justify-between gap-4">
         <Link to="/" className="flex shrink-0 flex-col items-start gap-0.5">
           <span className="font-syne text-lg leading-6 text-white">
             Athar El Hakim
