@@ -109,9 +109,16 @@ export default function AlternanceOmnesPage() {
       <div id="intro" className="flex flex-col items-center gap-6 px-8 pb-8 pt-4 md:pb-16 md:pt-10 md:px-[var(--nav-edge-w)]">
         <div className="flex w-full flex-col items-center gap-4 text-center">
           {/* The role is the headline, the alternance name sits under it. */}
-          <H1 className="whitespace-pre-line md:!text-5xl md:!leading-[52.8px]">{alternance.sousTitre}</H1>
+          <H1 className="whitespace-pre-line !text-[28px] md:!text-5xl md:!leading-[52.8px]">{alternance.sousTitre}</H1>
           <Body1 className="!text-white/70 font-light">{alternance.titre} (HEIP et Sup de Pub)</Body1>
-          <TagRow tags={alternance.infos} className="justify-center [&>span]:text-sm" />
+          <TagRow tags={alternance.infos} className="hidden justify-center md:flex [&>span]:text-sm" />
+          {/* Mobile: one centred line per info, no bullets (a bullet stayed stuck
+              on the left when the platforms line wrapped). */}
+          <div className="flex flex-col items-center gap-1 text-sm text-white/60 md:hidden">
+            {alternance.infos.map((t) => (
+              <span key={t}>{t}</span>
+            ))}
+          </div>
           <div className="mt-4 w-full border-t border-white/10 pt-8">
             <Body1 className="w-full text-center !text-white font-light">{fr(alternance.intro)}</Body1>
           </div>

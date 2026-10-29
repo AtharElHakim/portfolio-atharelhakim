@@ -9,7 +9,7 @@ interface TextProps {
 export function Display({ children, className = '' }: TextProps) {
   return (
     <h1
-      className={`font-syne text-5xl leading-tight text-white md:text-7xl md:leading-none ${className}`}
+      className={`font-syne text-[40px] leading-tight text-white md:text-7xl md:leading-none ${className}`}
     >
       {children}
     </h1>
@@ -20,7 +20,7 @@ export function Display({ children, className = '' }: TextProps) {
 export function H1({ children, className = '' }: TextProps) {
   return (
     <h1
-      className={`font-syne text-4xl leading-tight text-white md:text-6xl md:leading-[1.1] ${className}`}
+      className={`font-syne text-[32px] leading-tight text-white md:text-6xl md:leading-[1.1] ${className}`}
     >
       {children}
     </h1>
@@ -31,7 +31,7 @@ export function H1({ children, className = '' }: TextProps) {
 export function H2({ children, className = '' }: TextProps) {
   return (
     <p
-      className={`w-full text-center font-syne text-4xl leading-tight text-white md:text-5xl md:leading-none ${className}`}
+      className={`w-full text-center font-syne text-[30px] leading-tight text-white md:text-5xl md:leading-none ${className}`}
     >
       {children}
     </p>
@@ -81,7 +81,7 @@ export function H6({ children, className = '' }: TextProps) {
 export function Body1({ children, className = '' }: TextProps) {
   return (
     <p
-      className={`text-lg leading-[1.55] text-white/85 md:text-xl ${className}`}
+      className={`text-base leading-[1.55] text-white/85 md:text-xl ${className}`}
     >
       {children}
     </p>

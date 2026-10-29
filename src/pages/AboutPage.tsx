@@ -38,7 +38,7 @@ export default function AboutPage() {
         description="Athar El Hakim, UX/UI Designer et Directrice Artistique franco-libanaise. Parcours du cinéma au design produit."
         path="/a-propos-de-moi"
       />
-      <div className="flex items-end justify-center gap-12 border-b border-white/10 px-8 pb-[88px] pt-[138px] md:flex-row md:gap-12 min-[1400px]:gap-24 md:px-[var(--nav-edge-w)]">
+      <div className="flex items-end justify-center gap-12 border-b border-white/10 px-8 pb-16 pt-16 md:pb-[88px] md:pt-[138px] md:flex-row md:gap-12 min-[1400px]:gap-24 md:px-[var(--nav-edge-w)]">
         {/* Only beside the text when there's room for both (the text needs ~510px). */}
         <div className="-mb-[88px] hidden shrink-0 items-end xl:flex">
           <img
