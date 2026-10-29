@@ -143,9 +143,9 @@ export default function AboutPage() {
         />
       </section>
 
-      <section className="flex flex-col items-start justify-center gap-20 border-b border-white/10 p-8 md:flex-row md:py-16 md:px-[var(--nav-edge-w)]">
-        <div className="flex flex-col items-center gap-4">
-          <H2 className="md:w-[300px] !text-left">
+      <section className="flex flex-col items-start justify-center gap-8 border-b border-white/10 p-8 md:flex-row md:gap-20 md:py-16 md:px-[var(--nav-edge-w)]">
+        <div className="flex w-full flex-col items-center gap-4 md:w-auto">
+          <H2 className="md:w-[300px] md:!text-left">
             Un nouveau
             <br />
             chapitre
