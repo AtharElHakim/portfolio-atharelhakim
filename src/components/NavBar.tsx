@@ -239,8 +239,7 @@ export default function NavBar() {
   const isAboutActive = location.pathname === '/a-propos-de-moi'
   const isProjectsActive = isProjectsPath(location.pathname)
   const [mobileOpen, setMobileOpen] = useState(false)
-  // Below lg the bar is a plain strip: transparent at the top of the page,
-  // a solid blurred band once the page has scrolled.
+  // Below lg the bar is a liquid-glass strip, slightly stronger once the page scrolls.
   const [scrolled, setScrolled] = useState(false)
 
   useEffect(() => {
@@ -292,10 +291,13 @@ export default function NavBar() {
 
   return (
     <header
-      className={`sticky z-40 px-4 transition-[background-color,border-color] duration-300 md:px-12 max-lg:top-0 max-lg:border-b max-lg:py-3 lg:top-4 ${
+      className={`sticky z-40 px-4 transition-[background-color,border-color,box-shadow] duration-300 md:px-12 max-lg:top-0 max-lg:border-b max-lg:py-3 max-lg:backdrop-blur-2xl max-lg:backdrop-saturate-150 lg:top-4 ${
+        // Liquid glass strip: a faint white tint + strong blur/saturation, a light
+        // top highlight and a hairline bottom edge. A touch more opaque once the
+        // page scrolls (and behind the open menu) so text never fights the content.
         scrolled || mobileOpen
-          ? 'max-lg:border-white/10 max-lg:bg-black/80 max-lg:backdrop-blur-xl'
-          : 'max-lg:border-transparent'
+          ? 'max-lg:border-white/15 max-lg:bg-[rgba(24,18,40,0.55)] max-lg:shadow-[inset_0_1px_0_rgba(255,255,255,0.12),0_8px_24px_rgba(0,0,0,0.35)]'
+          : 'max-lg:border-white/10 max-lg:bg-white/[0.04] max-lg:shadow-[inset_0_1px_0_rgba(255,255,255,0.08)]'
       }`}
     >
       <div className="relative mx-auto flex w-full max-w-[1440px] items-center justify-between gap-4">
