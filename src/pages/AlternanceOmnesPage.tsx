@@ -112,11 +112,15 @@ export default function AlternanceOmnesPage() {
           <H1 className="whitespace-pre-line !text-[28px] md:!text-5xl md:!leading-[52.8px]">{alternance.sousTitre}</H1>
           <Body1 className="!text-white/70 font-light">{alternance.titre} (HEIP et Sup de Pub)</Body1>
           <TagRow tags={alternance.infos} className="hidden justify-center md:flex [&>span]:text-sm" />
-          {/* Mobile: one centred line per info, no bullets (a bullet stayed stuck
-              on the left when the platforms line wrapped). */}
+          {/* Mobile: one centred line per info. The bullet is inline with the text
+              (not a flex sibling), so it stays next to the first word even when
+              the platforms line wraps. */}
           <div className="flex flex-col items-center gap-1 text-sm text-white/60 md:hidden">
             {alternance.infos.map((t) => (
-              <span key={t}>{t}</span>
+              <span key={t} className="text-center">
+                <span aria-hidden className="mr-1.5 inline-block size-1.5 rounded-full bg-purple-pale/70 align-middle" />
+                {t}
+              </span>
             ))}
           </div>
           <div className="mt-4 w-full border-t border-white/10 pt-8">
