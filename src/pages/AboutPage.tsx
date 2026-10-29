@@ -46,7 +46,7 @@ export default function AboutPage() {
             src={portraitImg}
             alt="Portrait illustré d'Athar"
             fetchPriority="high"
-            className="size-[300px] object-contain max-xl:opacity-50 sm:size-[380px] xl:size-[280px] min-[1400px]:size-[380px]"
+            className="size-[300px] object-contain max-xl:opacity-40 sm:size-[380px] xl:size-[280px] min-[1400px]:size-[380px]"
           />
         </div>
         <div className="relative flex max-w-[510px] flex-col items-start gap-4 self-start">
