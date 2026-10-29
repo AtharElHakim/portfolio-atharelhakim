@@ -103,11 +103,11 @@ export default function AboutPage() {
       </section>
 
       <section className="relative flex flex-col items-center gap-4 overflow-hidden border-y border-white/10 px-8 pb-8 pt-8 text-center lg:flex-row lg:items-center lg:justify-center lg:gap-4 lg:px-16 lg:pb-16 lg:pt-[146px] xl:px-24 xl:pt-[163px]">
-        {/* combined single image — mobile & tablet only, one block above the heading */}
+        {/* combined single image — mobile & tablet only, behind the heading + text */}
         <img loading="lazy" decoding="async"
           src={libanParisMapImg}
           alt=""
-          className="h-auto w-[300px] opacity-25 invert md:w-[420px] lg:hidden"
+          className="pointer-events-none absolute left-1/2 top-1/2 h-auto w-[340px] -translate-x-1/2 -translate-y-1/2 opacity-25 invert md:w-[400px] lg:hidden"
         />
 
         {/* France — desktop (lg+) only, flanks the text on the left */}
