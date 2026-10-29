@@ -55,7 +55,7 @@ export default function Hero() {
             maskComposite: 'intersect',
             WebkitMaskComposite: 'source-in',
           }}
-          className="w-auto max-w-none object-contain max-md:h-full max-md:opacity-40 max-md:max-h-[640px] md:h-[600px]"
+          className="w-auto max-w-none object-contain max-md:h-full max-md:opacity-50 max-md:max-h-[640px] md:h-[600px]"
         />
       </div>
       </div>
