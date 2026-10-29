@@ -116,8 +116,10 @@ body {
   font-family: var(--font-sans);
 }
 
+/* text-wrap-style only: the `text-wrap` shorthand also resets text-wrap-mode,
+   which silently cancelled every `whitespace-nowrap` on these elements. */
 p, h1, h2, h3 {
-  text-wrap: pretty;
+  text-wrap-style: pretty;
 }
 
 @keyframes fade-in-up {

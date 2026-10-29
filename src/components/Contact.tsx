@@ -37,7 +37,7 @@ export default function Contact({ transparent }: { transparent?: boolean }) {
         }}
       />
       <div className="animate-fade-in-up relative flex flex-col items-center gap-4 text-center">
-        <H2>Travaillons ensemble !</H2>
+        <H2>Travaillons ensemble&nbsp;!</H2>
         <Body1 className="font-light">
           Si vous souhaitez collaborer ou discuter d'un projet, n'hésitez pas
           à me contacter.

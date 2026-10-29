@@ -143,7 +143,7 @@ export default function Projects() {
           type="button"
           onClick={goPrev}
           aria-label="Projet précédent"
-          className={`glass-dark flex size-11 cursor-pointer items-center justify-center rounded-full border-[1.5px] border-purple-pale/50 text-white shadow-glow transition-all duration-300 ${focusRing}`}
+          className={`glass-dark flex size-11 shrink-0 cursor-pointer items-center justify-center rounded-full border-[1.5px] border-purple-pale/50 text-white shadow-glow transition-all duration-300 ${focusRing}`}
           style={arrowGlowStyle}
         >
           <ChevronIcon direction="left" />
@@ -153,7 +153,7 @@ export default function Projects() {
           type="button"
           onClick={goNext}
           aria-label="Projet suivant"
-          className={`glass-dark flex size-11 cursor-pointer items-center justify-center rounded-full border-[1.5px] border-purple-pale/50 text-white shadow-glow transition-all duration-300 ${focusRing}`}
+          className={`glass-dark flex size-11 shrink-0 cursor-pointer items-center justify-center rounded-full border-[1.5px] border-purple-pale/50 text-white shadow-glow transition-all duration-300 ${focusRing}`}
           style={arrowGlowStyle}
         >
           <ChevronIcon direction="right" />

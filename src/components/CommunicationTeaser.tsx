@@ -18,7 +18,7 @@ const arrowGlowStyle = {
   '--glow-opacity-hover': '90%',
 } as CSSProperties
 
-const arrowClass = `glass-dark flex size-11 cursor-pointer items-center justify-center rounded-full border-[1.5px] border-purple-pale/50 text-white shadow-glow transition-all duration-300 ${focusRing}`
+const arrowClass = `glass-dark flex size-11 shrink-0 cursor-pointer items-center justify-center rounded-full border-[1.5px] border-purple-pale/50 text-white shadow-glow transition-all duration-300 ${focusRing}`
 
 function ChevronIcon({ direction }: { direction: 'left' | 'right' }) {
   return (
@@ -121,12 +121,12 @@ export default function CommunicationTeaser() {
 
       <MobileCarousel />
 
-      <div className="hidden w-full flex-wrap justify-center gap-4 md:flex lg:gap-6">
+      <div className="hidden w-full flex-nowrap justify-center gap-4 md:flex">
         {accueil.blocs.map((b) => (
           <Link
             key={b.id}
             to={blocHref(b)}
-            className={`group flex w-[260px] flex-col gap-3 p-3 transition-transform duration-300 hover:-translate-y-1 ${cardFrame} ${focusRing}`}
+            className={`group flex w-[calc((100%-2rem)/3)] max-w-[260px] flex-col gap-3 p-3 transition-transform duration-300 hover:-translate-y-1 ${cardFrame} ${focusRing}`}
           >
             <Thumb bloc={b} />
             <CardBody bloc={b} />
