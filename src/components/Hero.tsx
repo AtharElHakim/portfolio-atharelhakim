@@ -43,6 +43,17 @@ export default function Hero() {
           src={portraitImg}
           alt="Portrait illustré d'Athar"
           fetchPriority="high"
+          style={{
+            // The illustration has its own dark backdrop: fade its edges into the
+            // page instead of cutting her out (a hand-traced cutout left jagged
+            // edges). Side fade + top fade; the bottom keeps the light at her feet.
+            maskImage:
+              'linear-gradient(to right, transparent 0%, #000 22%, #000 78%, transparent 100%), linear-gradient(to bottom, transparent 0%, #000 10%, #000 100%)',
+            WebkitMaskImage:
+              'linear-gradient(to right, transparent 0%, #000 22%, #000 78%, transparent 100%), linear-gradient(to bottom, transparent 0%, #000 10%, #000 100%)',
+            maskComposite: 'intersect',
+            WebkitMaskComposite: 'source-in',
+          }}
           className="w-auto max-w-none object-contain max-md:h-full max-md:max-h-[640px] md:h-[600px]"
         />
       </div>
