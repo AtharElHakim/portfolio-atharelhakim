@@ -68,7 +68,9 @@ export default function CaseStudyNav({
 
   return (
     <>
-      <div className="sticky top-20 z-10 flex items-center px-4 py-2 md:px-12">
+      {/* Sticky only where the side nav lives (lg+); on smaller screens a floating
+          back button would sit on top of the text while scrolling. */}
+      <div className="relative z-10 flex items-center px-4 py-2 md:px-12 lg:sticky lg:top-20">
         <Link
           to={backTo}
           className={`flex min-h-11 shrink-0 items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-2 text-sm text-white/85 transition-colors duration-300 hover:text-white ${focusRing}`}

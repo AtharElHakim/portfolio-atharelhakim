@@ -20,17 +20,24 @@ const navSections = alternance.sections.map((s) => ({ id: s.id, label: s.titre }
 /** Desktop thumbnails per line: up to 6 on one line, more are split into two balanced lines (7 → 4 + 3). */
 const perLine = (n: number) => (n <= 6 ? n : Math.ceil(n / 2))
 
-/** A row holds a single format: 9:16 thumbnails stay centered (2 per line on mobile), 16:9 spans the column. */
+/** A row holds a single format. 16:9 spans the column. 9:16 thumbnails are
+ *  centred lines from md up; on mobile, a row of 3+ becomes one horizontal
+ *  swipe strip (snap per video, the next one peeking at the edge) so a long
+ *  series doesn't stack into several screens. */
 function Rangee({ videos }: { videos: Video[] }) {
   const wide = videos[0]?.format === '16:9'
   const k = perLine(videos.length)
+  const swipe = !wide && videos.length > 2
+  const desktop = '[&>*]:max-w-[180px] md:max-w-[var(--row-max)] lg:[&>*]:w-[calc((100%-(var(--k)-1)*1rem)/var(--k))]'
+  const mobile = swipe
+    ? // Full-bleed strip: cancel the section's 32px side padding so cards slide to the screen edge.
+      'max-md:-mx-8 max-md:w-[calc(100%+4rem)] max-md:flex-nowrap max-md:justify-start max-md:snap-x max-md:snap-mandatory max-md:overflow-x-auto max-md:scroll-px-8 max-md:px-8 max-md:pb-2 max-md:[scrollbar-width:none] max-md:[&>*]:w-[42%] max-md:[&>*]:shrink-0 max-md:[&>*]:snap-start md:[&>*]:w-[calc(50%-0.5rem)]'
+    : '[&>*]:w-[calc(50%-0.5rem)]'
   return (
     <div
-      style={wide ? undefined : ({ '--k': k, maxWidth: `calc(${k} * 180px + ${k - 1}rem)` } as CSSProperties)}
+      style={wide ? undefined : ({ '--k': k, '--row-max': `calc(${k} * 180px + ${k - 1}rem)` } as CSSProperties)}
       className={`flex w-full flex-wrap justify-center gap-x-4 gap-y-8 ${
-        wide
-          ? '[&>*]:w-full [&>*]:max-w-[820px]'
-          : '[&>*]:w-[calc(50%-0.5rem)] [&>*]:max-w-[180px] lg:[&>*]:w-[calc((100%-(var(--k)-1)*1rem)/var(--k))]'
+        wide ? '[&>*]:w-full [&>*]:max-w-[820px]' : `${mobile} ${desktop}`
       }`}
     >
       {videos.map((v) => (
