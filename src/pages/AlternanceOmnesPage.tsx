@@ -47,7 +47,22 @@ function Rangee({ videos }: { videos: Video[] }) {
   )
 }
 
+/** Mobile only, for blocks with several rows (MSc ERCI): every video on one
+ *  swipe strip at a shared height, so the 16:9 card is simply wider. */
+function MixedStrip({ videos }: { videos: Video[] }) {
+  return (
+    <div className="-mx-8 flex w-[calc(100%+4rem)] snap-x snap-mandatory gap-4 overflow-x-auto scroll-px-8 px-8 pb-2 [scrollbar-width:none] md:hidden">
+      {videos.map((v) => (
+        <div key={v.id} className={`shrink-0 snap-start ${v.format === '16:9' ? 'w-[min(92vw,440px)]' : 'w-[calc(min(92vw,440px)*81/256)]'}`}>
+          <VideoMedia video={v} />
+        </div>
+      ))}
+    </div>
+  )
+}
+
 function BlocView({ bloc, numero }: { bloc: Bloc; numero: number }) {
+  const mixed = bloc.rangees.length > 1
   return (
     <div id={bloc.id} className="flex w-full scroll-mt-28 flex-col items-center gap-4 text-center">
       {/* Title + its « école · plateforme » line read as one unit: 8px apart, 16px before the text. */}
@@ -59,7 +74,12 @@ function BlocView({ bloc, numero }: { bloc: Bloc; numero: number }) {
         <Micro1>{bloc.sousLigne}</Micro1>
       </div>
       <Body1 className="w-full font-light">{fr(bloc.texte)}</Body1>
-      <div className="mt-4 flex w-full flex-col items-center gap-10">
+      {mixed && (
+        <div className="mt-4 w-full md:hidden">
+          <MixedStrip videos={bloc.rangees.flat()} />
+        </div>
+      )}
+      <div className={`mt-4 w-full flex-col items-center gap-10 ${mixed ? 'hidden md:flex' : 'flex'}`}>
         {bloc.rangees.map((r) => (
           <Rangee key={r[0].id} videos={r} />
         ))}
