@@ -5,7 +5,7 @@ export default function Contact({ transparent }: { transparent?: boolean }) {
   return (
     <section
       id="contact"
-      className={`relative left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] flex w-screen flex-col items-center justify-center gap-6 overflow-hidden px-8 py-12 md:gap-10 md:py-16 md:px-[var(--nav-edge-w)] ${
+      className={`relative left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] flex w-screen flex-col items-center justify-center gap-5 overflow-hidden px-8 py-8 md:gap-10 md:py-16 md:px-[var(--nav-edge-w)] ${
         transparent ? '' : 'bg-black-ink/85'
       }`}
     >
