@@ -281,8 +281,10 @@ export default function NavBar() {
   }, [mobileOpen])
 
   return (
-    <header className="sticky top-4 z-20 px-4 md:px-12">
-      <div className="relative mx-auto flex w-full max-w-[1440px] items-center justify-between gap-4">
+    <header className="sticky top-4 z-40 px-4 md:px-12">
+      {/* Below lg (burger menu) the bar gets a light liquid-glass pill so the
+          name and burger stay readable over the content; transparent above. */}
+      <div className="relative mx-auto flex w-full max-w-[1440px] items-center justify-between gap-4 max-lg:rounded-full max-lg:border max-lg:border-white/10 max-lg:bg-white/[0.06] max-lg:py-1.5 max-lg:pl-5 max-lg:pr-1.5 max-lg:shadow-[inset_0_1px_0_rgba(255,255,255,0.08),0_8px_24px_rgba(0,0,0,0.35)] max-lg:backdrop-blur-xl max-lg:backdrop-saturate-150">
         <Link to="/" className="flex shrink-0 flex-col items-start gap-0.5">
           <span className="font-syne text-lg leading-6 text-white">
             Athar El Hakim
