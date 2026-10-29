@@ -12,7 +12,7 @@ export default function Footer() {
           <p className="whitespace-nowrap font-syne text-xl leading-9 text-white/70 md:text-3xl">
             Athar El Hakim
           </p>
-          <nav className="flex flex-wrap items-center justify-center md:gap-4 max-md:[&>a]:!px-2 max-md:[&>a]:text-[13px]">
+          <nav className="flex flex-wrap items-center justify-center md:gap-4 max-md:[&>a]:!px-1.5 max-md:[&>a]:text-sm">
             <Button to="/" variant="ghost">
               Home
             </Button>
