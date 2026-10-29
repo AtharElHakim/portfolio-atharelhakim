@@ -31,9 +31,11 @@ export default function ProjectCard({
   return (
     <Link
       to={to}
-      className={`group flex flex-col gap-4 rounded-3xl border border-white/10 bg-white/5 p-3 transition-all duration-300 hover:-translate-y-1 hover:border-purple-pale/40 ${focusRing}`}
+      className={`group flex flex-row items-center gap-3 rounded-2xl border border-white/10 bg-white/5 p-2 transition-all duration-300 hover:-translate-y-1 hover:border-purple-pale/40 sm:flex-col sm:items-stretch sm:gap-4 sm:rounded-3xl sm:p-3 ${focusRing}`}
     >
-      <div className="relative h-[220px] w-full overflow-hidden rounded-2xl">
+      {/* Phones: compact list row (thumbnail left, text right) so ~4 projects fit
+          on one screen; regular card from sm up. */}
+      <div className="relative aspect-[4/3] w-[40%] shrink-0 overflow-hidden rounded-xl sm:aspect-auto sm:h-[220px] sm:w-full sm:rounded-2xl">
         {image && portrait ? (
           <>
             <img
@@ -64,10 +66,10 @@ export default function ProjectCard({
           imagePlaceholder
         )}
       </div>
-      <div className="flex flex-col items-start gap-2 px-3 pb-3">
-        <H3>{title}</H3>
+      <div className="flex min-w-0 flex-col items-start gap-1 pr-1 sm:gap-2 sm:px-3 sm:pb-3">
+        <H3 className="max-sm:!text-lg max-sm:!leading-6">{title}</H3>
         {meta && <Micro1>{meta}</Micro1>}
-        <Body2>{description}</Body2>
+        <Body2 className="max-sm:line-clamp-2 max-sm:!text-sm max-sm:!leading-5">{description}</Body2>
       </div>
     </Link>
   )

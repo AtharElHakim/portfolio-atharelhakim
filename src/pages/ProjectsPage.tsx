@@ -121,7 +121,7 @@ function ProjectCategorySection({
 
       {rest.length > 0 && (
         <div
-          className={`grid w-full grid-cols-1 gap-8 sm:grid-cols-2 ${
+          className={`grid w-full grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-8 ${
             rest.length > 2 ? 'lg:grid-cols-3' : ''
           }`}
         >

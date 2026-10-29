@@ -27,7 +27,7 @@ export default function CommunicationPage() {
       <section className="flex w-full flex-col items-center gap-10 p-8 md:py-16 md:px-[var(--nav-edge-w)]">
         {/* Same column widths as the UX/UI grid (3 per row on desktop), but
             centered so a lone card doesn't sit on the left. */}
-        <div className="flex w-full flex-wrap justify-center gap-8 [&>*]:w-full sm:[&>*]:w-[calc(50%-1rem)] lg:[&>*]:w-[calc((100%-4rem)/3)]">
+        <div className="flex w-full flex-wrap justify-center gap-3 sm:gap-8 [&>*]:w-full sm:[&>*]:w-[calc(50%-1rem)] lg:[&>*]:w-[calc((100%-4rem)/3)]">
           {cartesCom.map((c) => (
             <ProjectCard
               key={c.slug}
