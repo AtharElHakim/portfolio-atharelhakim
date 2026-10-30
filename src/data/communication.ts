@@ -331,11 +331,30 @@ const allBlocs = alternance.sections.flatMap((s) => s.blocs)
 /** First video of a block that has a thumbnail. */
 export const blocPoster = (b: Bloc) => b.rangees.flat().find((x) => x.poster)?.poster ?? ''
 
+/** A homepage teaser card: plays its video in place (no link out). */
+export interface AccueilCarte {
+  /** Title shown under the thumbnail (the block it comes from). */
+  titre: string
+  video: Video
+}
+
+const videoById = (id: string): Video => {
+  const v = allBlocs.flatMap((b) => b.rangees.flat()).find((x) => x.id === id)
+  if (!v) throw new Error(`communication.ts: unknown video id "${id}"`)
+  return v
+}
+
 export const accueil = {
   titre: 'Créations de Contenu',
   texte: 'Reels, interviews et séries réalisés pour HEIP et Sup de Pub.',
-  /** The 3 blocks shown on the homepage, by id: each links to its block on the page. */
-  blocs: ['campagnes-acquisition', 'projection-courts-metrages', 'tips-tournage-montage']
-    .map((id) => allBlocs.find((b) => b.id === id))
-    .filter((b): b is Bloc => Boolean(b)),
+  /** The 3 cards on the homepage. Each needs a local file (`src`) so it plays
+   *  on the site, without TikTok/Instagram embeds (cookies, like counts). */
+  cartes: [
+    { titre: "Campagnes d'acquisition", video: videoById('rejoignez-nous') },
+    { titre: 'Immersion et micro-trottoirs', video: { ...videoById('story-immersive'), src: '' } },
+    {
+      titre: 'Tips tournage et montage',
+      video: { ...videoById('tips-3-choses'), src: `${VIDEOS}tips-3-choses.mp4`, url: '' },
+    },
+  ] as AccueilCarte[],
 }
