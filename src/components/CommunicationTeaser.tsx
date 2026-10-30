@@ -1,29 +1,10 @@
 import { useState, type CSSProperties } from 'react'
-import { H2, H3, Body1 } from './Typography'
+import { H2, Body1 } from './Typography'
 import Button, { focusRing } from './Button'
 import { Placeholder, PlayGlyph } from './communication/media'
 import { cardFrame, PlayerModal } from './communication/VideoCard'
 import { useCarouselGestures } from '../hooks/useCarouselGestures'
 import { accueil, type AccueilCarte } from '../data/communication'
-
-/* Same arrows as the UX/UI carousel (Projects.tsx). */
-const arrowGlowStyle = {
-  '--glow-color': 'var(--color-purple-light)',
-  '--glow-blur': '10px',
-  '--glow-opacity': '60%',
-  '--glow-blur-hover': '16px',
-  '--glow-opacity-hover': '90%',
-} as CSSProperties
-
-const arrowClass = `glass-dark flex size-11 shrink-0 cursor-pointer items-center justify-center rounded-full border-[1.5px] border-purple-pale/50 text-white shadow-glow transition-all duration-300 ${focusRing}`
-
-function ChevronIcon({ direction }: { direction: 'left' | 'right' }) {
-  return (
-    <svg className={`size-5 ${direction === 'left' ? 'rotate-180' : ''}`} viewBox="0 0 24 24" fill="none" aria-hidden>
-      <path d="M9 6L15 12L9 18" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-    </svg>
-  )
-}
 
 function Thumb({ carte }: { carte: AccueilCarte }) {
   return (
@@ -84,15 +65,6 @@ function MobileCarousel({ onPlay }: { onPlay: (c: AccueilCarte) => void }) {
         })}
       </div>
 
-      <div className="flex items-center gap-6">
-        <button type="button" onClick={goPrev} aria-label="Contenu précédent" className={arrowClass} style={arrowGlowStyle}>
-          <ChevronIcon direction="left" />
-        </button>
-        <H3 className="min-w-[180px] text-center !text-lg !leading-normal">{blocs[activeIndex].titre}</H3>
-        <button type="button" onClick={goNext} aria-label="Contenu suivant" className={arrowClass} style={arrowGlowStyle}>
-          <ChevronIcon direction="right" />
-        </button>
-      </div>
     </div>
   )
 }
