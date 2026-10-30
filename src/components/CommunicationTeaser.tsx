@@ -33,7 +33,7 @@ function MobileCarousel({ onPlay }: { onPlay: (c: AccueilCarte) => void }) {
   return (
     <div className="flex w-full flex-col items-center gap-6">
       <div
-        className="relative flex h-[470px] w-full items-center justify-center [--step:150px] md:h-[520px] md:[--step:290px] touch-pan-y select-none [&_img]:pointer-events-none [&_img]:[-webkit-user-drag:none]"
+        className="relative flex h-[470px] w-full items-center justify-center [--step:140px] md:h-[520px] md:[--step:248px] touch-pan-y select-none [&_img]:pointer-events-none [&_img]:[-webkit-user-drag:none]"
         style={{ perspective: '1600px' }}
         {...gestures}
       >
