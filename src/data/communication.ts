@@ -196,7 +196,7 @@ export const alternance = {
           sousLigne: 'Sup de Pub · Instagram et TikTok',
           roles: ['Concept', 'Face caméra', 'Interview', 'Photo et vidéo'],
           texte:
-            'Une soirée, deux formats : une story immersive pour vivre la projection en direct, et un micro-trottoir où les familles devinent le titre du film de leur proche.',
+            'Une story immersive pendant la projection des courts métrages, et des micro-trottoirs pour Instagram et TikTok.',
           rangees: [
             [
               enLigne(
