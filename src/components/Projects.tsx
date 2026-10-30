@@ -33,7 +33,11 @@ function ChevronIcon({ direction }: { direction: 'left' | 'right' }) {
 }
 
 export default function Projects() {
-  const [activeIndex, setActiveIndex] = useState(1)
+  // Par ici opens in front (middle card); falls back to the 2nd card if it isn't featured.
+  const [activeIndex, setActiveIndex] = useState(() => {
+    const i = projects.findIndex((p) => p.slug === 'par-ici')
+    return i === -1 ? 1 : i
+  })
   const active = projects[activeIndex]
 
   const goPrev = () =>
