@@ -6,7 +6,7 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="relative flex flex-wrap items-center gap-10 p-8 md:py-16 md:px-[var(--nav-edge-w)]"
+      className="relative flex flex-wrap items-center gap-10 p-8 md:py-12 md:px-[var(--nav-edge-w)]"
     >
       <div className="relative mx-auto flex w-full max-w-[1440px] flex-wrap items-center gap-10">
       <div className="relative z-10 flex flex-1 min-w-[280px] flex-col items-start gap-12">

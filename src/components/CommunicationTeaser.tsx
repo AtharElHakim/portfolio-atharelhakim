@@ -113,7 +113,7 @@ function MobileCarousel() {
  *  Side by side from md, swipeable carousel below. */
 export default function CommunicationTeaser() {
   return (
-    <section className="relative flex flex-col items-center gap-10 overflow-hidden p-8 md:py-16 md:px-[var(--nav-edge-w)]">
+    <section className="relative flex flex-col items-center gap-10 overflow-hidden p-8 md:py-12 md:px-[var(--nav-edge-w)]">
       <div className="flex flex-col items-center gap-4 text-center">
         <H2>{accueil.titre}</H2>
         <Body1 className="font-light">{accueil.texte}</Body1>

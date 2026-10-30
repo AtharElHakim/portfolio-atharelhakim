@@ -97,7 +97,7 @@ function ToolTile({ tool, decorative = false }: { tool: Tool; decorative?: boole
 
 export default function Tools() {
   return (
-    <section className="relative flex flex-col items-center gap-10 p-8 md:py-16 md:px-[var(--nav-edge-w)]">
+    <section className="relative flex flex-col items-center gap-10 p-8 md:py-12 md:px-[var(--nav-edge-w)]">
       <div className="relative flex w-full max-w-[1440px] flex-col items-center gap-8">
         <H2>Mes Outils</H2>
 
