@@ -33,7 +33,7 @@ function MobileCarousel({ onPlay }: { onPlay: (c: AccueilCarte) => void }) {
   return (
     <div className="flex w-full flex-col items-center gap-6">
       <div
-        className="relative flex h-[470px] w-full items-center justify-center [--step:140px] md:h-[520px] md:[--step:248px] touch-pan-y select-none [&_img]:pointer-events-none [&_img]:[-webkit-user-drag:none]"
+        className="relative my-2 flex h-[407px] w-full items-center justify-center [--step:140px] md:h-[480px] md:[--step:248px] touch-pan-y select-none [&_img]:pointer-events-none [&_img]:[-webkit-user-drag:none]"
         style={{ perspective: '1600px' }}
         {...gestures}
       >
@@ -74,7 +74,7 @@ function MobileCarousel({ onPlay }: { onPlay: (c: AccueilCarte) => void }) {
 export default function CommunicationTeaser() {
   const [playing, setPlaying] = useState<AccueilCarte | null>(null)
   return (
-    <section className="relative flex flex-col items-center gap-10 overflow-hidden p-8 md:py-12 md:px-[var(--nav-edge-w)]">
+    <section className="relative flex flex-col items-center gap-4 overflow-hidden p-8 md:py-12 md:px-[var(--nav-edge-w)]">
       <div className="flex flex-col items-center gap-4 text-center">
         <H2>{accueil.titre}</H2>
         <Body1 className="font-light">{accueil.texte}</Body1>
@@ -82,7 +82,7 @@ export default function CommunicationTeaser() {
 
       <MobileCarousel onPlay={setPlaying} />
 
-      <Button to="/communication">Voir mes contenus</Button>
+      <Button to="/communication" className="mt-6">Voir mes contenus</Button>
       {playing && <PlayerModal video={{ ...playing.video, titre: playing.titre }} onClose={() => setPlaying(null)} />}
     </section>
   )

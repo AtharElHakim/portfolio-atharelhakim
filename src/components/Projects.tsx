@@ -45,7 +45,7 @@ export default function Projects() {
   return (
     <section
       id="projects"
-      className="relative flex flex-col items-center gap-10 overflow-hidden p-8 md:pt-6 md:pb-12 md:px-[var(--nav-edge-w)]"
+      className="relative flex flex-col items-center gap-4 overflow-hidden p-8 md:pt-6 md:pb-12 md:px-[var(--nav-edge-w)]"
     >
       <div className="relative flex w-full max-w-[1440px] flex-col items-center gap-6">
         <div className="animate-fade-in-up flex flex-col items-center gap-4 text-center">
@@ -57,7 +57,7 @@ export default function Projects() {
       </div>
 
       <div
-        className="relative flex h-[440px] w-full max-w-[1440px] items-center justify-center touch-pan-y select-none [&_img]:pointer-events-none [&_img]:[-webkit-user-drag:none] cursor-grab active:cursor-grabbing"
+        className="relative my-2 flex h-[400px] w-full max-w-[1440px] items-center justify-center touch-pan-y select-none [&_img]:pointer-events-none [&_img]:[-webkit-user-drag:none] cursor-grab active:cursor-grabbing"
         style={{ perspective: '1600px' }}
         {...gestures}
       >
@@ -137,7 +137,7 @@ export default function Projects() {
         })}
       </div>
 
-      <div className="flex items-center gap-6">
+      <div className="mt-6 flex items-center gap-6">
         <button
           type="button"
           onClick={goPrev}
