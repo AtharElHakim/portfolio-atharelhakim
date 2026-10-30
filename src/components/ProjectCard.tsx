@@ -31,7 +31,7 @@ export default function ProjectCard({
   return (
     <Link
       to={to}
-      className={`group flex flex-row items-center gap-3 rounded-2xl border border-white/10 bg-white/5 p-2 transition-all duration-300 hover:-translate-y-1 hover:border-purple-pale/40 sm:flex-col sm:items-stretch sm:gap-4 sm:rounded-3xl sm:p-3 ${focusRing}`}
+      className={`group flex flex-row items-center gap-3 rounded-2xl border border-white/10 bg-white/5 p-2 transition-all duration-300 transform-gpu will-change-transform hover:-translate-y-1 hover:border-purple-pale/40 sm:flex-col sm:items-stretch sm:gap-4 sm:rounded-3xl sm:p-3 ${focusRing}`}
     >
       {/* Phones: compact list row (thumbnail left, text right) so ~4 projects fit
           on one screen; regular card from sm up. */}
@@ -60,7 +60,7 @@ export default function ProjectCard({
             src={image}
             alt={title}
             style={imagePosition ? { objectPosition: imagePosition } : undefined}
-            className="size-full object-cover transition-transform duration-500 group-hover:scale-105"
+            className="size-full transform-gpu object-cover transition-transform duration-500 ease-out will-change-transform [backface-visibility:hidden] group-hover:scale-105"
           />
         ) : (
           imagePlaceholder

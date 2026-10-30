@@ -1,5 +1,5 @@
 import { useState, type CSSProperties } from 'react'
-import { H2, H3, Body1, H6 } from './Typography'
+import { H2, H3, Body1 } from './Typography'
 import Button, { focusRing } from './Button'
 import { Placeholder, PlayGlyph } from './communication/media'
 import { cardFrame, PlayerModal } from './communication/VideoCard'
@@ -40,15 +40,6 @@ function Thumb({ carte }: { carte: AccueilCarte }) {
   )
 }
 
-function CardBody({ carte }: { carte: AccueilCarte }) {
-  return (
-    <div className="px-1 pb-1 text-left">
-      {/* Room for 2 lines on every card, so a long title doesn't make one card taller. */}
-      <H6 className="line-clamp-2 max-md:min-h-[2lh]">{carte.titre}</H6>
-    </div>
-  )
-}
-
 /** Mobile only: swipeable 3D carousel, same motion as the UX/UI one on the homepage. */
 function MobileCarousel({ onPlay }: { onPlay: (c: AccueilCarte) => void }) {
   const blocs = accueil.cartes
@@ -75,7 +66,7 @@ function MobileCarousel({ onPlay }: { onPlay: (c: AccueilCarte) => void }) {
             zIndex: 10 - abs,
             opacity: abs > 1 ? 0 : isActive ? 1 : 0.55,
           } as CSSProperties
-          const cls = `absolute flex w-[230px] flex-col gap-3 p-2.5 transition-[transform,opacity] duration-[900ms] ease-[cubic-bezier(0.16,1,0.3,1)] will-change-transform ${cardFrame} ${focusRing}`
+          const cls = `absolute flex w-[230px] flex-col p-2.5 transition-[transform,opacity] duration-[900ms] ease-[cubic-bezier(0.16,1,0.3,1)] will-change-transform ${cardFrame} ${focusRing}`
 
           return (
             <button
@@ -87,7 +78,6 @@ function MobileCarousel({ onPlay }: { onPlay: (c: AccueilCarte) => void }) {
               style={style}
             >
               <Thumb carte={b} />
-              <CardBody carte={b} />
             </button>
           )
         })}
@@ -126,10 +116,9 @@ export default function CommunicationTeaser() {
             type="button"
             onClick={() => setPlaying(c)}
             aria-label={`Lire la vidéo « ${c.titre} »`}
-            className={`group flex w-[calc((100%-2rem)/3)] max-w-[260px] cursor-pointer flex-col gap-3 p-3 transition-transform duration-300 hover:-translate-y-1 ${cardFrame} ${focusRing}`}
+            className={`group flex w-[calc((100%-2rem)/3)] max-w-[260px] cursor-pointer flex-col p-3 transition-transform duration-300 hover:-translate-y-1 ${cardFrame} ${focusRing}`}
           >
             <Thumb carte={c} />
-            <CardBody carte={c} />
           </button>
         ))}
       </div>
