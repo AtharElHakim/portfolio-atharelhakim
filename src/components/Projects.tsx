@@ -2,7 +2,7 @@ import { useState, type CSSProperties } from 'react'
 import { Link } from 'react-router-dom'
 import { H2, H3, Body1, Body2 } from './Typography'
 import { focusRing } from './Button'
-import { useSwipe } from '../hooks/useSwipe'
+import { useCarouselGestures } from '../hooks/useCarouselGestures'
 import { homeProjects as projects } from '../data/projects'
 
 const arrowGlowStyle = {
@@ -40,7 +40,7 @@ export default function Projects() {
     setActiveIndex((prev) => (prev - 1 + projects.length) % projects.length)
   const goNext = () =>
     setActiveIndex((prev) => (prev + 1) % projects.length)
-  const swipeHandlers = useSwipe(goNext, goPrev)
+  const gestures = useCarouselGestures(goNext, goPrev)
 
   return (
     <section
@@ -57,10 +57,9 @@ export default function Projects() {
       </div>
 
       <div
-        className="relative flex h-[440px] w-full max-w-[1440px] items-center justify-center touch-pan-y"
+        className="relative flex h-[440px] w-full max-w-[1440px] items-center justify-center touch-pan-y select-none [&_img]:pointer-events-none [&_img]:[-webkit-user-drag:none] cursor-grab active:cursor-grabbing"
         style={{ perspective: '1600px' }}
-        onTouchStart={swipeHandlers.onTouchStart}
-        onTouchEnd={swipeHandlers.onTouchEnd}
+        {...gestures}
       >
         {projects.map((project, i) => {
           const count = projects.length

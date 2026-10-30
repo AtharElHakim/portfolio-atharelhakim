@@ -4,7 +4,7 @@ import { H2, H3, Body1, H6, Micro1 } from './Typography'
 import Button, { focusRing } from './Button'
 import { Placeholder, PlayGlyph } from './communication/media'
 import { cardFrame } from './communication/VideoCard'
-import { useSwipe } from '../hooks/useSwipe'
+import { useCarouselGestures } from '../hooks/useCarouselGestures'
 import { accueil, alternance, blocPoster, type Bloc } from '../data/communication'
 
 const blocHref = (b: Bloc) => `/communication/${alternance.slug}#${b.id}`
@@ -59,15 +59,14 @@ function MobileCarousel() {
   const [activeIndex, setActiveIndex] = useState(Math.floor(blocs.length / 2))
   const goPrev = () => setActiveIndex((i) => (i - 1 + blocs.length) % blocs.length)
   const goNext = () => setActiveIndex((i) => (i + 1) % blocs.length)
-  const swipe = useSwipe(goNext, goPrev)
+  const gestures = useCarouselGestures(goNext, goPrev)
 
   return (
     <div className="flex w-full flex-col items-center gap-6 md:hidden">
       <div
-        className="relative flex h-[470px] w-full items-center justify-center touch-pan-y"
+        className="relative flex h-[470px] w-full items-center justify-center touch-pan-y select-none [&_img]:pointer-events-none [&_img]:[-webkit-user-drag:none]"
         style={{ perspective: '1600px' }}
-        onTouchStart={swipe.onTouchStart}
-        onTouchEnd={swipe.onTouchEnd}
+        {...gestures}
       >
         {blocs.map((b, i) => {
           const count = blocs.length
