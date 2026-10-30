@@ -101,10 +101,11 @@ export default function Tools() {
       <div className="relative flex w-full max-w-[1440px] flex-col items-center gap-8">
         <H2>Mes Outils</H2>
 
-        {/* Mobile: one line of logos scrolling on a loop. The list is rendered
-            twice and the track slides by half its width, so the loop is seamless.
-            Paused on touch; static, swipeable row when reduced motion is on. */}
-        <div className="tools-marquee w-[calc(100%+4rem)] overflow-hidden md:hidden">
+        {/* One line of logos scrolling on a loop, edge to edge on every screen.
+            The list is rendered twice and the track slides by half its width,
+            so the loop is seamless. Paused on touch/hover; static, swipeable
+            row when reduced motion is on. */}
+        <div className="tools-marquee w-screen max-w-none shrink-0 overflow-hidden">
           <div className="tools-marquee-track flex w-max gap-4">
             {tools.map((tool) => (
               <ToolTile key={tool.name} tool={tool} />
@@ -115,11 +116,6 @@ export default function Tools() {
           </div>
         </div>
 
-        <div className="hidden max-w-[996px] flex-wrap items-start justify-center gap-x-4 gap-y-6 px-4 md:flex md:px-8">
-          {tools.map((tool) => (
-            <ToolTile key={tool.name} tool={tool} />
-          ))}
-        </div>
       </div>
     </section>
   )

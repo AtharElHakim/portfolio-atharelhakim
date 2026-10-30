@@ -150,10 +150,11 @@ p, h1, h2, h3 {
 }
 
 .tools-marquee-track {
-  animation: tools-marquee 40s linear infinite;
+  animation: tools-marquee 50s linear infinite;
 }
 
-.tools-marquee:active .tools-marquee-track {
+.tools-marquee:active .tools-marquee-track,
+.tools-marquee:hover .tools-marquee-track {
   animation-play-state: paused;
 }
 
