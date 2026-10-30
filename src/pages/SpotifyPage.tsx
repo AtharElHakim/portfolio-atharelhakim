@@ -1207,7 +1207,7 @@ export default function SpotifyPage() {
             <div className="pointer-events-none absolute inset-0 flex items-center justify-center bg-black/0 transition-all duration-300 group-hover/hero:bg-black/50">
               <Button
                 href={PROTOTYPE_URL}
-                className="pointer-events-auto opacity-80 transition-opacity duration-300 group-hover/hero:opacity-100"
+                className="pointer-events-auto opacity-80 transition-opacity duration-300 focus-visible:opacity-100 group-hover/hero:opacity-100 [@media(hover:hover)]:opacity-0"
               >
                 Voir le Prototype
               </Button>

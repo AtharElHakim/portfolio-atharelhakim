@@ -243,7 +243,7 @@ export default function FinelinePage() {
             <div className="pointer-events-none absolute inset-0 top-[45px] flex items-center justify-center bg-black/0 transition-all duration-300 group-hover/hero:bg-black/50">
               <Button
                 href="https://preview.webflow.com/preview/finelinelb-f6eecdd75ed16d10638c2e844afe?utm_medium=preview_link&utm_source=designer&utm_content=finelinelb-f6eecdd75ed16d10638c2e844afe&preview=b67d353f0c30868940d4ff182615a6a4&locale=en&workflow=preview"
-                className="pointer-events-auto opacity-80 transition-opacity duration-300 group-hover/hero:opacity-100"
+                className="pointer-events-auto opacity-80 transition-opacity duration-300 focus-visible:opacity-100 group-hover/hero:opacity-100 [@media(hover:hover)]:opacity-0"
               >
                 Prototype
               </Button>
