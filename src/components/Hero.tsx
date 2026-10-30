@@ -6,10 +6,10 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="relative flex flex-wrap items-center gap-10 p-8 md:py-12 md:px-[var(--nav-edge-w)]"
+      className="relative flex flex-wrap items-center gap-10 p-8 md:py-8 md:px-[var(--nav-edge-w)]"
     >
       <div className="relative mx-auto flex w-full max-w-[1440px] flex-wrap items-center gap-10">
-      <div className="relative z-10 flex flex-1 min-w-[280px] flex-col items-start gap-12">
+      <div className="relative z-10 flex flex-1 min-w-[280px] flex-col items-start gap-10">
         <div className="animate-fade-in-up flex flex-col items-start gap-4">
           <Display className="w-full">Salut, moi c'est Athar !</Display>
           <Body1 className="w-full font-light">
@@ -55,7 +55,7 @@ export default function Hero() {
             maskComposite: 'intersect',
             WebkitMaskComposite: 'source-in',
           }}
-          className="w-auto max-w-none object-contain max-[1179px]:h-full max-[1179px]:opacity-40 max-[1179px]:max-h-[640px] min-[1180px]:h-[600px]"
+          className="w-auto max-w-none object-contain max-[1179px]:h-full max-[1179px]:opacity-40 max-[1179px]:max-h-[640px] min-[1180px]:h-[min(520px,calc(100svh-260px))]"
         />
       </div>
       </div>

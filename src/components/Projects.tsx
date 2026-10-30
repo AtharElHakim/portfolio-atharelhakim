@@ -45,7 +45,7 @@ export default function Projects() {
   return (
     <section
       id="projects"
-      className="relative flex flex-col items-center gap-10 overflow-hidden p-8 md:py-12 md:px-[var(--nav-edge-w)]"
+      className="relative flex flex-col items-center gap-10 overflow-hidden p-8 md:pt-6 md:pb-12 md:px-[var(--nav-edge-w)]"
     >
       <div className="relative flex w-full max-w-[1440px] flex-col items-center gap-6">
         <div className="animate-fade-in-up flex flex-col items-center gap-4 text-center">
