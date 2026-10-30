@@ -266,7 +266,7 @@ function RiskMatrix({
         {RISK_COLUMNS.map((c) => (
           <div key={c.label} className="flex flex-col items-center text-center">
             <span className="text-xs text-white/70 sm:text-sm">{c.label}</span>
-            <span className="text-[10px] text-white/40 sm:text-xs">{c.note}</span>
+            <span className="text-xs text-white/40">{c.note}</span>
           </div>
         ))}
         {matrices[origin].map((row) => (
@@ -281,7 +281,7 @@ function RiskMatrix({
                   style={{ background: `${level.color}26`, borderColor: `${level.color}66` }}
                 >
                   <span className="font-syne text-base text-white sm:text-xl">{score}/10</span>
-                  <span className="text-[10px] sm:text-xs" style={{ color: level.color }}>
+                  <span className="text-xs" style={{ color: level.color }}>
                     {level.label}
                   </span>
                 </div>
