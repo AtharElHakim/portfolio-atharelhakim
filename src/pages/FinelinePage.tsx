@@ -297,7 +297,7 @@ export default function FinelinePage() {
       {/* Contexte */}
       <div
         id="contexte"
-        className="flex flex-col items-center gap-10 p-8 md:py-16 md:px-[var(--nav-edge-w)]"
+        className="flex flex-col items-center gap-10 p-8 md:py-12 md:px-[var(--nav-edge-w)]"
       >
         <div className="flex w-full flex-col items-center gap-8">
           <SectionTitle>Contexte</SectionTitle>
@@ -325,7 +325,7 @@ export default function FinelinePage() {
       </div>
 
       {/* Problème */}
-      <div id="probleme" className="flex flex-col items-center gap-8 p-8 md:py-16 md:px-[var(--nav-edge-w)]">
+      <div id="probleme" className="flex flex-col items-center gap-8 p-8 md:py-12 md:px-[var(--nav-edge-w)]">
         <div className="flex w-full flex-col items-start gap-8">
           <SectionTitle>Problème</SectionTitle>
           <Body1 className="w-full text-center font-light">
@@ -404,7 +404,7 @@ export default function FinelinePage() {
       </div>
 
       {/* Audit */}
-      <div id="audit" className="flex flex-col items-center gap-14 p-8 md:py-16 md:px-[var(--nav-edge-w)]">
+      <div id="audit" className="flex flex-col items-center gap-14 p-8 md:py-12 md:px-[var(--nav-edge-w)]">
         <div className="flex w-full flex-col items-center gap-8">
           <H4>Recherche Secondaire</H4>
           <SectionTitle>Audit</SectionTitle>
@@ -606,7 +606,7 @@ export default function FinelinePage() {
       </div>
 
       {/* Benchmark */}
-      <div id="benchmark" className="flex flex-col items-center gap-8 p-8 md:py-16 md:px-[var(--nav-edge-w)]">
+      <div id="benchmark" className="flex flex-col items-center gap-8 p-8 md:py-12 md:px-[var(--nav-edge-w)]">
         <H4>Recherche Secondaire</H4>
         <SectionTitle>Benchmark des Concurrents</SectionTitle>
         <div className="flex w-full flex-col gap-6">
@@ -724,7 +724,7 @@ export default function FinelinePage() {
       </div>
 
       {/* Hypothèses */}
-      <div id="hypotheses" className="flex flex-col items-start gap-4 p-8 md:py-16 md:px-[var(--nav-edge-w)]">
+      <div id="hypotheses" className="flex flex-col items-start gap-4 p-8 md:py-12 md:px-[var(--nav-edge-w)]">
         <div className="flex w-full flex-col items-center gap-4">
           <SectionTitle>Hypothèses</SectionTitle>
           <Body1 className="w-full text-center font-light">
@@ -766,7 +766,7 @@ export default function FinelinePage() {
       </div>
 
       {/* Méthodologie de Recherche */}
-      <div id="recherche" className="flex flex-col items-center gap-16 p-8 md:py-16 md:px-[var(--nav-edge-w)]">
+      <div id="recherche" className="flex flex-col items-center gap-16 p-8 md:py-12 md:px-[var(--nav-edge-w)]">
         <div className="flex w-full flex-col items-center gap-6">
           <H4>Recherche Primaire</H4>
           <SectionTitle>Méthodologie de Recherche</SectionTitle>
@@ -846,7 +846,7 @@ export default function FinelinePage() {
       </div>
 
       {/* Empathy Map */}
-      <div id="empathy-map" className="flex flex-col items-center gap-8 p-8 md:py-16 md:px-[var(--nav-edge-w)]">
+      <div id="empathy-map" className="flex flex-col items-center gap-8 p-8 md:py-12 md:px-[var(--nav-edge-w)]">
         <div className="flex w-full flex-col items-start gap-4">
           <SectionTitle>Empathy Map</SectionTitle>
           <Body1 className="w-full text-center font-light">
@@ -887,7 +887,7 @@ export default function FinelinePage() {
       </div>
 
       {/* Synthèse des Recherches */}
-      <div id="synthese" className="flex flex-col items-start gap-8 p-8 md:py-16 md:px-[var(--nav-edge-w)]">
+      <div id="synthese" className="flex flex-col items-start gap-8 p-8 md:py-12 md:px-[var(--nav-edge-w)]">
         <SectionTitle>Synthèse des Recherches</SectionTitle>
         <div className="flex flex-col gap-4">
           <BulletPoint
@@ -910,7 +910,7 @@ export default function FinelinePage() {
       </div>
 
       {/* Cible + Personas */}
-      <div id="cible" className="flex flex-col items-center gap-8 p-8 md:py-16 md:px-[var(--nav-edge-w)]">
+      <div id="cible" className="flex flex-col items-center gap-8 p-8 md:py-12 md:px-[var(--nav-edge-w)]">
         <div className="flex w-full flex-col items-start gap-4">
           <SectionTitle>Cible</SectionTitle>
           <Body1 className="w-full text-center font-light">
@@ -1029,7 +1029,7 @@ export default function FinelinePage() {
       </div>
 
       {/* Plateforme de Marque */}
-      <div id="plateforme" className="flex flex-col items-center gap-8 p-8 md:py-16 md:px-[var(--nav-edge-w)]">
+      <div id="plateforme" className="flex flex-col items-center gap-8 p-8 md:py-12 md:px-[var(--nav-edge-w)]">
         <div className="flex w-full flex-col items-start gap-4">
           <SectionTitle>Plateforme de Marque</SectionTitle>
           <Body1 className="w-full text-center font-light">
@@ -1042,7 +1042,7 @@ export default function FinelinePage() {
       </div>
 
       {/* Direction Artistique */}
-      <div id="direction-artistique" className="flex flex-col items-center gap-8 p-8 md:py-16 md:px-[var(--nav-edge-w)]">
+      <div id="direction-artistique" className="flex flex-col items-center gap-8 p-8 md:py-12 md:px-[var(--nav-edge-w)]">
         <div className="flex w-full flex-col items-start gap-4">
           <SectionTitle>Direction Artistique</SectionTitle>
           <Body1 className="w-full text-center font-light">
@@ -1117,7 +1117,7 @@ export default function FinelinePage() {
       </div>
 
       {/* Prototype + Wireframes */}
-      <div id="prototype" className="flex flex-col items-center gap-12 p-8 md:py-16 md:px-[var(--nav-edge-w)]">
+      <div id="prototype" className="flex flex-col items-center gap-12 p-8 md:py-12 md:px-[var(--nav-edge-w)]">
         <div className="flex flex-col items-center gap-6">
           <SectionTitle>Prototype</SectionTitle>
           <Body1 className="w-full text-center font-light">
@@ -1248,7 +1248,7 @@ export default function FinelinePage() {
       )}
 
       {/* Budget */}
-      <div id="budget" className="flex flex-col items-start gap-8 p-8 md:py-16 md:px-[var(--nav-edge-w)]">
+      <div id="budget" className="flex flex-col items-start gap-8 p-8 md:py-12 md:px-[var(--nav-edge-w)]">
         <div className="flex flex-col items-start gap-4">
           <SectionTitle>Budget</SectionTitle>
           <Body1 className="w-full text-center font-light">
@@ -1330,7 +1330,7 @@ export default function FinelinePage() {
       </div>
 
       {/* Roadmap */}
-      <div id="roadmap" className="flex flex-col items-start gap-8 p-8 md:py-16 md:px-[var(--nav-edge-w)]">
+      <div id="roadmap" className="flex flex-col items-start gap-8 p-8 md:py-12 md:px-[var(--nav-edge-w)]">
         <div className="flex flex-col items-start gap-4">
           <SectionTitle>Roadmap</SectionTitle>
           <Body1 className="w-full text-center font-light">
@@ -1371,7 +1371,7 @@ export default function FinelinePage() {
       </div>
 
       {/* Conclusion */}
-      <div id="conclusion" className="flex flex-col items-start gap-8 p-8 md:py-16 md:pb-32 md:px-[var(--nav-edge-w)]">
+      <div id="conclusion" className="flex flex-col items-start gap-8 p-8 md:py-12 md:pb-16 md:px-[var(--nav-edge-w)]">
         <SectionTitle>Conclusion</SectionTitle>
         <Body1 className="w-full text-center font-light">
           Ce projet de refonte du site de Fine Line m'a permis d'appliquer

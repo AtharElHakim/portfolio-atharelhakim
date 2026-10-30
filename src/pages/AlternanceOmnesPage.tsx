@@ -13,7 +13,7 @@ import { alternance, type Bloc, type Video } from '../data/communication'
    follows the scroll (one entry per section). All copy
    and media live in src/data/communication.ts: edit that file, not this one. */
 
-const SECTION = 'flex flex-col items-center gap-10 p-8 md:py-16 md:px-[var(--nav-edge-w)]'
+const SECTION = 'flex flex-col items-center gap-10 p-8 md:py-12 md:px-[var(--nav-edge-w)]'
 
 const navSections = alternance.sections.map((s) => ({ id: s.id, label: s.titre }))
 
@@ -143,7 +143,7 @@ export default function AlternanceOmnesPage() {
         </div>
       ))}
 
-      <div className="pb-16 md:pb-24" />
+      <div className="pb-8 md:pb-12" />
       <Contact transparent />
     </div>
   )

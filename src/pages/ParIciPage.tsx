@@ -31,7 +31,7 @@ const RESEARCH_REPO_URL =
    `CalloutBox`. New patterns flagged inline: `Epigraph`, `RiskMatrix`,
    `MoscowGrid`, `RoadmapTimeline`, `WalkthroughStepper`. */
 
-const SECTION = 'flex flex-col items-center gap-8 p-8 md:py-16 md:px-[var(--nav-edge-w)]'
+const SECTION = 'flex flex-col items-center gap-8 p-8 md:py-12 md:px-[var(--nav-edge-w)]'
 
 function ChevronIcon({ direction }: { direction: 'left' | 'right' }) {
   return (
@@ -1426,7 +1426,7 @@ export default function ParIciPage() {
       </div>
 
       {/* ============ Problème ============ */}
-      <div id="probleme" className="flex flex-col items-center gap-8 p-8 md:py-16 md:px-[var(--nav-edge-w)]">
+      <div id="probleme" className="flex flex-col items-center gap-8 p-8 md:py-12 md:px-[var(--nav-edge-w)]">
         <SectionTitle>Problème</SectionTitle>
         <p className="mx-auto max-w-[900px] text-center font-syne text-3xl leading-snug text-white md:text-4xl">
           Comment CNP Assurances peut-il devenir le premier point de contact de confiance des étrangers non-UE,
@@ -1640,7 +1640,7 @@ export default function ParIciPage() {
       </div>
 
       {/* ============ Prototype ============ */}
-      <div id="prototype" className="flex flex-col items-center gap-6 p-8 md:py-16 md:px-[var(--nav-edge-w)]">
+      <div id="prototype" className="flex flex-col items-center gap-6 p-8 md:py-12 md:px-[var(--nav-edge-w)]">
         <SectionTitle>Prototype</SectionTitle>
         <Body1 className="w-full text-center font-light">
           On a porté tout le concept dans un prototype Figma interactif, de l'onboarding à la souscription.
@@ -1856,7 +1856,7 @@ export default function ParIciPage() {
       </div>
 
       {/* ============ Conclusion ============ */}
-      <div id="conclusion" className="flex flex-col items-center gap-8 p-8 md:py-16 md:pb-32 md:px-[var(--nav-edge-w)]">
+      <div id="conclusion" className="flex flex-col items-center gap-8 p-8 md:py-12 md:pb-16 md:px-[var(--nav-edge-w)]">
         <SectionTitle>Conclusion</SectionTitle>
         <Body1 className="w-full text-center font-light">
           Avec Par ici, CNP se positionne comme le premier point de confiance des étrangers non-UE en France.

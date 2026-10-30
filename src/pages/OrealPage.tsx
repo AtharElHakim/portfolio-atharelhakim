@@ -279,7 +279,7 @@ export default function OrealPage() {
       </div>
 
       {/* Contexte */}
-      <div id="contexte" className="flex flex-col items-center gap-8 p-8 md:py-16 md:px-[var(--nav-edge-w)]">
+      <div id="contexte" className="flex flex-col items-center gap-8 p-8 md:py-12 md:px-[var(--nav-edge-w)]">
         <SectionTitle>Contexte</SectionTitle>
         <div className="mx-auto flex w-full max-w-[1000px] flex-col gap-8">
           <div className="grid w-full grid-cols-1 items-stretch gap-10 md:grid-cols-2">
@@ -326,7 +326,7 @@ export default function OrealPage() {
       </div>
 
       {/* Processus */}
-      <div id="processus" className="flex flex-col items-center gap-8 p-8 md:py-16 md:px-[var(--nav-edge-w)]">
+      <div id="processus" className="flex flex-col items-center gap-8 p-8 md:py-12 md:px-[var(--nav-edge-w)]">
         <SectionTitle>Processus</SectionTitle>
         <div className="mx-auto flex w-full max-w-[900px] flex-col gap-6">
           <Body1 className="w-full text-center font-light">
@@ -437,7 +437,7 @@ export default function OrealPage() {
       </div>
 
       {/* Concept */}
-      <div id="concept" className="flex flex-col items-center gap-8 p-8 md:py-16 md:px-[var(--nav-edge-w)]">
+      <div id="concept" className="flex flex-col items-center gap-8 p-8 md:py-12 md:px-[var(--nav-edge-w)]">
         <SectionTitle>Concept</SectionTitle>
         <div className="mx-auto flex w-full flex-wrap items-stretch justify-center gap-8">
           <div className="flex min-w-[280px] flex-1 flex-col justify-center gap-6 rounded-2xl border border-white/15 bg-white/5 p-6 backdrop-blur-sm">
@@ -478,7 +478,7 @@ export default function OrealPage() {
       </div>
 
       {/* Ce qu'on apporte */}
-      <div id="apporte" className="flex flex-col items-center gap-8 p-8 md:py-16 md:px-[var(--nav-edge-w)]">
+      <div id="apporte" className="flex flex-col items-center gap-8 p-8 md:py-12 md:px-[var(--nav-edge-w)]">
         <div className="flex w-full flex-col items-center gap-8 text-center">
           <SectionTitle>Ce Qu'On Apporte À L'Oréal</SectionTitle>
           <Body1 className="w-full text-center font-light">
@@ -520,7 +520,7 @@ export default function OrealPage() {
       </div>
 
       {/* Vidéo Équipe */}
-      <div id="video" className="flex flex-col items-center gap-8 p-8 md:py-16 md:pb-32 md:px-[var(--nav-edge-w)]">
+      <div id="video" className="flex flex-col items-center gap-8 p-8 md:py-12 md:pb-16 md:px-[var(--nav-edge-w)]">
         <div className="flex w-full flex-col items-center gap-8 text-center">
           <SectionTitle>Vidéo Équipe</SectionTitle>
           <Body1 className="w-full text-center font-light">

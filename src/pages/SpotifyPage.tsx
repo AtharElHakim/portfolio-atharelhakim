@@ -1254,7 +1254,7 @@ export default function SpotifyPage() {
       </div>
 
       {/* Le Brief */}
-      <div id="brief" className="relative flex flex-col items-center gap-8 p-8 md:py-16 md:px-[var(--nav-edge-w)]">
+      <div id="brief" className="relative flex flex-col items-center gap-8 p-8 md:py-12 md:px-[var(--nav-edge-w)]">
         <SectionTitle>Le Brief</SectionTitle>
         <div className="mx-auto flex w-full max-w-[900px] flex-col items-center gap-8 rounded-2xl border border-white/15 bg-white/5 p-6 backdrop-blur-sm">
           <Body1 className="text-center font-light">
@@ -1269,7 +1269,7 @@ export default function SpotifyPage() {
       </div>
 
       {/* Marque */}
-      <div id="marque" className="flex flex-col items-center gap-10 p-8 md:py-16 md:px-[var(--nav-edge-w)]">
+      <div id="marque" className="flex flex-col items-center gap-10 p-8 md:py-12 md:px-[var(--nav-edge-w)]">
         <div className="flex w-full flex-col items-center gap-6">
           <img loading="lazy" decoding="async" src={spotifyLogo} alt="Spotify" className="h-7" />
           <SectionTitle>Marque</SectionTitle>
@@ -1337,7 +1337,7 @@ export default function SpotifyPage() {
       </div>
 
       {/* Audit */}
-      <div id="audit" className="flex flex-col items-center gap-14 p-8 md:py-16 md:px-[var(--nav-edge-w)]">
+      <div id="audit" className="flex flex-col items-center gap-14 p-8 md:py-12 md:px-[var(--nav-edge-w)]">
         <div className="flex w-full flex-col items-center gap-8">
           <H4>Recherche Secondaire</H4>
           <SectionTitle>Audit</SectionTitle>
@@ -1349,7 +1349,7 @@ export default function SpotifyPage() {
       </div>
 
       {/* Benchmark */}
-      <div id="benchmark" className="flex flex-col items-center gap-10 p-8 md:py-16 md:px-[var(--nav-edge-w)]">
+      <div id="benchmark" className="flex flex-col items-center gap-10 p-8 md:py-12 md:px-[var(--nav-edge-w)]">
         <SectionTitle>Benchmark</SectionTitle>
 
         <div className="flex w-full flex-col gap-6">
@@ -1392,7 +1392,7 @@ export default function SpotifyPage() {
       </div>
 
       {/* Synthèse */}
-      <div id="synthese" className="flex flex-col items-center gap-8 p-8 md:py-16 md:px-[var(--nav-edge-w)]">
+      <div id="synthese" className="flex flex-col items-center gap-8 p-8 md:py-12 md:px-[var(--nav-edge-w)]">
         <SectionTitle>Synthèse</SectionTitle>
         <div className="grid w-full grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {syntheseStats.map((s) => (
@@ -1402,7 +1402,7 @@ export default function SpotifyPage() {
       </div>
 
       {/* Cible */}
-      <div id="cible" className="flex flex-col items-center gap-10 p-8 md:py-16 md:px-[var(--nav-edge-w)]">
+      <div id="cible" className="flex flex-col items-center gap-10 p-8 md:py-12 md:px-[var(--nav-edge-w)]">
         <div className="flex w-full flex-col items-center gap-2">
           <SectionTitle>Analyse · Cible</SectionTitle>
           <H5 className="!text-purple-pale/70">Segmentation comportementale</H5>
@@ -1522,7 +1522,7 @@ export default function SpotifyPage() {
       </div>
 
       {/* Problème */}
-      <div id="probleme" className="flex flex-col items-center gap-8 p-8 md:py-16 md:px-[var(--nav-edge-w)]">
+      <div id="probleme" className="flex flex-col items-center gap-8 p-8 md:py-12 md:px-[var(--nav-edge-w)]">
         <p className="mx-auto max-w-[900px] text-center font-syne text-3xl leading-snug text-white md:text-4xl">
           Comment mettre en avant l'offre multi-service de Spotify pour engager au-delà de ses auditeurs
           musicaux ?
@@ -1530,7 +1530,7 @@ export default function SpotifyPage() {
       </div>
 
       {/* Recommandation */}
-      <div id="recommandation" className="flex flex-col items-center gap-10 p-8 md:py-16 md:px-[var(--nav-edge-w)]">
+      <div id="recommandation" className="flex flex-col items-center gap-10 p-8 md:py-12 md:px-[var(--nav-edge-w)]">
         <SectionTitle>Recommandation</SectionTitle>
         <div className="flex w-full flex-col items-center gap-4 text-center">
           <H5 className="!text-purple-pale/70">Spotify Multi</H5>
@@ -1710,7 +1710,7 @@ export default function SpotifyPage() {
       </div>
 
       {/* Wireframes */}
-      <div id="wireframes" className="flex flex-col items-center gap-8 p-8 md:py-16 md:px-[var(--nav-edge-w)]">
+      <div id="wireframes" className="flex flex-col items-center gap-8 p-8 md:py-12 md:px-[var(--nav-edge-w)]">
         <SectionTitle>Wireframes</SectionTitle>
         <Body1 className="w-full max-w-[820px] text-center font-light">
           Wireframes basse fidélité, structure et mise en page uniquement : ni couleur, ni typographie,
@@ -1735,7 +1735,7 @@ export default function SpotifyPage() {
       </div>
 
       {/* Prototype — reuses Fineline's Prototype CTA section pattern */}
-      <div id="prototype" className="flex flex-col items-center gap-6 p-8 md:py-16 md:px-[var(--nav-edge-w)]">
+      <div id="prototype" className="flex flex-col items-center gap-6 p-8 md:py-12 md:px-[var(--nav-edge-w)]">
         <SectionTitle>Prototype</SectionTitle>
         <Body1 className="w-full text-center font-light">
           Après la présentation des fonctionnalités, découvrez leur mise en situation dans le prototype
@@ -1745,7 +1745,7 @@ export default function SpotifyPage() {
       </div>
 
       {/* Impact par profil */}
-      <div id="impact" className="flex flex-col items-center gap-10 p-8 md:py-16 md:px-[var(--nav-edge-w)]">
+      <div id="impact" className="flex flex-col items-center gap-10 p-8 md:py-12 md:px-[var(--nav-edge-w)]">
         <SectionTitle>Impact par profil</SectionTitle>
         <Body1 className="w-full text-center font-light">
           Démontrer comment les 4 fonctionnalités clés répondent aux points de friction des différents
@@ -1820,7 +1820,7 @@ export default function SpotifyPage() {
       </div>
 
       {/* Équipe projet */}
-      <div id="equipe" className="flex flex-col items-center gap-10 p-8 md:py-16 md:px-[var(--nav-edge-w)]">
+      <div id="equipe" className="flex flex-col items-center gap-10 p-8 md:py-12 md:px-[var(--nav-edge-w)]">
         <SectionTitle>Équipe projet</SectionTitle>
         <MobileFold>
         <Body1 className="w-full text-center font-light">
@@ -1865,7 +1865,7 @@ export default function SpotifyPage() {
       </div>
 
       {/* Méthodologie gestion de projet */}
-      <div id="methodologie" className="flex flex-col items-center gap-10 p-8 md:py-16 md:px-[var(--nav-edge-w)]">
+      <div id="methodologie" className="flex flex-col items-center gap-10 p-8 md:py-12 md:px-[var(--nav-edge-w)]">
         <SectionTitle>Méthodologie gestion de projet</SectionTitle>
         <MobileFold>
         <Body1 className="w-full text-center font-light">
@@ -1925,7 +1925,7 @@ export default function SpotifyPage() {
       </div>
 
       {/* Roadmap */}
-      <div id="roadmap" className="flex flex-col items-center gap-8 p-8 md:py-16 md:px-[var(--nav-edge-w)]">
+      <div id="roadmap" className="flex flex-col items-center gap-8 p-8 md:py-12 md:px-[var(--nav-edge-w)]">
         <SectionTitle>Roadmap</SectionTitle>
         <MobileFold>
         <div className="flex w-full flex-col items-center gap-2 text-center">
@@ -1975,7 +1975,7 @@ export default function SpotifyPage() {
       </div>
 
       {/* Budget — reuses Fineline's 3-tier budget card recipe, extended to 7 roles */}
-      <div id="budget" className="flex flex-col items-center gap-8 p-8 md:py-16 md:px-[var(--nav-edge-w)]">
+      <div id="budget" className="flex flex-col items-center gap-8 p-8 md:py-12 md:px-[var(--nav-edge-w)]">
         <SectionTitle>Budget projet</SectionTitle>
         <MobileFold>
         <Body1 className="w-full text-center font-light">
@@ -2013,7 +2013,7 @@ export default function SpotifyPage() {
       </div>
 
       {/* KPIs */}
-      <div id="kpis" className="flex flex-col items-center gap-8 p-8 md:py-16 md:px-[var(--nav-edge-w)]">
+      <div id="kpis" className="flex flex-col items-center gap-8 p-8 md:py-12 md:px-[var(--nav-edge-w)]">
         <SectionTitle>KPIs UX d'évaluation du projet</SectionTitle>
         <MobileFold>
         <Body1 className="w-full text-center font-light">
@@ -2075,7 +2075,7 @@ export default function SpotifyPage() {
       </div>
 
       {/* Conclusion */}
-      <div id="conclusion" className="flex flex-col items-start gap-8 p-8 md:py-16 md:pb-32 md:px-[var(--nav-edge-w)]">
+      <div id="conclusion" className="flex flex-col items-start gap-8 p-8 md:py-12 md:pb-16 md:px-[var(--nav-edge-w)]">
         <SectionTitle>Conclusion</SectionTitle>
         <Body1 className="w-full text-center font-light">
           Malgré une offre multi-service riche, Spotify reste majoritairement perçu et utilisé comme une

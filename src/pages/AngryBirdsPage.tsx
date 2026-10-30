@@ -96,13 +96,13 @@ function DeckSection({
   images: string[]
   onOpen: (globalIndex: number) => void
   children: ReactNode
-  /** Extra classes on the section wrapper, e.g. `md:pb-32` for the last section. */
+  /** Extra classes on the section wrapper, e.g. `md:pb-16` for the last section. */
   className?: string
 }) {
   return (
     <div
       id={id}
-      className={`relative flex flex-col items-center gap-8 p-8 md:py-16 md:px-[var(--nav-edge-w)] ${className}`}
+      className={`relative flex flex-col items-center gap-8 p-8 md:py-12 md:px-[var(--nav-edge-w)] ${className}`}
     >
       <SectionTitle>{title}</SectionTitle>
       <div className="flex w-full max-w-[900px] flex-col items-center gap-6">
@@ -215,7 +215,7 @@ export default function AngryBirdsPage() {
       {/* Le Brief */}
       <div
         id="brief"
-        className="relative flex flex-col items-center gap-8 p-8 md:py-16 md:px-[var(--nav-edge-w)]"
+        className="relative flex flex-col items-center gap-8 p-8 md:py-12 md:px-[var(--nav-edge-w)]"
       >
         <SectionTitle>Le Brief</SectionTitle>
         <div className="mx-auto flex w-full max-w-[900px] flex-col items-center gap-8 rounded-2xl border border-white/15 bg-white/5 p-6 backdrop-blur-sm md:flex-row">
@@ -242,7 +242,7 @@ export default function AngryBirdsPage() {
       {/* Le Dossier */}
       <div
         id="dossier"
-        className="relative flex flex-col items-center gap-4 p-8 text-center md:py-16 md:px-[var(--nav-edge-w)]"
+        className="relative flex flex-col items-center gap-4 p-8 text-center md:py-12 md:px-[var(--nav-edge-w)]"
       >
         <SectionTitle>Le Dossier</SectionTitle>
         <Body1 className="w-full text-center font-light">
@@ -479,7 +479,7 @@ export default function AngryBirdsPage() {
         title="Conclusion"
         images={conclusionImages}
         onOpen={setLightboxIndex}
-        className="md:pb-32"
+        className="md:pb-16"
       >
         <Body1 className="w-full text-center font-light">
           Au bout de cette étude, Angry Birds ne mesure plus seulement le temps
