@@ -27,7 +27,7 @@ function ChevronIcon({ direction }: { direction: 'left' | 'right' }) {
 
 function Thumb({ carte }: { carte: AccueilCarte }) {
   return (
-    <div className="relative aspect-[9/16] w-full overflow-hidden rounded-2xl bg-black-soft">
+    <div className="relative aspect-[9/16] w-full overflow-hidden bg-black-soft">
       {carte.video.poster ? (
         <img loading="lazy" decoding="async" src={carte.video.poster} alt="" className="absolute inset-0 size-full object-cover transition-transform duration-500 group-hover:scale-105" />
       ) : (
@@ -66,7 +66,7 @@ function MobileCarousel({ onPlay }: { onPlay: (c: AccueilCarte) => void }) {
             zIndex: 10 - abs,
             opacity: abs > 1 ? 0 : isActive ? 1 : 0.55,
           } as CSSProperties
-          const cls = `absolute flex w-[230px] flex-col p-2.5 transition-[transform,opacity] duration-[900ms] ease-[cubic-bezier(0.16,1,0.3,1)] will-change-transform ${cardFrame} ${focusRing}`
+          const cls = `absolute flex w-[230px] flex-col overflow-hidden transition-[transform,opacity] duration-[900ms] ease-[cubic-bezier(0.16,1,0.3,1)] will-change-transform ${cardFrame} ${focusRing}`
 
           return (
             <button
@@ -116,7 +116,7 @@ export default function CommunicationTeaser() {
             type="button"
             onClick={() => setPlaying(c)}
             aria-label={`Lire la vidéo « ${c.titre} »`}
-            className={`group flex w-[calc((100%-2rem)/3)] max-w-[260px] cursor-pointer flex-col p-3 transition-transform duration-300 hover:-translate-y-1 ${cardFrame} ${focusRing}`}
+            className={`group flex w-[calc((100%-2rem)/3)] max-w-[260px] cursor-pointer flex-col overflow-hidden transition-transform duration-300 hover:-translate-y-1 ${cardFrame} ${focusRing}`}
           >
             <Thumb carte={c} />
           </button>
