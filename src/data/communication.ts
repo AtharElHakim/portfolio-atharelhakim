@@ -258,7 +258,7 @@ export const alternance = {
           sousLigne: 'HEIP · Instagram',
           roles: ['Réalisation', 'Montage'],
           texte:
-            "Des interviews d'étudiants et d'une diplômée de HEIP engagés dans la vie publique ou associative, et un sujet d'actualité sur la FIFA et la politique.",
+            "Des interviews avec des étudiants et alumni de HEIP, et un reel d'actualité.",
           rangees: [
             [
               enLigne('barrio-14', 'Barrio 14', 'https://www.instagram.com/reel/DVs4uHAji-Y/'),
