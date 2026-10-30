@@ -192,8 +192,8 @@ export const alternance = {
       blocs: [
         {
           id: 'projection-courts-metrages',
-          titre: 'Projection des courts métrages',
-          sousLigne: 'Sup de Pub · Instagram',
+          titre: 'Immersion et micro-trottoirs',
+          sousLigne: 'Sup de Pub · Instagram et TikTok',
           roles: ['Concept', 'Face caméra', 'Interview', 'Photo et vidéo'],
           texte:
             'Une soirée, deux formats : une story immersive pour vivre la projection en direct, et un micro-trottoir où les familles devinent le titre du film de leur proche.',
@@ -205,18 +205,6 @@ export const alternance = {
                 'https://www.instagram.com/s/aGlnaGxpZ2h0OjE3OTA5OTE3MzY4NDczNTcx?story_media_id=3991247202622198342_3929723136',
               ),
               enLigne('micro-trottoir-projection', 'Devine le film de ton proche', 'https://www.instagram.com/reel/DdmHYhOjufP/'),
-            ],
-          ],
-        },
-        {
-          id: 'micro-trottoirs-sup-de-pub',
-          titre: 'Micro-trottoirs Sup de Pub',
-          sousLigne: 'Sup de Pub · TikTok',
-          roles: ['Face caméra', 'Interview'],
-          texte:
-            'Des micro-trottoirs et formats courts pour le TikTok de Sup de Pub, où je pose les questions aux étudiants et aux passants.',
-          rangees: [
-            [
               enLigne('fc-petites-choses', "Les petites choses d'un tournage", 'https://vt.tiktok.com/ZSgWxoFWu/'),
               enLigne('fc-metier-reves', 'Le métier de tes rêves', 'https://vt.tiktok.com/ZSgWQ2JwQ/'),
               enLigne('fc-reussi-99', 'Réussi à 99,9 %', 'https://vt.tiktok.com/ZSgWQNNcR/'),
