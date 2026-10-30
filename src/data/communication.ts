@@ -208,6 +208,21 @@ export const alternance = {
             ],
           ],
         },
+        {
+          id: 'micro-trottoirs-sup-de-pub',
+          titre: 'Micro-trottoirs Sup de Pub',
+          sousLigne: 'Sup de Pub · TikTok',
+          roles: ['Face caméra', 'Interview'],
+          texte:
+            'Des micro-trottoirs et formats courts pour le TikTok de Sup de Pub, où je pose les questions aux étudiants et aux passants.',
+          rangees: [
+            [
+              enLigne('fc-petites-choses', "Les petites choses d'un tournage", 'https://vt.tiktok.com/ZSgWxoFWu/'),
+              enLigne('fc-metier-reves', 'Le métier de tes rêves', 'https://vt.tiktok.com/ZSgWQ2JwQ/'),
+              enLigne('fc-reussi-99', 'Réussi à 99,9 %', 'https://vt.tiktok.com/ZSgWQNNcR/'),
+            ],
+          ],
+        },
       ],
     },
     {
