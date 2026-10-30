@@ -1,5 +1,6 @@
 import { Fragment, useRef, useState, type CSSProperties, type ReactNode } from 'react'
 import Contact from '../components/Contact'
+import MobileFold from '../components/MobileFold'
 import CaseStudyNav from '../components/CaseStudyNav'
 import Button, { focusRing } from '../components/Button'
 import VideoModal from '../components/VideoModal'
@@ -1656,6 +1657,7 @@ export default function ParIciPage() {
             En quoi Par ici s'inscrit dans la stratégie de CNP ?
           </Body1>
         </div>
+        <MobileFold>
 
         <div className="w-full max-w-[900px]">
           <Body1 className="w-full text-center font-light">
@@ -1726,11 +1728,13 @@ export default function ParIciPage() {
           <H3 className="w-full text-center">SUAVE : Par ici répond aux critères</H3>
           <CardGrid cards={suave} cols="md:grid-cols-2 lg:grid-cols-3" />
         </div>
+        </MobileFold>
       </div>
 
       {/* ============ Roadmap ============ */}
       <div id="roadmap" className={SECTION}>
         <SectionTitle>Roadmap</SectionTitle>
+        <MobileFold>
 
         <div className="flex w-full flex-col items-center gap-4">
           <H3 className="w-full text-center">Priorisation MoSCoW</H3>
@@ -1794,6 +1798,7 @@ export default function ParIciPage() {
           {/* NEW component — numbered-circle roadmap timeline, DarkHeaderCard bodies */}
           <RoadmapTimeline phases={roadmapPhases} />
         </div>
+        </MobileFold>
       </div>
 
       {/* ============ Budget ============ */}
@@ -1804,6 +1809,7 @@ export default function ParIciPage() {
             Déploiement sur 11 mois · CNP Assurances × La Banque Postale · deux scénarios comparatifs.
           </Body1>
         </div>
+        <MobileFold>
 
         <div className="grid w-full grid-cols-1 gap-4 md:grid-cols-2">
           <BudgetCard
@@ -1846,6 +1852,7 @@ export default function ParIciPage() {
             ]}
           />
         </div>
+        </MobileFold>
       </div>
 
       {/* ============ Conclusion ============ */}

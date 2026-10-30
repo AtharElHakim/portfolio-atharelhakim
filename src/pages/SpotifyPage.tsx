@@ -1,5 +1,6 @@
 import { useRef, useState, type CSSProperties, type ReactNode } from 'react'
 import Contact from '../components/Contact'
+import MobileFold from '../components/MobileFold'
 import CaseStudyNav from '../components/CaseStudyNav'
 import Button, { focusRing } from '../components/Button'
 import Lightbox from '../components/Lightbox'
@@ -1821,6 +1822,7 @@ export default function SpotifyPage() {
       {/* Équipe projet */}
       <div id="equipe" className="flex flex-col items-center gap-10 p-8 md:py-16 md:px-[var(--nav-edge-w)]">
         <SectionTitle>Équipe projet</SectionTitle>
+        <MobileFold>
         <Body1 className="w-full text-center font-light">
           Pour porter la refonte de l'expérience multi-service, le projet s'appuie sur une équipe autonome
           et pluridisciplinaire inspirée du modèle Spotify. Elle favorise une collaboration continue entre
@@ -1859,11 +1861,13 @@ export default function SpotifyPage() {
             ]}
           />
         </div>
+        </MobileFold>
       </div>
 
       {/* Méthodologie gestion de projet */}
       <div id="methodologie" className="flex flex-col items-center gap-10 p-8 md:py-16 md:px-[var(--nav-edge-w)]">
         <SectionTitle>Méthodologie gestion de projet</SectionTitle>
+        <MobileFold>
         <Body1 className="w-full text-center font-light">
           Le projet est piloté selon une méthodologie Agile Scrum, une méthode itérative permettant
           d'avancer par cycles, de tester rapidement les hypothèses et d'ajuster la solution en continu
@@ -1917,11 +1921,13 @@ export default function SpotifyPage() {
             </div>
           ))}
         </div>
+        </MobileFold>
       </div>
 
       {/* Roadmap */}
       <div id="roadmap" className="flex flex-col items-center gap-8 p-8 md:py-16 md:px-[var(--nav-edge-w)]">
         <SectionTitle>Roadmap</SectionTitle>
+        <MobileFold>
         <div className="flex w-full flex-col items-center gap-2 text-center">
           <H5 className="!text-purple-pale/70">Durée totale</H5>
           <p className="font-syne text-2xl text-white md:text-3xl">12 mois · 5 phases</p>
@@ -1965,11 +1971,13 @@ export default function SpotifyPage() {
             />
           </div>
         </div>
+        </MobileFold>
       </div>
 
       {/* Budget — reuses Fineline's 3-tier budget card recipe, extended to 7 roles */}
       <div id="budget" className="flex flex-col items-center gap-8 p-8 md:py-16 md:px-[var(--nav-edge-w)]">
         <SectionTitle>Budget projet</SectionTitle>
+        <MobileFold>
         <Body1 className="w-full text-center font-light">
           Le budget est estimé sur la base de l'équipe projet décrite précédemment, organisée en squad
           produit cross-fonctionnelle. Les coûts sont calculés en fonction du TJM (Taux Journalier Moyen)
@@ -2001,11 +2009,13 @@ export default function SpotifyPage() {
             ))}
           </ul>
         </div>
+        </MobileFold>
       </div>
 
       {/* KPIs */}
       <div id="kpis" className="flex flex-col items-center gap-8 p-8 md:py-16 md:px-[var(--nav-edge-w)]">
         <SectionTitle>KPIs UX d'évaluation du projet</SectionTitle>
+        <MobileFold>
         <Body1 className="w-full text-center font-light">
           Afin d'évaluer la pertinence de la solution avant son déploiement, plusieurs KPIs permettent de
           mesurer si la refonte répond à la problématique identifiée et améliore l'expérience utilisateur.
@@ -2061,6 +2071,7 @@ export default function SpotifyPage() {
             ))}
           </ul>
         </div>
+        </MobileFold>
       </div>
 
       {/* Conclusion */}
