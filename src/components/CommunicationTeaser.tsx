@@ -40,7 +40,8 @@ function Thumb({ carte }: { carte: AccueilCarte }) {
   )
 }
 
-/** Mobile only: swipeable 3D carousel, same motion as the UX/UI one on the homepage. */
+/** Swipeable 3D carousel (all screen sizes), same motion as the UX/UI one on the homepage:
+ *  the active card sits in front, the neighbours tilt back on each side. */
 function MobileCarousel({ onPlay }: { onPlay: (c: AccueilCarte) => void }) {
   const blocs = accueil.cartes
   const [activeIndex, setActiveIndex] = useState(Math.floor(blocs.length / 2))
@@ -49,9 +50,9 @@ function MobileCarousel({ onPlay }: { onPlay: (c: AccueilCarte) => void }) {
   const gestures = useCarouselGestures(goNext, goPrev)
 
   return (
-    <div className="flex w-full flex-col items-center gap-6 md:hidden">
+    <div className="flex w-full flex-col items-center gap-6">
       <div
-        className="relative flex h-[470px] w-full items-center justify-center touch-pan-y select-none [&_img]:pointer-events-none [&_img]:[-webkit-user-drag:none]"
+        className="relative flex h-[470px] w-full items-center justify-center [--step:150px] md:h-[520px] md:[--step:290px] touch-pan-y select-none [&_img]:pointer-events-none [&_img]:[-webkit-user-drag:none]"
         style={{ perspective: '1600px' }}
         {...gestures}
       >
@@ -62,11 +63,11 @@ function MobileCarousel({ onPlay }: { onPlay: (c: AccueilCarte) => void }) {
           const isActive = offset === 0
           const abs = Math.abs(offset)
           const style = {
-            transform: `translateX(${offset * 150}px) scale(${isActive ? 1 : 0.78}) rotateY(${isActive ? 0 : offset < 0 ? 32 : -32}deg)`,
+            transform: `translateX(calc(var(--step) * ${offset})) scale(${isActive ? 1 : 0.78}) rotateY(${isActive ? 0 : offset < 0 ? 32 : -32}deg)`,
             zIndex: 10 - abs,
             opacity: abs > 1 ? 0 : isActive ? 1 : 0.55,
           } as CSSProperties
-          const cls = `absolute flex w-[230px] flex-col overflow-hidden transition-[transform,opacity] duration-[900ms] ease-[cubic-bezier(0.16,1,0.3,1)] will-change-transform ${cardFrame} ${focusRing}`
+          const cls = `absolute flex w-[230px] flex-col overflow-hidden md:w-[270px] transition-[transform,opacity] duration-[900ms] ease-[cubic-bezier(0.16,1,0.3,1)] will-change-transform ${cardFrame} ${focusRing}`
 
           return (
             <button
@@ -96,8 +97,8 @@ function MobileCarousel({ onPlay }: { onPlay: (c: AccueilCarte) => void }) {
   )
 }
 
-/** Homepage block: 3 videos that play in place (modal with sound), no link
- *  out. Side by side from md, swipeable carousel below. */
+/** Homepage block: 3 videos in a swipeable 3D carousel; the front card plays
+ *  its video in place (modal with sound), no link out. */
 export default function CommunicationTeaser() {
   const [playing, setPlaying] = useState<AccueilCarte | null>(null)
   return (
@@ -109,19 +110,6 @@ export default function CommunicationTeaser() {
 
       <MobileCarousel onPlay={setPlaying} />
 
-      <div className="hidden w-full flex-nowrap justify-center gap-4 md:flex">
-        {accueil.cartes.map((c) => (
-          <button
-            key={c.titre}
-            type="button"
-            onClick={() => setPlaying(c)}
-            aria-label={`Lire la vidéo « ${c.titre} »`}
-            className={`group flex w-[calc((100%-2rem)/3)] max-w-[260px] cursor-pointer flex-col overflow-hidden transition-transform duration-300 hover:-translate-y-1 ${cardFrame} ${focusRing}`}
-          >
-            <Thumb carte={c} />
-          </button>
-        ))}
-      </div>
       <Button to="/communication">Voir mes contenus</Button>
       {playing && <PlayerModal video={{ ...playing.video, titre: playing.titre }} onClose={() => setPlaying(null)} />}
     </section>
