@@ -351,7 +351,10 @@ export const accueil = {
    *  on the site, without TikTok/Instagram embeds (cookies, like counts). */
   cartes: [
     { titre: "Campagnes d'acquisition", video: videoById('rejoignez-nous') },
-    { titre: 'Immersion et micro-trottoirs', video: { ...videoById('story-immersive'), src: '' } },
+    {
+      titre: 'Raccourcis Premiere Pro',
+      video: { ...videoById('tips-raccourcis-1'), src: `${VIDEOS}tips-raccourcis-1.mp4`, url: '' },
+    },
     {
       titre: 'Tips tournage et montage',
       video: { ...videoById('tips-3-choses'), src: `${VIDEOS}tips-3-choses.mp4`, url: '' },
