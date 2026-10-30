@@ -36,8 +36,8 @@ function Thumb({ bloc }: { bloc: Bloc }) {
       ) : (
         <Placeholder label={bloc.titre} format="9:16" className="absolute inset-0" />
       )}
-      <span className="pointer-events-none absolute bottom-3 left-1/2 flex size-10 -translate-x-1/2 items-center justify-center rounded-full border border-white/15 bg-black/70 text-white backdrop-blur-sm">
-        <PlayGlyph />
+      <span className="pointer-events-none absolute left-1/2 top-1/2 flex size-12 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border border-white/20 bg-black/60 text-white backdrop-blur-sm transition-transform duration-300 group-hover:scale-110">
+        <PlayGlyph className="ml-0.5 size-5" />
       </span>
     </div>
   )
