@@ -301,7 +301,7 @@ export const alternance = {
           sousLigne: 'HEIP · Instagram',
           roles: ['Montage'],
           texte:
-            "Des formats courts avec les étudiants de HEIP pour parler de leur programme et de leur alternance : Vrai ou Faux, Fast & Curious et micro-trottoirs. Pour Vrai ou Faux, j'ai aussi imaginé l'accroche d'ouverture.",
+            'Des micro-trottoirs avec les étudiants de HEIP.',
           rangees: [
             [
               enLigne('vrai-ou-faux-1', 'Vrai ou Faux 1', 'https://www.instagram.com/reel/DdEDQDajL0t/', {
