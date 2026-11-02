@@ -220,7 +220,7 @@ export const alternance = {
       blocs: [
         {
           id: 'fabrice-rizzoli',
-          titre: 'Fabrice Rizzoli',
+          titre: 'Interviews sur le crime organisé',
           sousLigne: 'HEIP · Instagram et TikTok',
           roles: ['Réalisation', 'Montage', 'Sous-titrage'],
           texte:
@@ -239,7 +239,7 @@ export const alternance = {
         },
         {
           id: 'msc-erci',
-          titre: 'MSc ERCI',
+          titre: 'Vidéos institutionnelles',
           sousLigne: 'HEIP · Site web et Instagram',
           roles: ['Réalisation', 'Montage'],
           texte:
@@ -279,7 +279,7 @@ export const alternance = {
       blocs: [
         {
           id: 'heip-london',
-          titre: 'HEIP London',
+          titre: 'Interviews sur le campus de Londres',
           sousLigne: 'HEIP · Instagram',
           roles: ['Montage', 'Sous-titrage'],
           texte:
