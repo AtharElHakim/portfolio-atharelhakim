@@ -4,7 +4,12 @@ import { Link, useLocation } from 'react-router-dom'
 import { Micro1 } from './Typography'
 import Button, { focusRing } from './Button'
 
-const CV_HREF = '/cv-athar-el-hakim.pdf'
+// The visitor picks which CV to open from "Mon CV".
+const cvLinks = [
+  { href: '/cv-ux-ui-athar-el-hakim.pdf', label: 'CV UX/UI' },
+  { href: '/cv-communication-athar-el-hakim.pdf', label: 'CV Communication' },
+]
+const CV_PROMPT = 'Quel CV souhaitez-vous ?'
 
 function CaretDownIcon({ className }: { className?: string }) {
   return (
@@ -146,6 +151,66 @@ function ProjectsDropdown() {
   )
 }
 
+function CvDropdown() {
+  const [open, setOpen] = useState(false)
+  const containerRef = useRef<HTMLDivElement>(null)
+  const buttonRef = useRef<HTMLButtonElement>(null)
+
+  useEffect(() => {
+    if (!open) return
+    function handleClickOutside(event: MouseEvent) {
+      if (!containerRef.current?.contains(event.target as Node)) setOpen(false)
+    }
+    function handleKeyDown(event: KeyboardEvent) {
+      if (event.key === 'Escape') {
+        setOpen(false)
+        buttonRef.current?.focus()
+      }
+    }
+    document.addEventListener('mousedown', handleClickOutside)
+    document.addEventListener('keydown', handleKeyDown)
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside)
+      document.removeEventListener('keydown', handleKeyDown)
+    }
+  }, [open])
+
+  return (
+    <div ref={containerRef} className="relative">
+      <button
+        ref={buttonRef}
+        type="button"
+        onClick={() => setOpen((prev) => !prev)}
+        aria-expanded={open}
+        className={`flex min-h-11 cursor-pointer items-center gap-2 rounded-full text-base leading-6 text-white/70 transition-colors duration-300 hover:text-white ${focusRing}`}
+      >
+        Mon CV
+        <CaretDownIcon
+          className={`size-4 shrink-0 transition-transform duration-300 ${open ? 'rotate-180' : ''}`}
+        />
+      </button>
+      {open && (
+        <div className="glass-dark animate-fade-in-up purple-glow absolute right-0 top-full z-10 mt-2 flex w-[240px] flex-col overflow-hidden rounded-xl">
+          <p className="px-4 pb-1 pt-3 text-sm leading-5 text-white/50">{CV_PROMPT}</p>
+          {cvLinks.map((item) => (
+            <a
+              key={item.href}
+              href={item.href}
+              target="_blank"
+              rel="noreferrer"
+              onClick={() => setOpen(false)}
+              className={`group flex cursor-pointer items-center justify-between gap-2 px-4 py-2 text-base leading-6 text-white/70 transition-colors duration-200 last:mb-1 hover:bg-purple-mid/15 hover:text-white ${focusRing}`}
+            >
+              {item.label}
+              <ArrowUpRightIcon className="size-3.5 shrink-0 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+            </a>
+          ))}
+        </div>
+      )}
+    </div>
+  )
+}
+
 function mobileItemClass(active: boolean) {
   return `w-full rounded-2xl px-4 py-4 text-center font-syne text-2xl transition-colors duration-200 ${
     active ? 'bg-purple-mid/45 text-white' : 'text-white/85 hover:bg-white/5 hover:text-white'
@@ -164,6 +229,7 @@ function MobileMenu({
   isProjectsActive: boolean
 }) {
   const [projectsOpen, setProjectsOpen] = useState(false)
+  const [cvOpen, setCvOpen] = useState(false)
 
   return createPortal(
     <div className="fixed inset-0 z-30 flex flex-col overflow-y-auto bg-black px-6 pb-10 pt-28 lg:hidden">
@@ -216,16 +282,37 @@ function MobileMenu({
           Contactez-Moi
           <ArrowUpRightIcon className="size-5 shrink-0" />
         </Link>
-        <a
-          href={CV_HREF}
-          target="_blank"
-          rel="noreferrer"
-          onClick={onClose}
-          className={`flex items-center justify-center gap-2 ${mobileItemClass(false)}`}
-        >
-          Mon CV
-          <ArrowUpRightIcon className="size-5 shrink-0" />
-        </a>
+        <div className="flex flex-col items-stretch">
+          <button
+            type="button"
+            onClick={() => setCvOpen((prev) => !prev)}
+            aria-expanded={cvOpen}
+            className={`flex items-center justify-center gap-2 ${mobileItemClass(false)}`}
+          >
+            Mon CV
+            <CaretDownIcon
+              className={`size-6 shrink-0 transition-transform duration-300 ${cvOpen ? 'rotate-180' : ''}`}
+            />
+          </button>
+          {cvOpen && (
+            <div className="flex flex-col items-stretch gap-1 py-2">
+              <p className="px-4 pb-1 text-center text-sm leading-5 text-white/50">{CV_PROMPT}</p>
+              {cvLinks.map((item) => (
+                <a
+                  key={item.href}
+                  href={item.href}
+                  target="_blank"
+                  rel="noreferrer"
+                  onClick={onClose}
+                  className={`flex w-full items-center justify-center gap-2 rounded-xl px-4 py-3 text-center text-lg text-white/70 transition-colors duration-200 hover:bg-white/5 hover:text-white ${focusRing}`}
+                >
+                  {item.label}
+                  <ArrowUpRightIcon className="size-4 shrink-0" />
+                </a>
+              ))}
+            </div>
+          )}
+        </div>
       </nav>
     </div>,
     document.body,
@@ -328,15 +415,7 @@ export default function NavBar() {
             Contactez-Moi
             <ArrowUpRightIcon className="size-3.5 shrink-0 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
           </Link>
-          <a
-            href={CV_HREF}
-            target="_blank"
-            rel="noreferrer"
-            className={`group flex min-h-11 cursor-pointer items-center gap-2 rounded-full text-base leading-6 text-white/70 transition-colors duration-300 hover:text-white ${focusRing}`}
-          >
-            Mon CV
-            <ArrowUpRightIcon className="size-3.5 shrink-0 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-          </a>
+          <CvDropdown />
         </div>
 
         <button

@@ -845,7 +845,6 @@ export default function ParIciPage() {
       />
       <CaseStudyNav
         sections={[
-          { id: 'hero', label: 'Hero' },
           { id: 'overview', label: 'Overview' },
           { id: 'brief', label: 'Brief' },
           { id: 'intro', label: 'Intro' },
@@ -866,7 +865,7 @@ export default function ParIciPage() {
       />
 
       {/* ============ Hero ============ */}
-      <div id="hero" className="flex flex-col items-center gap-6 px-8 pb-8 pt-4 md:pb-16 md:pt-10 md:px-[var(--nav-edge-w)]">
+      <div id="overview" className="flex flex-col items-center gap-6 px-8 pb-8 pt-4 md:pb-16 md:pt-10 md:px-[var(--nav-edge-w)]">
         <div className="flex w-full flex-col items-center gap-4 text-center">
           <img src={compassLogo} alt="Logo Par ici : une boussole" className="size-14" />
           <H1 className="md:!text-5xl md:!leading-[52.8px]">Par ici</H1>
@@ -896,7 +895,7 @@ export default function ParIciPage() {
       </div>
 
       {/* ============ Overview ============ */}
-      <div id="overview" className={SECTION}>
+      <div className={SECTION}>
         <div className="flex w-full max-w-[820px] flex-col items-center gap-8 text-center">
           <div className="flex w-full flex-col items-center gap-2">
             <H5 className="!text-lg">Overview</H5>

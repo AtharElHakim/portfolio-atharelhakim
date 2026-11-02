@@ -85,8 +85,10 @@ export default function CaseStudyNav({
       </div>
 
       {createPortal(
-        <div className="pointer-events-none fixed left-6 top-1/2 z-50 hidden -translate-y-1/2 lg:block xl:left-10">
-          <nav className="pointer-events-auto flex flex-col items-start gap-2 border-l border-white/15 pl-4">
+        // Fixed start, not centered: every project's list begins 34px under the back
+        // button (bottom at 132px) however many sections it has. Short screens scroll it.
+        <div className="pointer-events-none fixed left-6 top-[166px] z-50 hidden lg:block xl:left-10">
+          <nav className="pointer-events-auto flex max-h-[calc(100vh-182px)] flex-col items-start gap-2 overflow-y-auto border-l border-white/15 pl-4 [scrollbar-width:none]">
             {sections.map((section, i) => {
               const isActive = section.id === activeId
               const showGroup = section.group && section.group !== sections[i - 1]?.group
