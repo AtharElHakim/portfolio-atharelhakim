@@ -221,8 +221,8 @@ export default function AboutPage() {
               <TimelineItem
                 title="Alternance OMNES Education"
                 paragraphs={[
-                  "De décembre 2025 à septembre 2026, j'ai fait mon alternance chez OMNES Education, pour HEIP, une université de sciences politiques à Paris, et Sup de Pub. Un univers que je ne connaissais pas du tout avant d'y mettre les pieds.",
-                  "J'ai géré le contenu réseaux sociaux : concepts, tournage, montage, veille tendances. Ce n'était pas mon terrain naturel, mais c'est souvent en terrain inconnu que j'apprends le plus.",
+                  "De décembre 2025 à septembre 2026, j'ai fait mon alternance chez OMNES Education, où j'ai géré le contenu réseaux sociaux de deux écoles : Sup de Pub, une école de communication et de création, et HEIP, une école de sciences politiques et de relations internationales.",
+                  "Concepts, tournage, montage, veille tendances : c'était mon quotidien. Les sciences politiques n'étaient pas mon terrain naturel, mais c'est souvent en terrain inconnu que j'apprends le plus.",
                 ]}
               />
             </div>
